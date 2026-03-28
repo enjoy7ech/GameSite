@@ -1,0 +1,15 @@
+name: Remote Pull
+
+on:
+  push:
+    branches:
+      - main  # 或者是您希望监听的分支名称
+
+jobs:
+  update:
+    runs-on: self-hosted  # 假设您使用的是自托管 Runner
+    steps:
+      - name: Pull latest changes
+        run: |
+          # 请将下面的路径替换为您在 Runner 机器上的实际项目目录
+          cd /root/github/GameSite && git pull

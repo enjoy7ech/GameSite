@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basket Race</title>
+    <link rel="stylesheet" href="/games/basket-race/index.css">
+    <link rel="stylesheet" href="/games/basket-race/lib/fonts.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "/games/basket-race/lib/three/three.module.js",
+                "three/examples/jsm/": "/games/basket-race/lib/three/examples/jsm/"
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #202020;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        /* 极致浮夸动画 */
+        @keyframes fire-pulse {
+            0% {
+                transform: scale(1) skewX(0deg);
+                filter: brightness(1.2) drop-shadow(0 0 5px #ff0044);
+            }
+
+            50% {
+                transform: scale(1.1) skewX(-2deg);
+                filter: brightness(1.8) drop-shadow(0 0 15px #ff0044);
+            }
+
+            100% {
+                transform: scale(1.05) skewX(2deg);
+                filter: brightness(1.4) drop-shadow(0 0 10px #ff0000);
+            }
+        }
+
+        @keyframes swish-gold-burst {
+            0% {
+                transform: scale(0.5) rotate(-10deg);
+                filter: brightness(1) drop-shadow(0 0 0px #ffae00);
+                opacity: 0;
+            }
+
+            20% {
+                transform: scale(1.5) rotate(5deg);
+                filter: brightness(2.5) drop-shadow(0 0 40px #ffae00);
+                opacity: 1;
+            }
+
+            80% {
+                transform: scale(1.2) rotate(0deg);
+                filter: brightness(1.5) drop-shadow(0 0 20px #ffae00);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.0) rotate(0deg);
+                filter: brightness(1) drop-shadow(0 0 5px #ffae00);
+                opacity: 0;
+            }
+        }
+
+        @keyframes screen-shake {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            10% {
+                transform: translate(-3px, 3px);
+            }
+
+            20% {
+                transform: translate(3px, -3px);
+            }
+
+            30% {
+                transform: translate(-5px, 0px);
+            }
+
+            40% {
+                transform: translate(5px, 2px);
+            }
+
+            50% {
+                transform: translate(-2px, -4px);
+            }
+
+            60% {
+                transform: translate(2px, 4px);
+            }
+
+            70% {
+                transform: translate(-3px, 1px);
+            }
+
+            80% {
+                transform: translate(3px, -1px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        #ui-container.shaking {
+            animation: screen-shake 0.3s ease-out both;
+        }
+
+        #ui-container.flash {
+            background: rgba(0, 255, 242, 0.1);
+            transition: background 0.1s ease;
+        }
+
+        .swish-text {
+            color: #ffae00 !important;
+            font-family: 'Orbitron', sans-serif !important;
+            font-size: 64px !important;
+            font-weight: 900 !important;
+            text-shadow: 0 0 20px #ffae00, 0 0 40px #ffae00;
+            animation: swish-gold-burst 1s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        }
+
+        #status-bar {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .stat-group {
+            display: flex;
+            gap: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            color: #ffee00;
+            text-shadow: 0 0 8px rgba(255, 238, 0, 0.6);
+            letter-spacing: 1px;
+        }
+
+        #combo-fire {
+            color: #ff0044;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            font-weight: 900;
+            font-style: italic;
+            animation: fire-pulse 0.4s infinite alternate ease-in-out;
+            display: none;
+            /* 初始隐藏，有连击才显示 */
+        }
+
+        #manual-panel {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-family: 'Orbitron', sans-serif;
+            color: rgba(0, 255, 242, 0.7);
+            font-size: 11px;
+            text-align: right;
+            pointer-events: auto;
+            line-height: 1.6;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 4px solid #00fff2;
+            z-index: 100;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        #manual-panel.collapsed {
+            transform: translateX(calc(100% + 40px));
+        }
+
+        #manual-toggle-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 255, 242, 0.1);
+            border: 1px solid #00fff2;
+            color: #00fff2;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            z-index: 101;
+            transition: all 0.2s;
+        }
+
+        #manual-toggle-btn:hover {
+            background: rgba(0, 255, 242, 0.3);
+        }
+
+        /* 加载页面样式 */
+        #loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: #050510;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        #loading-text {
+            color: #00fff2;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            animation: text-pulse 1.5s infinite ease-in-out;
+        }
+
+        @keyframes text-pulse {
+            0% {
+                opacity: 0.3;
+                transform: scale(0.95);
+                filter: blur(2px);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0px);
+            }
+
+            100% {
+                opacity: 0.3;
+                transform: scale(0.95);
+                filter: blur(2px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ui-container">
+        <div id="level-info">第 1 关 - 目标分: 100</div>
+        <div id="scoreboard-container" style="display: flex; align-items: baseline; gap: 15px;">
+            <div id="scoreboard">总比分: 0</div>
+            <div id="score-pop"></div>
+        </div>
+        <div id="timer">00:00</div>
+        <!-- Combo 移至时间轴下方，并极度加强视觉效果 -->
+        <div id="combo-fire" style="display: none; align-items: baseline; gap: 8px; margin-top: 15px;">
+            <span
+                style="color: #ffcc00; font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 900; font-style: italic; text-shadow: 2px 2px 0 #000, 0 0 10px #ff6600;">COMBO</span>
+            <span id="combo-value"
+                style="color: #ff0000; font-family: 'Orbitron', sans-serif; font-size: 58px; font-weight: 900; -webkit-text-stroke: 2px #fff; text-shadow: 4px 4px 0 #000, 0 0 25px #ff0000; animation: fire-pulse 0.4s infinite alternate; line-height: 1;">0</span>
+        </div>
+    </div>
+
+    <!-- 死角惩罚倒计时 UI (中下部) -->
+    <div id="side-punish-ui"
+        style="display: none; position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; z-index: 10;">
+        <div
+            style="color: #ff00ea; font-family: 'Orbitron', sans-serif; font-size: 14px; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255, 0, 234, 0.8);">
+            死角挑战剩余时间</div>
+        <div
+            style="background: rgba(0,0,0,0.5); border: 1px solid #ff00ea; padding: 2px; border-radius: 4px; width: 300px; height: 12px; margin: 5px auto; overflow: hidden;">
+            <div id="side-punish-fill"
+                style="width: 100%; height: 100%; background: linear-gradient(90deg, #ff00ea, #8800ff); box-shadow: 0 0 15px #ff00ea;">
+            </div>
+        </div>
+        <div id="side-punish-timer"
+            style="color: #ffffff; font-family: monospace; font-size: 18px; font-weight: bold; text-shadow: 2px 2px 0px #000;">
+            30.0s</div>
+    </div>
+
+    <!-- 奖励时间 UI (中下部，与惩罚隔离显示) -->
+    <div id="reward-phase-ui"
+        style="display: none; position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; z-index: 10;">
+        <div
+            style="color: #00fff2; font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 900; letter-spacing: 4px; text-shadow: 0 0 15px rgba(0, 255, 242, 1);">
+            REWARD FRENZY // 疯狂奖励模式</div>
+        <div
+            style="background: rgba(0,0,0,0.6); border: 2px solid #00fff2; padding: 2px; border-radius: 6px; width: 350px; height: 16px; margin: 8px auto; overflow: hidden; box-shadow: 0 0 20px rgba(0, 255, 242, 0.3);">
+            <div id="reward-phase-fill"
+                style="width: 100%; height: 100%; background: linear-gradient(90deg, #00fff2, #0066ff); box-shadow: 0 0 15px #00fff2;">
+            </div>
+        </div>
+        <div id="reward-phase-timer"
+            style="color: #ffffff; font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 900; text-shadow: 0 0 10px #00fff2;">
+            15.0s</div>
+    </div>
+
+    <!-- 重新设计的单行状态栏 (靠顶显示) -->
+    <div id="status-bar">
+
+        <div class="stat-group">
+            <div id="stat-diff"><span style="color:#ff00ea; font-weight:bold;">基础难度:</span> <span id="current-diff"
+                    style="color:#ffffff;">0</span></div>
+            <div id="stat-dist"><span id="dist-label" style="color:#00fff2;">远射等级:</span> <span
+                    id="dist-coeff">...</span></div>
+            <div id="stat-height"><span id="height-label" style="color:#00fff2;">地势加成:</span> <span
+                    id="height-coeff">...</span></div>
+            <div id="stat-angle"><span id="angle-label" style="color:#00fff2;">命中率:</span> <span id="hit-rate"
+                    style="color:#00ff88; font-weight:bold;">0%</span></div>
+        </div>
+        <!-- 惩罚球警告条 -->
+        <div id="punish-warning-container"
+            style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+            <div
+                style="color: #ff3300; font-family: 'Orbitron', sans-serif; font-size: 9px; letter-spacing: 1px; font-weight: bold; opacity: 0.8;">
+                PUNISHMENT SYSTEM</div>
+            <div id="punish-progress-bar-bg"
+                style="width: 120px; height: 6px; background: rgba(255, 51, 0, 0.1); border: 1px solid rgba(255, 51, 0, 0.3); border-radius: 2px; overflow: hidden; position: relative;">
+                <div id="punish-progress-fill"
+                    style="width: 0%; height: 100%; background: linear-gradient(90deg, #ff6600, #ff0000); transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);">
+                </div>
+            </div>
+            <div id="punish-count-text" style="color: #ff6600; font-family: monospace; font-size: 10px; opacity: 0.6;">
+                MISS: 0/5</div>
+        </div>
+    </div>
+
+    <div id="score-msg"></div>
+    <div id="score-breakdown"></div>
+
+    <!-- 右下角说明书 & 计算公式 -->
+    <button id="manual-toggle-btn" onclick="toggleManual()">收起说明 [M]</button>
+    <div id="manual-panel">
+        <div style="color: #00fff2; font-weight: bold; margin-bottom: 5px; font-size: 13px;">OPERATING MANUAL // 操作指令
+        </div>
+        • [左键拖拽] 投篮弧线与力度<br>
+        • [右键拖拽] 调整投篮角度<br>
+        • [松开左键] 确认投篮发射<br>
+        • [滚轮滚动] 视角焦距缩放<br>
+
+        <div style="color: #ffae00; font-weight: bold; margin-top: 10px; margin-bottom: 5px; font-size: 13px;">SCORING
+            LOGIC // 计分逻辑</div>
+        • [远射分] 离篮筐越远，分数倍率增长！<br>
+        • [地势分] 在低洼处出手获得补偿分。<br>
+        • [技巧分] 参考入筐角度，弧线平得分高。<br>
+        <div style="color: #ffae00; margin-top: 5px; font-style: italic;">
+            * 连击(COMBO)乘总分，空心(SWISH)双倍加时。
+        </div>
+    </div>
+
+    <div id="loading-overlay">
+        <div id="loading-text">SYSTEM SYNCING...</div>
+        <div style="color: #444; margin-top: 10px; font-family: monospace; font-size: 10px;">PROCESING GLB_COURT //
+            RECLAMATION_BASKETBALL</div>
+    </div>
+
+    <div id="cover-screen">
+        <canvas id="shader-canvas" style="position: absolute; inset: 0; z-index: -1;"></canvas>
+
+        <div class="cover-btn-group">
+            <button onclick="startGame()" class="cover-btn btn-primary">接入球场 • 开始游戏</button>
+        </div>
+
+        <div
+            style="position: absolute; bottom: 30px; font-size: 0.75rem; color: #444; font-family: monospace; letter-spacing: 2px;">
+            V2.5 核心物理引擎已加载 // 神经传感器自检完毕 // @ENJOY7ECH
+        </div>
+    </div>
+
+    <!-- Pause Menu -->
+    <div id="menu-overlay" class="hidden">
+        <div id="menu-content">
+            <h2 class="menu-title">系统已暂停</h2>
+            <div class="menu-items">
+                <button onclick="toggleMenu()" class="action-btn primary">恢复连接</button>
+                <div class="menu-setting">
+                    <label>背景音乐</label>
+                    <input type="range" id="bgm-volume" min="0" max="1" step="0.05" value="0.08"
+                        style="flex:1; cursor:pointer;">
+                </div>
+                <button onclick="restartGame()" class="action-btn secondary">重新启动</button>
+                <button onclick="quitGame()" class="action-btn secondary">退出到大厅</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Overlay -->
+    <div id="result-overlay" class="hidden">
+        <div class="result-card">
+            <h2 id="result-status">系统已离线</h2>
+            <div class="result-stats">
+                <div class="stat-item">
+                    <span class="stat-label">最终得分</span>
+                    <span id="final-score" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">最高连击</span>
+                    <span id="max-combo" class="stat-value">X1</span>
+                </div>
+            </div>
+            <p id="result-msg">检测到神经连接中断...</p>
+            <div class="result-actions">
+                <button onclick="restartGame()" class="action-btn primary">协议重启 • 重新开始</button>
+                <button onclick="quitGame()" class="action-btn secondary">断开连接 • 退出</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu triggered via ESC key -->
+    <!-- <button id="menu-trigger" onclick="toggleMenu()">☰</button> -->
+
+    <script src="/games/basket-race/lib/cannon.min.js"></script>
+    <script type="module" src="/games/basket-race/js/index.js"></script>
+</body>
+
+</html>
