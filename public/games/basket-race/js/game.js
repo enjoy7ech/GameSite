@@ -444,6 +444,11 @@ export function nextLevel() {
 
 export function endGame(win) {
     state.gameState = 'result'; clearInterval(state.timerInterval);
+    if (state.bgm && state.bgm.isPlaying) state.bgm.stop();
+    if (state.endAudio) {
+        if (state.endAudio.isPlaying) state.endAudio.stop();
+        state.endAudio.play();
+    }
     const scoreVal = document.getElementById('final-score');
     if (scoreVal) scoreVal.innerText = state.score;
     const overlay = document.getElementById('result-overlay');

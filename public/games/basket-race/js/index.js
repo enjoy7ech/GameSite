@@ -256,6 +256,13 @@ function init() {
             });
         });
 
+        const endA = new THREE.Audio(listener);
+        audioLoader.load('assets/end.mp3', (buffer) => {
+            endA.setBuffer(buffer);
+            endA.setVolume(0.8);
+            state.endAudio = endA;
+        });
+
         spawnNewBall();
     });
 
