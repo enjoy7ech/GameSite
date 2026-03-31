@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小城故事 | Tiny Story</title>
+    <meta name="description" content="在这个宁静的小城，开启属于你的温馨故事。">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@300;600;900&family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Sky Layer -->
+        <div class="sky-bg">
+            <div class="sun"></div>
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+        </div>
+        
+        <!-- Mountains/Townscape Layer -->
+        <div class="landscape"></div>
+
+        <!-- Main UI -->
+        <main id="game-main">
+            <!-- Start Screen -->
+            <section id="start-screen" class="active">
+                <div class="title-wrapper">
+                    <h1 class="game-title">小城故事</h1>
+                    <p class="game-subtitle">RETRO TOWN CHRONICLES</p>
+                </div>
+                
+                <div class="menu-items">
+                    <button id="btn-start" class="btn-cozy">
+                        新的邂逅
+                    </button>
+                    <button class="btn-cozy secondary">
+                        旧日回忆
+                    </button>
+                    <button class="btn-cozy secondary">
+                        关于小城
+                    </button>
+                </div>
+            </section>
+
+            <!-- Play Screen -->
+            <section id="play-screen">
+                <!-- Dialogue Panel -->
+                <div id="dialogue-panel" class="cozy-panel">
+                    <div class="speaker-tag">小镇居民</div>
+                    <div class="dialogue-content">欢迎来到清风镇。这里的风总带着淡淡的栀子花香。</div>
+                    <div class="dialogue-footer">
+                        <span class="click-text">点击继续故事...</span>
+                    </div>
+                </div>
+
+                <!-- HUD -->
+                <div class="player-stats">
+                    <div class="stat-bubble">
+                        <span class="emoji">💓</span>
+                        <span class="val">心情很好</span>
+                    </div>
+                    <div class="stat-bubble">
+                        <span class="emoji">📒</span>
+                        <span class="val">日记: 第1天</span>
+                    </div>
+                </div>
+
+                <!-- Sidebar Actions -->
+                <div class="world-actions">
+                    <button class="icon-btn">🚲</button>
+                    <button class="icon-btn">☕</button>
+                    <button class="icon-btn">🗺️</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

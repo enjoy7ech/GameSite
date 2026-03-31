@@ -21,26 +21,26 @@ export const PUNISH_COLORS = {
 };
 
 export const BALL_DESCRIPTIONS = {
-    time: "加时奖励",
-    gold: "得分翻倍",
+    time: "时间超频",
+    gold: "分值倍化",
     combo: "连击跳跃",
-    buff: "永久强化",
+    buff: "永久迭代",
 
-    side: "死角死斗",
-    jail: "逆境突击",
-    blind: "视觉剥夺",
-    timer: "时间惩罚"
+    side: "边际生存",
+    jail: "逆流挑战",
+    blind: "视觉脱钩",
+    timer: "时间塌缩"
 };
 
 // --- 游戏文案提示词管理 (Prompts & Messages) ---
 export const MESSAGES = {
-    PRAISE: ["太棒了!", "球进了!", "干脆利落!", "哇呼!", "手感火热!", "神射手!", "不可思议!", "极限进球!"],
+    PRAISE: ["完美衔接!", "目标捕获!", "序列闭合!", "哇呼!", "手感火热!", "神射手!", "不可思议!", "极限进球!"],
     SWISH: "SWISH!!",
-    AIRBALL: "三不沾! 你在投什么?",
-    LEVEL_UP: "LEVEL UP!",
-    LEVEL_INFO: (level, target) => `第 ${level} 关 - 目标分: ${target}`,
-    RESULT_WIN: "恭喜！你已制霸球场",
-    RESULT_LOSE: "协议重启：努力训练更久后再来。",
+    AIRBALL: "同步失效! 无效操作。",
+    LEVEL_UP: "PROTOCOL UPGRADED!",
+    LEVEL_INFO: (level, target) => `PHASE ${level} - 目标同步: ${target}`,
+    RESULT_WIN: "同步成功：已解析球场序列。",
+    RESULT_LOSE: "载入失败：同步率不足，请提升神经耐受度。",
     BUFF_DISTANCE: (lv) => `Lv.${lv}`,
     BUFF_HEIGHT: (val) => `x${val.toFixed(2)}`,
     BUFF_ANGLE: (val) => `${val.toFixed(1)}%`

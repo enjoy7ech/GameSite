@@ -7,6 +7,7 @@ export const state = {
     camera: null,
     renderer: null,
     controls: null,
+    timeScale: 1.5, // 默认速度调整为原 120FPS 的 75% (1.5x 物理步长)
 
     // Cannon.js Core
     world: null,
@@ -46,6 +47,9 @@ export const state = {
     pauseOffset: 0,
     shotsTaken: 0,
     shotsMade: 0,
+    gameMode: 'career', // 'career' (level-based), 'rush' (fixed time)
+    rushDifficulty: 'C', // D, C, B, A, S
+    maxDifficultyHit: 0, // Rush mode specific
     gameState: 'menu', // 'menu', 'playing', 'paused', 'result'
 
     // Camera Animation
@@ -82,5 +86,6 @@ export const state = {
     succAudios: [],
     extAudios: [],
     comboAudio: null,
+    endAudio: null,
     bgm: null
 };
