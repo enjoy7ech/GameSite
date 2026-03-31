@@ -18,7 +18,7 @@ export function toggleMenu() {
 
 export function updateScoreDisplay(lastPoints = null) {
     const scoreEl = document.getElementById('scoreboard');
-    scoreEl.innerText = "总比分: " + state.score;
+    scoreEl.innerText = "核心得分: " + state.score;
 
     // --- 新增：左上角 HUD 显示当前球的难度系数 ---
     const currentDiffEl = document.getElementById('current-diff');

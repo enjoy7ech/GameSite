@@ -44,7 +44,7 @@ function init() {
     state.controls.enablePan = false;
 
     state.controls.mouseButtons = {
-        LEFT: null,
+        LEFT: THREE.MOUSE.ROTATE,
         MIDDLE: THREE.MOUSE.DOLLY,
         RIGHT: THREE.MOUSE.ROTATE
     };
@@ -59,7 +59,7 @@ function init() {
         state.isCameraAnimating = false;
         state.isUserInteracting = true;
 
-        // 右键改为只能调整俯仰角：在交互开始时立即重新锁定当前的偏航角
+        // 点击/触摸改为只能调整俯仰角：在交互开始时立即重新锁定当前的偏航角
         const lockTheta = state.controls.getAzimuthalAngle();
         state.controls.minAzimuthAngle = lockTheta;
         state.controls.maxAzimuthAngle = lockTheta;
@@ -126,9 +126,9 @@ function init() {
     state.aimMarker.renderOrder = 1000;
     state.scene.add(state.aimLine);
 
-    window.addEventListener('mousedown', onDown);
-    window.addEventListener('mouseup', onUp);
-    window.addEventListener('mousemove', onMove);
+    state.renderer.domElement.addEventListener('mousedown', onDown);
+    state.renderer.domElement.addEventListener('mouseup', onUp);
+    state.renderer.domElement.addEventListener('mousemove', onMove);
     
     // --- 手机端触摸适配 ---
     window.addEventListener('touchstart', (e) => onDown(e.touches[0]), { passive: false });

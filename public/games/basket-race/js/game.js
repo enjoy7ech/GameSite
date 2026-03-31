@@ -176,10 +176,10 @@ export function spawnNewBall() {
                 }
 
                 // --- 惩罚球未进逻辑判定 ---
-                if (ballRef.type === 'side') { state.punishMode = 'side'; state.sidePunishTime = 30.0; showPraise("死角惩罚进入 30s 冷却!"); }
-                else if (ballRef.type === 'jail') { state.isJailMode = true; showPraise("地狱挑战开启!"); }
-                else if (ballRef.type === 'blind') { state.punishMode = 'blind'; state.punishBalls = 3; if (state.aimLine) state.aimLine.visible = false; showPraise("视野剥夺生效!"); }
-                else if (ballRef.type === 'timer') { state.startTime -= 10000; showPraise("时间被窃取 -10s!"); triggerScreenShake(); }
+                if (ballRef.type === 'side') { state.punishMode = 'side'; state.sidePunishTime = 30.0; showPraise("边际生存惩罚已启动 - 30s!"); }
+                else if (ballRef.type === 'jail') { state.isJailMode = true; showPraise("逆流挑战模式已开启!"); }
+                else if (ballRef.type === 'blind') { state.punishMode = 'blind'; state.punishBalls = 3; if (state.aimLine) state.aimLine.visible = false; showPraise("视觉脱钩判定生效!"); }
+                else if (ballRef.type === 'timer') { state.startTime -= 10000; showPraise("检测到时间塌缩 -10s!"); triggerScreenShake(); }
 
                 // --- 三不沾反馈 ---
                 if (!ballRef.hasHitRimOrBoard && !ballRef.airballed) {
@@ -284,7 +284,7 @@ export function startRush(diff) {
 
     // Rush 模式下特殊的 UI 初始化
     const el = document.getElementById('level-info');
-    if (el) el.innerText = `RUSH CHALLENGE [${diff}] // 60s LIMIT`;
+    if (el) el.innerText = `OVERCLOCK CHALLENGE [${diff}] // 60s LIMIT`;
 
     // --- 核心修复：Rush 模式启动时，摧毁已有的职业模式起始球，强制按难度重新生成 ---
     if (state.currentBall) {
@@ -398,7 +398,7 @@ export function checkGoals() {
                     updateRewardUI();
 
                     triggerScreenShake();
-                    showPraise(`SWISH!! 连进奖励! 时间累加至 ${state.rewardTimeLeft.toFixed(0)}s`);
+                    showPraise(`SWISH!! 核心连贯奖励! 同步时长 +${(8000/1000).toFixed(0)}s`);
 
                     // --- NEW: 空进优先播放空进特效音效, 增加 fallback ---
                     if (state.extAudios && state.extAudios.length > 0) {
@@ -423,7 +423,7 @@ export function checkGoals() {
                 }
 
                 // 对超高难度进球给与额外文案反馈
-                if (difficultyPts > 50) showPraise(`神了！难度分:${difficultyPts.toFixed(0)}`);
+                if (difficultyPts > 50) showPraise(`序列同步完美！系数:${difficultyPts.toFixed(0)}`);
 
                 if (ball.type === 'time') {
                     state.startTime += 15000;
@@ -443,7 +443,7 @@ export function checkGoals() {
 
                     if (state.isJailMode) {
                         pts *= 8; // 地狱挑战奖励
-                        showPraise("成功从地狱归来!");
+                        showPraise("已重连至主序列!");
                         state.isJailMode = false;
                     }
 
@@ -468,7 +468,7 @@ export function checkGoals() {
                             state.controls.maxAzimuthAngle = Infinity;
                         }
                     } else {
-                        showPraise("惩罚已解除!");
+                        showPraise("异常同步已清除!");
                     }
                     triggerScreenShake();
                 }
@@ -520,10 +520,10 @@ export function endGame(win) {
     if (state.gameMode === 'rush') {
         const hitRate = state.shotsTaken > 0 ? ((state.shotsMade / state.shotsTaken) * 100).toFixed(1) : "0.0";
         msg.innerHTML = `[RUSH 结束] 难度评级: ${state.rushDifficulty}<br>命中率: ${hitRate}%<br>最高命中难度分: ${state.maxDifficultyHit.toFixed(0)}`;
-        document.getElementById('result-status').innerText = "挑战协议完成";
+        document.getElementById('result-status').innerText = "超频协议执行完毕";
     } else {
         msg.innerText = win ? MESSAGES.RESULT_WIN : MESSAGES.RESULT_LOSE;
-        document.getElementById('result-status').innerText = win ? "系统达成" : "系统已离线";
+        document.getElementById('result-status').innerText = win ? "同步序列达成" : "连接已中断";
     }
 }
 

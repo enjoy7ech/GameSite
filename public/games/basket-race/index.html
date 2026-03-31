@@ -489,9 +489,9 @@
 
 <body>
     <div id="ui-container">
-        <div id="level-info">第 1 关 - 目标分: 100</div>
+        <div id="level-info">PHASE 01 - 目标同步: 100</div>
         <div id="scoreboard-container" style="display: flex; align-items: baseline; gap: 15px;">
-            <div id="scoreboard">总比分: 0</div>
+            <div id="scoreboard">核心得分: 0</div>
             <div id="score-pop"></div>
         </div>
         <div id="timer">00:00</div>
@@ -526,7 +526,7 @@
         style="display: none; position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; z-index: 10; width: 90%; max-width: 350px;">
         <div
             style="color: #00fff2; font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 900; letter-spacing: 4px; text-shadow: 0 0 15px rgba(0, 255, 242, 1);">
-            REWARD FRENZY // 疯狂奖励模式</div>
+            REWARD FRENZY // 疯狂同步模式</div>
         <div
             style="background: rgba(0,0,0,0.6); border: 2px solid #00fff2; padding: 2px; border-radius: 6px; width: 100%; height: 16px; margin: 8px auto; overflow: hidden; box-shadow: 0 0 20px rgba(0, 255, 242, 0.3);">
             <div id="reward-phase-fill"
@@ -542,7 +542,7 @@
     <div id="status-bar">
 
         <div class="stat-group">
-            <div id="stat-diff"><span style="color:#ff00ea; font-weight:bold;">难度分:</span> <span id="current-diff"
+            <div id="stat-diff"><span style="color:#ff00ea; font-weight:bold;">同步系数:</span> <span id="current-diff"
                     style="color:#ffffff;">0</span></div>
             <div id="stat-dist" style="display:none;"><span id="dist-label" style="color:#00fff2;">远射等级:</span> <span
                     id="dist-coeff">...</span></div>
@@ -608,9 +608,9 @@
     <!-- Pause Menu -->
     <div id="menu-overlay" class="hidden">
         <div id="menu-content">
-            <h2 class="menu-title">系统已暂停</h2>
+            <h2 class="menu-title">同步已暂停</h2>
             <div class="menu-items">
-                <button onclick="toggleMenu()" class="action-btn primary">恢复连接</button>
+                <button onclick="toggleMenu()" class="action-btn primary">恢复同步</button>
                 <div class="menu-setting">
                     <label>背景音乐</label>
                     <input type="range" id="bgm-volume" min="0" max="1" step="0.05" value="0.08"
@@ -625,15 +625,15 @@
                         <span id="speed-value" style="color:#00fff2; font-family:monospace; min-width:35px;">1.0x</span>
                     </div>
                 </div>
-                <button onclick="restartGame()" class="action-btn secondary">重新启动</button>
-                <button onclick="quitGame()" class="action-btn secondary">退出到大厅</button>
+                <button onclick="restartGame()" class="action-btn secondary">重新载入</button>
+                <button onclick="quitGame()" class="action-btn secondary">断开连接</button>
 
                 <!-- 整合后的操作说明 -->
                 <div id="menu-manual" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(0, 255, 242, 0.2); font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.6;">
-                    <div style="color: #00fff2; font-weight: bold; margin-bottom: 8px; font-size: 12px; letter-spacing: 1px;">OPERATING MANUAL // 操作说明</div>
-                    • [拖拽/触摸] 投篮弧线与力度控制<br>
-                    • [右键/双指] 调整投篮水平视角<br>
-                    • [松开] 确认球体发射<br>
+                    <div style="color: #00fff2; font-weight: bold; margin-bottom: 8px; font-size: 12px; letter-spacing: 1px;">OPERATING PROTOCOL // 操作协议</div>
+                    • [拖拽球体] 控制射球路径与力度<br>
+                    • [点击空白] 调整全局观察视角<br>
+                    • [松开] 释放核心能量（确认射出）<br>
                     <div style="color: #ffae00; margin-top: 8px; font-style: italic; font-size: 10px;">
                         * 连击(COMBO)增加倍率，空心重置奖励时间。
                     </div>
@@ -645,21 +645,21 @@
     <!-- Result Overlay -->
     <div id="result-overlay" class="hidden">
         <div class="result-card">
-            <h2 id="result-status">系统已离线</h2>
+            <h2 id="result-status">连接已中断</h2>
             <div class="result-stats">
                 <div class="stat-item">
-                    <span class="stat-label">最终得分</span>
+                    <span class="stat-label">最终同步分值</span>
                     <span id="final-score" class="stat-value">0</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">最高连击</span>
+                    <span class="stat-label">巅峰连击序列</span>
                     <span id="max-combo" class="stat-value">X1</span>
                 </div>
             </div>
-            <p id="result-msg">检测到神经连接中断...</p>
+            <p id="result-msg">检测到神经同步连接中断...</p>
             <div class="result-actions">
-                <button onclick="restartGame()" class="action-btn primary">协议重启 • 重新开始</button>
-                <button onclick="quitGame()" class="action-btn secondary">断开连接 • 退出</button>
+                <button onclick="restartGame()" class="action-btn primary">重新接入协议</button>
+                <button onclick="quitGame()" class="action-btn secondary">终止连接 • 退出</button>
             </div>
         </div>
     </div>
