@@ -14,7 +14,20 @@ export function spawnNewBall() {
 
     // --- 位置计算：受惩罚模式影响 ---
     let spawnPos;
-    if (state.isJailMode) {
+    if (state.gameMode === 'rush') {
+        // --- Rush 模式难度区间设计 ---
+        const ranges = {
+            'D': { dist: [4, 8], height: [4.5, 6.5], x: 3 },
+            'C': { dist: [8, 16], height: [5.5, 8], x: 7 },
+            'B': { dist: [16, 28], height: [6.5, 9.5], x: 15 },
+            'A': { dist: [28, 42], height: [7.5, 11], x: 25 },
+            'S': { dist: [42, 58], height: [8.5, 12.5], x: 40 }
+        };
+        const r = ranges[state.rushDifficulty] || ranges['C'];
+        const depth = r.dist[0] + Math.random() * (r.dist[1] - r.dist[0]);
+        const y = r.height[0] + Math.random() * (r.height[1] - r.height[0]);
+        spawnPos = new THREE.Vector3((Math.random() - 0.5) * r.x * 2.0, y, HOOP_POS.z + depth);
+    } else if (state.isJailMode) {
         // --- 地狱挑战模式：篮球出生在篮板后方 (Z < 0)，拉近距离以便操作 ---
         const rHeight = 7 + Math.random() * 3;
         const rDepth = -2 - Math.random() * 3; // 篮板后 2m 到 5m
@@ -34,7 +47,9 @@ export function spawnNewBall() {
     let ballColor = BALL_COLORS.NORMAL;
 
     // --- 特殊球判定抽离 ---
-    if (state.isRewardPhase) {
+    if (state.gameMode === 'rush') {
+        ballType = 'normal';
+    } else if (state.isRewardPhase) {
         // --- 疯狂奖励阶段：强制只生成奖励球 ---
         const types = ['time', 'gold', 'combo', 'buff'];
         ballType = types[Math.floor(Math.random() * types.length)];
@@ -251,11 +266,39 @@ function destroyBall(ball) {
 }
 
 export function startGame() {
+    state.gameMode = 'career';
     state.gameState = 'playing';
     document.getElementById('cover-screen').style.display = 'none';
     startTimer();
     if (state.bgm && !state.bgm.isPlaying) state.bgm.play();
 }
+
+export function startRush(diff) {
+    state.gameMode = 'rush';
+    state.rushDifficulty = diff;
+    state.gameState = 'playing';
+    state.maxDifficultyHit = 0;
+    // 重复显式赋值到 window，防止模块异步加载带来的引用错误
+    window.startRush = startRush;
+    document.getElementById('cover-screen').style.display = 'none';
+
+    // Rush 模式下特殊的 UI 初始化
+    const el = document.getElementById('level-info');
+    if (el) el.innerText = `RUSH CHALLENGE [${diff}] // 60s LIMIT`;
+
+    // --- 核心修复：Rush 模式启动时，摧毁已有的职业模式起始球，强制按难度重新生成 ---
+    if (state.currentBall) {
+        state.world.removeBody(state.currentBall.body);
+        state.scene.remove(state.currentBall.mesh);
+        if (state.currentBall.label) state.scene.remove(state.currentBall.label);
+        state.currentBall = null;
+    }
+
+    spawnNewBall();
+    startTimer();
+    if (state.bgm && !state.bgm.isPlaying) state.bgm.play();
+}
+
 export function restartGame() { location.reload(); }
 export function quitGame() { window.parent.postMessage('close-game', '*'); }
 
@@ -273,10 +316,21 @@ export function throwBall(dragVector) {
     const camDir = new THREE.Vector3(); state.camera.getWorldDirection(camDir);
     const camRight = new THREE.Vector3().crossVectors(new THREE.Vector3(camDir.x, 0, camDir.z).normalize(), new THREE.Vector3(0, 1, 0)).normalize();
 
-    const forceFactor = (1 + (b.spawnDist - 5) * 0.015);
-    const forwardForce = (1.8 + (dragVector.y * 0.04)) * forceFactor;
-    const upForce = 8.2 + (dragVector.y * 0.04 * 1.1);
-    const sideForce = dragVector.x * 0.04 * 1.5;
+    // --- 黄金折中线性模型 (Golden Midpoint Model) ---
+    // 目标：兼具灵动感与精准微调，处于紧绷与柔顺的平衡点。
+    const travelTime = 2.02; // 黄金滞空比
+    const sensitivity = 0.0292; // 折中灵敏度：每像素对应 5.8cm，控制感极佳
+    
+    // 1. 基于距离的基准水平推力 (刚好能飞到篮筐所在平面)
+    const baseForward = (b.spawnDist / travelTime);
+    
+    // 2. 总推力：基准力 + 折中型线性拉力
+    const forwardForce = baseForward + (dragVector.y * sensitivity);
+    
+    // 3. 纵向力：平衡基准底座，中量线性随拉拽变化。
+    const upForce = 8.44 + (dragVector.y * 0.0232);
+    
+    const sideForce = dragVector.x * 0.027 * 1.5;
 
     const velocity = camDir.clone().multiplyScalar(forwardForce).add(camRight.multiplyScalar(sideForce));
     b.body.velocity.set(velocity.x, velocity.y + upForce, velocity.z);
@@ -328,19 +382,23 @@ export function checkGoals() {
 
                 // --- 进球难度分 (Difficulty Score) 核心算法 ---
                 let difficultyPts = calculateDifficulty(ball);
-                let pts = Math.floor(difficultyPts * comboMult * state.distCoeff);
+
+                // --- 核心调整：得分现在纯粹与难度挂钩，且高难度得分呈非线性增长 (指数级膨胀) ---
+                // 算法逻辑：(难度/10)^1.5 * 10，当难度越高，分值跳跃越快
+                let scaledPts = Math.pow(difficultyPts / 10, 1.5) * 10;
+                let pts = Math.floor(scaledPts * comboMult);
 
                 if (!ball.hasHitRimOrBoard) {
-                    pts *= 2.5; // 空心入网：赋予极高的 2.5 倍难度乘数
+                    pts = Math.floor(pts * 2.5); // 空心入网：赋予极高的 2.5 倍难度乘数 (取整)
                     state.startTime += 8000;
 
-                    // --- NEW: 触发 15s 疯狂奖励时间 ---
+                    // --- NEW: 触发 15s 疯狂奖励时间 (支持累加) ---
                     state.isRewardPhase = true;
-                    state.rewardTimeLeft = 15;
+                    state.rewardTimeLeft = Math.min(60, (state.rewardTimeLeft || 0) + 15);
                     updateRewardUI();
 
                     triggerScreenShake();
-                    showPraise("SWISH!! 奖励狂欢 15s 开始!");
+                    showPraise(`SWISH!! 连进奖励! 时间累加至 ${state.rewardTimeLeft.toFixed(0)}s`);
 
                     // --- NEW: 空进优先播放空进特效音效, 增加 fallback ---
                     if (state.extAudios && state.extAudios.length > 0) {
@@ -370,10 +428,10 @@ export function checkGoals() {
                 if (ball.type === 'time') {
                     state.startTime += 15000;
                 } else if (ball.type === 'gold') {
-                    pts *= 5;
+                    pts = Math.floor(pts * 5);
                 } else if (ball.type === 'combo') {
                     state.comboCount += 3;
-                    pts *= 1.5;
+                    pts = Math.floor(pts * 1.5);
                 } else if (ball.type === 'buff') {
                     state.distCoeff += 0.08;
                     state.heightCoeff += 0.04;
@@ -419,8 +477,11 @@ export function checkGoals() {
 
                 state.score += pts;
                 state.maxCombo = Math.max(state.maxCombo, state.comboCount);
+                if (state.gameMode === 'rush') {
+                    state.maxDifficultyHit = Math.max(state.maxDifficultyHit, difficultyPts);
+                }
                 updateScoreDisplay(pts); // 传入本次得分以显示动效
-                if (state.score >= state.targetScore) nextLevel();
+                if (state.gameMode === 'career' && state.score >= state.targetScore) nextLevel();
 
                 // --- 核心修改：判定为进球后，大幅缩短发球时延 (500ms) ---
                 if (state.ballTimeout) clearTimeout(state.ballTimeout);
@@ -453,23 +514,39 @@ export function endGame(win) {
     if (scoreVal) scoreVal.innerText = state.score;
     const overlay = document.getElementById('result-overlay');
     if (overlay) overlay.classList.remove('hidden');
+
     const msg = document.getElementById('result-msg');
-    if (msg) msg.innerText = win ? MESSAGES.RESULT_WIN : MESSAGES.RESULT_LOSE;
+
+    if (state.gameMode === 'rush') {
+        const hitRate = state.shotsTaken > 0 ? ((state.shotsMade / state.shotsTaken) * 100).toFixed(1) : "0.0";
+        msg.innerHTML = `[RUSH 结束] 难度评级: ${state.rushDifficulty}<br>命中率: ${hitRate}%<br>最高命中难度分: ${state.maxDifficultyHit.toFixed(0)}`;
+        document.getElementById('result-status').innerText = "挑战协议完成";
+    } else {
+        msg.innerText = win ? MESSAGES.RESULT_WIN : MESSAGES.RESULT_LOSE;
+        document.getElementById('result-status').innerText = win ? "系统达成" : "系统已离线";
+    }
 }
 
 export function startTimer() {
     state.startTime = Date.now();
     state.timerInterval = setInterval(() => {
         if (state.gameState !== 'playing') return;
-        const remaining = LEVELS[state.level - 1].time - Math.floor((Date.now() - state.startTime) / 1000);
-        if (remaining === 30 && !state.remain30Used) {
-            const audio = state.camera.children.find(c => c instanceof THREE.Audio && c.buffer && c.name !== 'bgm' && c.getVolume() > 0.3 && c.getVolume() < 0.5);
-            if (audio && !audio.isPlaying) audio.play();
-            state.remain30Used = true;
+
+        let remaining;
+        if (state.gameMode === 'rush') {
+            remaining = 60 - Math.floor((Date.now() - state.startTime) / 1000);
+        } else {
+            remaining = LEVELS[state.level - 1].time - Math.floor((Date.now() - state.startTime) / 1000);
+            if (remaining === 30 && !state.remain30Used) {
+                const audio = state.camera.children.find(c => c instanceof THREE.Audio && c.buffer && c.name !== 'bgm' && c.getVolume() > 0.3 && c.getVolume() < 0.5);
+                if (audio && !audio.isPlaying) audio.play();
+                state.remain30Used = true;
+            }
         }
+
         if (remaining <= 0) endGame(false);
-        const m = Math.floor(remaining / 60).toString().padStart(2, '0');
-        const s = (remaining % 60).toString().padStart(2, '0');
+        const m = Math.max(0, Math.floor(remaining / 60)).toString().padStart(2, '0');
+        const s = Math.max(0, remaining % 60).toString().padStart(2, '0');
         const timerEl = document.getElementById('timer');
         if (timerEl) timerEl.innerText = `${m}:${s}`;
     }, 1000);

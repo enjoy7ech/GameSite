@@ -4,11 +4,15 @@ import { state } from './state.js';
 import { HOOP_POS, GLB_SCALE, RING_RADIUS, BALL_RADIUS } from './constants.js';
 import { initPhysics, createPhysicalRing, createNet } from './physics.js';
 import { loadAssets } from './assets.js';
-import { toggleMenu, toggleManual, updateBuffUI, updateSidePunishUI, updateRewardUI } from './ui.js';
-import { spawnNewBall, throwBall, checkGoals, startTimer, updateNet, startGame, restartGame, quitGame } from './game.js';
+import { toggleMenu, updateBuffUI, updateSidePunishUI, updateRewardUI } from './ui.js';
+import { spawnNewBall, throwBall, checkGoals, startTimer, updateNet, startGame, startRush, restartGame, quitGame } from './game.js';
 
 // 将按钮函数挂载到全局 window，供 HTML onclick 调用
-Object.assign(window, { startGame, restartGame, quitGame, toggleMenu, toggleManual });
+window.startGame = startGame;
+window.startRush = startRush;
+window.restartGame = restartGame;
+window.quitGame = quitGame;
+window.toggleMenu = toggleMenu;
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -125,6 +129,15 @@ function init() {
     window.addEventListener('mousedown', onDown);
     window.addEventListener('mouseup', onUp);
     window.addEventListener('mousemove', onMove);
+    
+    // --- 手机端触摸适配 ---
+    window.addEventListener('touchstart', (e) => onDown(e.touches[0]), { passive: false });
+    window.addEventListener('touchend', (e) => onUp(e.changedTouches[0]), { passive: false });
+    window.addEventListener('touchmove', (e) => {
+        onMove(e.touches[0]);
+        e.preventDefault(); // 防止移动端滑动干扰
+    }, { passive: false });
+
     window.addEventListener('contextmenu', e => e.preventDefault());
 
     window.addEventListener('keydown', (e) => {
@@ -135,9 +148,6 @@ function init() {
         state.camera.aspect = window.innerWidth / window.innerHeight;
         state.camera.updateProjectionMatrix(); state.renderer.setSize(window.innerWidth, window.innerHeight);
     });
-
-    window.startGame = startGame; window.restartGame = restartGame; window.toggleMenu = toggleMenu; window.quitGame = quitGame;
-    window.toggleManual = toggleManual;
 
     updateBuffUI();
     loadAssets(() => {
@@ -274,24 +284,41 @@ function init() {
             if (state.bgm) state.bgm.setVolume(val);
         });
     }
+
+    // --- 游戏速度控制 ---
+    const speedSlider = document.getElementById('speed-scale');
+    const speedValText = document.getElementById('speed-value');
+    if (speedSlider) {
+        speedSlider.addEventListener('input', (e) => {
+            const val = parseFloat(e.target.value);
+            state.timeScale = val;
+            if (speedValText) speedValText.innerText = (val / 1.5).toFixed(1) + 'x';
+        });
+    }
 }
 
 function onDown(e) {
     if (state.gameState !== 'playing') return;
-    if (e.button === 0 && state.currentBall) {
+    // --- 兼容移动端 (touch 模式 button 为 undefined，视为左键) ---
+    const isPrimary = (e.button === 0 || e.button === undefined);
+    
+    if (isPrimary && state.currentBall) {
         mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
         raycaster.setFromCamera(mouse, state.camera);
         const intersects = raycaster.intersectObject(state.currentBall.mesh, true);
         if (intersects.length > 0) {
             isDragging = true; dragStart = { x: e.clientX, y: e.clientY };
+            if (state.controls) state.controls.enabled = false;
         }
     }
 }
 
 function onUp(e) {
-    if (e.button === 0 && isDragging) {
+    const isPrimary = (e.button === 0 || e.button === undefined);
+    if (isPrimary && isDragging) {
         isDragging = false; 
+        if (state.controls) state.controls.enabled = true;
         state.aimLine.visible = false;
         if (state.aimMarker) state.aimMarker.visible = false;
         if (e.clientY - dragStart.y > 0) throwBall({ x: dragStart.x - e.clientX, y: e.clientY - dragStart.y });
@@ -346,50 +373,57 @@ function onMove(e) {
     }
 }
 
-function animate() {
+let lastFrameTime = performance.now();
+const fixedStep = 1 / 60;
+let accumulator = 0;
+
+function animate(currentTime) {
     requestAnimationFrame(animate);
-    if (state.gameState === 'playing') {
-        state.world.step(1 / 60);
+    
+    if (!currentTime) currentTime = performance.now();
+    const deltaTime = currentTime - lastFrameTime;
+    lastFrameTime = currentTime;
+
+    if (state.gameState === 'playing' || state.gameState === 'paused') {
+        const timeScale = state.timeScale || 1.0;
+        accumulator += (deltaTime / 1000) * timeScale;
         
-        // --- 惩罚项持续时间逻辑 ---
-        if (state.sidePunishTime > 0) {
-            state.sidePunishTime -= 1 / 60;
-            if (state.sidePunishTime <= 0) {
-                state.sidePunishTime = 0;
-                if (state.punishMode === 'side') {
-                    state.punishMode = null;
-                    state.punishBalls = 0;
-                    state.missCount = 0; 
-                    if (state.aimLine) state.aimLine.visible = true;
-                    
-                    // 恢复视角
-                    const hPos = new THREE.Vector3(HOOP_POS.x, HOOP_POS.y, HOOP_POS.z);
-                    state.cameraTargetPos.set(0, HOOP_POS.y + 1, HOOP_POS.z + 10);
-                    state.controlsTargetPos.copy(hPos);
-                    state.isCameraAnimating = true;
+        while (accumulator >= fixedStep) {
+            state.world.step(fixedStep);
+            accumulator -= fixedStep;
+            
+            if (state.gameState === 'playing') {
+                if (state.sidePunishTime > 0) {
+                    state.sidePunishTime -= fixedStep;
+                    if (state.sidePunishTime <= 0) {
+                        state.sidePunishTime = 0;
+                        if (state.punishMode === 'side') {
+                            state.punishMode = null; state.punishBalls = 0; state.missCount = 0;
+                            if (state.aimLine) state.aimLine.visible = true;
+                            const hPos = new THREE.Vector3(HOOP_POS.x, HOOP_POS.y, HOOP_POS.z);
+                            state.cameraTargetPos.set(0, HOOP_POS.y + 1, HOOP_POS.z + 10);
+                            state.controlsTargetPos.copy(hPos);
+                            state.isCameraAnimating = true;
+                        }
+                    }
+                    updateSidePunishUI();
+                }
+
+                if (state.isRewardPhase && state.rewardTimeLeft > 0) {
+                    state.rewardTimeLeft -= fixedStep;
+                    if (state.rewardTimeLeft <= 0) {
+                        state.rewardTimeLeft = 0;
+                        state.isRewardPhase = false;
+                    }
+                    updateRewardUI();
                 }
             }
-            updateSidePunishUI();
         }
-
-        // --- 奖励阶段持续时间逻辑 ---
-        if (state.isRewardPhase && state.rewardTimeLeft > 0) {
-            state.rewardTimeLeft -= 1 / 60;
-            if (state.rewardTimeLeft <= 0) {
-                state.rewardTimeLeft = 0;
-                state.isRewardPhase = false;
-            }
-            updateRewardUI();
-        }
-    } else if (state.gameState === 'paused') {
-        state.world.step(1 / 60);
     }
 
     if (state.isCameraAnimating) {
         state.camera.position.lerp(state.cameraTargetPos, 0.08);
         state.controls.target.lerp(state.controlsTargetPos, 0.08);
-
-        // 核心优化：动画结束前不进行锁定
         if (state.camera.position.distanceTo(state.cameraTargetPos) < 0.05) {
             state.isCameraAnimating = false;
             const relX = state.camera.position.x - state.controls.target.x;
@@ -399,15 +433,16 @@ function animate() {
             state.controls.maxAzimuthAngle = finalTheta;
         }
     } else if (state.currentBall && !state.isUserInteracting) {
-        // --- 重点修复：只有在非动画中且用户未操作时，才实时同步焦点到球 ---
-        // 这样既能实现滚轮以球为中心，又不会干扰到 spawnNewBall 的 lerp 动画
         state.controls.target.copy(state.currentBall.mesh.position);
     }
 
     state.controls.update();
 
     if (state.currentBall) state.currentBall.mesh.position.copy(state.currentBall.body.position);
-    state.activeBalls.forEach(b => { b.mesh.position.copy(b.body.position); b.mesh.quaternion.copy(b.body.quaternion); });
+    state.activeBalls.forEach(b => { 
+        b.mesh.position.copy(b.body.position); 
+        b.mesh.quaternion.copy(b.body.quaternion); 
+    });
 
     if (state.gameState === 'playing') checkGoals();
     updateNet();
@@ -415,3 +450,4 @@ function animate() {
 }
 
 init(); animate();
+

@@ -110,23 +110,11 @@ export function updateComboUI() {
     }
 }
 
-export function toggleManual() {
-    const panel = document.getElementById('manual-panel');
-    const btn = document.getElementById('manual-toggle-btn');
-    if (panel.classList.contains('collapsed')) {
-        panel.classList.remove('collapsed');
-        btn.innerText = '收起说明 [M]';
-    } else {
-        panel.classList.add('collapsed');
-        btn.innerText = '展示说明 [M]';
-    }
-}
-
 export function updateBuffUI() {
     const distEl = document.getElementById('dist-coeff');
     const heightEl = document.getElementById('height-coeff');
-    if (distEl) distEl.innerHTML = `<span style="color:#00ff88; font-weight:bold;">${MESSAGES.BUFF_DISTANCE((state.distCoeff * 10).toFixed(0))}</span> <small>(x1.2距离指数)</small>`;
-    if (heightEl) heightEl.innerHTML = `<span style="color:#00ff88; font-weight:bold;">${MESSAGES.BUFF_HEIGHT(state.heightCoeff)}</span> <small>(每米落差)</small>`;
+    if (distEl) distEl.innerText = state.distCoeff.toFixed(2);
+    if (heightEl) heightEl.innerText = state.heightCoeff.toFixed(2);
 }
 
 export function showPraise(content) {
