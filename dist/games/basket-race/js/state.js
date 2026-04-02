@@ -82,5 +82,6 @@ export const state = {
     succAudios: [],
     extAudios: [],
     comboAudio: null,
+    endAudio: null,
     bgm: null
 };

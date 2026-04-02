@@ -15,7 +15,7 @@ const games = ref<Game[]>([
   { id: 'landlord', name: 'LUCKY LANDLORD', url: '/games/lucky-landlord/index.html', color: '#ff00ea', image: '/games/lucky-landlord/assets/logo.png', orientation: 'portrait' },
   { id: 'mtower', name: 'MAGIC TOWER', url: '/games/magic-tower/index.html', color: '#00fff2', image: '/games/magic-tower/cover.png', orientation: 'landscape' },
   { id: 'basket', name: 'BASKET RACE 3D', url: '/games/basket-race/index.html', color: '#ffb700', image: '/games/basket-race/cover.png', orientation: 'landscape' },
-  { id: 'tiny-story', name: 'TINY STORY', url: '/games/tiny-story/index.html', color: '#ff7e5f', orientation: 'portrait' },
+  { id: 'tiny-story', name: 'TINY STORY', url: '/games/tiny-story/index.html', color: '#ff7e5f', image: '/games/tiny-story/assets/cover.png', orientation: 'portrait' },
   { id: 'poker', name: 'CYBER POKER', url: '', color: '#00fff2', orientation: 'landscape' }
 ])
 

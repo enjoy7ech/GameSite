@@ -1,0 +1,1430 @@
+{
+  "meta": {
+    "name": "Tiny Story",
+    "version": "1.2"
+  },
+  "world": {
+    "Station": [
+      900,
+      850
+    ],
+    "Home": [
+      800,
+      300
+    ],
+    "Bookstore": [
+      500,
+      500
+    ],
+    "Cafe": [
+      450,
+      700
+    ],
+    "Dock": [
+      150,
+      400
+    ],
+    "Lighthouse": [
+      50,
+      100
+    ]
+  },
+  "story": [
+    {
+      "id": "d1_01_arrival",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "清风站台。海盐气息，陈旧木材，正午的热浪。三年了。"
+          },
+          "dialog": null,
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": ""
+          },
+          "dialog": {
+            "char": "野",
+            "text": "...还是这个味道。",
+            "pic": "protagonist"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "一声单车铃，一阵哗啦声——粉色单车冲过减速带，车筐里的画稿被风卷得四散。"
+          },
+          "dialog": null,
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": ""
+          },
+          "dialog": {
+            "char": "野",
+            "text": "...她，没察觉？",
+            "pic": "protagonist"
+          },
+          "choice": [
+            {
+              "label": "去捡那些画稿",
+              "target": "d1_02_pickup",
+              "result": [
+                {
+                  "func": "addItem",
+                  "params": [
+                    "haruno_sketches"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d1_02_pickup",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "捡到了一些杂乱的画稿。",
+            "item": "haruno_sketches"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "背后一阵脚步声传来，熟悉的沉稳。"
+          },
+          "dialog": {
+            "char": "海生",
+            "text": "还知道回来。",
+            "pic": "kaisheng"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": ""
+          },
+          "dialog": {
+            "char": "野",
+            "text": "海生？哈哈，好兄弟好久不见！",
+            "pic": "protagonist"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": ""
+          },
+          "dialog": {
+            "char": "海生",
+            "text": "是啊，你小子，还知道回来？",
+            "pic": "kaisheng"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": ""
+          },
+          "dialog": {
+            "char": "野",
+            "text": "这不好久没回来了，回来看看奶奶。对了，刚刚那个骑单车的是谁，我怎么没见过。",
+            "pic": "protagonist"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": ""
+          },
+          "dialog": {
+            "char": "海生",
+            "text": "哦，那位啊，镇上新来的。成天骑那车到处溜，画一堆没人看得懂的东西。",
+            "pic": "kaisheng"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": ""
+          },
+          "dialog": {
+            "char": "野",
+            "text": "这样啊。刚刚她的东西掉了，你知道她去哪了吗？",
+            "pic": "protagonist"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": ""
+          },
+          "dialog": {
+            "char": "海生",
+            "text": "她那辆车，今天早上链条就在响，估计没跑多远。",
+            "pic": "kaisheng"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "我拢好画稿"
+          },
+          "dialog": {
+            "char": "野",
+            "text": "'等有机会再还给她吧。'",
+            "pic": "protagonist"
+          },
+          "choice": [
+            {
+              "label": "顺着路标走进镇里",
+              "target": "d1_03_fork"
+            }
+          ]
+        }
+      ],
+      "result": [
+        {
+          "func": "addTime",
+          "params": [
+            5
+          ]
+        },
+        {
+          "func": "addItem",
+          "params": [
+            "haruno_sketches"
+          ]
+        },
+        {
+          "func": "modifyFavor",
+          "params": [
+            "kaisheng",
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d1_03_fork",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "--- 漫长的离别，在鸣笛声中终结 ---"
+          },
+          "dialog": null,
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "路口的旧路标，白漆掉了半边，但字还在。"
+          },
+          "dialog": {
+            "char": "野",
+            "text": "风月书屋...潮汐咖啡馆...三年，这些名字一个都没少。",
+            "pic": "protagonist"
+          },
+          "choice": [
+            {
+              "label": "前往【风月书屋】",
+              "target": "d1_path_bookstore"
+            },
+            {
+              "label": "先在【车站路口】找那个女孩",
+              "target": "d1_path_station"
+            },
+            {
+              "label": "前往【潮汐咖啡馆】",
+              "target": "d1_path_cafe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d1_path_bookstore",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_bookstore",
+            "text": "--- 风月书屋 ---"
+          },
+          "dialog": null,
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_bookstore",
+            "text": "门铃刚响，苦杏仁与旧纸的气息便扑面而来。林老师踩在木梯上，背对着我，手里的棕刷没有停。"
+          },
+          "dialog": {
+            "char": "林老师",
+            "text": "归来兮，归来兮。脚步声还是那样——三年，人的脚步声是不会变的。",
+            "pic": "mrlin"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_bookstore",
+            "text": ""
+          },
+          "dialog": {
+            "char": "野",
+            "text": "老师，您耳朵比以前还好使了。",
+            "pic": "protagonist"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_bookstore",
+            "text": ""
+          },
+          "dialog": {
+            "char": "林老师",
+            "text": "耳朵好使，是因为眼睛看太多字、看花了。......第三层，右侧第七列，《清风县地方志》。压了三十年的灰尘，替我搬下来看看还剩几本。",
+            "pic": "mrlin"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_bookstore",
+            "text": ""
+          },
+          "dialog": {
+            "char": "野",
+            "text": "...林老师，这里面夹着一张照片。",
+            "pic": "protagonist"
+          },
+          "choice": [
+            {
+              "label": "「这个人是谁？」",
+              "target": "d1_bookstore_photo",
+              "result": [
+                {
+                  "func": "modifyStat",
+                  "params": [
+                    "Obs",
+                    5
+                  ]
+                },
+                {
+                  "func": "addTime",
+                  "params": [
+                    10
+                  ]
+                },
+                {
+                  "func": "setFlag",
+                  "params": [
+                    "found_old_photo",
+                    true
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "悄悄把照片塞回去，装作没看见",
+              "target": "d1_bookstore_simple",
+              "result": [
+                {
+                  "func": "modifyStat",
+                  "params": [
+                    "Obs",
+                    2
+                  ]
+                },
+                {
+                  "func": "addTime",
+                  "params": [
+                    30
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "result": [
+        {
+          "func": "setLocation",
+          "params": [
+            "风月书屋"
+          ]
+        },
+        {
+          "func": "modifyFavor",
+          "params": [
+            "mrlin",
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d1_path_station",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "--- 车站路口 ---"
+          },
+          "dialog": null,
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "她果然没跑远。粉色单车歪在枇杷树下，女孩蹲在地上，校服外套系在腰间，手上已经蹭满了机油。"
+          },
+          "dialog": {
+            "char": "原野",
+            "text": "哎——哎哎哎！啧！",
+            "pic": "haruno"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": ""
+          },
+          "dialog": {
+            "char": "原野",
+            "text": "你——站那里看什么看！帮忙就过来，不帮就走，别挡着我的光！",
+            "pic": "haruno"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": ""
+          },
+          "dialog": {
+            "char": "野",
+            "text": "好，好——我过来。",
+            "pic": "protagonist"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": ""
+          },
+          "dialog": {
+            "char": "原野",
+            "text": "扶住车把，别让它倒。链条脱了，我来装。",
+            "pic": "haruno"
+          },
+          "choice": null
+        }
+      ],
+      "result": [
+        {
+          "func": "setLocation",
+          "params": [
+            "车站路口"
+          ]
+        },
+        {
+          "func": "modifyFavor",
+          "params": [
+            "haruno",
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d1_path_cafe",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_cafe",
+            "text": "--- 潮汐咖啡馆 ---"
+          },
+          "dialog": null,
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_cafe",
+            "text": "磨豆机的低鸣，咖啡豆焦甜的气息，还有那个背对着门站着的人。"
+          },
+          "dialog": {
+            "char": "葵",
+            "text": "磨豆机换了新的，但豆子没换。",
+            "pic": "aoi"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_cafe",
+            "text": ""
+          },
+          "dialog": {
+            "char": "野",
+            "text": "葵。你还记得我喝什么。",
+            "pic": "protagonist"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_cafe",
+            "text": ""
+          },
+          "dialog": {
+            "char": "葵",
+            "text": "曼特宁，不加糖。三年，这种事不会忘。坐吧。",
+            "pic": "aoi"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_cafe",
+            "text": ""
+          },
+          "dialog": {
+            "char": "野",
+            "text": "你好像一点儿都不意外我回来了。",
+            "pic": "protagonist"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_cafe",
+            "text": ""
+          },
+          "dialog": {
+            "char": "葵",
+            "text": "有些事不知道，反而更轻松。——但你这副样子，显然是带着答案来的。",
+            "pic": "aoi"
+          },
+          "choice": [
+            {
+              "label": "「先给我来一杯。」",
+              "target": "d1_cafe_order",
+              "result": [
+                {
+                  "func": "modifyStat",
+                  "params": [
+                    "Sens",
+                    5
+                  ]
+                },
+                {
+                  "func": "addTime",
+                  "params": [
+                    30
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "「你在等什么人？」",
+              "target": "d1_cafe_wait",
+              "result": [
+                {
+                  "func": "modifyStat",
+                  "params": [
+                    "Obs",
+                    5
+                  ]
+                },
+                {
+                  "func": "addTime",
+                  "params": [
+                    10
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "result": [
+        {
+          "func": "setLocation",
+          "params": [
+            "潮汐咖啡馆"
+          ]
+        },
+        {
+          "func": "modifyFavor",
+          "params": [
+            "aoi",
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d1_station_sunset",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_station_sunset",
+            "text": "不知不觉间，天色已经变成了热烈的橘红色。远处传来了暮钟的声响。"
+          },
+          "dialog": null,
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "event_haruno_return_sketches",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": ""
+          },
+          "dialog": {
+            "char": "野",
+            "text": "...对了，这个。刚才在车站门口捡到的。",
+            "pic": "protagonist"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "她看了一眼我手里那叠画稿，手上的动作顿了一下。"
+          },
+          "dialog": {
+            "char": "原野",
+            "text": "......你捡的？",
+            "pic": "haruno"
+          },
+          "choice": [
+            {
+              "label": "「嗯，在路口撒了一地。」",
+              "target": "d1_haruno_secret",
+              "result": [
+                {
+                  "func": "modifyFavor",
+                  "params": [
+                    "haruno",
+                    15
+                  ]
+                },
+                {
+                  "func": "removeItem",
+                  "params": [
+                    "haruno_sketches"
+                  ]
+                },
+                {
+                  "func": "addTime",
+                  "params": [
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "「帮你扶好车把才是正经事。」",
+              "target": "d1_haruno_repair",
+              "result": [
+                {
+                  "func": "modifyStat",
+                  "params": [
+                    "Obs",
+                    5
+                  ]
+                },
+                {
+                  "func": "modifyFavor",
+                  "params": [
+                    "haruno",
+                    10
+                  ]
+                },
+                {
+                  "func": "addTime",
+                  "params": [
+                    20
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "d1_bookstore_dusk",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_bookstore_sunset",
+            "text": "林老师已经点上了一盏泛黄的面包灯。外面夜幕在逐渐降临。"
+          },
+          "dialog": null,
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "d1_cafe_night",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_cafe_night",
+            "text": "霓虹灯管终于还是亮了起来。葵在安静地擦拭着杯子，这是夜晚才有的独特安宁。"
+          },
+          "dialog": null,
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "sys_high_obs_clue",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "在这些看似杂乱无章的事件里，我突然串联起了一个决定性的发现..."
+          },
+          "dialog": null,
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "d1_path_home",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_home",
+            "text": "--- 主角家 ---"
+          },
+          "dialog": null,
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_home",
+            "text": "玄关处还是原来的样子，只是多了些岁月的痕迹。"
+          },
+          "dialog": {
+            "char": "野",
+            "text": "我回来了。",
+            "pic": "protagonist"
+          },
+          "choice": null
+        }
+      ],
+      "result": [
+        {
+          "func": "setLocation",
+          "params": [
+            "主角家"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d1_path_dock",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_dock",
+            "text": "--- 码头 ---"
+          },
+          "dialog": null,
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_dock",
+            "text": "咸湿的海风吹过，渔船系在岸边，随着波浪轻轻摇晃。"
+          },
+          "dialog": {
+            "char": "海生",
+            "text": "码头这边没什么新鲜事，除了新来的那台磨鱼机。",
+            "pic": "kaisheng"
+          },
+          "choice": null
+        }
+      ],
+      "result": [
+        {
+          "func": "setLocation",
+          "params": [
+            "码头"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d1_path_lighthouse",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_lighthouse",
+            "text": "--- 灯塔 ---"
+          },
+          "dialog": null,
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_lighthouse",
+            "text": "灯塔孤零零地矗立在海岬上，塔基被海浪冲刷得有些发白。"
+          },
+          "dialog": {
+            "char": "野",
+            "text": "这里是整个镇子最高的地方。",
+            "pic": "protagonist"
+          },
+          "choice": null
+        }
+      ],
+      "result": [
+        {
+          "func": "setLocation",
+          "params": [
+            "灯塔"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "char_haruno_greet_cold",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "原野正对着她的粉色单车发愁，眼神里透着一丝焦躁。"
+          },
+          "dialog": {
+            "char": "原野",
+            "text": "啧，又是这种眼光... 帮不上忙的话，就请不要站在光线里，好吗？",
+            "pic": "haruno"
+          },
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "char_haruno_greet_neutral",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "原野坐在一旁的台阶上画着什么，手指偶尔会不自觉地颤抖一下。"
+          },
+          "dialog": {
+            "char": "原野",
+            "text": "是你啊。我只是在观察光影而已，可没有在这里偷懒的意思哦... 喂，你那是什眼光？",
+            "pic": "haruno"
+          },
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "char_mrlin_greet_neutral",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_bookstore",
+            "text": "书屋里弥漫着苦杏仁的气息。林老师正用棕刷小心地清理一叠旧报纸。"
+          },
+          "dialog": {
+            "char": "林老师",
+            "text": "文字是有重量的，这种重量只有在这些脆弱的纸张上才能体现。年轻人，在这个充满闪烁屏显的时代，你还能静下心来闻闻墨香吗？",
+            "pic": "mrlin"
+          },
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "char_aoi_greet_neutral",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_cafe",
+            "text": "葵在柜台后低头闻着咖啡豆的香气，神情有一丝不易察觉的疏离。"
+          },
+          "dialog": {
+            "char": "葵",
+            "text": "曼特宁正在闷蒸，这种香气能让人暂时忘掉那些‘必须知道’的琐事。在这里，有些答案晚一点知道，反而会更轻松呢。",
+            "pic": "aoi"
+          },
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "d1_haruno_secret",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "她接过画稿，指尖在纸缘滞留了片刻。那些凌乱的线条似乎藏着某种不想为人知的秘密。"
+          },
+          "dialog": {
+            "char": "原野",
+            "text": "谢了。虽说我本来也能找回来... 但能这么快送回我手里，算你有心。",
+            "pic": "haruno"
+          },
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "d1_haruno_repair",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "链条‘咔嗒’一声扣回了归位。她拍了拍手上的灰，看着你，眼神稍微柔和了一点点。"
+          },
+          "dialog": {
+            "char": "原野",
+            "text": "不错嘛，看来你在外面这几年，除了长高，手艺也没丢下。车修好了，你可以走了。",
+            "pic": "haruno"
+          },
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "d1_bookstore_photo",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_bookstore",
+            "text": "林老师接过照片，沉默了很久。书屋里的空气似乎静止了。"
+          },
+          "dialog": {
+            "char": "林老师",
+            "text": "这是... 旧时代的影子。有些人已经走了，但影子还留着。谢谢你把它找出来，虽然它本该和历史一起埋葬。",
+            "pic": "mrlin"
+          },
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "d1_bookstore_simple",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_bookstore",
+            "text": "你快速把照片塞了回去。林老师并没有察觉到你的小动作。"
+          },
+          "dialog": {
+            "char": "林老师",
+            "text": "嗯，这就对了。有些东西，还是让它在该在的地方待着比较好。",
+            "pic": "mrlin"
+          },
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "d1_cafe_order",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_cafe",
+            "text": "咖啡豆在磨豆机中碎裂的声音很清脆。葵递给你一杯冒着热气的黑咖啡。"
+          },
+          "dialog": {
+            "char": "葵",
+            "text": "小心烫。这是你一直喜欢的味道，也是我一直守着的味道。",
+            "pic": "aoi"
+          },
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "d1_cafe_wait",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_cafe",
+            "text": "葵擦拭杯子的手停了下来，望向窗外泛红的地平线。"
+          },
+          "dialog": {
+            "char": "葵",
+            "text": "在等一个本该回来的人，或者是一个本该消失的理由。现在看来，前者显然已经实现了。",
+            "pic": "aoi"
+          },
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "hub_generic",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "你站在这里，思考下一步的打算。"
+          },
+          "dialog": null,
+          "choice": [
+            {
+              "label": "环视四周",
+              "target": "sys_look_around"
+            },
+            {
+              "label": "打开大地图，前往其他地方",
+              "target": "sys_open_map"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sys_look_around",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_station",
+            "text": "风很和煦，一切似乎都很平静。"
+          },
+          "dialog": null,
+          "choice": null
+        }
+      ],
+      "result": []
+    },
+    {
+      "id": "sys_open_map",
+      "display": [],
+      "result": [
+        {
+          "func": "showMapUI_force",
+          "params": []
+        }
+      ]
+    },
+    {
+      "id": "hub_dock",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_dock",
+            "text": "码头上吹着腥碱的海风。海生正靠在栏杆上远眺。"
+          },
+          "dialog": null,
+          "choice": [
+            {
+              "label": "和海生打个招呼",
+              "target": "char_kaisheng_greet_neutral"
+            },
+            {
+              "label": "看看那台新磨鱼机",
+              "target": "sys_view_fish_machine"
+            },
+            {
+              "label": "打开大地图",
+              "target": "sys_open_map"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sys_view_fish_machine",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_dock",
+            "text": "一台嘎吱作响的机器，看起来有些年头了。"
+          },
+          "dialog": null,
+          "choice": null
+        }
+      ]
+    },
+    {
+      "id": "event_conflict_kaisheng_aoi_confess",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_dock",
+            "text": "码头的气氛突然变得异常紧张。海生和葵竟然同时出现在这里..."
+          },
+          "dialog": {
+            "char": "海生",
+            "text": "野，我有正事要跟你说。",
+            "pic": "kaisheng"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_dock",
+            "text": ""
+          },
+          "dialog": {
+            "char": "葵",
+            "text": "不巧，我也一样。而且我觉得，我的事更急一点。",
+            "pic": "aoi"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_dock",
+            "text": "两人的目光在你身上交汇，这似乎是某种无声的对决。"
+          },
+          "dialog": null,
+          "choice": [
+            {
+              "label": "选择倾听海生的心声",
+              "target": "event_confession_accept_kaisheng"
+            },
+            {
+              "label": "选择回应葵的注视",
+              "target": "event_confession_accept_aoi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "event_confession_accept_kaisheng",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_dock",
+            "text": "葵沉默地转身离去，背影显得有些落寞。"
+          },
+          "dialog": {
+            "char": "海生",
+            "text": "...谢谢你留下来。",
+            "pic": "kaisheng"
+          },
+          "choice": null
+        }
+      ],
+      "result": [
+        {
+          "func": "modifyFavor",
+          "params": [
+            "kaisheng",
+            20
+          ]
+        },
+        {
+          "func": "modifyFavor",
+          "params": [
+            "aoi",
+            -10
+          ]
+        }
+      ]
+    },
+    {
+      "id": "event_confession_accept_aoi",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_dock",
+            "text": "海生叹了口气，摇了摇头走开了。"
+          },
+          "dialog": {
+            "char": "葵",
+            "text": "...我以为你不会选我。",
+            "pic": "aoi"
+          },
+          "choice": null
+        }
+      ],
+      "result": [
+        {
+          "func": "modifyFavor",
+          "params": [
+            "aoi",
+            20
+          ]
+        },
+        {
+          "func": "modifyFavor",
+          "params": [
+            "kaisheng",
+            -10
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d1_04_intersection",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_lighthouse_sunset",
+            "text": "灯塔旁，夕阳把一切都染成热烈的橘红色。海浪拍打在礁石上，一个小小且半透明的身影蹲坐在那里。"
+          },
+          "dialog": null,
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_lighthouse_sunset",
+            "text": ""
+          },
+          "dialog": {
+            "char": "幸",
+            "text": "哥哥/姐姐，你有看到我的月亮吗？我把它落在了退潮后的沙滩上。",
+            "pic": "yuki"
+          },
+          "choice": [
+            {
+              "label": "「跟我一起去报警吧。」",
+              "target": "d1_police_yuki"
+            },
+            {
+              "label": "「在这里等你的家人吗？」",
+              "target": "d1_wait_yuki"
+            }
+          ]
+        }
+      ],
+      "result": [
+        {
+          "func": "setTime",
+          "params": [
+            "17:00"
+          ]
+        },
+        {
+          "func": "setLocation",
+          "params": [
+            "灯塔",
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d1_police_yuki",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_lighthouse_sunset",
+            "text": "我试图拉起他的手，却发现几乎碰不到实物。他极其抗拒地后退了一步，小指上缠着的红线微微摇晃。"
+          },
+          "dialog": {
+            "char": "幸",
+            "text": "不要……警察找不到我的月亮。",
+            "pic": "yuki"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_lighthouse_sunset",
+            "text": "还不等我再说些什么，一阵急促的海风吹过，那个男孩——连同他的影子，一起消失在了昏暗的光线里。"
+          },
+          "dialog": null,
+          "choice": [
+            {
+              "label": "回过神来，天色已晚，该回家了。",
+              "target": "d1_05_home"
+            }
+          ]
+        }
+      ],
+      "result": [
+        {
+          "func": "modifyStat",
+          "params": [
+            "Sens",
+            2
+          ]
+        },
+        {
+          "func": "setFlag",
+          "params": [
+            "yuki_met_police",
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d1_wait_yuki",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_lighthouse_sunset",
+            "text": "男孩摇了摇手里的玻璃瓶，里面传来清脆的弹珠碰撞声。他凝视着海平线。"
+          },
+          "dialog": {
+            "char": "幸",
+            "text": "……家人都不会来找我的。但是，谢谢你陪我在这里看落日。",
+            "pic": "yuki"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_lighthouse_sunset",
+            "text": "星星开始在天空闪烁，他的脸色突然变得痛苦……随后整个人像轻烟一样融入了空气中。"
+          },
+          "dialog": null,
+          "choice": [
+            {
+              "label": "回过神来，天色已晚，该回家了。",
+              "target": "d1_05_home"
+            }
+          ]
+        }
+      ],
+      "result": [
+        {
+          "func": "modifyStat",
+          "params": [
+            "Obs",
+            2
+          ]
+        },
+        {
+          "func": "modifyFavor",
+          "params": [
+            "yuki",
+            5
+          ]
+        },
+        {
+          "func": "setFlag",
+          "params": [
+            "yuki_met_wait",
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d1_05_home",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_home_night",
+            "text": "--- 主角家 ---"
+          },
+          "dialog": null,
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_home_night",
+            "text": "姑姑在厨房忙碌，饭菜的香气驱散了夜晚的海风带来的寒意。"
+          },
+          "dialog": {
+            "char": "姑姑",
+            "text": "回来的第一天，感觉如何？这就是你小时候最想离开的那个沉重的小镇。",
+            "pic": "auntie"
+          },
+          "choice": null
+        },
+        {
+          "screen": {
+            "pic": "bg_home_night",
+            "text": ""
+          },
+          "dialog": {
+            "char": "野",
+            "text": "……",
+            "pic": "protagonist"
+          },
+          "choice": [
+            {
+              "label": "记录今天",
+              "target": "data_sync_day1_end"
+            }
+          ]
+        }
+      ],
+      "result": [
+        {
+          "func": "setTime",
+          "params": [
+            "21:00"
+          ]
+        },
+        {
+          "func": "setLocation",
+          "params": [
+            "主角家",
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data_sync_day1_end",
+      "display": [
+        {
+          "screen": {
+            "pic": "bg_home_night",
+            "text": "夜深了。第一天就这样结束了。\n(Demo流程到此为止，感谢体验！)"
+          },
+          "dialog": null,
+          "choice": null
+        }
+      ],
+      "result": [
+        {
+          "func": "addTime",
+          "params": [
+            540
+          ]
+        }
+      ]
+    }
+  ]
+}

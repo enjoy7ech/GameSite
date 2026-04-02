@@ -1,0 +1,121 @@
+{
+  "locations": {
+    "Station": {
+      "id": "station",
+      "name": "清风站",
+      "alias": [
+        "车站路口",
+        "站前"
+      ],
+      "charId": "haruno",
+      "bg": "bg_station"
+    },
+    "Home": {
+      "id": "home",
+      "name": "主角家",
+      "alias": [
+        "家里"
+      ],
+      "charId": "auntie",
+      "bg": "bg_home"
+    },
+    "Bookstore": {
+      "id": "bookstore",
+      "name": "风月书屋",
+      "alias": [
+        "书店"
+      ],
+      "charId": "mrlin",
+      "bg": "bg_bookstore"
+    },
+    "Cafe": {
+      "id": "cafe",
+      "name": "潮汐咖啡馆",
+      "alias": [
+        "咖啡厅"
+      ],
+      "charId": "aoi",
+      "bg": "bg_cafe"
+    },
+    "Dock": {
+      "id": "dock",
+      "name": "码头",
+      "alias": [
+        "海边",
+        "栈桥"
+      ],
+      "charId": "kaisheng",
+      "bg": "bg_dock"
+    },
+    "Lighthouse": {
+      "id": "lighthouse",
+      "name": "灯塔",
+      "alias": [
+        "防波堤"
+      ],
+      "charId": "yuki",
+      "bg": "bg_lighthouse"
+    }
+  },
+  "chars": {
+    "haruno": {
+      "name": "原野",
+      "avatar": "char/haruno.webp",
+      "bio": "清风镇的新住客，总是骑着粉色单车穿梭在镇子各处，似乎在寻找某种灵感。",
+      "traits": [
+        { "id": "artist", "label": "街头画家", "desc": "随身带着画板，对光影有着异乎寻常的敏感。" },
+        { "id": "clumsy", "label": "冒失鬼", "desc": "车篮里的画稿经常散落一地，链条也总是在响。" }
+      ]
+    },
+    "mrlin": {
+      "name": "林老师",
+      "avatar": "char/mrlin.webp",
+      "bio": "风月书屋的主人，在古旧的木梯和旧书中度过了三十年。",
+      "traits": [
+        { "id": "sharp_ear", "label": "顺风耳", "desc": "虽然眼睛花了，但能听出每个人脚步声的区别。" },
+        { "id": "scholar", "label": "清风通", "desc": "对清风镇的历史如数家珍，尤其是那些不为人知的小事。" }
+      ]
+    },
+    "aoi": {
+      "name": "葵",
+      "avatar": "char/aoi.webp",
+      "bio": "潮汐咖啡馆的店长，动作利落而优雅，总能精准记住常客的口味。",
+      "traits": [
+        { "id": "pro_barista", "label": "金牌咖啡师", "desc": "曼特宁不加糖，她从不会送错任何一杯饮品。" },
+        { "id": "calm", "label": "波澜不惊", "desc": "无论镇上发生什么，她总是在安静地擦拭着杯子。" }
+      ]
+    },
+    "kaisheng": {
+      "name": "海生",
+      "avatar": "char/kaisheng.webp",
+      "bio": "你的童年挚友，码头边的老熟人。虽然嘴上毒舌，但其实非常在意你。",
+      "traits": [
+        { "id": "loyal", "label": "刀子嘴豆腐心", "desc": "总是在抱怨，但在你最需要的时候他总是第一个出现。" },
+        { "id": "local", "label": "土生土长", "desc": "知道码头的所有秘密，包括那台坏了三年的磨鱼机。" }
+      ]
+    },
+    "auntie": {
+      "name": "姑姑",
+      "avatar": "char/auntie.webp",
+      "bio": "收养你的亲人，经营着镇上的老房子，用琐碎的关心填满了你的童年。",
+      "traits": [
+        { "id": "cook", "label": "家政达人", "desc": "做的腌笃鲜是清风镇一绝，能把平凡的日子过出温情。" }
+      ]
+    },
+    "yuki": {
+      "name": "游希",
+      "avatar": "char/yuki.webp",
+      "bio": "灯塔管理员，总是望着海平线发呆，没有人知道他在想什么。",
+      "traits": [
+        { "id": "lonely", "label": "守望者", "desc": "在灯塔的高处注视着清风镇的潮起潮落。" }
+      ]
+    }
+  },
+  "items": {
+    "haruno_sketches": {
+      "name": "原野的画稿",
+      "desc": "散落一地的素描画。笔触凌乱却充满生机，记录着清风镇的某些角落。",
+      "icon": "assets/items/haruno_sketches.webp"
+    }
+  }
+}
