@@ -437,6 +437,8 @@ class TinyFlowEngine {
         // 关键逻辑：确保剧情推进不会因为当前节点跑到头而没画面更新
         if (!frame) {
             this.dom.dialogueBox.classList.add('hidden');
+            this.dom.itemOverlay.classList.add('hidden');
+            this.dom.itemLayer.src = ""; // Clear src when node ends early
             this.updateBackgroundOnly(); // 自定义方法：只同步当前地点对应的背景
             return;
         }
@@ -472,6 +474,7 @@ class TinyFlowEngine {
             this.dom.itemOverlay.classList.remove('hidden');
         } else {
             this.dom.itemOverlay.classList.add('hidden');
+            this.dom.itemLayer.src = ""; // Clear src to prevent persistence
         }
 
         // 3. 对话与人像同步
