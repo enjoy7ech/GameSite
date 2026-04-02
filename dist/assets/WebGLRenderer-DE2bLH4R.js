@@ -1,0 +1,1 @@
+import{n as e}from"./index-CIgXVkx4.js";export{e as WebGLRenderer};
