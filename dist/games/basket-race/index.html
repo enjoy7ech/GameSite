@@ -19,8 +19,10 @@
     <style>
         body {
             margin: 0;
+            width: 100vw;
+            height: 100vh;
             overflow: hidden;
-            background: #202020;
+            background: #000;
         }
 
         canvas {
@@ -246,14 +248,250 @@
                 filter: blur(2px);
             }
         }
+
+        .rush-btn {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--c);
+            color: var(--c);
+            width: 45px;
+            height: 45px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 5px rgba(var(--c), 0.2);
+        }
+
+        .rush-btn:hover {
+            background: var(--c);
+            color: #000;
+            box-shadow: 0 0 15px var(--c);
+            transform: scale(1.1);
+        }
+
+        .rush-btn:active {
+            transform: scale(0.95);
+        }
+
+        #menu-trigger {
+            position: fixed;
+            top: auto;
+            bottom: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 255, 242, 0.1);
+            border: 2px solid #00fff2;
+            color: #00fff2;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 200;
+            box-shadow: 0 0 15px rgba(0, 255, 242, 0.3);
+            text-shadow: 0 0 5px #00fff2;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: auto;
+        }
+
+        #menu-trigger:hover {
+            background: rgba(0, 255, 242, 0.3);
+            box-shadow: 0 0 25px #00fff2;
+            transform: scale(1.1);
+        }
+
+        #menu-trigger:active {
+            transform: scale(0.9);
+        }
+
+        /* --- 手机端适配 (Mobile Portrait Adaptation) --- */
+@media (max-width: 768px) {
+    #menu-trigger {
+        position: fixed;
+        top: auto;
+        bottom: 20px;
+        left: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+            #status-bar {
+                top: 5px;
+                right: 8px;
+                left: auto; /* 不限制左侧，防止拉伸 */
+                gap: 5px;
+                flex-direction: column;
+                align-items: flex-end;
+                width: auto;
+            }
+
+            .stat-group {
+                gap: 5px;
+                font-size: 10px;
+                padding: 0;
+                justify-content: flex-end;
+            }
+
+            /* 隐藏 MS 和 MEM 等次要性能参数，节省空间 */
+            #stat-ms, #stat-mem { display: none !important; }
+
+            #ui-container {
+                left: 10px;
+                top: 5px;
+                pointer-events: none;
+            }
+
+            #level-info {
+                font-size: 9px;
+                margin-bottom: 2px;
+            }
+
+            #scoreboard {
+                font-size: 20px;
+            }
+
+            #timer {
+                font-size: 28px;
+                margin-top: 2px;
+            }
+
+            #combo-fire {
+                margin-top: 2px;
+            }
+
+            /* 惩罚条变小 */
+            #punish-warning-container {
+                align-items: flex-end;
+                scale: 0.8;
+                transform-origin: right top;
+            }
+
+            #combo-fire span[style*="font-size: 20px"] { font-size: 14px !important; }
+            #combo-fire #combo-value { font-size: 34px !important; }
+
+            /* 播报大字适配 */
+            .swish-text {
+                font-size: 28px !important;
+                text-shadow: 0 0 10px #ffae00, 0 0 20px #ffae00 !important;
+            }
+            #score-msg {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 40%;
+                text-align: center;
+                pointer-events: none;
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                overflow: hidden !important;
+            }
+
+            /* 性能 UI 彻底通过 CSS 阻断 */
+            #stat-fps, #stat-ms, #stat-mem, .stat-group:nth-child(2) {
+                display: none !important;
+            }
+
+            #manual-panel {
+                width: 90%;
+                left: 5%;
+                right: auto;
+                transform: none;
+                bottom: 70px;
+                text-align: left;
+                font-size: 10px;
+                padding: 10px;
+            }
+
+            #manual-panel.collapsed {
+                transform: translateY(200%);
+            }
+
+            #manual-toggle-btn {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 15px;
+                padding: 10px 25px;
+                font-size: 12px;
+                min-width: 140px;
+            }
+
+            .cover-btn-group {
+                width: 90%;
+            }
+
+            .cover-btn {
+                font-size: 16px;
+                padding: 15px;
+            }
+
+            .rush-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            #reward-phase-ui, #side-punish-ui {
+                width: 90%;
+            }
+            #reward-phase-ui > div:nth-child(2), #side-punish-ui > div:nth-child(2) {
+                width: 100% !important;
+            }
+
+            /* 响应式结果与菜单容器适配 */
+            .result-card, #menu-content {
+                width: 90%;
+                margin-left: 5%;
+                padding: 15px;
+            }
+
+            /* 特别要求：将 ESC 菜单统一移动到左下角 */
+            #menu-overlay {
+                align-items: flex-end !important;
+                justify-content: flex-start !important;
+                padding: 20px;
+                background: rgba(0,0,0,0.7) !important; /* 让中心区域可见度更高 */
+            }
+
+            #menu-content {
+                width: 250px !important;
+                margin: 0 !important;
+                border-radius: 8px !important;
+                border-left: 4px solid #00fff2 !important;
+                background: rgba(10, 10, 20, 0.95) !important;
+                animation: slide-in-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            @keyframes slide-in-left {
+                from { transform: translateX(-50px) translateY(50px); opacity: 0; }
+                to { transform: translateX(0) translateY(0); opacity: 1; }
+            }
+
+            /* 关键：手机端重写动画，限制最大缩放倍率，防止撑破屏幕 */
+            @keyframes swish-gold-burst {
+                0% { transform: scale(0.8) rotate(-5deg); opacity: 0; }
+                50% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+                100% { transform: scale(1.0) rotate(0deg); opacity: 0; }
+            }
+        }
     </style>
 </head>
 
 <body>
     <div id="ui-container">
-        <div id="level-info">第 1 关 - 目标分: 100</div>
+        <div id="level-info">PHASE 01 - 目标同步: 100</div>
         <div id="scoreboard-container" style="display: flex; align-items: baseline; gap: 15px;">
-            <div id="scoreboard">总比分: 0</div>
+            <div id="scoreboard">核心得分: 0</div>
             <div id="score-pop"></div>
         </div>
         <div id="timer">00:00</div>
@@ -268,12 +506,12 @@
 
     <!-- 死角惩罚倒计时 UI (中下部) -->
     <div id="side-punish-ui"
-        style="display: none; position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; z-index: 10;">
+        style="display: none; position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; z-index: 10; width: 90%; max-width: 300px;">
         <div
             style="color: #ff00ea; font-family: 'Orbitron', sans-serif; font-size: 14px; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255, 0, 234, 0.8);">
             死角挑战剩余时间</div>
         <div
-            style="background: rgba(0,0,0,0.5); border: 1px solid #ff00ea; padding: 2px; border-radius: 4px; width: 300px; height: 12px; margin: 5px auto; overflow: hidden;">
+            style="background: rgba(0,0,0,0.5); border: 1px solid #ff00ea; padding: 2px; border-radius: 4px; width: 100%; height: 12px; margin: 5px auto; overflow: hidden;">
             <div id="side-punish-fill"
                 style="width: 100%; height: 100%; background: linear-gradient(90deg, #ff00ea, #8800ff); box-shadow: 0 0 15px #ff00ea;">
             </div>
@@ -285,12 +523,12 @@
 
     <!-- 奖励时间 UI (中下部，与惩罚隔离显示) -->
     <div id="reward-phase-ui"
-        style="display: none; position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; z-index: 10;">
+        style="display: none; position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; z-index: 10; width: 90%; max-width: 350px;">
         <div
             style="color: #00fff2; font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 900; letter-spacing: 4px; text-shadow: 0 0 15px rgba(0, 255, 242, 1);">
-            REWARD FRENZY // 疯狂奖励模式</div>
+            REWARD FRENZY // 疯狂同步模式</div>
         <div
-            style="background: rgba(0,0,0,0.6); border: 2px solid #00fff2; padding: 2px; border-radius: 6px; width: 350px; height: 16px; margin: 8px auto; overflow: hidden; box-shadow: 0 0 20px rgba(0, 255, 242, 0.3);">
+            style="background: rgba(0,0,0,0.6); border: 2px solid #00fff2; padding: 2px; border-radius: 6px; width: 100%; height: 16px; margin: 8px auto; overflow: hidden; box-shadow: 0 0 20px rgba(0, 255, 242, 0.3);">
             <div id="reward-phase-fill"
                 style="width: 100%; height: 100%; background: linear-gradient(90deg, #00fff2, #0066ff); box-shadow: 0 0 15px #00fff2;">
             </div>
@@ -304,15 +542,16 @@
     <div id="status-bar">
 
         <div class="stat-group">
-            <div id="stat-diff"><span style="color:#ff00ea; font-weight:bold;">基础难度:</span> <span id="current-diff"
+            <div id="stat-diff"><span style="color:#ff00ea; font-weight:bold;">同步系数:</span> <span id="current-diff"
                     style="color:#ffffff;">0</span></div>
-            <div id="stat-dist"><span id="dist-label" style="color:#00fff2;">远射等级:</span> <span
+            <div id="stat-dist" style="display:none;"><span id="dist-label" style="color:#00fff2;">远射等级:</span> <span
                     id="dist-coeff">...</span></div>
-            <div id="stat-height"><span id="height-label" style="color:#00fff2;">地势加成:</span> <span
+            <div id="stat-height" style="display:none;"><span id="height-label" style="color:#00fff2;">地势加成:</span> <span
                     id="height-coeff">...</span></div>
-            <div id="stat-angle"><span id="angle-label" style="color:#00fff2;">命中率:</span> <span id="hit-rate"
+            <div id="stat-angle" style="display:none;"><span id="angle-label" style="color:#00fff2;">命中率:</span> <span id="hit-rate"
                     style="color:#00ff88; font-weight:bold;">0%</span></div>
         </div>
+
         <!-- 惩罚球警告条 -->
         <div id="punish-warning-container"
             style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
@@ -333,25 +572,7 @@
     <div id="score-msg"></div>
     <div id="score-breakdown"></div>
 
-    <!-- 右下角说明书 & 计算公式 -->
-    <button id="manual-toggle-btn" onclick="toggleManual()">收起说明 [M]</button>
-    <div id="manual-panel">
-        <div style="color: #00fff2; font-weight: bold; margin-bottom: 5px; font-size: 13px;">OPERATING MANUAL // 操作指令
-        </div>
-        • [左键拖拽] 投篮弧线与力度<br>
-        • [右键拖拽] 调整投篮角度<br>
-        • [松开左键] 确认投篮发射<br>
-        • [滚轮滚动] 视角焦距缩放<br>
 
-        <div style="color: #ffae00; font-weight: bold; margin-top: 10px; margin-bottom: 5px; font-size: 13px;">SCORING
-            LOGIC // 计分逻辑</div>
-        • [远射分] 离篮筐越远，分数倍率增长！<br>
-        • [地势分] 在低洼处出手获得补偿分。<br>
-        • [技巧分] 参考入筐角度，弧线平得分高。<br>
-        <div style="color: #ffae00; margin-top: 5px; font-style: italic;">
-            * 连击(COMBO)乘总分，空心(SWISH)双倍加时。
-        </div>
-    </div>
 
     <div id="loading-overlay">
         <div id="loading-text">SYSTEM SYNCING...</div>
@@ -363,7 +584,19 @@
         <canvas id="shader-canvas" style="position: absolute; inset: 0; z-index: -1;"></canvas>
 
         <div class="cover-btn-group">
-            <button onclick="startGame()" class="cover-btn btn-primary">接入球场 • 开始游戏</button>
+            <button onclick="startGame()" class="cover-btn btn-primary">生涯模式 • 生存挑战</button>
+            <div style="margin-top:20px; text-align:center;">
+                <div style="color: #00fff2; font-family: 'Orbitron', sans-serif; font-size: 14px; letter-spacing: 2px; margin-bottom: 12px; opacity: 0.8;">
+                    RUSH MODE // 极限挑战 60S
+                </div>
+                <div style="display:flex; justify-content:center; gap:10px;">
+                    <button onclick="startRush('D')" class="rush-btn" style="--c:#00ff88;">D</button>
+                    <button onclick="startRush('C')" class="rush-btn" style="--c:#00fff2;">C</button>
+                    <button onclick="startRush('B')" class="rush-btn" style="--c:#ffee00;">B</button>
+                    <button onclick="startRush('A')" class="rush-btn" style="--c:#ffae00;">A</button>
+                    <button onclick="startRush('S')" class="rush-btn" style="--c:#ff0044; border-width:2px; font-weight:bold;">S</button>
+                </div>
+            </div>
         </div>
 
         <div
@@ -375,16 +608,36 @@
     <!-- Pause Menu -->
     <div id="menu-overlay" class="hidden">
         <div id="menu-content">
-            <h2 class="menu-title">系统已暂停</h2>
+            <h2 class="menu-title">同步已暂停</h2>
             <div class="menu-items">
-                <button onclick="toggleMenu()" class="action-btn primary">恢复连接</button>
+                <button onclick="toggleMenu()" class="action-btn primary">恢复同步</button>
                 <div class="menu-setting">
                     <label>背景音乐</label>
                     <input type="range" id="bgm-volume" min="0" max="1" step="0.05" value="0.08"
                         style="flex:1; cursor:pointer;">
                 </div>
-                <button onclick="restartGame()" class="action-btn secondary">重新启动</button>
-                <button onclick="quitGame()" class="action-btn secondary">退出到大厅</button>
+                <!-- 游戏速度调节 -->
+                <div class="menu-setting">
+                    <label>游戏速度</label>
+                    <div style="display:flex; align-items:center; gap:10px; flex:1;">
+                        <input type="range" id="speed-scale" min="0.75" max="3.0" step="0.25" value="1.5"
+                            style="flex:1; cursor:pointer;">
+                        <span id="speed-value" style="color:#00fff2; font-family:monospace; min-width:35px;">1.0x</span>
+                    </div>
+                </div>
+                <button onclick="restartGame()" class="action-btn secondary">重新载入</button>
+                <button onclick="quitGame()" class="action-btn secondary">断开连接</button>
+
+                <!-- 整合后的操作说明 -->
+                <div id="menu-manual" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(0, 255, 242, 0.2); font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.6;">
+                    <div style="color: #00fff2; font-weight: bold; margin-bottom: 8px; font-size: 12px; letter-spacing: 1px;">OPERATING PROTOCOL // 操作协议</div>
+                    • [拖拽球体] 控制射球路径与力度<br>
+                    • [点击空白] 调整全局观察视角<br>
+                    • [松开] 释放核心能量（确认射出）<br>
+                    <div style="color: #ffae00; margin-top: 8px; font-style: italic; font-size: 10px;">
+                        * 连击(COMBO)增加倍率，空心重置奖励时间。
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -392,27 +645,27 @@
     <!-- Result Overlay -->
     <div id="result-overlay" class="hidden">
         <div class="result-card">
-            <h2 id="result-status">系统已离线</h2>
+            <h2 id="result-status">连接已中断</h2>
             <div class="result-stats">
                 <div class="stat-item">
-                    <span class="stat-label">最终得分</span>
+                    <span class="stat-label">最终同步分值</span>
                     <span id="final-score" class="stat-value">0</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">最高连击</span>
+                    <span class="stat-label">巅峰连击序列</span>
                     <span id="max-combo" class="stat-value">X1</span>
                 </div>
             </div>
-            <p id="result-msg">检测到神经连接中断...</p>
+            <p id="result-msg">检测到神经同步连接中断...</p>
             <div class="result-actions">
-                <button onclick="restartGame()" class="action-btn primary">协议重启 • 重新开始</button>
-                <button onclick="quitGame()" class="action-btn secondary">断开连接 • 退出</button>
+                <button onclick="restartGame()" class="action-btn primary">重新接入协议</button>
+                <button onclick="quitGame()" class="action-btn secondary">终止连接 • 退出</button>
             </div>
         </div>
     </div>
 
     <!-- Menu triggered via ESC key -->
-    <!-- <button id="menu-trigger" onclick="toggleMenu()">☰</button> -->
+    <button id="menu-trigger" onclick="toggleMenu()">☰</button>
 
     <script src="/games/basket-race/lib/cannon.min.js"></script>
     <script type="module" src="/games/basket-race/js/index.js"></script>

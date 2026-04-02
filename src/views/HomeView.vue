@@ -161,9 +161,9 @@ const closeGame = () => {
 
 .home-page {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: hidden !important;
   background: #020205;
   display: flex;
   flex-direction: column;
@@ -171,6 +171,7 @@ const closeGame = () => {
   justify-content: center;
   --dynamic-glow: #00fff2;
   transition: background 0.5s ease;
+  touch-action: none;
 }
 
 .ambient-glow {
@@ -394,6 +395,8 @@ const closeGame = () => {
   background: rgba(0,0,0,0.9);
   backdrop-filter: blur(20px);
   z-index: 1000;
+  overflow: hidden !important;
+  touch-action: none;
 }
 
 .monitor-container {
@@ -505,5 +508,78 @@ const closeGame = () => {
     font-size: 0.6rem;
     color: rgba(255,255,255,0.2);
     letter-spacing: 0.5em;
+}
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+    .hub-container {
+        padding-top: 5rem;
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        justify-content: flex-start;
+    }
+
+    .showcase-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem 1rem;
+        padding: 1rem;
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .card-scene {
+        width: 100%;
+        max-width: none;
+    }
+
+    .card-object {
+        width: 100%;
+        height: 200px; /* 缩减高度以适配双列 */
+    }
+
+    .card-info {
+        margin-top: 1rem;
+    }
+
+    .game-name {
+        font-size: 0.6rem;
+        letter-spacing: 0.05em;
+    }
+
+    .monitor-container {
+        width: 100vw;
+        height: 100vh;
+        gap: 0;
+        padding: 0;
+    }
+
+    .monitor-frame {
+        width: 100vw;
+        height: 100%;
+        border-radius: 0;
+        padding: 0;
+        border: none;
+    }
+
+    .screen-surface {
+        border-radius: 0;
+    }
+
+    .monitor-controls {
+        display: none; /* 手机端不再展示外部退出按钮，改用游戏内菜单 */
+    }
+
+    .nav-status {
+        display: none;
+    }
+
+    .shelf-header {
+        margin-bottom: 2rem;
+    }
+
+    .logo-text {
+        font-size: 1rem;
+    }
 }
 </style>

@@ -4,7 +4,7 @@ import { RouterView } from 'vue-router'
 
 <template>
   <div class="app-layout">
-    <nav class="main-nav">
+    <nav v-if="!$route.path.startsWith('/game/')" class="main-nav">
       <div class="logo">GAMECENTER</div>
       <div class="nav-links">
         <router-link to="/">Home</router-link>

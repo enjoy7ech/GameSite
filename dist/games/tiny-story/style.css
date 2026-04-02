@@ -1368,11 +1368,13 @@ body {
 /* Character Detail Panel */
 .contact-detail-panel {
     position: absolute;
-    top: 50px; /* Leave space for app header */
+    top: 50px;
+    /* Leave space for app header */
     left: 0;
     width: 100%;
     height: calc(100% - 50px);
-    background: #fffef5; /* 暖纸色 */
+    background: #fffef5;
+    /* 暖纸色 */
     z-index: 1100;
     padding: 1.5rem;
     display: flex;
@@ -1381,8 +1383,13 @@ body {
 }
 
 @keyframes slideInRight {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
 
 .contact-back-btn {

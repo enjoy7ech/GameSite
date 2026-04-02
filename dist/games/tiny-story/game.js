@@ -433,7 +433,7 @@ class TinyFlowEngine {
     renderCurrentFrame() {
         const frames = this.activeNode.display || [];
         const frame = frames[this.frameIndex];
-        
+
         // 关键逻辑：确保剧情推进不会因为当前节点跑到头而没画面更新
         if (!frame) {
             this.dom.dialogueBox.classList.add('hidden');

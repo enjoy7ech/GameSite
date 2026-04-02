@@ -18,7 +18,7 @@ export function toggleMenu() {
 
 export function updateScoreDisplay(lastPoints = null) {
     const scoreEl = document.getElementById('scoreboard');
-    scoreEl.innerText = "总比分: " + state.score;
+    scoreEl.innerText = "核心得分: " + state.score;
 
     // --- 新增：左上角 HUD 显示当前球的难度系数 ---
     const currentDiffEl = document.getElementById('current-diff');
@@ -110,23 +110,11 @@ export function updateComboUI() {
     }
 }
 
-export function toggleManual() {
-    const panel = document.getElementById('manual-panel');
-    const btn = document.getElementById('manual-toggle-btn');
-    if (panel.classList.contains('collapsed')) {
-        panel.classList.remove('collapsed');
-        btn.innerText = '收起说明 [M]';
-    } else {
-        panel.classList.add('collapsed');
-        btn.innerText = '展示说明 [M]';
-    }
-}
-
 export function updateBuffUI() {
     const distEl = document.getElementById('dist-coeff');
     const heightEl = document.getElementById('height-coeff');
-    if (distEl) distEl.innerHTML = `<span style="color:#00ff88; font-weight:bold;">${MESSAGES.BUFF_DISTANCE((state.distCoeff * 10).toFixed(0))}</span> <small>(x1.2距离指数)</small>`;
-    if (heightEl) heightEl.innerHTML = `<span style="color:#00ff88; font-weight:bold;">${MESSAGES.BUFF_HEIGHT(state.heightCoeff)}</span> <small>(每米落差)</small>`;
+    if (distEl) distEl.innerText = state.distCoeff.toFixed(2);
+    if (heightEl) heightEl.innerText = state.heightCoeff.toFixed(2);
 }
 
 export function showPraise(content) {
