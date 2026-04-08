@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import GeminiTools from './components/GeminiTools.vue'
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import { RouterView } from 'vue-router'
       </div>
     </nav>
     <RouterView />
+    <GeminiTools />
   </div>
 </template>
 
