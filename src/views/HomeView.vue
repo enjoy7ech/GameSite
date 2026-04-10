@@ -12,6 +12,7 @@ interface Game {
 }
 
 const games = ref<Game[]>([
+  { id: 'danqing-yizhen', name: '丹青遗珍', url: '/games/danqing-yizhen/index.html', color: '#d4af37', image: '/games/danqing-yizhen/cover.png', orientation: 'landscape' },
   { id: 'landlord', name: 'LUCKY LANDLORD', url: '/games/lucky-landlord/index.html', color: '#ff00ea', image: '/games/lucky-landlord/assets/logo.png', orientation: 'portrait' },
   { id: 'mtower', name: 'MAGIC TOWER', url: '/games/magic-tower/index.html', color: '#00fff2', image: '/games/magic-tower/cover.png', orientation: 'landscape' },
   { id: 'basket', name: 'BASKET RACE 3D', url: '/games/basket-race/index.html', color: '#ffb700', image: '/games/basket-race/cover.png', orientation: 'landscape' },

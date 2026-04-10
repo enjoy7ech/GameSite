@@ -11,7 +11,7 @@ interface Preset {
 const isOpen = ref(false)
 const position = ref({ x: window.innerWidth - 80, y: window.innerHeight - 80 })
 const isDragging = ref(false)
-const activeTab = ref('text') // 'config', 'text', 'image'
+const activeTab = ref('text') // 'config', 'text', 'image', 'matting'
 
 // Configuration & State
 const apiKey = ref(localStorage.getItem('gemini_api_key') || '')
@@ -26,6 +26,14 @@ const result = ref('')
 const imageUrl = ref('')
 const isLoading = ref(false)
 const availableModels = ref<any[]>([])
+const manualMattingSource = ref('')
+const manualMattingResult = ref('')
+const isMattingLoading = ref(false)
+const mattingFileInput = ref<HTMLInputElement | null>(null)
+
+const triggerMattingUpload = () => {
+  mattingFileInput.value?.click()
+}
 
 // Presets
 const defaultTextPresets: Preset[] = [
@@ -51,7 +59,9 @@ onMounted(async () => {
 })
 
 const shouldRemoveBg = ref(localStorage.getItem('gemini_remove_bg') === 'true')
-const selectedResolution = ref(localStorage.getItem('gemini_resolution') || '1024x1024')
+const shouldCompressWebp = ref(localStorage.getItem('gemini_compress_webp') === 'true')
+const webpQuality = ref(Number(localStorage.getItem('gemini_webp_quality')) || 0.8)
+const selectedRatio = ref(localStorage.getItem('gemini_ratio') || '1024x1024')
 const customWidth = ref(Number(localStorage.getItem('gemini_custom_width')) || 1024)
 const customHeight = ref(Number(localStorage.getItem('gemini_custom_height')) || 1024)
 
@@ -60,7 +70,9 @@ watch(apiKey, (newVal: string) => localStorage.setItem('gemini_api_key', newVal)
 watch(textPrefix, (newVal: string) => localStorage.setItem('gemini_text_prefix', newVal))
 watch(imagePrefix, (newVal: string) => localStorage.setItem('gemini_image_prefix', newVal))
 watch(shouldRemoveBg, (newVal: boolean) => localStorage.setItem('gemini_remove_bg', newVal.toString()))
-watch(selectedResolution, (newVal: string) => localStorage.setItem('gemini_resolution', newVal))
+watch(shouldCompressWebp, (newVal: boolean) => localStorage.setItem('gemini_compress_webp', newVal.toString()))
+watch(webpQuality, (newVal: number) => localStorage.setItem('gemini_webp_quality', newVal.toString()))
+watch(selectedRatio, (newVal: string) => localStorage.setItem('gemini_ratio', newVal))
 watch(customWidth, (newVal: number) => localStorage.setItem('gemini_custom_width', newVal.toString()))
 watch(customHeight, (newVal: number) => localStorage.setItem('gemini_custom_height', newVal.toString()))
 watch(textPresets, (newVal: Preset[]) => localStorage.setItem('gemini_text_presets', JSON.stringify(newVal)), { deep: true })
@@ -149,12 +161,14 @@ const generateImage = async () => {
   
   const res = await gemini.generateImage(fullPrompt, {
     removeBg: shouldRemoveBg.value,
-    aspectRatio: selectedResolution.value === 'custom' 
+    compressWebp: shouldCompressWebp.value,
+    webpQuality: webpQuality.value,
+    aspectRatio: selectedRatio.value === 'custom' 
       ? calculateClosestRatio(customWidth.value, customHeight.value)
-      : mapResolutionToRatio(selectedResolution.value),
-    resolution: selectedResolution.value === 'custom'
+      : mapResolutionToRatio(selectedRatio.value),
+    resolution: selectedRatio.value === 'custom'
       ? `${customWidth.value}x${customHeight.value}`
-      : selectedResolution.value
+      : selectedRatio.value
   })
 
   if ('url' in res) {
@@ -162,7 +176,8 @@ const generateImage = async () => {
     // 自动执行下载
     const link = document.createElement('a')
     link.href = res.url
-    link.download = `gemini_${Date.now()}.png`
+    const ext = shouldCompressWebp.value ? 'webp' : 'png'
+    link.download = `gemini_${Date.now()}.${ext}`
     link.click()
     showStatus('图像已具现并自动下载')
   } else if ('error' in res) {
@@ -176,6 +191,32 @@ const generateImage = async () => {
 const copyResult = () => {
   navigator.clipboard.writeText(result.value)
   alert('已复制到剪切板')
+}
+
+const onMattingFileChange = (e: Event) => {
+  const file = (e.target as HTMLInputElement).files?.[0]
+  if (!file) return
+  const reader = new FileReader()
+  reader.onload = (event) => {
+    manualMattingSource.value = event.target?.result as string
+    manualMattingResult.value = ''
+  }
+  reader.readAsDataURL(file)
+}
+
+const runManualMatting = async () => {
+  if (!manualMattingSource.value) return
+  isMattingLoading.value = true
+  try {
+    const base64 = manualMattingSource.value.split(',')[1]
+    const res = await gemini.chromaKey(base64)
+    manualMattingResult.value = res.url
+    showStatus('抠像完成')
+  } catch (e: any) {
+    alert('抠像失败: ' + e.message)
+  } finally {
+    isMattingLoading.value = false
+  }
 }
 
 // Drag logic
@@ -295,6 +336,13 @@ const calculateClosestRatio = (w: number, h: number) => {
           >
             图像生成
           </button>
+          <button 
+            :class="{ active: activeTab === 'matting', disabled: !apiKey }" 
+            :disabled="!apiKey"
+            @click="activeTab = 'matting'"
+          >
+            手动抠像
+          </button>
           <button :class="{ active: activeTab === 'config' }" @click="activeTab = 'config'">参数配置</button>
         </div>
 
@@ -376,30 +424,56 @@ const calculateClosestRatio = (w: number, h: number) => {
                 </div>
               </div>
             </div>
-            <div class="image-options">
-              <label class="checkbox-label">
-                <input type="checkbox" v-model="shouldRemoveBg" />
-                <span>自动抠图 (透明背景)</span>
-              </label>
-              <div class="resolution-control">
-                <div class="aspect-ratio-selector">
-                  <label>分辨率</label>
-                  <select v-model="selectedResolution" class="mini-select">
-                    <option value="1:1">正方形 (1:1) - 全能/头像</option>
-                    <option value="16:9">横屏 (16:9) - 电影感/宽屏</option>
-                    <option value="9:16">竖屏 (9:16) - 手机/海报</option>
-                    <option value="4:3">标准 (4:3) - 复古画幅</option>
-                    <option value="3:2">胶片 (3:2) - 摄影比例</option>
-                    <option value="custom">-- 自由定义 (自定义) --</option>
-                  </select>
+            <div class="image-options-container">
+              <div class="image-options-row">
+                <div class="option-switches">
+                  <label class="checkbox-label" title="使用绿幕技术自动去除图像背景">
+                    <input type="checkbox" v-model="shouldRemoveBg" />
+                    <span>自动抠图</span>
+                  </label>
+                  <label class="checkbox-label" title="将生成图像压缩为 WebP 格式以节省空间">
+                    <input type="checkbox" v-model="shouldCompressWebp" />
+                    <span>图像压缩 (WebP)</span>
+                  </label>
                 </div>
-                <div class="res-hint">目前遵循 1024 基准，建议通过比例控制构图</div>
-                <div v-if="selectedResolution === 'custom'" class="custom-res-inputs">
-                  <input type="number" v-model="customWidth" placeholder="宽" />
-                  <span>×</span>
-                  <input type="number" v-model="customHeight" placeholder="高" />
+                
+                <div class="ratio-control">
+                  <div class="aspect-ratio-selector">
+                    <label>画面比例</label>
+                    <select v-model="selectedRatio" class="mini-select">
+                      <option value="1:1">正方形 (1:1)</option>
+                      <option value="16:9">横屏 (16:9)</option>
+                      <option value="9:16">竖屏 (9:16)</option>
+                      <option value="4:3">标准 (4:3)</option>
+                      <option value="3:2">胶片 (3:2)</option>
+                      <option value="custom">-- 自定义比例 --</option>
+                    </select>
+                  </div>
+                  <div v-if="selectedRatio === 'custom'" class="custom-res-inputs">
+                    <input type="number" v-model="customWidth" placeholder="宽" />
+                    <span>×</span>
+                    <input type="number" v-model="customHeight" placeholder="高" />
+                  </div>
                 </div>
               </div>
+
+              <!-- WebP Quality Slider -->
+              <Transition name="fade-slide">
+                <div v-if="shouldCompressWebp" class="quality-control-row">
+                  <div class="quality-label">
+                    <span>压缩质量</span>
+                    <span class="quality-value">{{ Math.round(webpQuality * 100) }}%</span>
+                  </div>
+                  <input 
+                    type="range" 
+                    v-model.number="webpQuality" 
+                    min="0.1" 
+                    max="1.0" 
+                    step="0.05" 
+                    class="quality-slider"
+                  />
+                </div>
+              </Transition>
             </div>
 
             <div class="input-units">
@@ -420,11 +494,43 @@ const calculateClosestRatio = (w: number, h: number) => {
             <div v-if="imageUrl" class="image-result">
               <img :src="imageUrl" alt="生成的图像" />
               <div class="img-actions">
-                <a :href="imageUrl" target="_blank" download="gemini-gen.png">下载图像</a>
+                <a :href="imageUrl" target="_blank" :download="`gemini-gen.${shouldCompressWebp ? 'webp' : 'png'}`">下载图像</a>
               </div>
             </div>
             <div v-else-if="result" class="result-area error">
               {{ result }}
+            </div>
+          </div>
+
+          <!-- 手动抠像标签页 -->
+          <div v-if="activeTab === 'matting'" class="tab-pane">
+            <div class="input-unit">
+              <div class="unit-label">上传原始图片 (绿色背景效果最佳)</div>
+              <div class="matting-upload-area" @click="triggerMattingUpload">
+                <input type="file" ref="mattingFileInput" style="display: none" accept="image/*" @change="onMattingFileChange" />
+                <div v-if="!manualMattingSource" class="upload-placeholder">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                  </svg>
+                  <span>点击上传图片</span>
+                </div>
+                <img v-else :src="manualMattingSource" class="preview-img" />
+              </div>
+            </div>
+            
+            <button class="action-btn primary" :disabled="!manualMattingSource || isMattingLoading" @click="runManualMatting">
+              <span v-if="!isMattingLoading">执行智能抠像</span>
+              <span v-else class="loading-text">处理中...</span>
+            </button>
+            
+            <div v-if="manualMattingResult" class="image-result matting-result">
+              <div class="unit-label">抠像结果预览</div>
+              <div class="result-box">
+                <img :src="manualMattingResult" alt="抠像结果" />
+              </div>
+              <div class="img-actions">
+                <a :href="manualMattingResult" :download="`gemini_matting_${Date.now()}.png`" class="download-link">下载透明背景图片</a>
+              </div>
             </div>
           </div>
         </div>
@@ -665,55 +771,108 @@ const calculateClosestRatio = (w: number, h: number) => {
   color: white;
 }
 
-.image-options {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 12px;
-  align-items: center;
+.image-options-container {
+  margin-bottom: 16px;
   background: rgba(255, 255, 255, 0.03);
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.image-options-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.option-switches {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 140px;
 }
 
 .checkbox-label {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.7);
+  gap: 8px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .checkbox-label input {
   width: 16px;
   height: 16px;
   accent-color: #00fff2;
+  cursor: pointer;
 }
 
-.aspect-ratio-selector {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-}
-
-.aspect-ratio-selector label {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.5);
-  white-space: nowrap;
-}
-
-.resolution-control {
+.ratio-control {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: flex-end;
+  gap: 6px;
 }
 
-.res-hint {
-  font-size: 0.6rem;
-  color: rgba(255, 255, 255, 0.3);
-  padding-left: 48px;
+.quality-control-row {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quality-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: rgba(0, 255, 242, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.quality-value {
+  color: #00fff2;
+}
+
+.quality-slider {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  appearance: none;
+  outline: none;
+}
+
+.quality-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: #00fff2;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 255, 242, 0.5);
+  transition: all 0.2s;
+}
+
+.quality-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(0, 255, 242, 0.8);
+}
+
+.fade-slide-enter-active, .fade-slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.fade-slide-enter-from, .fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 .custom-res-inputs {
@@ -924,5 +1083,98 @@ const calculateClosestRatio = (w: number, h: number) => {
   opacity: 0;
   transform: translateY(30px) scale(0.9);
   filter: blur(15px);
+}
+
+.matting-upload-area {
+  width: 100%;
+  min-height: 140px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 2px dashed rgba(0, 255, 242, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  overflow: hidden;
+  position: relative;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.matting-upload-area:hover {
+  background: rgba(0, 255, 242, 0.05);
+  border-color: rgba(0, 255, 242, 0.5);
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.upload-placeholder span {
+  font-size: 0.8rem;
+}
+
+.preview-img {
+  max-width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+}
+
+.matting-result {
+  margin-top: 24px;
+}
+
+.result-box {
+  background-image: 
+    linear-gradient(45deg, #1a1a1a 25%, transparent 25%), 
+    linear-gradient(-45deg, #1a1a1a 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #1a1a1a 75%), 
+    linear-gradient(-45deg, transparent 75%, #1a1a1a 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+  background-color: #0a0a0a;
+  border-radius: 12px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 10px;
+}
+
+.result-box img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.img-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.download-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(0, 255, 242, 0.1);
+  border: 1px solid rgba(0, 255, 242, 0.4);
+  border-radius: 8px;
+  color: #00fff2;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.download-link:hover {
+  background: #00fff2;
+  color: #0a0a14;
+  box-shadow: 0 0 15px rgba(0, 255, 242, 0.4);
 }
 </style>

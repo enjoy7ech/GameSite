@@ -87,16 +87,16 @@ export class GeminiService {
         }
     }
 
-    public async generateImage(userPrompt: string, options: { removeBg?: boolean, aspectRatio?: string, resolution?: string } = {}) {
+    public async generateImage(userPrompt: string, options: { removeBg?: boolean, compressWebp?: boolean, webpQuality?: number, aspectRatio?: string, resolution?: string } = {}) {
         if (!this.client) return { error: "请配置 API Key" };
         console.log("[Gemini] 发起图像生成请求...");
 
         let finalPrompt = userPrompt;
         
         // 追加物理分辨率或比例描述到题词，强化 AI 感知
-        const resDesc = options.resolution || options.aspectRatio;
+        const resDesc = options.aspectRatio || options.resolution;
         if (resDesc) {
-            finalPrompt += `。输出要求：分辨率为 ${resDesc}。`;
+            finalPrompt += `。输出要求：画面比例为 ${resDesc}。`;
         }
 
         if (options.removeBg) {
@@ -131,15 +131,39 @@ export class GeminiService {
                 resultData = { base64: imagePart.inlineData.data, url: `data:image/png;base64,${imagePart.inlineData.data}` };
             }
 
-            if (options.removeBg) return await this.chromaKey(resultData.base64);
-            return resultData;
+            let finalResult = resultData;
+            if (options.removeBg) {
+                finalResult = await this.chromaKey(resultData.base64);
+            }
+            
+            if (options.compressWebp) {
+                finalResult = await this.convertToWebp(finalResult.base64, options.webpQuality || 0.85);
+            }
+
+            return finalResult;
         } catch (e: any) { 
             console.error("[Gemini] generateImage ERROR:", e);
             return { error: `生成异常: ${e.message}` }; 
         }
     }
 
-    private async chromaKey(base64: string): Promise<{url: string, base64: string}> {
+    private async convertToWebp(base64: string, quality: number = 0.85): Promise<{url: string, base64: string}> {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d')!;
+                ctx.drawImage(img, 0, 0);
+                const newBaseUrl = canvas.toDataURL('image/webp', quality);
+                resolve({ url: newBaseUrl, base64: newBaseUrl.split(',')[1] });
+            };
+            img.src = base64.startsWith('data:') ? base64 : `data:image/png;base64,${base64}`;
+        });
+    }
+
+    public async chromaKey(base64: string): Promise<{url: string, base64: string}> {
         return new Promise((resolve) => {
             const img = new Image();
             img.crossOrigin = "anonymous";
@@ -150,9 +174,24 @@ export class GeminiService {
                 ctx.drawImage(img, 0, 0);
                 const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                 const data = imageData.data;
+                
                 for (let i = 0; i < data.length; i += 4) {
                     const r = data[i], g = data[i+1], b = data[i+2];
-                    if (g > 100 && g > r * 1.4 && g > b * 1.4) data[i + 3] = 0;
+                    
+                    // 下调绿屏判定阈值：AI 极少生成 #00FF00 纯绿，多为类似你截图的橄榄绿/莫兰迪绿 (#95B47B)
+                    // 所以把判断系数从 1.4 放长到 1.15
+                    if (g > 80 && g > r * 1.15 && g > b * 1.15) {
+                        data[i + 3] = 0; // 背景完全透明
+                    } else if (g > 70 && g > r * 1.05 && g > b * 1.05) {
+                        // 半透明抗锯齿羽化处理 (De-spilling)：消除生硬的边缘绿边
+                        const maxCol = Math.max(r, b);
+                        const diff = g - maxCol;
+                        const alpha = Math.max(0, 255 - (diff * 12));
+                        data[i+3] = Math.min(data[i+3], alpha);
+                        
+                        // 强行把绿边拉回中性灰色，防止产生绿光污染
+                        data[i+1] = maxCol;
+                    }
                 }
                 ctx.putImageData(imageData, 0, 0);
                 const newBaseUrl = canvas.toDataURL('image/png');
