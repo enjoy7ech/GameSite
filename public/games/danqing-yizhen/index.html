@@ -106,15 +106,17 @@
                     <p>锁死受风力影响严重的碎片，使其无法偏移和旋转。</p>
                     <div class="shop-group">
                         <button class="btn-buy" data-id="bead">600 币</button>
-                        <button class="btn-upgrade hidden" data-id="bead-upg">升级 (Lv.1)</button>                <div class="shop-card">
+                        <button class="btn-upgrade hidden" data-id="bead-upg">升级 (Lv.1)</button>
+                    </div>
+                </div>
+
+                <div class="shop-card">
                     <div class="item-icon umbrella"></div>
                     <h4>油纸伞</h4>
                     <p>避雨遮泥。在模糊关卡中撑开一片清晰区域。<br>升级可扩大遮护范围。</p>
                     <div class="shop-group">
                         <button class="btn-buy" data-id="umbrella">700 币</button>
                         <button class="btn-upgrade hidden" data-id="umbrella-upg">升级 (Lv.1)</button>
-                    </div>
-                </div>
                     </div>
                 </div>
 
@@ -139,6 +141,7 @@
                     <div class="chapter-tab" data-chapter="2">第二章</div>
                     <div class="chapter-tab" data-chapter="3">第三章</div>
                     <div class="chapter-tab" data-chapter="4">第四章</div>
+                    <div class="chapter-tab" data-chapter="5">第五章</div>
                 </div>
 
                 <div id="level-list" class="levels-container">
@@ -193,11 +196,6 @@
                 <div class="item-icon compass"></div>
                 <div class="item-info"><span class="item-name">寻龙尺</span></div>
             </button>
-            <button class="item-btn hidden" id="item-umbrella" title="油纸伞：避雨清心，局部除雾">
-                <div class="item-shimmer"></div>
-                <div class="item-icon umbrella"></div>
-                <div class="item-info"><span class="item-name">油纸伞</span></div>
-            </button>
             <button class="item-btn hidden" id="item-censer" title="焚香炉：使特定残片吸附周围逻辑邻居">
                 <div class="item-shimmer"></div>
                 <div class="item-icon censer"></div>
@@ -239,6 +237,30 @@
                 <div class="item-info"><span class="item-name">定风珠</span></div>
                 <div class="cd-overlay"></div>
             </button>
+            <button class="item-btn hidden" id="item-umbrella" title="油纸伞：避雨清心，局部除雾">
+                <div class="item-shimmer"></div>
+                <div class="item-icon umbrella"></div>
+                <div class="item-info"><span class="item-name">油纸伞</span></div>
+            </button>
+        </div>
+        <!-- Snapshot Canvas for Transitions -->
+        <canvas id="transition-canvas" class="hidden"
+            style="position: absolute; inset: 0; z-index: 999; width: 100%; height: 100%; pointer-events: none; transition: filter 0.8s ease-out, opacity 0.8s ease-out;"></canvas>
+
+        <!-- Ink Loading Overlay -->
+        <div id="ink-loading" class="hidden"
+            style="position: absolute; inset: 0; background: #f4f1ea; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s;">
+            <div class="ink-blob-container"
+                style="position: relative; width: 200px; height: 200px; margin-bottom: 30px;">
+                <div class="ink-blob blob-1"></div>
+                <div class="ink-blob blob-2"></div>
+                <div class="ink-blob blob-3"></div>
+            </div>
+            <div class="loading-text"
+                style="font-family: 'Ma Shan Zheng'; font-size: 2.2rem; color: #333; letter-spacing: 6px; animation: text-fade 2s infinite;">
+                画卷铺展中...
+            </div>
+            <div style="margin-top: 15px; color: #888; letter-spacing: 2px; font-size: 0.9rem;">正在唤醒丹青之魂</div>
         </div>
     </div>
 

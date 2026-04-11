@@ -7,7 +7,7 @@ export const Levels = [
     { id: '1-2', chapter: 1, name: '渐入佳境', pieces: 30, rotate: false, evt: 'normal', img: 'assets/painting2.png', desc: '提升碎片数量，打磨基本功，修复残破的山水。', time: 240 },
     { id: '1-3', chapter: 1, name: '小试牛刀', pieces: 30, rotate: true, evt: 'normal', img: 'assets/painting3.png', desc: '原画方位错乱，考验你对构图的感知力。', time: 300 },
     { id: '1-4', chapter: 1, name: '熟能生巧', pieces: 50, rotate: true, evt: 'normal', img: 'assets/painting4.webp', desc: '50片复杂碎片，运用道具还原这幅传世名作。', time: 480 },
-    
+
     // --- 第二章：丹青幻境 ---
     { id: '2-1', chapter: 2, name: '遮眼迷途', pieces: 80, rotate: true, evt: 'fog', img: 'assets/painting5.webp', desc: '受迷雾遮蔽，唯有点亮琉璃灯方可看清全局。', time: 600 },
     { id: '2-2', chapter: 2, name: '偷天换日', pieces: 120, rotate: true, evt: 'fake', img: 'assets/painting6.webp', desc: '大量伪造残片混入，请用明心鉴识破。', time: 720 },
@@ -23,7 +23,13 @@ export const Levels = [
     { id: '4-1', chapter: 4, name: '烟雨初临', pieces: 100, rotate: true, evt: 'blurring', img: 'assets/painting12.webp', desc: '雨点打湿了边缘，在变模糊前完成合并。', time: 900 },
     { id: '4-2', chapter: 4, name: '润物无声', pieces: 130, rotate: true, evt: 'blurring+fake', img: 'assets/painting13.webp', desc: '雨势加重，墨迹化开。似乎还有伪影在干扰视线。', time: 1200 },
     { id: '4-3', chapter: 4, name: '画魂归位', pieces: 160, rotate: true, evt: 'blurring+fake', img: 'assets/painting14.webp', desc: '双重压力：雨水的冲刷与虚假碎片的诱导。', time: 1800 },
-    { id: '4-4', chapter: 4, name: '丹青不朽', pieces: 220, rotate: true, evt: 'blurring+fake', img: 'assets/painting15.webp', desc: '最终章：在倾盆大雨与乱象伪影中，守护画魂。', time: 2400 }
+    { id: '4-4', chapter: 4, name: '丹青不朽', pieces: 220, rotate: true, evt: 'blurring+fake', img: 'assets/painting15.webp', desc: '最终章：在倾盆大雨与乱象伪影中，守护画魂。', time: 2400 },
+
+    // --- 第五章：归元化境 ---
+    { id: '5-1', chapter: 5, name: '天外云卷', pieces: 200, rotate: true, evt: 'drifting+fog+blurring+fake', img: 'assets/painting16.png', desc: '究极试炼：风、雾、雨与幻象交织，唯有心明手快方可破阵。', time: 1800 },
+    { id: '5-2', chapter: 5, name: '墨龙破空', pieces: 260, rotate: true, evt: 'drifting+fog+blurring+fake', img: 'assets/painting17.png', desc: '风暴之中，邪气肆虐。所有干扰全数降临。', time: 2400 },
+    { id: '5-3', chapter: 5, name: '凤舞涅槃', pieces: 320, rotate: true, evt: 'drifting+fog+blurring+fake', img: 'assets/painting18.png', desc: '在重重幻影与墨雨中，重塑涅槃之美。', time: 3000 },
+    { id: '5-4', chapter: 5, name: '万古长青', pieces: 400, rotate: true, evt: 'drifting+fog+blurring+fake', img: 'assets/painting19.png', desc: '大结局：守护丹青之魂的最后一战。', time: 3600 }
 ];
 
 export class GameManager {
@@ -35,46 +41,90 @@ export class GameManager {
         this.isOvertime = false;
         this.isPlaying = false;
         this.currentLevel = null;
-        
+
         // Items and State
         this.highestLevelIndex = 0;
         this.itemSystem = new ItemSystem(this);
         this.unlockedItems = {};
         this.itemLevels = {};
         this.fogActive = false;
-        
+
         // Environment State
         this.windStrength = 0;
         this.windAngle = 0;
         this.windDX = 0;
         this.windDY = 0;
         this.blurBaseRate = 0;
+        this.blurredImage = null; // Pre-generated blurred texture
         this.levelBlur = 0; // Global level blur for Chapter 4
-        
+
         this.bindEvents();
         this.loadData();
         this.renderLevelMenu(1);
-        
+
         this.setupEngineOverrides();
     }
 
     setupEngineOverrides() {
         if (!PolyPiece.prototype._originalDrawV1) {
             PolyPiece.prototype._originalDrawV1 = PolyPiece.prototype.drawImage;
+            
+            // Re-Implementation: Optimized Plan C (Pre-blurred Texture & Umbrella Range)
             PolyPiece.prototype.drawImage = function(special) {
-                this._originalDrawV1(special);
+                const gm = window.gameManager;
+                const isWet = gm && gm.currentLevel && gm.currentLevel.evt.includes('blurring');
+                const ctx = this.isMoving ? puzzle.moveCtx : puzzle.playCtx;
+                
+                if (isWet) {
+                    // Check Umbrella & Shovel Protection using piece center
+                    let isProtected = false;
+                    const im = gm.itemSystem;
+                    const mx = im.mouseX;
+                    const my = im.mouseY;
+
+                    if (im.umbrellaActive) {
+                        const radius = im.effectPower.umbrella[(gm.itemLevels.umbrella || 1) - 1] || 120;
+                        const pDisp = this.fromSrcMatrix.transformPoint(this.pCentre);
+                        const dx = pDisp.x - mx;
+                        const dy = pDisp.y - my;
+                        if (dx*dx + dy*dy < radius*radius) isProtected = true;
+                    }
+                    
+                    if (!isProtected && im.shovelActive) {
+                        const radius = [100, 180, 280][(gm.itemLevels.shovel || 1) - 1];
+                        const pDisp = this.fromSrcMatrix.transformPoint(this.pCentre);
+                        const dx = pDisp.x - mx;
+                        const dy = pDisp.y - my;
+                        if (dx*dx + dy*dy < radius*radius) isProtected = true;
+                    }
+
+                    // Use pre-blurred image if not protected and not moving
+                    const useBlur = !isProtected && !this.isMoving;
+                    const originalImg = puzzle.srcImage;
+                    
+                    if (useBlur && gm.blurredImage) {
+                        puzzle.srcImage = gm.blurredImage;
+                        ctx.save();
+                        // Optional: slight opacity fade for the ink effect
+                        ctx.globalAlpha = 0.85; 
+                        this._originalDrawV1(special);
+                        ctx.restore();
+                        puzzle.srcImage = originalImg;
+                    } else {
+                        this._originalDrawV1(special);
+                    }
+                } else {
+                    this._originalDrawV1(special);
+                }
 
                 // Handle Mirror Marks (Red Stripes)
                 if (this.isFake && this.markedByMirror) {
-                    let ctx = this.isMoving ? puzzle.moveCtx : puzzle.playCtx;
                     ctx.save();
                     let pth = new Path2D();
                     pth.addPath(this.srcPath, this.fromSrcMatrix);
                     ctx.clip(pth);
-
                     ctx.lineWidth = 1.8;
                     ctx.strokeStyle = 'rgba(255, 50, 50, 0.45)';
-                    
                     const step = 15;
                     const offset = (Date.now() / 2000) % 15;
                     for(let i = -1000; i < 2000; i += step) {
@@ -91,65 +141,34 @@ export class GameManager {
             };
         }
         
-        // 2. Batch Rendering Override for Performance
+        // 2. Pure Drawing Loop
         if (puzzle && !puzzle.constructor.prototype._originalDrawPolyPieces) {
             const PuzzleClass = puzzle.constructor;
             PuzzleClass.prototype._originalDrawPolyPieces = PuzzleClass.prototype.drawPolyPieces;
-            
-            PuzzleClass.prototype.drawPolyPieces = function(butTop) {
-                const gm = window.gameManager; 
-                if (!gm || !gm.currentLevel || !gm.currentLevel.evt.includes('blurring')) {
-                    return this._originalDrawPolyPieces(butTop);
-                }
 
-                // Chapter 4 Optimized Batch Draw
-                this.playCtx.clearRect(0, 0, this.playCanvas.width, this.playCanvas.height);
-                const max = this.polyPieces.length - (butTop ? 1 : 0);
-                
-                const uActive = gm.itemSystem.umbrellaActive;
-                const uRadius = gm.itemSystem.effectPower.umbrella[(gm.itemLevels.umbrella || 1) - 1] || 120;
-                const uX = gm.itemSystem.mouseX;
-                const uY = gm.itemSystem.mouseY;
+            PuzzleClass.prototype.drawPolyPieces = function (butTop) {
+                const gm = window.gameManager;
+                if (!gm || !gm.currentLevel) return this._originalDrawPolyPieces(butTop);
 
-                // Group 1: Clear pieces (pieces.length >= 5 OR inside Umbrella)
-                for (let k = 0; k < max; ++k) {
-                    const pp = this.polyPieces[k];
-                    let isProtected = false;
-                    if (uActive) {
-                        const dx = pp.x - uX;
-                        const dy = pp.y - uY;
-                        if (dx*dx + dy*dy < uRadius*uRadius) isProtected = true;
-                    }
-                    if (pp.pieces.length >= 5 || isProtected) pp.drawImage();
-                }
-                
-                // Group 2: Blurry pieces (pieces.length < 5 AND NOT inside Umbrella)
-                const bVal = Math.floor(gm.levelBlur || 0);
-                if (bVal >= 1) {
-                    this.playCtx.save();
-                    this.playCtx.filter = `blur(${bVal}px)`;
+                const isBlur = gm.currentLevel.evt.includes('blurring');
+
+                if (isBlur) {
+                    // Clear and Redraw all - PolyPiece.drawImage handles texture switching
+                    this.playCtx.clearRect(0, 0, this.playCanvas.width, this.playCanvas.height);
+                    const max = this.polyPieces.length - (butTop ? 1 : 0);
                     for (let k = 0; k < max; ++k) {
-                        const pp = this.polyPieces[k];
-                        let isProtected = false;
-                        if (uActive) {
-                            const dx = pp.x - uX;
-                            const dy = pp.y - uY;
-                            if (dx*dx + dy*dy < uRadius*uRadius) isProtected = true;
-                        }
-                        if (pp.pieces.length < 5 && !isProtected) pp.drawImage();
+                        this.polyPieces[k].drawImage();
                     }
-                    this.playCtx.restore();
                 } else {
-                    for (let k = 0; k < max; ++k) {
-                        const pp = this.polyPieces[k];
-                        let isProtected = false;
-                        if (uActive) {
-                            const dx = pp.x - uX;
-                            const dy = pp.y - uY;
-                            if (dx*dx + dy*dy < uRadius*uRadius) isProtected = true;
-                        }
-                        if (pp.pieces.length < 5 && !isProtected) pp.drawImage();
-                    }
+                    this._originalDrawPolyPieces(butTop);
+                }
+
+                // Call Item Overlays to ensure they persist after main loop clears
+                if (gm.itemSystem.shovelActive) {
+                    gm.itemSystem.drawShovelReveal();
+                }
+                if (gm.itemSystem.umbrellaActive) {
+                    gm.itemSystem.drawUmbrellaVisual();
                 }
             };
         }
@@ -168,7 +187,7 @@ export class GameManager {
                 console.error("Failed to parse save data");
             }
         }
-        
+
         this.updateHUD();
         Object.keys(this.unlockedItems).forEach(id => {
             if (this.unlockedItems[id]) {
@@ -177,7 +196,7 @@ export class GameManager {
                     btn.innerText = '售罄';
                     btn.classList.add('sold-out');
                 }
-                
+
                 const upgBtn = document.querySelector(`.btn-upgrade[data-id="${id}-upg"]`);
                 if (upgBtn) {
                     upgBtn.classList.remove('hidden');
@@ -212,7 +231,7 @@ export class GameManager {
             this.showMenu();
         });
         document.getElementById('btn-exit-game').addEventListener('click', () => {
-            window.location.href = '/'; // Go back to main site
+            window.location.href = '/#games'; // Go back to game gallery on main site
         });
 
         document.getElementById('item-tray-toggle').addEventListener('click', () => {
@@ -231,7 +250,7 @@ export class GameManager {
         ['mousedown', 'mousemove', 'mouseup', 'wheel', 'touchstart', 'touchmove', 'touchend'].forEach(type => {
             document.addEventListener(type, blockInteraction, true);
         });
-        
+
         document.getElementById('btn-open-shop').addEventListener('click', () => {
             document.getElementById('shop-modal').classList.remove('hidden');
         });
@@ -256,7 +275,7 @@ export class GameManager {
             this.lastMousePos = { x: e.clientX - rect.left, y: e.clientY - rect.top };
             if (!this.fogActive || this.isPaused) return;
             const fog = document.getElementById('fog-overlay');
-            if(this.itemSystem.lampActive) {
+            if (this.itemSystem.lampActive) {
                 const level = (this.itemLevels && this.itemLevels.lamp) || 1;
                 const radius = [150, 250, 400][level - 1];
                 fog.style.maskImage = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, transparent ${radius}px, black ${radius * 2}px)`;
@@ -286,10 +305,10 @@ export class GameManager {
         Levels.filter(l => l.chapter === chapterId).forEach(level => {
             const levelIndex = Levels.findIndex(l => l.id === level.id);
             const isLocked = levelIndex > this.highestLevelIndex;
-            
+
             const card = document.createElement('div');
             card.className = 'level-card' + (isLocked ? ' locked' : '');
-            
+
             card.innerHTML = `
                 <div class="level-info">
                     <h3>${level.id} ${level.name}</h3>
@@ -309,15 +328,15 @@ export class GameManager {
         this.isPaused = false;
         this.stopTimer();
         this.stopEnvUpdate();
-        
+
         const activeTab = document.querySelector('.chapter-tab.active');
         if (activeTab) {
             this.renderLevelMenu(parseInt(activeTab.dataset.chapter, 10));
         }
-        
+
         document.getElementById('start-screen').classList.add('active');
         document.getElementById('start-screen').classList.remove('hidden');
-        
+
         document.getElementById('hud-timer').classList.add('hidden');
         document.getElementById('hud-chapter').classList.add('hidden');
         document.getElementById('btn-pause').classList.add('hidden');
@@ -330,17 +349,52 @@ export class GameManager {
         document.getElementById('environment-overlay').classList.add('hidden');
         this.fogActive = false;
         document.getElementById('forPuzzle').style.opacity = '0';
-        
+
         events.push({ event: 'stop' });
     }
 
     startGame(level) {
         this.currentLevel = level;
-        document.getElementById('current-chapter-name').innerText = `第${level.chapter}章：${level.name} (${level.pieces}片)`;
         
+        // --- Snapshot Transition ---
+        this.captureSnapshot();
+
+        setTimeout(() => {
+            this.executeStartGame(level);
+        }, 400);
+    }
+    
+    captureSnapshot() {
+        const trCanvas = document.getElementById('transition-canvas');
+        if (!trCanvas || !puzzle.playCanvas) return;
+        
+        const ctx = trCanvas.getContext('2d');
+        trCanvas.width = puzzle.playCanvas.width;
+        trCanvas.height = puzzle.playCanvas.height;
+        
+        ctx.clearRect(0, 0, trCanvas.width, trCanvas.height);
+        ctx.drawImage(puzzle.playCanvas, 0, 0);
+        ctx.drawImage(puzzle.moveCanvas, 0, 0);
+        
+        trCanvas.classList.remove('hidden');
+        trCanvas.style.opacity = '1';
+        trCanvas.style.filter = 'none';
+        
+        requestAnimationFrame(() => {
+            trCanvas.style.filter = 'blur(20px) grayscale(0.6)';
+        });
+    }
+
+    executeStartGame(level) {
+        // Stop current logic
+        clearInterval(this.timerInterval);
+        clearInterval(this.envInterval);
+        
+        document.getElementById('current-chapter-name').innerText = `第${level.chapter}章：${level.name} (${level.pieces}片)`;
+
         document.getElementById('start-screen').classList.remove('active');
         setTimeout(() => document.getElementById('start-screen').classList.add('hidden'), 500);
-        
+
         document.getElementById('hud-timer').classList.remove('hidden');
         document.getElementById('hud-chapter').classList.remove('hidden');
         document.getElementById('btn-pause').classList.remove('hidden');
@@ -349,6 +403,15 @@ export class GameManager {
         document.getElementById('item-hud').classList.remove('hidden');
         document.getElementById('game-over-screen').classList.add('hidden');
         document.getElementById('forPuzzle').style.opacity = '1';
+
+        const trCanvas = document.getElementById('transition-canvas');
+        if (trCanvas) {
+            trCanvas.style.opacity = '0';
+            setTimeout(() => trCanvas.classList.add('hidden'), 800);
+        }
+
+        this.isPlaying = false;
+        this.itemSystem.resetLevelState();
 
         const isFog = level.evt.includes('fog');
         const isDrift = level.evt.includes('drifting');
@@ -371,16 +434,16 @@ export class GameManager {
             this.windAngle = Math.random() * Math.PI * 2;
             this.windDX = Math.cos(this.windAngle);
             this.windDY = Math.sin(this.windAngle);
-            
+
             // Rotating sandstorm needs 200% size to cover corners
             particles.style.width = '200%';
             particles.style.height = '200%';
-            
+
             const deg = (this.windAngle * 180 / Math.PI);
             particles.style.transform = `translate(-50%, -50%) rotate(${deg + 180}deg)`;
             particles.style.left = '50%';
             particles.style.top = '50%';
-            
+
             const windIndicator = document.getElementById('wind-text');
             if (windIndicator) {
                 // Simplified arrow logic: ⮕ is 0deg, so we map deg directly
@@ -393,37 +456,74 @@ export class GameManager {
         const env = document.getElementById('environment-overlay');
         env.classList.toggle('hidden', !isDrift && !isBlur);
         document.getElementById('wind-indicator').classList.toggle('hidden', !isDrift);
-        
+
         particles.classList.toggle('raining', isBlur);
         particles.classList.toggle('sanding', isDrift);
 
+        // Show Ink Loading Overlay
+        const loading = document.getElementById('ink-loading');
+        if (loading) {
+            loading.classList.remove('hidden');
+            loading.style.opacity = '1';
+        }
+
+        // Reset preview container style for new level AFTER ink is shown
+        const puzzleContainer = document.getElementById('forPuzzle');
+        puzzleContainer.style.filter = 'none';
+        puzzleContainer.style.opacity = '1';
+
         puzzle.imageLoaded = false;
         puzzle.srcImage.src = level.img + '?t=' + Date.now();
-        
+
         document.getElementById('nbpieces').value = level.pieces;
         document.getElementById('rotationstep').value = level.rotate ? 6 : 0;
-        
+
         const waitLoad = setInterval(() => {
             if (puzzle.imageLoaded) {
                 clearInterval(waitLoad);
+                
+                if (level.evt.includes('blurring')) {
+                    this.levelBlur = 0;
+                    this.createBlurredImage();
+                }
+                
+                // Start piece generation flow
+                events.push({ event: "nbpieces", nbpieces: level.pieces });
+
+                if (puzzle.polyPieces) {
+                    puzzle.polyPieces.forEach(p => { p.currentBlur = 0; });
+                }
+
                 setTimeout(() => {
-                    events.push({ event: "nbpieces", nbpieces: level.pieces });
-                    
-                    if(puzzle.polyPieces) {
-                        puzzle.polyPieces.forEach(p => { p.currentBlur = 0; });
+                    if (level.evt.includes('fake')) {
+                        this.injectFakePieces();
                     }
+                    this.shuffleAllPieces();
+                    this.startEnvUpdate();
+                    this.isPlaying = true;
+                    this.updateHUD();
                     
-                    // Always shuffle pieces to provide a fresh "messy desk" start
+                    // Fade out loading screen
                     setTimeout(() => {
-                        if (level.evt.includes('fake')) {
-                            this.injectFakePieces();
+                        if (loading) {
+                            loading.style.opacity = '0';
+                            setTimeout(() => loading.classList.add('hidden'), 800);
                         }
-                        this.shuffleAllPieces();
-                        this.startEnvUpdate();
-                    }, 600);
-                }, 100);
+                    }, 1000); 
+                }, 800); // 800ms to ensure engine has processed nbpieces and created polyPieces
             }
         }, 50);
+
+        // Emergency safety timeout for loading screen UI only
+        setTimeout(() => {
+            if (loading && !loading.classList.contains('hidden')) {
+                clearInterval(waitLoad);
+                loading.style.opacity = '0';
+                setTimeout(() => loading.classList.add('hidden'), 800);
+                this.isPlaying = true;
+                this.updateHUD();
+            }
+        }, 6000);
 
         this.isPlaying = true;
         this.isPaused = false;
@@ -432,13 +532,16 @@ export class GameManager {
         this.startTimer();
         this.updateHUD();
     }
-    
+
     startEnvUpdate() {
         this.stopEnvUpdate();
-        
+
         if (this.currentLevel.evt.includes('drifting')) {
-            const speedMap = { '3-1': 0.15, '3-2': 0.3, '3-3': 0.5, '3-4': 0.8 };
-            this.windStrength = speedMap[this.currentLevel.id] || 0.2;
+            const speedMap = { 
+                '3-1': 0.15, '3-2': 0.3, '3-3': 0.5, '3-4': 0.8,
+                '5-1': 0.45, '5-2': 0.75, '5-3': 1.1, '5-4': 1.6
+            };
+            this.windStrength = speedMap[this.currentLevel.id] || 0.3;
         } else if (this.currentLevel.evt.includes('blurring')) {
             const rateMap = { '4-1': 0.008, '4-2': 0.015, '4-3': 0.03, '4-4': 0.05 };
             this.blurBaseRate = rateMap[this.currentLevel.id] || 0.01;
@@ -446,7 +549,7 @@ export class GameManager {
 
         const runUpdate = (now) => {
             if (!this.isPlaying || this.isPaused || !puzzle || !puzzle.polyPieces) return;
-            
+
             // Throttle environmental effects to ~20 FPS (every 50ms) to save CPU
             const delta = now - (this.lastEnvTime || 0);
             if (delta < 50) {
@@ -458,13 +561,12 @@ export class GameManager {
             this.handleEdgePanning();
 
             let needsRedraw = false;
-            
+
             if (this.currentLevel.evt.includes('blurring')) {
-                // Moving outside forEach fixes the "N times speed" bug
-                this.levelBlur = Math.min(8, this.levelBlur + this.blurBaseRate);
-                if (this.levelBlur >= 1) needsRedraw = true;
+                // Pre-generated blur doesn't need incrementing blurVal
+                needsRedraw = true; 
             }
-            
+
             puzzle.polyPieces.forEach(pp => {
                 if (pp.isMoving || pp.selected) return;
 
@@ -472,7 +574,7 @@ export class GameManager {
                     if (!this.itemSystem.beadActive) {
                         pp.x += this.windDX * this.windStrength;
                         pp.y += this.windDY * this.windStrength;
-                        
+
                         // v1.2: Occasional wind rotation (0.1% chance per frame)
                         if (Math.random() < 0.001 && !pp.fixedByBrush) {
                             const currentRot = pp.rot;
@@ -480,7 +582,7 @@ export class GameManager {
                             const newRot = (currentRot + dir + 6) % 6;
                             pp.rotate(newRot);
                         }
-                        
+
                         pp.setTransforms();
                         needsRedraw = true;
                     }
@@ -493,6 +595,18 @@ export class GameManager {
         this.envInterval = requestAnimationFrame(runUpdate);
     }
 
+    createBlurredImage() {
+        if (!puzzle || !puzzle.srcImage) return;
+        const src = puzzle.srcImage;
+        const canvas = document.createElement('canvas');
+        canvas.width = src.width;
+        canvas.height = src.height;
+        const ctx = canvas.getContext('2d');
+        ctx.filter = 'blur(10px)'; // High quality fixed blur
+        ctx.drawImage(src, 0, 0);
+        this.blurredImage = canvas;
+    }
+
     stopEnvUpdate() {
         if (this.envInterval) cancelAnimationFrame(this.envInterval);
         this.envInterval = null;
@@ -501,7 +615,7 @@ export class GameManager {
 
     handleEdgePanning() {
         if (!this.isPlaying || this.isPaused || !puzzle || !puzzle.polyPieces || !this.lastMousePos) return;
-        
+
         // Only pan if a piece is currently grabbed
         const isDragging = puzzle.polyPieces.some(p => p.selected);
         if (!isDragging) return;
@@ -511,11 +625,11 @@ export class GameManager {
         const rect = puzzle.container.getBoundingClientRect();
         const mx = this.lastMousePos.x;
         const my = this.lastMousePos.y;
-        
+
         let dx = 0, dy = 0;
         if (mx < margin) dx = panSpeed;
         else if (mx > rect.width - margin) dx = -panSpeed;
-        
+
         if (my < margin) dy = panSpeed;
         else if (my > rect.height - margin) dy = -panSpeed;
 
@@ -532,25 +646,25 @@ export class GameManager {
 
     injectFakePieces() {
         if (!puzzle || !puzzle.polyPieces || puzzle.polyPieces.length === 0) return;
-        
+
         const gridPositions = puzzle.polyPieces.map(p => ({ x: p.x, y: p.y }));
         const numFakes = Math.max(3, Math.floor(this.currentLevel.pieces * 0.15));
-        
-        for(let i=0; i<numFakes; i++) {
+
+        for (let i = 0; i < numFakes; i++) {
             let src = puzzle.polyPieces[Math.floor(Math.random() * puzzle.polyPieces.length)];
             let originalPiece = src.pieces[0];
             let clonedPiece = Object.create(Object.getPrototypeOf(originalPiece));
             Object.assign(clonedPiece, originalPiece);
-            
+
             let fakePoly = new PolyPiece(clonedPiece);
             fakePoly.isFake = true;
             fakePoly.rot = Math.floor(Math.random() * 6);
             fakePoly.markedByMirror = false;
-            
+
             // Random jittered start position near a real slot (tighter)
             const p = gridPositions[Math.floor(Math.random() * gridPositions.length)];
-            fakePoly.moveTo(p.x + (Math.random()-0.5)*40, p.y + (Math.random()-0.5)*40);
-            
+            fakePoly.moveTo(p.x + (Math.random() - 0.5) * 40, p.y + (Math.random() - 0.5) * 40);
+
             puzzle.polyPieces.push(fakePoly);
         }
         // Shuffle will be handled by the global caller shuffleAllPieces()
@@ -562,13 +676,13 @@ export class GameManager {
         const allPieces = puzzle.polyPieces;
         const allPositions = allPieces.map(p => ({ x: p.x, y: p.y }));
         const allRotations = allPieces.map(p => p.rot);
-        
+
         // Fisher-Yates piece identities
         for (let i = allPieces.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [allPieces[i], allPieces[j]] = [allPieces[j], allPieces[i]];
         }
-        
+
         // Re-assign positions and randomize all rotations (for non-fixed pieces)
         allPieces.forEach((p, i) => {
             // Apply a subtle centering force (15%) to keep pieces from flying to edges
@@ -576,7 +690,7 @@ export class GameManager {
             const cy = puzzle.contHeight / 2;
             const tx = cx + (allPositions[i].x - cx) * 0.85;
             const ty = cy + (allPositions[i].y - cy) * 0.85;
-            
+
             p.moveTo(tx, ty);
             // Only randomize rotation if the level allows it
             if (puzzle.rotationStep > 0) {
@@ -587,7 +701,7 @@ export class GameManager {
                 p.rot = 0;
             }
         });
-        
+
         puzzle.drawPolyPieces();
     }
 
@@ -598,7 +712,7 @@ export class GameManager {
         this.timerInterval = setInterval(() => {
             this.timerSeconds--;
             this.updateTimerDisplay();
-            
+
             if (this.timerSeconds <= 0) {
                 this.timerSeconds = 0;
                 this.isOvertime = true;
@@ -612,7 +726,7 @@ export class GameManager {
             }
         }, 1000);
     }
-    
+
     stopTimer() {
         if (this.timerInterval) clearInterval(this.timerInterval);
         document.getElementById('hud-timer').style.color = 'white';
@@ -628,7 +742,7 @@ export class GameManager {
         this.coins += amount;
         this.updateHUD();
         this.saveData();
-        
+
         const disp = document.getElementById('coins-display');
         const parent = disp.parentElement;
         if (parent) {
@@ -665,10 +779,10 @@ export class GameManager {
         this.isPlaying = false;
         this.stopTimer();
         this.stopEnvUpdate();
-        
+
         // 润笔费：极少量保底
-        const baseReward = Math.floor(this.currentLevel.pieces * 0.2); 
-        
+        const baseReward = Math.floor(this.currentLevel.pieces * 0.2);
+
         setTimeout(() => {
             const screen = document.getElementById('game-over-screen');
             screen.classList.remove('hidden');
@@ -683,13 +797,13 @@ export class GameManager {
         this.isPlaying = false;
         this.stopTimer();
         this.stopEnvUpdate();
-        
+
         const level = this.currentLevel;
         // 奖励重构：基础奖励 = 碎片数 * 基础系数 * 章节倍率
         const baseFactor = 3;
-        const chapterMult = [1, 1.5, 2.2, 3.5][level.chapter - 1]; 
+        const chapterMult = [1, 1.5, 2.2, 3.5][level.chapter - 1];
         const baseReward = Math.floor(level.pieces * baseFactor * chapterMult);
-        
+
         let reward = 0;
         if (this.isOvertime) {
             // 超时仅得一半基础奖金
@@ -699,10 +813,10 @@ export class GameManager {
             const timeBonus = Math.floor(baseReward * (this.timerSeconds / level.time));
             reward = baseReward + timeBonus;
         }
-        
+
         reward = Math.max(reward, 50); // 全场最低奖
         this.earnCoins(reward);
-        
+
         const levelIndex = Levels.findIndex(l => l.id === this.currentLevel.id);
         if (levelIndex >= this.highestLevelIndex && levelIndex < Levels.length - 1) {
             this.highestLevelIndex = levelIndex + 1;
@@ -714,7 +828,7 @@ export class GameManager {
             screen.classList.remove('hidden');
             screen.querySelector('h2').innerText = this.isOvertime ? "勉力修复" : "完美修复！";
             screen.querySelector('h2').style.color = this.isOvertime ? "#c0c0c0" : "#d4af37";
-            document.getElementById('game-over-text').innerText = this.isOvertime 
+            document.getElementById('game-over-text').innerText = this.isOvertime
                 ? `虽然超时，但画卷终得修复。领到酬劳：${reward} 币`
                 : `修复大获全胜！获得奖金：${reward} 币 (包含 ${Math.floor(reward - baseReward)} 币时间奖励)`;
         }, 800);

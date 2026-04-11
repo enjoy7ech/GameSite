@@ -9,7 +9,7 @@ export class ItemSystem {
         
         this.cdTimers = { censer: 0, brush: 0, shovel: 0, lamp: 0, mirror: 0, bead: 0, compass: 0, umbrella: 0 };
         this.chargeMax = { censer: [6, 4, 3], brush: [5, 4, 3], mirror: [3, 2, 1] };
-        this.effectPower = { censer: [2, 3, 5], brush: [4, 8, 15], mirror: [1, 1, 1], umbrella: [120, 180, 250] };
+        this.effectPower = { censer: [2, 3, 5], brush: [4, 8, 15], mirror: [1, 1, 1], umbrella: [180, 300, 450] };
         
         this.shovelActive = false;
         this.lampActive = false;
@@ -70,9 +70,35 @@ export class ItemSystem {
                 this.updateMirrorReveal(e.clientX, e.clientY);
             }
             if (this.umbrellaActive && this.gm.currentLevel && this.gm.currentLevel.evt.includes('blurring')) {
-                if (puzzle) puzzle.drawPolyPieces(); 
+                if (puzzle) {
+                    puzzle.drawPolyPieces(); 
+                }
             }
         });
+    }
+
+    drawUmbrellaVisual() {
+        if (!this.umbrellaActive || !puzzle) return;
+        const lx = this.mouseX;
+        const ly = this.mouseY;
+
+        const level = (this.gm.itemLevels && this.gm.itemLevels.umbrella) || 1;
+        const radius = this.effectPower.umbrella[level - 1];
+
+        const ctx = puzzle.playCtx;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(lx, ly, radius, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(212, 175, 55, 0.4)';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([5, 5]); // Dashed line for a "spiritual" look
+        ctx.stroke();
+        
+        // Add a subtle glow
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#d4af37';
+        ctx.stroke();
+        ctx.restore();
     }
 
     buyItem(id, btnElement) {
@@ -565,6 +591,11 @@ export class ItemSystem {
     }
 
     useUmbrella() {
+        if (!this.gm.currentLevel.evt.includes('blurring')) {
+            this.gm.showNotice('晴空万里，画意通透，无需动用油纸伞。');
+            return;
+        }
+
         this.umbrellaActive = !this.umbrellaActive;
         const btn = document.getElementById('item-umbrella');
         btn.classList.toggle('active', this.umbrellaActive);
@@ -607,20 +638,19 @@ export class ItemSystem {
             return; // Effect is suppressed by sandstorm
         }
 
-        // v1.3 Fix: Use local canvas coordinates
-        const puzzleRect = puzzle.container.getBoundingClientRect();
-        const localX = mx - puzzleRect.left;
-        const localY = my - puzzleRect.top;
+        // logic moved to drawShovelReveal for consistent main-loop rendering
+        puzzle.drawPolyPieces();
+    }
+
+    drawShovelReveal() {
+        if (!puzzle || !this.shovelActive) return;
         
-        // Find if a piece is under cursor
-        const hoveredPiece = puzzle.polyPieces.find(p => p.isPointInPath({x: localX, y: localY}));
+        // Find if a piece is under cursor using stored coordinates
+        const hoveredPiece = puzzle.polyPieces.find(p => p.isPointInPath({x: this.mouseX, y: this.mouseY}));
         if (!hoveredPiece) return;
 
         const level = (this.gm.itemLevels && this.gm.itemLevels.shovel) || 1;
         const radius = [100, 180, 280][level - 1];
-        
-        // Redraw to ensure clean state with existing pieces
-        puzzle.drawPolyPieces();
         
         const ctx = puzzle.playCtx;
         ctx.save();
@@ -636,7 +666,7 @@ export class ItemSystem {
         // REVEAL LOGIC: 
         // Move to bottom layer so it doesn't cover the puzzle piece
         ctx.globalCompositeOperation = 'destination-over';
-        ctx.globalAlpha = 0.4; // Lower opacity as requested
+        ctx.globalAlpha = 0.5; // Slightly increased for visibility
         
         const scale = puzzle.scale;
         ctx.setTransform(scale, 0, 0, scale, displayCenter.x - hoveredPiece.pCentre.x * scale, displayCenter.y - hoveredPiece.pCentre.y * scale);
@@ -648,7 +678,7 @@ export class ItemSystem {
         ctx.globalCompositeOperation = 'source-over';
         ctx.globalAlpha = 1.0;
         ctx.strokeStyle = 'rgba(212, 175, 55, 0.7)';
-        ctx.lineWidth = 4;
+        ctx.lineWidth = 3;
         ctx.stroke(circle);
         
         ctx.restore();
