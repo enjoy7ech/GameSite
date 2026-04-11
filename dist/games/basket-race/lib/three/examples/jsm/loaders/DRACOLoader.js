@@ -1,1 +1,561 @@
-function _0x4a28(){const _0x267d2b=['zgvJB2rLCLbHDgG','C2XPy2u','Cgf0Aa','r2v0qxr0CMLIDxrL','rfrFsu5umty','Cg9ZDe1LC3nHz2u','zgvIDwC','x3rHC2TmB2fK','rgvJB2rLqNvMzMvYvg9nzxnO','yNL0zuXLBMD0Aa','Dg9tDhjPBMC','C3vIC3rYAw5N','vevyx0npt1je','BgvUz3rO','rMXVyxqZmKfYCMf5','ue9tsvrjt04','D2fZBujPBMfYEq','x2zYzwu','rgvJB2rLCG','qLvHtKO','Aw5KzxHpzG','ChvZAa','D29YA2vYtMv4DfrHC2Tjra','rfrFvuLovdG','ndKYnda0wLDyCeTL','veHsruuUrfjbq09mB2fKzxi6ierLy29KAw5NigzHAwXLzdOG','rfrFsu5umZi','C2v0qxr0CMLIDxrL','rfrFvuLovde2','rfrFvuLovdmY','CMvXDwvZDeHLywrLCG','qxjQDNy','uhjSq1G','vgfZAYbSB2fKoIa','D2L0AenYzwrLBNrPywXZ','zgvMyxvSDef0DhjPyNv0zuLeCW','uLfdDg8','BwfUywDLCG','D29YA2vYug9VBa','Bg9N','yNvMzMvY','tK9stufm','zhjHy29FzgvJB2rLCI5QCW','AM1iAe0','AM9PBG','ALPPzNe','rgvJB2rLCKj1zMzLCG','BwfW','Bg9Hza','oti3odffshrrANK','CMvZB2X2zq','zgvJB2rLr2vVBwv0CNK','BNvTx3bVAw50CW','yxr0CMLIDxrLCW','r2v0qxr0CMLIDxrLrgf0yufYCMf5rM9YqwXSug9PBNrZ','r2v0qxr0CMLIDxrLqNLvBMLXDwvjza','x2DLDfDVCMTLCG','DvnvENO','C2v0ugf0Aa','zxjYB3i','DgHLBG','n05hCwXyuW','y2f0y2G','BNvTx2zHy2vZ','B0fey3a','BgvyCfm','q09mt1i','Aw5PDa','mtaZmZbxC3bSEhq','mJeWrfLmwNnW','r2v0rw5JB2rLzeDLB21LDhj5vhLWzq','lYOGD29YA2vYicOV','ywXS','rfrFsu5uoa','mJCZnZyWDMfHz0TN','DhLWzq','zhjHy29FzgvJB2rLCI53yxnT','zgvJB2rLCKjPBMfYEq','vfjjqu5hvuXbuL9nrvni','ChrY','D29YA2vYtgLTAxq','yxjYyxK','zgvMyxvSDef0DhjPyNv0zvr5CgvZ','zhjHy28','yxjYyxLIDwzMzxi','Eg1iuNy','C3bSAxq','A2v5','B2jQzwn0','yxr0CMLIDxrLvhLWzxm','DhDlEMy','u2TTD08','ufjyBg8','veHsruuUrfjbq09mB2fKzxi6ifvUzxHWzwn0zwqGBwvZC2fNzsWGiG','lYOGzhjHy28GzgvJB2rLCIaQlW','x2XVywrmAwjYyxj5','BuP2sKG','C2v0v2L0AenYzwrLBNrPywXZ','nJe1meTZs2T3yG','C2v0DgLUz3mUiej1zMzLCIbOyxmGywXYzwfKEsbIzwvUihrYyw5ZzMvYCMvKlG','zgvJB2rL','B25nB2r1BgvmB2fKzwq','ruPytLy','z2v0','mtG0mZGZmMTcz2vNEG','D29YA2vYu291CMnLvvjm','zxjYB3jFBxnN','x3rHC2TdB3n0CW','A1jysuC','x2nHBgXIywnRCW','AwnuqLu','EMXwt1m','Dgv4Da','zgvJB2rLCKnVBMzPzW','zxbLBuO','sevbueyZmG','mJm2n3rqD3HUCq','z2vVBwv0CNK','BgfZDeLUzgv4t2y','x3jLBgvHC2vuyxnR','x21HBgXVyW','C29YDa','qLLurvnFuevsx0vmru1ftLq','C2v0','zgvJB2rLrhjHy29gAwXL','BwvZC2fNzq','mJu0mdq0vvbnCgnr','DM1xA0y','DgfZA0nVBMzPzW','zgvJB2rLCLbLBMrPBMC','yxLXD0K','sMXpAMG','A3HPwLO','r2v0qxr0CMLIDxrLswq','ChjLBg9Hza','uxf6EKm','rfrFrKXpqvqZmG','AgfZ','DKfVtgS','mNW0FdH8mxWZFdv8nNW5Fdb8mtb8nW','CMvQzwn0','B3f5vLq','Aw5KzxG','x2nYzwf0zuDLB21LDhj5','BNvTx2nVBxbVBMvUDhm','Efrbuxu','ChjVBwLZzq'];_0x4a28=function(){return _0x267d2b;};return _0x4a28();}const _0x41e64d=_0x1948;(function(_0x1e5760,_0x4d2379){const _0x33884f=_0x1948,_0x3241dd=_0x1e5760();while(!![]){try{const _0x19ff34=parseInt(_0x33884f(0x10f))/0x1+-parseInt(_0x33884f(0x141))/0x2+-parseInt(_0x33884f(0x128))/0x3+-parseInt(_0x33884f(0xe2))/0x4+-parseInt(_0x33884f(0x13b))/0x5*(parseInt(_0x33884f(0x13c))/0x6)+parseInt(_0x33884f(0x134))/0x7*(parseInt(_0x33884f(0x15f))/0x8)+parseInt(_0x33884f(0x16b))/0x9*(-parseInt(_0x33884f(0x159))/0xa);if(_0x19ff34===_0x4d2379)break;else _0x3241dd['push'](_0x3241dd['shift']());}catch(_0x113335){_0x3241dd['push'](_0x3241dd['shift']());}}}(_0x4a28,0x3ede6));import{BufferAttribute,BufferGeometry,FileLoader,Loader}from'three';const _taskCache=new WeakMap();class DRACOLoader extends Loader{constructor(_0x442b09){const _0x3ac8ea=_0x1948,_0x4d7c30={'JlOjh':_0x3ac8ea(0x105),'uSUzz':_0x3ac8ea(0x120),'leXpS':_0x3ac8ea(0x103)},_0xb37627=_0x3ac8ea(0xef)[_0x3ac8ea(0x14d)]('|');let _0x39ca7e=0x0;while(!![]){switch(_0xb37627[_0x39ca7e++]){case'0':this[_0x3ac8ea(0x160)]='';continue;case'1':this[_0x3ac8ea(0x144)]=null;continue;case'2':super(_0x442b09);continue;case'3':this[_0x3ac8ea(0xe5)]=null;continue;case'4':this[_0x3ac8ea(0xf7)]='';continue;case'5':this[_0x3ac8ea(0x147)]=0x4;continue;case'6':this[_0x3ac8ea(0x11d)]=[];continue;case'7':this['defaultAttributeTypes']={'position':_0x4d7c30[_0x3ac8ea(0xe7)],'normal':_0x4d7c30[_0x3ac8ea(0xe7)],'color':_0x3ac8ea(0x105),'uv':_0x4d7c30[_0x3ac8ea(0xe7)]};continue;case'8':this[_0x3ac8ea(0x168)]={};continue;case'9':this['workerNextTaskID']=0x1;continue;case'10':this['defaultAttributeIDs']={'position':_0x3ac8ea(0x106),'normal':_0x4d7c30[_0x3ac8ea(0x130)],'color':_0x3ac8ea(0x139),'uv':_0x4d7c30[_0x3ac8ea(0x138)]};continue;}break;}}['setDecoderPath'](_0x446e4c){const _0x3a5486=_0x1948;return this[_0x3a5486(0xf7)]=_0x446e4c,this;}['setDecoderConfig'](_0x31a812){const _0x3c567e=_0x1948;return this[_0x3c567e(0x168)]=_0x31a812,this;}['setWorkerLimit'](_0x46f0c2){const _0x47a1b9=_0x1948;return this[_0x47a1b9(0x147)]=_0x46f0c2,this;}[_0x41e64d(0x127)](_0x54b00a,_0x354abe,_0x2cdd69,_0x35476d){const _0x27c4f1=_0x41e64d,_0x553dbe={'Arjvv':'arraybuffer'},_0x2099b8=new FileLoader(this[_0x27c4f1(0x11c)]);_0x2099b8['setPath'](this[_0x27c4f1(0xf9)]),_0x2099b8['setResponseType'](_0x553dbe[_0x27c4f1(0x116)]),_0x2099b8['setRequestHeader'](this[_0x27c4f1(0x115)]),_0x2099b8['setWithCredentials'](this[_0x27c4f1(0x119)]),_0x2099b8['load'](_0x54b00a,_0x34a4f3=>{const _0x13e338=_0x27c4f1;this[_0x13e338(0xe0)](_0x34a4f3,_0x354abe)[_0x13e338(0x135)](_0x35476d);},_0x2cdd69,_0x35476d);}[_0x41e64d(0xe0)](_0x490f73,_0x23e845,_0x3026f6,_0x52d724){const _0x18acb5=_0x41e64d,_0x5c5287={'attributeIDs':_0x3026f6||this[_0x18acb5(0x11a)],'attributeTypes':_0x52d724||this[_0x18acb5(0x149)],'useUniqueIDs':!!_0x3026f6};return this[_0x18acb5(0x12a)](_0x490f73,_0x5c5287)[_0x18acb5(0x133)](_0x23e845);}[_0x41e64d(0x12a)](_0xb9fadf,_0x289761){const _0x1aea67=_0x41e64d,_0x5990f0={'Ecljo':function(_0x41f226,_0x5ea438){return _0x41f226+_0x5ea438;},'jZifq':'THREE.DRACOLoader:\x20Unable\x20to\x20re-decode\x20a\x20buffer\x20with\x20different\x20'},_0x14c0e6=JSON['stringify'](_0x289761);if(_taskCache[_0x1aea67(0xed)](_0xb9fadf)){const _0x228f74=_taskCache[_0x1aea67(0x15e)](_0xb9fadf);if(_0x228f74[_0x1aea67(0x14e)]===_0x14c0e6)return _0x228f74[_0x1aea67(0xf6)];else{if(_0xb9fadf[_0x1aea67(0x100)]===0x0)throw new Error(_0x5990f0['Ecljo'](_0x5990f0[_0x1aea67(0x124)],_0x1aea67(0x15a)));}}let _0x52b521;const _0x47d4bb=this[_0x1aea67(0x10d)]++,_0x49831c=_0xb9fadf[_0x1aea67(0x100)],_0x4f8116=this['_getWorker'](_0x47d4bb,_0x49831c)[_0x1aea67(0x133)](_0x2cb87e=>{return _0x52b521=_0x2cb87e,new Promise((_0x21a784,_0x590835)=>{const _0x195ae6=_0x1948;_0x52b521[_0x195ae6(0x164)][_0x47d4bb]={'resolve':_0x21a784,'reject':_0x590835},_0x52b521[_0x195ae6(0xfc)]({'type':_0x195ae6(0x15b),'id':_0x47d4bb,'taskConfig':_0x289761,'buffer':_0xb9fadf},[_0xb9fadf]);});})[_0x1aea67(0x133)](_0x6386ff=>this[_0x1aea67(0xf3)](_0x6386ff[_0x1aea67(0x16c)]));return _0x4f8116[_0x1aea67(0x135)](()=>!![])['then'](()=>{const _0x12de3a=_0x1aea67;_0x52b521&&_0x47d4bb&&this[_0x12de3a(0x16e)](_0x52b521,_0x47d4bb);}),_taskCache[_0x1aea67(0xdf)](_0xb9fadf,{'key':_0x14c0e6,'promise':_0x4f8116}),_0x4f8116;}['_createGeometry'](_0xc9cb64){const _0xa2e68e=_0x41e64d,_0x5a7dfb=new BufferGeometry();_0xc9cb64[_0xa2e68e(0xf2)]&&_0x5a7dfb['setIndex'](new BufferAttribute(_0xc9cb64[_0xa2e68e(0xf2)][_0xa2e68e(0x148)],0x1));for(let _0x52526c=0x0;_0x52526c<_0xc9cb64[_0xa2e68e(0x12c)][_0xa2e68e(0x104)];_0x52526c++){const _0x2d18ec=_0xc9cb64['attributes'][_0x52526c],_0xfe01ad=_0x2d18ec['name'],_0x2c259f=_0x2d18ec[_0xa2e68e(0x148)],_0xbc49ca=_0x2d18ec['itemSize'];_0x5a7dfb[_0xa2e68e(0x112)](_0xfe01ad,new BufferAttribute(_0x2c259f,_0xbc49ca));}return _0x5a7dfb;}['_loadLibrary'](_0x3515f1,_0x21563d){const _0x2402e6=_0x41e64d,_0x1daad8=new FileLoader(this[_0x2402e6(0x11c)]);return _0x1daad8[_0x2402e6(0x131)](this[_0x2402e6(0xf7)]),_0x1daad8['setResponseType'](_0x21563d),_0x1daad8[_0x2402e6(0x158)](this[_0x2402e6(0x119)]),new Promise((_0x1e91f5,_0x49a6b4)=>{_0x1daad8['load'](_0x3515f1,_0x1e91f5,undefined,_0x49a6b4);});}[_0x41e64d(0xea)](){return this['_initDecoder'](),this;}['_initDecoder'](){const _0x146223=_0x41e64d,_0x1f2edf={'xmHRv':_0x146223(0x13e),'SkmwO':_0x146223(0x14f),'icTBU':_0x146223(0x121),'ujrJc':_0x146223(0x143),'vAoLk':_0x146223(0x14b)};if(this[_0x146223(0xe5)])return this['decoderPending'];const _0xaf9651=typeof WebAssembly!==_0x1f2edf[_0x146223(0x152)]||this[_0x146223(0x168)]['type']==='js',_0x147475=[];return _0xaf9651?_0x147475[_0x146223(0x10c)](this[_0x146223(0x156)](_0x1f2edf[_0x146223(0x165)],_0x146223(0x167))):(_0x147475[_0x146223(0x10c)](this['_loadLibrary']('draco_wasm_wrapper.js',_0x146223(0x167))),_0x147475[_0x146223(0x10c)](this[_0x146223(0x156)](_0x1f2edf['ujrJc'],_0x1f2edf[_0x146223(0xee)]))),this['decoderPending']=Promise[_0x146223(0x13f)](_0x147475)[_0x146223(0x133)](_0x374e6f=>{const _0x35f213=_0x146223,_0x409a45=_0x374e6f[0x0];!_0xaf9651&&(this[_0x35f213(0x168)][_0x35f213(0x107)]=_0x374e6f[0x1]);const _0x594a06=DRACOWorker[_0x35f213(0x101)](),_0x1b1074=[_0x35f213(0x155),_0x409a45,'',_0x1f2edf[_0x35f213(0x14c)],_0x594a06[_0x35f213(0x102)](_0x594a06[_0x35f213(0x10b)]('{')+0x1,_0x594a06[_0x35f213(0x16d)]('}'))][_0x35f213(0x123)]('\x0a');this[_0x35f213(0x160)]=URL['createObjectURL'](new Blob([_0x1b1074]));}),this[_0x146223(0xe5)];}[_0x41e64d(0x12f)](_0x3149cd,_0xdb5e24){const _0x342301=_0x41e64d,_0x23f79b={'zSBsY':_0x342301(0x15b),'kRXIG':_0x342301(0x132),'QqzzC':_0x342301(0x154),'zlVOS':function(_0x1c1903,_0x344eb4){return _0x1c1903>_0x344eb4;},'mJvJH':function(_0xfb5865,_0x2af742){return _0xfb5865<_0x2af742;},'PrlCX':_0x342301(0x13a)};return this['_initDecoder']()[_0x342301(0x133)](()=>{const _0x438471=_0x342301,_0x2ef9c8={'wITwd':function(_0x3583fd,_0x17e74a){const _0x460f4c=_0x1948;return _0x23f79b[_0x460f4c(0x166)](_0x3583fd,_0x17e74a);}};if(_0x23f79b[_0x438471(0x157)](this[_0x438471(0x11d)]['length'],this[_0x438471(0x147)])){const _0x59498e=new Worker(this[_0x438471(0x160)]);_0x59498e[_0x438471(0x164)]={},_0x59498e[_0x438471(0x162)]={},_0x59498e[_0x438471(0xfe)]=0x0,_0x59498e[_0x438471(0xfc)]({'type':_0x23f79b[_0x438471(0x117)],'decoderConfig':this[_0x438471(0x168)]}),_0x59498e['onmessage']=function(_0x501410){const _0x46e8ac=_0x438471,_0xdceecb=_0x501410['data'];switch(_0xdceecb[_0x46e8ac(0x142)]){case _0x23f79b['zSBsY']:_0x59498e[_0x46e8ac(0x164)][_0xdceecb['id']][_0x46e8ac(0x129)](_0xdceecb);break;case _0x23f79b[_0x46e8ac(0x163)]:_0x59498e[_0x46e8ac(0x164)][_0xdceecb['id']][_0x46e8ac(0xf0)](_0xdceecb);break;default:console[_0x46e8ac(0x132)](_0x23f79b[_0x46e8ac(0xeb)]+_0xdceecb['type']+'\x22');}},this[_0x438471(0x11d)][_0x438471(0x10c)](_0x59498e);}else this['workerPool'][_0x438471(0x170)](function(_0x5a8535,_0x4a5ebb){const _0x4bc467=_0x438471;return _0x2ef9c8['wITwd'](_0x5a8535[_0x4bc467(0xfe)],_0x4a5ebb['_taskLoad'])?-0x1:0x1;});const _0x5b965a=this[_0x438471(0x11d)][this['workerPool']['length']-0x1];return _0x5b965a[_0x438471(0x162)][_0x3149cd]=_0xdb5e24,_0x5b965a['_taskLoad']+=_0xdb5e24,_0x5b965a;});}[_0x41e64d(0x16e)](_0x458762,_0x52a379){const _0x264467=_0x41e64d;_0x458762[_0x264467(0xfe)]-=_0x458762[_0x264467(0x162)][_0x52a379],delete _0x458762[_0x264467(0x164)][_0x52a379],delete _0x458762[_0x264467(0x162)][_0x52a379];}[_0x41e64d(0xfd)](){const _0x36a169=_0x41e64d;console[_0x36a169(0x11e)](_0x36a169(0x118),this[_0x36a169(0x11d)]['map'](_0x227e2b=>_0x227e2b[_0x36a169(0xfe)]));}['dispose'](){const _0x5b3d16=_0x41e64d,_0x892e76={'jEQxt':function(_0x3cee7c,_0x23acb6){return _0x3cee7c<_0x23acb6;}};for(let _0xaf0df5=0x0;_0x892e76['jEQxt'](_0xaf0df5,this['workerPool'][_0x5b3d16(0x104)]);++_0xaf0df5){this[_0x5b3d16(0x11d)][_0xaf0df5]['terminate']();}return this['workerPool']['length']=0x0,this;}}function DRACOWorker(){const _0x338ad9=_0x41e64d,_0x22e8a9={'RKGYM':_0x338ad9(0x13a),'oADcp':_0x338ad9(0x15b),'jmHhM':function(_0x2e5f4d,_0x5c6942){return _0x2e5f4d===_0x5c6942;},'epemJ':'THREE.DRACOLoader:\x20Unexpected\x20geometry\x20type.','ejUhE':function(_0x176477,_0x51bc05){return _0x176477===_0x51bc05;},'kxiZZ':function(_0x545691,_0x35292c){return _0x545691+_0x35292c;},'BUaNJ':function(_0x4f58d9,_0x54a7e8){return _0x4f58d9===_0x54a7e8;},'ayqwI':function(_0x2c060c,_0x11455d,_0x198561,_0x36cc33,_0x2cdc5c,_0x202047,_0x7b2d0c){return _0x2c060c(_0x11455d,_0x198561,_0x36cc33,_0x2cdc5c,_0x202047,_0x7b2d0c);},'EJXNV':function(_0x187472,_0x5de99d){return _0x187472===_0x5de99d;},'RQCto':function(_0x326078,_0x58e838,_0x1c8b84,_0x50a822){return _0x326078(_0x58e838,_0x1c8b84,_0x50a822);},'xTAQu':function(_0x10fbe5,_0x2edbba){return _0x10fbe5*_0x2edbba;},'twKzf':function(_0x598236,_0x3a13ec){return _0x598236*_0x3a13ec;}};let _0x5d49a2,_0x1adf5f;onmessage=function(_0x4ef79a){const _0xeff027=_0x338ad9,_0x12edef={'oqyVT':function(_0x5560c2,_0x544c57){return _0x5560c2(_0x544c57);},'PRXlo':function(_0x3b8da1,_0x206b2e,_0xf70eed,_0x1afbaf,_0xed3f30){return _0x3b8da1(_0x206b2e,_0xf70eed,_0x1afbaf,_0xed3f30);},'vmWkF':_0xeff027(0x15b)},_0x1b041f=_0x4ef79a['data'];switch(_0x1b041f[_0xeff027(0x142)]){case _0x22e8a9['RKGYM']:_0x5d49a2=_0x1b041f[_0xeff027(0x168)],_0x1adf5f=new Promise(function(_0x4fb726){const _0x42526a=_0xeff027;_0x5d49a2[_0x42526a(0x15c)]=function(_0x47a369){_0x4fb726({'draco':_0x47a369});},_0x12edef[_0x42526a(0xf1)](DracoDecoderModule,_0x5d49a2);});break;case _0x22e8a9[_0xeff027(0x137)]:const _0x3945a4=_0x1b041f['buffer'],_0x318de2=_0x1b041f[_0xeff027(0xe4)];_0x1adf5f['then'](_0x2459a9=>{const _0x23fa44=_0xeff027,_0x2bd38e=_0x2459a9[_0x23fa44(0x14a)],_0x4cd49d=new _0x2bd38e[(_0x23fa44(0x109))](),_0x33f5e5=new _0x2bd38e[(_0x23fa44(0x125))]();_0x33f5e5['Init'](new Int8Array(_0x3945a4),_0x3945a4['byteLength']);try{const _0x44c331=_0x12edef[_0x23fa44(0x153)](_0x3a0db5,_0x2bd38e,_0x4cd49d,_0x33f5e5,_0x318de2),_0x549aa7=_0x44c331['attributes'][_0x23fa44(0x126)](_0x1784d4=>_0x1784d4[_0x23fa44(0x148)][_0x23fa44(0x11f)]);if(_0x44c331['index'])_0x549aa7[_0x23fa44(0x10c)](_0x44c331[_0x23fa44(0xf2)][_0x23fa44(0x148)][_0x23fa44(0x11f)]);self[_0x23fa44(0xfc)]({'type':_0x12edef[_0x23fa44(0xe3)],'id':_0x1b041f['id'],'geometry':_0x44c331},_0x549aa7);}catch(_0x4603af){console[_0x23fa44(0x132)](_0x4603af),self[_0x23fa44(0xfc)]({'type':'error','id':_0x1b041f['id'],'error':_0x4603af[_0x23fa44(0xe1)]});}finally{_0x2bd38e['destroy'](_0x33f5e5),_0x2bd38e['destroy'](_0x4cd49d);}});break;}};function _0x3a0db5(_0x44d8ae,_0x51fda3,_0x2f3535,_0x1f3770){const _0x20c31b=_0x338ad9,_0x2733d2=_0x1f3770['attributeIDs'],_0x2ed425=_0x1f3770[_0x20c31b(0x150)];let _0x5368c5,_0x306fb8;const _0x3b0dd1=_0x51fda3[_0x20c31b(0x13d)](_0x2f3535);if(_0x22e8a9[_0x20c31b(0x122)](_0x3b0dd1,_0x44d8ae['TRIANGULAR_MESH']))_0x5368c5=new _0x44d8ae['Mesh'](),_0x306fb8=_0x51fda3[_0x20c31b(0xff)](_0x2f3535,_0x5368c5);else{if(_0x3b0dd1===_0x44d8ae['POINT_CLOUD'])_0x5368c5=new _0x44d8ae['PointCloud'](),_0x306fb8=_0x51fda3['DecodeBufferToPointCloud'](_0x2f3535,_0x5368c5);else throw new Error(_0x22e8a9[_0x20c31b(0x169)]);}if(!_0x306fb8['ok']()||_0x22e8a9['ejUhE'](_0x5368c5[_0x20c31b(0x146)],0x0))throw new Error(_0x22e8a9[_0x20c31b(0xe8)](_0x20c31b(0x110),_0x306fb8[_0x20c31b(0x161)]()));const _0x34f296={'index':null,'attributes':[]};for(const _0xcd7c7 in _0x2733d2){const _0x54fc7a=self[_0x2ed425[_0xcd7c7]];let _0x184f62,_0x255344;if(_0x1f3770['useUniqueIDs'])_0x255344=_0x2733d2[_0xcd7c7],_0x184f62=_0x51fda3[_0x20c31b(0x12e)](_0x5368c5,_0x255344);else{_0x255344=_0x51fda3[_0x20c31b(0xe9)](_0x5368c5,_0x44d8ae[_0x2733d2[_0xcd7c7]]);if(_0x22e8a9[_0x20c31b(0x10a)](_0x255344,-0x1))continue;_0x184f62=_0x51fda3[_0x20c31b(0xfa)](_0x5368c5,_0x255344);}_0x34f296[_0x20c31b(0x12c)]['push'](_0x22e8a9[_0x20c31b(0xe6)](_0x545087,_0x44d8ae,_0x51fda3,_0x5368c5,_0xcd7c7,_0x54fc7a,_0x184f62));}return _0x22e8a9[_0x20c31b(0x15d)](_0x3b0dd1,_0x44d8ae[_0x20c31b(0x145)])&&(_0x34f296[_0x20c31b(0xf2)]=_0x22e8a9[_0x20c31b(0x11b)](_0x11e0dd,_0x44d8ae,_0x51fda3,_0x5368c5)),_0x44d8ae['destroy'](_0x5368c5),_0x34f296;}function _0x11e0dd(_0x34c155,_0x28a030,_0x1caf92){const _0x555e4c=_0x338ad9,_0xf3a08e=_0x1caf92[_0x555e4c(0x136)](),_0x3d10b3=_0x22e8a9[_0x555e4c(0xf5)](_0xf3a08e,0x3),_0xed32a9=_0x22e8a9[_0x555e4c(0x151)](_0x3d10b3,0x4),_0x401af3=_0x34c155[_0x555e4c(0x16f)](_0xed32a9);_0x28a030['GetTrianglesUInt32Array'](_0x1caf92,_0xed32a9,_0x401af3);const _0x1b59a5=new Uint32Array(_0x34c155['HEAPF32']['buffer'],_0x401af3,_0x3d10b3)[_0x555e4c(0xf8)]();return _0x34c155[_0x555e4c(0x108)](_0x401af3),{'array':_0x1b59a5,'itemSize':0x1};}function _0x545087(_0xbc22d3,_0x1f1a0d,_0xf60ece,_0x16e70b,_0x5dfa29,_0x22fbe7){const _0x40366b=_0x338ad9,_0xb2d3e1=_0x22fbe7[_0x40366b(0xf4)](),_0x5bbdea=_0xf60ece[_0x40366b(0x12b)](),_0x2d85a9=_0x5bbdea*_0xb2d3e1,_0x349d2e=_0x2d85a9*_0x5dfa29[_0x40366b(0xde)],_0x50413c=_0xcdcea5(_0xbc22d3,_0x5dfa29),_0x2da78c=_0xbc22d3['_malloc'](_0x349d2e);_0x1f1a0d[_0x40366b(0x12d)](_0xf60ece,_0x22fbe7,_0x50413c,_0x349d2e,_0x2da78c);const _0x15d292=new _0x5dfa29(_0xbc22d3[_0x40366b(0x16a)][_0x40366b(0x11f)],_0x2da78c,_0x2d85a9)[_0x40366b(0xf8)]();return _0xbc22d3[_0x40366b(0x108)](_0x2da78c),{'name':_0x16e70b,'array':_0x15d292,'itemSize':_0xb2d3e1};}function _0xcdcea5(_0x528ecf,_0x536428){const _0x56c6a1=_0x338ad9;switch(_0x536428){case Float32Array:return _0x528ecf[_0x56c6a1(0xec)];case Int8Array:return _0x528ecf[_0x56c6a1(0x140)];case Int16Array:return _0x528ecf[_0x56c6a1(0xfb)];case Int32Array:return _0x528ecf[_0x56c6a1(0x111)];case Uint8Array:return _0x528ecf[_0x56c6a1(0x10e)];case Uint16Array:return _0x528ecf[_0x56c6a1(0x113)];case Uint32Array:return _0x528ecf[_0x56c6a1(0x114)];}}}function _0x1948(_0x2df347,_0x54fd81){_0x2df347=_0x2df347-0xde;const _0x4a283f=_0x4a28();let _0x1948f5=_0x4a283f[_0x2df347];if(_0x1948['iDVFrG']===undefined){var _0x430fff=function(_0x1535b2){const _0x148c24='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x1afaa0='',_0x4e8e0d='';for(let _0x484008=0x0,_0x15f80a,_0x589adc,_0x5c5f17=0x0;_0x589adc=_0x1535b2['charAt'](_0x5c5f17++);~_0x589adc&&(_0x15f80a=_0x484008%0x4?_0x15f80a*0x40+_0x589adc:_0x589adc,_0x484008++%0x4)?_0x1afaa0+=String['fromCharCode'](0xff&_0x15f80a>>(-0x2*_0x484008&0x6)):0x0){_0x589adc=_0x148c24['indexOf'](_0x589adc);}for(let _0x5c947b=0x0,_0x198539=_0x1afaa0['length'];_0x5c947b<_0x198539;_0x5c947b++){_0x4e8e0d+='%'+('00'+_0x1afaa0['charCodeAt'](_0x5c947b)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x4e8e0d);};_0x1948['VttteU']=_0x430fff,_0x1948['ztyNIg']={},_0x1948['iDVFrG']=!![];}const _0x436b54=_0x4a283f[0x0],_0x128640=_0x2df347+_0x436b54,_0x92bd12=_0x1948['ztyNIg'][_0x128640];return!_0x92bd12?(_0x1948f5=_0x1948['VttteU'](_0x1948f5),_0x1948['ztyNIg'][_0x128640]=_0x1948f5):_0x1948f5=_0x92bd12,_0x1948f5;}export{DRACOLoader};
+import {
+	BufferAttribute,
+	BufferGeometry,
+	FileLoader,
+	Loader
+} from 'three';
+
+const _taskCache = new WeakMap();
+
+class DRACOLoader extends Loader {
+
+	constructor( manager ) {
+
+		super( manager );
+
+		this.decoderPath = '';
+		this.decoderConfig = {};
+		this.decoderBinary = null;
+		this.decoderPending = null;
+
+		this.workerLimit = 4;
+		this.workerPool = [];
+		this.workerNextTaskID = 1;
+		this.workerSourceURL = '';
+
+		this.defaultAttributeIDs = {
+			position: 'POSITION',
+			normal: 'NORMAL',
+			color: 'COLOR',
+			uv: 'TEX_COORD'
+		};
+		this.defaultAttributeTypes = {
+			position: 'Float32Array',
+			normal: 'Float32Array',
+			color: 'Float32Array',
+			uv: 'Float32Array'
+		};
+
+	}
+
+	setDecoderPath( path ) {
+
+		this.decoderPath = path;
+
+		return this;
+
+	}
+
+	setDecoderConfig( config ) {
+
+		this.decoderConfig = config;
+
+		return this;
+
+	}
+
+	setWorkerLimit( workerLimit ) {
+
+		this.workerLimit = workerLimit;
+
+		return this;
+
+	}
+
+	load( url, onLoad, onProgress, onError ) {
+
+		const loader = new FileLoader( this.manager );
+
+		loader.setPath( this.path );
+		loader.setResponseType( 'arraybuffer' );
+		loader.setRequestHeader( this.requestHeader );
+		loader.setWithCredentials( this.withCredentials );
+
+		loader.load( url, ( buffer ) => {
+
+			this.decodeDracoFile( buffer, onLoad ).catch( onError );
+
+		}, onProgress, onError );
+
+	}
+
+	decodeDracoFile( buffer, callback, attributeIDs, attributeTypes ) {
+
+		const taskConfig = {
+			attributeIDs: attributeIDs || this.defaultAttributeIDs,
+			attributeTypes: attributeTypes || this.defaultAttributeTypes,
+			useUniqueIDs: !! attributeIDs
+		};
+
+		return this.decodeGeometry( buffer, taskConfig ).then( callback );
+
+	}
+
+	decodeGeometry( buffer, taskConfig ) {
+
+		const taskKey = JSON.stringify( taskConfig );
+
+		// Check for an existing task using this buffer. A transferred buffer cannot be transferred
+		// again from this thread.
+		if ( _taskCache.has( buffer ) ) {
+
+			const cachedTask = _taskCache.get( buffer );
+
+			if ( cachedTask.key === taskKey ) {
+
+				return cachedTask.promise;
+
+			} else if ( buffer.byteLength === 0 ) {
+
+				// Technically, it would be possible to wait for the previous task to complete,
+				// transfer the buffer back, and decode again with the second configuration. That
+				// is complex, and I don't know of any reason to decode a Draco buffer twice in
+				// different ways, so this is left unimplemented.
+				throw new Error(
+
+					'THREE.DRACOLoader: Unable to re-decode a buffer with different ' +
+					'settings. Buffer has already been transferred.'
+
+				);
+
+			}
+
+		}
+
+		//
+
+		let worker;
+		const taskID = this.workerNextTaskID ++;
+		const taskCost = buffer.byteLength;
+
+		// Obtain a worker and assign a task, and construct a geometry instance
+		// when the task completes.
+		const geometryPending = this._getWorker( taskID, taskCost )
+			.then( ( _worker ) => {
+
+				worker = _worker;
+
+				return new Promise( ( resolve, reject ) => {
+
+					worker._callbacks[ taskID ] = { resolve, reject };
+
+					worker.postMessage( { type: 'decode', id: taskID, taskConfig, buffer }, [ buffer ] );
+
+					// this.debug();
+
+				} );
+
+			} )
+			.then( ( message ) => this._createGeometry( message.geometry ) );
+
+		// Remove task from the task list.
+		// Note: replaced '.finally()' with '.catch().then()' block - iOS 11 support (#19416)
+		geometryPending
+			.catch( () => true )
+			.then( () => {
+
+				if ( worker && taskID ) {
+
+					this._releaseTask( worker, taskID );
+
+					// this.debug();
+
+				}
+
+			} );
+
+		// Cache the task result.
+		_taskCache.set( buffer, {
+
+			key: taskKey,
+			promise: geometryPending
+
+		} );
+
+		return geometryPending;
+
+	}
+
+	_createGeometry( geometryData ) {
+
+		const geometry = new BufferGeometry();
+
+		if ( geometryData.index ) {
+
+			geometry.setIndex( new BufferAttribute( geometryData.index.array, 1 ) );
+
+		}
+
+		for ( let i = 0; i < geometryData.attributes.length; i ++ ) {
+
+			const attribute = geometryData.attributes[ i ];
+			const name = attribute.name;
+			const array = attribute.array;
+			const itemSize = attribute.itemSize;
+
+			geometry.setAttribute( name, new BufferAttribute( array, itemSize ) );
+
+		}
+
+		return geometry;
+
+	}
+
+	_loadLibrary( url, responseType ) {
+
+		const loader = new FileLoader( this.manager );
+		loader.setPath( this.decoderPath );
+		loader.setResponseType( responseType );
+		loader.setWithCredentials( this.withCredentials );
+
+		return new Promise( ( resolve, reject ) => {
+
+			loader.load( url, resolve, undefined, reject );
+
+		} );
+
+	}
+
+	preload() {
+
+		this._initDecoder();
+
+		return this;
+
+	}
+
+	_initDecoder() {
+
+		if ( this.decoderPending ) return this.decoderPending;
+
+		const useJS = typeof WebAssembly !== 'object' || this.decoderConfig.type === 'js';
+		const librariesPending = [];
+
+		if ( useJS ) {
+
+			librariesPending.push( this._loadLibrary( 'draco_decoder.js', 'text' ) );
+
+		} else {
+
+			librariesPending.push( this._loadLibrary( 'draco_wasm_wrapper.js', 'text' ) );
+			librariesPending.push( this._loadLibrary( 'draco_decoder.wasm', 'arraybuffer' ) );
+
+		}
+
+		this.decoderPending = Promise.all( librariesPending )
+			.then( ( libraries ) => {
+
+				const jsContent = libraries[ 0 ];
+
+				if ( ! useJS ) {
+
+					this.decoderConfig.wasmBinary = libraries[ 1 ];
+
+				}
+
+				const fn = DRACOWorker.toString();
+
+				const body = [
+					'/* draco decoder */',
+					jsContent,
+					'',
+					'/* worker */',
+					fn.substring( fn.indexOf( '{' ) + 1, fn.lastIndexOf( '}' ) )
+				].join( '\n' );
+
+				this.workerSourceURL = URL.createObjectURL( new Blob( [ body ] ) );
+
+			} );
+
+		return this.decoderPending;
+
+	}
+
+	_getWorker( taskID, taskCost ) {
+
+		return this._initDecoder().then( () => {
+
+			if ( this.workerPool.length < this.workerLimit ) {
+
+				const worker = new Worker( this.workerSourceURL );
+
+				worker._callbacks = {};
+				worker._taskCosts = {};
+				worker._taskLoad = 0;
+
+				worker.postMessage( { type: 'init', decoderConfig: this.decoderConfig } );
+
+				worker.onmessage = function ( e ) {
+
+					const message = e.data;
+
+					switch ( message.type ) {
+
+						case 'decode':
+							worker._callbacks[ message.id ].resolve( message );
+							break;
+
+						case 'error':
+							worker._callbacks[ message.id ].reject( message );
+							break;
+
+						default:
+							console.error( 'THREE.DRACOLoader: Unexpected message, "' + message.type + '"' );
+
+					}
+
+				};
+
+				this.workerPool.push( worker );
+
+			} else {
+
+				this.workerPool.sort( function ( a, b ) {
+
+					return a._taskLoad > b._taskLoad ? - 1 : 1;
+
+				} );
+
+			}
+
+			const worker = this.workerPool[ this.workerPool.length - 1 ];
+			worker._taskCosts[ taskID ] = taskCost;
+			worker._taskLoad += taskCost;
+			return worker;
+
+		} );
+
+	}
+
+	_releaseTask( worker, taskID ) {
+
+		worker._taskLoad -= worker._taskCosts[ taskID ];
+		delete worker._callbacks[ taskID ];
+		delete worker._taskCosts[ taskID ];
+
+	}
+
+	debug() {
+
+		console.log( 'Task load: ', this.workerPool.map( ( worker ) => worker._taskLoad ) );
+
+	}
+
+	dispose() {
+
+		for ( let i = 0; i < this.workerPool.length; ++ i ) {
+
+			this.workerPool[ i ].terminate();
+
+		}
+
+		this.workerPool.length = 0;
+
+		return this;
+
+	}
+
+}
+
+/* WEB WORKER */
+
+function DRACOWorker() {
+
+	let decoderConfig;
+	let decoderPending;
+
+	onmessage = function ( e ) {
+
+		const message = e.data;
+
+		switch ( message.type ) {
+
+			case 'init':
+				decoderConfig = message.decoderConfig;
+				decoderPending = new Promise( function ( resolve/*, reject*/ ) {
+
+					decoderConfig.onModuleLoaded = function ( draco ) {
+
+						// Module is Promise-like. Wrap before resolving to avoid loop.
+						resolve( { draco: draco } );
+
+					};
+
+					DracoDecoderModule( decoderConfig ); // eslint-disable-line no-undef
+
+				} );
+				break;
+
+			case 'decode':
+				const buffer = message.buffer;
+				const taskConfig = message.taskConfig;
+				decoderPending.then( ( module ) => {
+
+					const draco = module.draco;
+					const decoder = new draco.Decoder();
+					const decoderBuffer = new draco.DecoderBuffer();
+					decoderBuffer.Init( new Int8Array( buffer ), buffer.byteLength );
+
+					try {
+
+						const geometry = decodeGeometry( draco, decoder, decoderBuffer, taskConfig );
+
+						const buffers = geometry.attributes.map( ( attr ) => attr.array.buffer );
+
+						if ( geometry.index ) buffers.push( geometry.index.array.buffer );
+
+						self.postMessage( { type: 'decode', id: message.id, geometry }, buffers );
+
+					} catch ( error ) {
+
+						console.error( error );
+
+						self.postMessage( { type: 'error', id: message.id, error: error.message } );
+
+					} finally {
+
+						draco.destroy( decoderBuffer );
+						draco.destroy( decoder );
+
+					}
+
+				} );
+				break;
+
+		}
+
+	};
+
+	function decodeGeometry( draco, decoder, decoderBuffer, taskConfig ) {
+
+		const attributeIDs = taskConfig.attributeIDs;
+		const attributeTypes = taskConfig.attributeTypes;
+
+		let dracoGeometry;
+		let decodingStatus;
+
+		const geometryType = decoder.GetEncodedGeometryType( decoderBuffer );
+
+		if ( geometryType === draco.TRIANGULAR_MESH ) {
+
+			dracoGeometry = new draco.Mesh();
+			decodingStatus = decoder.DecodeBufferToMesh( decoderBuffer, dracoGeometry );
+
+		} else if ( geometryType === draco.POINT_CLOUD ) {
+
+			dracoGeometry = new draco.PointCloud();
+			decodingStatus = decoder.DecodeBufferToPointCloud( decoderBuffer, dracoGeometry );
+
+		} else {
+
+			throw new Error( 'THREE.DRACOLoader: Unexpected geometry type.' );
+
+		}
+
+		if ( ! decodingStatus.ok() || dracoGeometry.ptr === 0 ) {
+
+			throw new Error( 'THREE.DRACOLoader: Decoding failed: ' + decodingStatus.error_msg() );
+
+		}
+
+		const geometry = { index: null, attributes: [] };
+
+		// Gather all vertex attributes.
+		for ( const attributeName in attributeIDs ) {
+
+			const attributeType = self[ attributeTypes[ attributeName ] ];
+
+			let attribute;
+			let attributeID;
+
+			// A Draco file may be created with default vertex attributes, whose attribute IDs
+			// are mapped 1:1 from their semantic name (POSITION, NORMAL, ...). Alternatively,
+			// a Draco file may contain a custom set of attributes, identified by known unique
+			// IDs. glTF files always do the latter, and `.drc` files typically do the former.
+			if ( taskConfig.useUniqueIDs ) {
+
+				attributeID = attributeIDs[ attributeName ];
+				attribute = decoder.GetAttributeByUniqueId( dracoGeometry, attributeID );
+
+			} else {
+
+				attributeID = decoder.GetAttributeId( dracoGeometry, draco[ attributeIDs[ attributeName ] ] );
+
+				if ( attributeID === - 1 ) continue;
+
+				attribute = decoder.GetAttribute( dracoGeometry, attributeID );
+
+			}
+
+			geometry.attributes.push( decodeAttribute( draco, decoder, dracoGeometry, attributeName, attributeType, attribute ) );
+
+		}
+
+		// Add index.
+		if ( geometryType === draco.TRIANGULAR_MESH ) {
+
+			geometry.index = decodeIndex( draco, decoder, dracoGeometry );
+
+		}
+
+		draco.destroy( dracoGeometry );
+
+		return geometry;
+
+	}
+
+	function decodeIndex( draco, decoder, dracoGeometry ) {
+
+		const numFaces = dracoGeometry.num_faces();
+		const numIndices = numFaces * 3;
+		const byteLength = numIndices * 4;
+
+		const ptr = draco._malloc( byteLength );
+		decoder.GetTrianglesUInt32Array( dracoGeometry, byteLength, ptr );
+		const index = new Uint32Array( draco.HEAPF32.buffer, ptr, numIndices ).slice();
+		draco._free( ptr );
+
+		return { array: index, itemSize: 1 };
+
+	}
+
+	function decodeAttribute( draco, decoder, dracoGeometry, attributeName, attributeType, attribute ) {
+
+		const numComponents = attribute.num_components();
+		const numPoints = dracoGeometry.num_points();
+		const numValues = numPoints * numComponents;
+		const byteLength = numValues * attributeType.BYTES_PER_ELEMENT;
+		const dataType = getDracoDataType( draco, attributeType );
+
+		const ptr = draco._malloc( byteLength );
+		decoder.GetAttributeDataArrayForAllPoints( dracoGeometry, attribute, dataType, byteLength, ptr );
+		const array = new attributeType( draco.HEAPF32.buffer, ptr, numValues ).slice();
+		draco._free( ptr );
+
+		return {
+			name: attributeName,
+			array: array,
+			itemSize: numComponents
+		};
+
+	}
+
+	function getDracoDataType( draco, attributeType ) {
+
+		switch ( attributeType ) {
+
+			case Float32Array: return draco.DT_FLOAT32;
+			case Int8Array: return draco.DT_INT8;
+			case Int16Array: return draco.DT_INT16;
+			case Int32Array: return draco.DT_INT32;
+			case Uint8Array: return draco.DT_UINT8;
+			case Uint16Array: return draco.DT_UINT16;
+			case Uint32Array: return draco.DT_UINT32;
+
+		}
+
+	}
+
+}
+
+export { DRACOLoader };

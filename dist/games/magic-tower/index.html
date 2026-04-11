@@ -1,1 +1,499 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Magic Tower: Cyber Edition</title><link rel="stylesheet" href="index.css"><style>body{margin:0;background:#050510;color:#fff;font-family:'Segoe UI',sans-serif;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}#game-container{position:relative;background:#08081a;padding:25px;padding-bottom:60px;border:1px solid rgba(0,255,242,.2);border-radius:12px;display:flex;gap:20px;box-shadow:0 0 100px rgba(0,255,242,.05);width:fit-content;max-width:98vw;max-height:95vh;box-sizing:border-box}canvas{background:#000;border:2px solid #111;display:block;image-rendering:pixelated;border-radius:4px;box-shadow:0 0 30px rgba(0,0,0,.5);flex-shrink:0;width:484px;height:484px}#hud{display:flex;flex-direction:column;gap:8px;width:260px;height:484px;flex-shrink:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(0,255,242,0.2) transparent}#hud::-webkit-scrollbar{width:4px}#hud::-webkit-scrollbar-thumb{background:rgba(0,255,242,.2);border-radius:2px}.hud-group{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);padding:12px;border-radius:6px}.hud-row{display:flex;justify-content:space-between;margin:6px 0;font-size:.85rem;font-family:'Courier New',monospace;transition:transform .1s}.label{color:rgba(255,255,255,.85);font-size:.65rem;text-transform:uppercase}.value{color:#00fff2;font-weight:700;font-size:.8rem;text-shadow:0 0 10px rgba(0,255,242,.5)}.key-row{display:flex;gap:8px;margin-top:5px}.key-item{flex:1;padding:4px;text-align:center;border-radius:2px;position:relative}.key-yellow{background:rgba(255,204,0,.1);border:1px solid rgba(255,204,0,.3)}.key-blue{background:rgba(0,153,255,.1);border:1px solid rgba(0,153,255,.3)}.key-red{background:rgba(255,51,51,.1);border:1px solid rgba(255,51,51,.3)}.log-container{margin-top:5px;font-size:.75rem;color:#888;border-top:1px solid rgba(255,255,255,.1);padding-top:10px;height:100px;overflow-y:scroll;-ms-overflow-style:none;scrollbar-width:none}.log-container::-webkit-scrollbar{display:none}.log-item{margin-bottom:4px}#toast{position:fixed;top:5%;left:50%;transform:translateX(-50%);background:rgba(0,255,242,.95);color:#000;padding:12px 30px;border-radius:40px;z-index:2000;font-weight:800;font-size:.9rem;pointer-events:none;opacity:0;transition:all .3s cubic-bezier(.18, .89, .32, 1.28);box-shadow:0 0 30px rgba(0,255,242,.5);border:2px solid #fff}.hazard-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;margin-right:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,51,51,.2);border-radius:4px;color:#fff;font-family:monospace;font-size:.65rem;cursor:help;transition:all .2s ease}.hazard-badge:hover{background:rgba(255,51,51,.2);border-color:rgba(255,51,51,.6);transform:translateY(-1px) scale(1.05);box-shadow:0 0 15px rgba(255,51,51,.3)}</style></head><body><div id="cover-screen"><canvas id="shader-canvas" style="position:absolute;inset:0;z-index:-1"></canvas><div class="cover-btn-group"><button onclick="startGame()" class="cover-btn btn-primary">协议重启 • START GAME</button> <button id="continue-btn" onclick="continueGame()" class="cover-btn btn-secondary">矩阵同步 • CONTINUE</button></div><div style="position:absolute;bottom:30px;font-size:.75rem;color:#444;font-family:monospace;letter-spacing:2px">V1.5 CORE SYSTEM LOADED // PERSISTENT DATA FOUND // @ENJOY7ECH</div></div><div id="toast">系统通知</div><div id="game-container" style="display:flex;align-items:center;justify-content:center;min-height:100vh;width:100vw;background:#010105;box-sizing:border-box;padding:20px 40px;gap:20px"><div id="hud" style="width:320px;min-width:320px;height:545px;background:rgba(8,8,20,.95);border:2px solid #00fff2;border-radius:12px;backdrop-filter:blur(15px);box-sizing:border-box;display:flex;flex-direction:column;padding:0;overflow:hidden"><div style="padding:12px 15px;border-bottom:2px solid rgba(0,255,242,.2);background:rgba(0,255,242,.05)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px"><span class="label" style="font-size:.55rem;letter-spacing:2px;color:rgba(255,255,255,.7)">LOCATION SCANNER</span> <button onclick="openFloorSelector()" style="background:rgba(0,255,170,.1);border:1px solid #0fa;color:#0fa;padding:1px 6px;font-size:.5rem;cursor:pointer;border-radius:2px">SYNC / JUMP</button></div><div id="val-floor" style="color:#00fff2;font-weight:800;font-size:.9rem;font-family:'Courier New',monospace;text-shadow:0 0 10px rgba(0,255,242,.3)">1F - CYBER LAB</div></div><div id="stats-scroll" style="flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:12px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="display:flex;flex-direction:column;border-left:2px solid #00fff2;padding-left:8px;background:rgba(255,255,255,.01);padding:4px 8px"><span class="label" style="font-size:.55rem;margin-bottom:1px">生命体征 🧬</span> <span id="val-hp" class="value" style="font-size:1rem;color:#fff">1000</span></div><div style="display:flex;flex-direction:column;border-left:2px solid #fc0;padding-left:8px;background:rgba(255,255,255,.01);padding:4px 8px"><span class="label" style="font-size:.55rem;margin-bottom:1px">虚拟货币 💰</span> <span id="val-gold" class="value" style="font-size:1rem;color:#fc0">0</span></div><div style="display:flex;flex-direction:column;border-left:2px solid #f44;padding-left:8px;background:rgba(255,255,255,.01);padding:4px 8px"><span class="label" style="font-size:.55rem;margin-bottom:1px">实时火力 ⚔️</span> <span id="val-atk" class="value" style="font-size:1rem;color:#f44">10</span></div><div style="display:flex;flex-direction:column;border-left:2px solid #0fa;padding-left:8px;background:rgba(255,255,255,.01);padding:4px 8px"><span class="label" style="font-size:.55rem;margin-bottom:1px">物理装甲 🛡️</span> <span id="val-def" class="value" style="font-size:1rem;color:#0fa">10</span></div></div><div style="border-top:1px solid rgba(255,255,255,.05);padding-top:8px;font-size:.6rem;color:#fc0;font-family:monospace;display:flex;flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between"><span>机能模块: 🔴 <span id="val-gem-atk" style="color:#fff">0</span> / 🔵 <span id="val-gem-def" style="color:#fff">0</span></span> <span style="color:#ff3232">吸血反馈: <span id="val-hero-vamp" style="color:#fff;font-weight:700">0%</span></span></div><div style="display:flex;justify-content:space-between"><span style="color:#00fff2">穿透输出: <span id="val-hero-pen" style="color:#fff;font-weight:700">0%</span></span> <span style="color:#fc0">穿透抗性: <span id="val-pen-res" style="color:#fff;font-weight:700">0%</span></span></div></div><div class="hud-group" style="padding:8px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;background:rgba(255,255,255,.02)"><div style="display:flex;flex-direction:column;border-left:2px solid #fc0;padding-left:6px"><span style="font-size:.7rem">🎫 <span id="val-key-y" style="color:#fff;font-weight:700">0</span></span> <span style="font-size:.4rem;color:#fc0;letter-spacing:1px">KEY-Y</span></div><div style="display:flex;flex-direction:column;border-left:2px solid #09f;padding-left:6px"><span style="font-size:.7rem">💳 <span id="val-key-b" style="color:#fff;font-weight:700">0</span></span> <span style="font-size:.4rem;color:#09f;letter-spacing:1px">KEY-B</span></div><div style="display:flex;flex-direction:column;border-left:2px solid #f33;padding-left:6px"><span style="font-size:.7rem">🪪 <span id="val-key-r" style="color:#fff;font-weight:700">0</span></span> <span style="font-size:.4rem;color:#f33;letter-spacing:1px">KEY-R</span></div></div><div style="display:flex;flex-direction:column;gap:8px"><div style="font-size:.55rem;color:#00fff2;letter-spacing:1px;opacity:.8">EQUIPMENT MATRIX</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><div class="key-item" style="background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);height:32px;display:flex;align-items:center;padding:0 8px"><div id="slot-sword-content" style="flex:1;font-size:.55rem;color:#00fff2;overflow:hidden;white-space:nowrap;text-overflow:ellipsis"></div></div><div class="key-item" style="background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);height:32px;display:flex;align-items:center;padding:0 8px"><div id="slot-shield-content" style="flex:1;font-size:.55rem;color:#ff00ea;overflow:hidden;white-space:nowrap;text-overflow:ellipsis"></div></div><div class="key-item" style="background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);height:32px;display:flex;align-items:center;padding:0 8px"><div id="slot-sword2-content" style="flex:1;font-size:.55rem;color:#00fff2;overflow:hidden;white-space:nowrap;text-overflow:ellipsis"></div></div><div class="key-item" style="background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);height:32px;display:flex;align-items:center;padding:0 8px"><div id="slot-shield2-content" style="flex:1;font-size:.55rem;color:#ff00ea;overflow:hidden;white-space:nowrap;text-overflow:ellipsis"></div></div><div class="key-item" style="background:rgba(0,255,170,.02);border:1px solid rgba(0,255,170,.1);height:32px;display:flex;align-items:center;padding:0 8px"><div id="slot-gadget1-content" style="flex:1;font-size:.5rem;color:#0fa;font-weight:700;overflow:hidden;white-space:nowrap;text-overflow:ellipsis"></div></div><div class="key-item" style="background:rgba(255,204,0,.02);border:1px solid rgba(255,204,0,.1);height:32px;display:flex;align-items:center;padding:0 8px"><div id="slot-gadget2-content" style="flex:1;font-size:.5rem;color:#fc0;font-weight:700;overflow:hidden;white-space:nowrap;text-overflow:ellipsis"></div></div></div></div><div style="border-top:1px solid rgba(0,255,242,.1);padding-top:8px"><div style="font-size:.5rem;color:#00fff2;letter-spacing:1.5px;margin-bottom:6px;font-family:monospace;display:flex;align-items:center;gap:5px"><span style="display:inline-block;width:4px;height:4px;background:#00fff2;border-radius:50%;box-shadow:0 0 5px #00fff2"></span> ARTIFACT RELICS</div><div id="artifact-scroll-container" style="display:grid;grid-template-columns:1fr 1fr;gap:4px"></div></div></div></div><div id="center-sector" style="display:flex;flex-direction:column;align-items:center;gap:15px"><canvas id="gameCanvas" width="484" height="484" style="border:2px solid #333;box-shadow:0 0 50px rgba(0,0,0,.8)"></canvas><div id="utility-bar" style="width:100%;display:flex;gap:20px;align-items:center;justify-content:center;background:rgba(255,255,255,.02);padding:8px 10px;border-radius:40px;border:1px solid rgba(0,255,242,.1);box-sizing:border-box"><button onclick="openSaveLoad()" style="flex:1;background:#0fa;color:#000;font-weight:800;font-size:.75rem;padding:8px 10px;border-radius:20px;border:none;cursor:pointer;box-shadow:0 0 15px rgba(0,255,170,.1);white-space:nowrap">💾 存档记录</button> <button onclick="openSettings()" style="flex:1;background:0 0;border:2px solid #00fff2;color:#00fff2;padding:8px 10px;font-size:.75rem;border-radius:20px;cursor:pointer;font-weight:800;white-space:nowrap">⚙️ 系统</button></div></div><div id="monster-hud" style="width:320px;min-width:320px;height:545px;background:rgba(8,8,20,.95);border:2px solid #00fff2;border-radius:12px;backdrop-filter:blur(15px);box-sizing:border-box;display:flex;flex-direction:column;padding:0;overflow:hidden"><div style="padding:12px 15px;border-bottom:2px solid rgba(0,255,242,.2);background:rgba(0,255,242,.05)"><h3 style="margin:0;font-size:.75rem;letter-spacing:.2em;color:#00fff2;text-transform:uppercase;display:flex;align-items:center;gap:8px"><span>👁️</span> 矩阵实体深度图鉴</h3></div><div id="trap-alert" style="display:none;padding:6px 15px;background:rgba(255,51,51,.1);border-bottom:1px solid rgba(255,51,51,.2);font-size:.65rem;color:#ff3232;font-weight:700;font-family:monospace"></div><div id="monster-list" style="flex:1;height:0;min-height:0;overflow-y:auto;padding:12px">暂无记录...</div></div><div id="overlay"><div id="overlay-card"><h1 id="overlay-status">通关成功</h1><p id="overlay-msg">第 1 层已清理完毕。</p><div style="display:flex;gap:10px"><button onclick="location.reload()">重新开始</button> <button id="close-overlay" onclick='document.getElementById("overlay").style.display="none"'>关闭</button></div></div></div><div id="settings-overlay" style="display:none;position:absolute;inset:0;background:rgba(0,0,0,.85);z-index:300;align-items:center;justify-content:center;backdrop-filter:blur(8px)"><div class="hud-group" style="width:260px;text-align:center;border:2px solid #ff00ea;box-shadow:0 0 30px rgba(255,0,234,.2)"><h2 style="color:#ff00ea;margin-top:0;letter-spacing:.1em">系统菜单</h2><div style="display:flex;flex-direction:column;gap:10px;margin-top:20px"><button onclick="exportLog()" style="background:#00fff2;color:#000;font-weight:700">📊 导出游玩日志 (JSON)</button> <button id="debug-toggle-btn" onclick="toggleDebug()" style="background:rgba(255,255,255,.1);border:1px dashed #fff;color:#fff">🛡️ 开启 Debug 模式</button> <button onclick="location.reload()" style="background:#ff00ea;color:#fff">🔄 重新加载系统</button> <button onclick="closeSettings()" style="background:#333;margin-top:10px;color:#fff">返回游戏</button></div></div></div><div id="floating-shop" style="display:none;position:absolute;pointer-events:auto;background:rgba(8,8,26,.95);border:2px solid #00fff2;border-radius:8px;padding:12px;z-index:800;box-shadow:0 0 30px rgba(0,255,242,.3);backdrop-filter:blur(10px);min-width:250px;user-select:none"><div id="shop-header" style="color:#00fff2;font-weight:700;font-size:.8rem;margin-bottom:8px;border-bottom:1px solid rgba(0,255,242,.2);padding-bottom:5px;cursor:move;display:flex;justify-content:space-between;align-items:center"><span>🧬 赛博补给站</span> <span style="font-size:.55rem;color:#888;font-weight:400">[ ☩ 按住拖拽 ]</span></div><div style="display:flex;flex-direction:column;gap:8px"><button id="shop-atk-btn" onclick='buyStat("atk")' style="background:rgba(0,255,170,.1);border:1px solid #0fa;color:#0fa;font-size:.75rem;padding:6px;text-align:left">[ 火力增强 ] +10 (30G)</button> <button id="shop-def-btn" onclick='buyStat("def")' style="background:rgba(255,0,234,.1);border:1px solid #ff00ea;color:#ff00ea;font-size:.75rem;padding:6px;text-align:left">[ 装甲强化 ] +10 (30G)</button><div style="font-size:.65rem;color:#aaa;margin-top:5px">战术插件 (阶段限购):</div><button id="shop-special-btn" onclick='buySpecial("fixed")' style="background:rgba(255,100,0,.1);border:1px dashed #ff6400;color:#ff6400;font-size:.7rem;padding:6px;text-align:center">🔌 获取防护插件A</button> <button id="shop-special-btn-2" onclick='buySpecial("bio")' style="background:rgba(0,180,255,.1);border:1px dashed #00b4ff;color:#00b4ff;font-size:.7rem;padding:6px;text-align:center">🔌 获取防护插件B</button> <button id="shop-special-btn-3" onclick='buySpecial("relic")' style="display:none;background:rgba(0,255,242,.1);border:1px solid #00fff2;color:#00fff2;font-size:.7rem;padding:6px;text-align:center">💎 获取矩阵遗物</button><div style="font-size:.65rem;color:#aaa;margin-top:5px">模块合成 (RECYCLE):</div><button id="shop-gem-vamp-btn" onclick='buyRelicWithGems("vamp")' style="background:rgba(255,50,50,.1);border:1px solid #ff3232;color:#ff3232;font-size:.65rem;padding:6px;text-align:center">💉 模块合成: 血液回流计 (8🔴 + 8🔵)</button><div style="font-size:.65rem;color:#aaa;margin-top:5px">核心机能超载 (REINFORCE):</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:5px"><button id="shop-gem-atk-up" onclick='reinforceGem("atk")' style="background:rgba(255,50,50,.1);border:1px solid #ff3232;color:#ff3232;font-size:.6rem;padding:6px;text-align:center">🔴 穿透强化</button> <button id="shop-gem-def-up" onclick='reinforceGem("def")' style="background:rgba(0,180,255,.1);border:1px solid #00b4ff;color:#00b4ff;font-size:.6rem;padding:6px;text-align:center">🔵 抗性强化</button></div><div style="font-size:.65rem;color:#aaa;margin-top:5px">购买密钥卡:</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px"><button id="shop-key-y" onclick='buyStat("key_y")' style="background:rgba(255,204,0,.1);border:1px solid #fc0;color:#fc0;font-size:.65rem;padding:4px">买黄</button> <button id="shop-key-b" onclick='buyStat("key_b")' style="background:rgba(0,153,255,.1);border:1px solid #09f;color:#09f;font-size:.65rem;padding:4px">买蓝</button> <button id="shop-key-r" onclick='buyStat("key_r")' style="background:rgba(255,51,51,.1);border:1px solid #f33;color:#f33;font-size:.65rem;padding:4px">买红</button></div><div style="font-size:.65rem;color:#aaa;margin-top:5px">折冲密钥卡 (回收换币):</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px"><button id="shop-sell-y" onclick='sellStat("key_y")' style="background:rgba(255,204,0,.05);border:1px dashed #fc0;color:#fc0;font-size:.65rem;padding:4px">卖黄</button> <button id="shop-sell-b" onclick='sellStat("key_b")' style="background:rgba(0,153,255,.05);border:1px dashed #09f;color:#09f;font-size:.65rem;padding:4px">卖蓝</button> <button id="shop-sell-r" onclick='sellStat("key_r")' style="background:rgba(255,51,51,.05);border:1px dashed #f33;color:#f33;font-size:.65rem;padding:4px">卖红</button></div></div><div style="font-size:.6rem;color:#555;margin-top:8px">点击按钮立即交易 • 鼠标离开关闭</div></div><div id="save-load-overlay" style="display:none;position:absolute;inset:0;background:rgba(0,0,0,.9);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(12px)"><div class="hud-group" style="width:720px;max-height:80vh;overflow:hidden;display:flex;flex-direction:column;border:2px solid #0fa;box-shadow:0 0 50px rgba(0,255,170,.15)"><h2 style="color:#0fa;margin-top:0;display:flex;justify-content:space-between;align-items:center"><span>💾 系统同步中心</span> <button onclick="closeSaveLoad()" style="background:#333;font-size:.8rem;color:#aaa;padding:4px 10px">关闭 ESC</button></h2><div id="save-slots-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:15px;overflow-y:auto;padding-right:10px"></div></div></div><div id="floor-overlay" style="display:none;position:absolute;inset:0;background:rgba(0,0,0,.9);z-index:600;align-items:center;justify-content:center;backdrop-filter:blur(15px)"><div class="hud-group" style="width:600px;max-height:80vh;overflow:hidden;display:flex;flex-direction:column;border:2px solid #00fff2;box-shadow:0 0 50px rgba(0,255,242,.2)"><h2 style="color:#00fff2;margin-top:0;display:flex;justify-content:space-between;align-items:center"><span>🛰️ 位面传送中心</span> <button onclick="closeFloorSelector()" style="background:#333;font-size:.8rem;color:#aaa;padding:4px 10px">取消</button></h2><div style="display:flex;gap:20px;overflow:hidden"><div id="floor-grid" style="flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:5px;overflow-y:auto;padding:5px"></div><div id="floor-preview-panel" style="width:200px;padding:10px;background:rgba(0,0,0,.3);border-left:1px solid #111;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px"><div style="color:#00fff2;font-size:.8rem;font-weight:700">楼层快照预览</div><img id="floor-preview-img" style="width:180px;height:180px;border:2px solid #222;background:#000;border-radius:4px" src=""><div id="floor-preview-info" style="color:#888;font-size:.65rem;text-align:center">悬浮在楼层按钮上查看</div></div></div></div></div></div><div id="custom-tooltip" style="display:none;position:fixed;z-index:10000;pointer-events:none;background:rgba(10,10,25,.95);border:1px solid #00fff2;padding:10px;color:#fff;font-size:.65rem;border-radius:2px;box-shadow:0 0 20px rgba(0,255,242,.3);max-width:240px;line-height:1.5;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(5px)"></div><script src="index.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Tower: Cyber Edition</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        body {
+            margin: 0;
+            background: #050510;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #game-container {
+            position: relative;
+            background: #08081a;
+            padding: 25px;
+            padding-bottom: 60px;
+            /* EXTRA SPACE FOR UTILITY BAR */
+            border: 1px solid rgba(0, 255, 242, 0.2);
+            border-radius: 12px;
+            display: flex;
+            gap: 20px;
+            box-shadow: 0 0 100px rgba(0, 255, 242, 0.05);
+            width: fit-content;
+            /* DYNAMIC WIDTH */
+            max-width: 98vw;
+            max-height: 95vh;
+            box-sizing: border-box;
+        }
+
+        canvas {
+            background: #000;
+            border: 2px solid #111;
+            display: block;
+            image-rendering: pixelated;
+            border-radius: 4px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            flex-shrink: 0;
+            width: 484px;
+            /* UPSCALED RESOLUTION */
+            height: 484px;
+        }
+
+        /* HUD Panels (Stat Matrix) */
+        #hud {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 260px;
+            height: 484px; /* MATCH CANVAS */
+            flex-shrink: 0;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 255, 242, 0.2) transparent;
+        }
+
+        #hud::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        #hud::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 242, 0.2);
+            border-radius: 2px;
+        }
+
+        .hud-group {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .hud-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 6px 0;
+            font-size: 0.85rem;
+            font-family: 'Courier New', monospace;
+            transition: transform 0.1s;
+        }
+
+        .label {
+            color: rgba(255, 255, 255, 0.85);
+            /* BRIGHTER */
+            font-size: 0.65rem;
+            text-transform: uppercase;
+        }
+
+        .value {
+            color: #00fff2;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-shadow: 0 0 10px rgba(0, 255, 242, 0.5);
+        }
+
+        .key-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .key-item {
+            flex: 1;
+            padding: 4px;
+            text-align: center;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .key-yellow {
+            background: rgba(255, 204, 0, 0.1);
+            border: 1px solid rgba(255, 204, 0, 0.3);
+        }
+
+        .key-blue {
+            background: rgba(0, 153, 255, 0.1);
+            border: 1px solid rgba(0, 153, 255, 0.3);
+        }
+
+        .key-red {
+            background: rgba(255, 51, 51, 0.1);
+            border: 1px solid rgba(255, 51, 51, 0.3);
+        }
+
+        /* Log container without scrollbar */
+        .log-container {
+            margin-top: 5px;
+            font-size: 0.75rem;
+            color: #888;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 10px;
+            height: 100px;
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .log-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Chrome, Safari and Opera */
+        .log-item {
+            margin-bottom: 4px;
+        }
+
+        #toast {
+            position: fixed;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 255, 242, 0.95);
+            color: black;
+            padding: 12px 30px;
+            border-radius: 40px;
+            z-index: 2000;
+            font-weight: 800;
+            font-size: 0.9rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            box-shadow: 0 0 30px rgba(0, 255, 242, 0.5);
+            border: 2px solid white;
+        }
+
+        /* Hazard Badge Interactive Styling */
+        .hazard-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 8px;
+            margin-right: 8px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 51, 51, 0.2);
+            border-radius: 4px;
+            color: #fff;
+            font-family: monospace;
+            font-size: 0.65rem;
+            cursor: help;
+            transition: all 0.2s ease;
+        }
+
+        .hazard-badge:hover {
+            background: rgba(255, 51, 51, 0.2);
+            border-color: rgba(255, 51, 51, 0.6);
+            transform: translateY(-1px) scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cover-screen">
+        <canvas id="shader-canvas" style="position: absolute; inset: 0; z-index: -1;"></canvas>
+
+
+        <div class="cover-btn-group">
+
+            <button onclick="startGame()" class="cover-btn btn-primary">协议重启 • START GAME</button>
+            <button id="continue-btn" onclick="continueGame()" class="cover-btn btn-secondary">矩阵同步 • CONTINUE</button>
+        </div>
+
+        <div style="position: absolute; bottom: 30px; font-size: 0.75rem; color: #444; font-family: monospace; letter-spacing: 2px;">
+            V1.5 CORE SYSTEM LOADED // PERSISTENT DATA FOUND // @ENJOY7ECH
+        </div>
+    </div>
+    <div id="toast">系统通知</div>
+    <div id="game-container" style="display: flex; align-items: center; justify-content: center; min-height: 100vh; width: 100vw; background: #010105; box-sizing: border-box; padding: 20px 40px; gap: 20px;">
+        <!-- Left: Stats HUD (The Left Guard) - Now spanning full height -->
+        <div id="hud" style="width: 320px; min-width: 320px; height: 545px; background: rgba(8, 8, 20, 0.95); border: 2px solid #00fff2; border-radius: 12px; backdrop-filter: blur(15px); box-sizing: border-box; display: flex; flex-direction: column; padding: 0; overflow: hidden;">
+                <!-- Header: Location (Compact) -->
+                <div style="padding: 12px 15px; border-bottom: 2px solid rgba(0, 255, 242, 0.2); background: rgba(0, 255, 242, 0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2px;">
+                        <span class="label" style="font-size: 0.55rem; letter-spacing: 2px; color:rgba(255,255,255,0.7);">LOCATION SCANNER</span>
+                        <button onclick="openFloorSelector()" style="background: rgba(0,255,170,0.1); border: 1px solid #00ffaa; color: #00ffaa; padding: 1px 6px; font-size: 0.5rem; cursor:pointer; border-radius: 2px;">SYNC / JUMP</button>
+                    </div>
+                    <div id="val-floor" style="color: #00fff2; font-weight: 800; font-size: 0.9rem; font-family: 'Courier New', monospace; text-shadow: 0 0 10px rgba(0,255,242,0.3);">1F - CYBER LAB</div>
+                </div>
+
+                <!-- Main Scrollable Content (Compact) -->
+                <div id="stats-scroll" style="flex: 1; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 12px;">
+                    
+                    <!-- 2x2 Stats Grid -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                        <!-- HP -->
+                        <div style="display:flex; flex-direction:column; border-left: 2px solid #00fff2; padding-left: 8px; background: rgba(255,255,255,0.01); padding: 4px 8px;">
+                            <span class="label" style="font-size:0.55rem; margin-bottom: 1px;">生命体征 🧬</span>
+                            <span id="val-hp" class="value" style="font-size: 1rem; color: #fff;">1000</span>
+                        </div>
+                        <!-- Gold -->
+                        <div style="display:flex; flex-direction:column; border-left: 2px solid #ffcc00; padding-left: 8px; background: rgba(255,255,255,0.01); padding: 4px 8px;">
+                            <span class="label" style="font-size:0.55rem; margin-bottom: 1px;">虚拟货币 💰</span>
+                            <span id="val-gold" class="value" style="font-size: 1rem; color: #ffcc00;">0</span>
+                        </div>
+                        <!-- ATK -->
+                        <div style="display:flex; flex-direction:column; border-left: 2px solid #ff4444; padding-left: 8px; background: rgba(255,255,255,0.01); padding: 4px 8px;">
+                            <span class="label" style="font-size:0.55rem; margin-bottom: 1px;">实时火力 ⚔️</span>
+                            <span id="val-atk" class="value" style="font-size: 1rem; color: #ff4444;">10</span>
+                        </div>
+                        <!-- DEF -->
+                        <div style="display:flex; flex-direction:column; border-left: 2px solid #00ffaa; padding-left: 8px; background: rgba(255,255,255,0.01); padding: 4px 8px;">
+                            <span class="label" style="font-size:0.55rem; margin-bottom: 1px;">物理装甲 🛡️</span>
+                            <span id="val-def" class="value" style="font-size: 1rem; color: #00ffaa;">10</span>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Stats / Feedback Footer -->
+                    <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px; font-size: 0.6rem; color: #ffcc00; font-family: monospace; display:flex; flex-direction:column; gap:4px;">
+                        <div style="display:flex; justify-content:space-between;">
+                            <span>机能模块: 🔴 <span id="val-gem-atk" style="color:#fff;">0</span> / 🔵 <span id="val-gem-def" style="color:#fff;">0</span></span>
+                            <span style="color:#ff3232;">吸血反馈: <span id="val-hero-vamp" style="color: #fff; font-weight: bold;">0%</span></span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between;">
+                            <span style="color:#00fff2;">穿透输出: <span id="val-hero-pen" style="color: #fff; font-weight: bold;">0%</span></span>
+                            <span style="color:#ffcc00;">穿透抗性: <span id="val-pen-res" style="color: #fff; font-weight: bold;">0%</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Keys Panel -->
+                    <div class="hud-group" style="padding: 8px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; background: rgba(255,255,255,0.02);">
+                        <div style="display:flex; flex-direction:column; border-left: 2px solid #ffcc00; padding-left: 6px;">
+                            <span style="font-size:0.7rem;">🎫 <span id="val-key-y" style="color: #fff; font-weight:bold;">0</span></span>
+                            <span style="font-size:0.4rem; color:#ffcc00; letter-spacing: 1px;">KEY-Y</span>
+                        </div>
+                        <div style="display:flex; flex-direction:column; border-left: 2px solid #0099ff; padding-left: 6px;">
+                            <span style="font-size:0.7rem;">💳 <span id="val-key-b" style="color: #fff; font-weight:bold;">0</span></span>
+                            <span style="font-size:0.4rem; color:#0099ff; letter-spacing: 1px;">KEY-B</span>
+                        </div>
+                        <div style="display:flex; flex-direction:column; border-left: 2px solid #ff3333; padding-left: 6px;">
+                            <span style="font-size:0.7rem;">🪪 <span id="val-key-r" style="color: #fff; font-weight:bold;">0</span></span>
+                            <span style="font-size:0.4rem; color:#ff3333; letter-spacing: 1px;">KEY-R</span>
+                        </div>
+                    </div>
+
+                    <!-- Equipment Slots Matrix -->
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <div style="font-size: 0.55rem; color: #00fff2; letter-spacing: 1px; opacity: 0.8;">EQUIPMENT MATRIX</div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+                            <!-- Sword Slot -->
+                            <div class="key-item" style="background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); height: 32px; display:flex; align-items:center; padding: 0 8px;">
+                                <div id="slot-sword-content" style="flex:1; font-size:0.55rem; color:#00fff2; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;"></div>
+                            </div>
+                            <!-- Shield Slot -->
+                            <div class="key-item" style="background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); height: 32px; display:flex; align-items:center; padding: 0 8px;">
+                                <div id="slot-shield-content" style="flex:1; font-size:0.55rem; color:#ff00ea; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;"></div>
+                            </div>
+                            <!-- Sword2 Slot -->
+                            <div class="key-item" style="background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); height: 32px; display:flex; align-items:center; padding: 0 8px;">
+                                <div id="slot-sword2-content" style="flex:1; font-size:0.55rem; color:#00fff2; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;"></div>
+                            </div>
+                            <!-- Shield2 Slot -->
+                            <div class="key-item" style="background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); height: 32px; display:flex; align-items:center; padding: 0 8px;">
+                                <div id="slot-shield2-content" style="flex:1; font-size:0.55rem; color:#ff00ea; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;"></div>
+                            </div>
+                            <!-- Anti-Trap Gadgets -->
+                            <div class="key-item" style="background: rgba(0,255,170,0.02); border: 1px solid rgba(0,255,170,0.1); height: 32px; display:flex; align-items:center; padding: 0 8px;">
+                                <div id="slot-gadget1-content" style="flex:1; font-size:0.5rem; color:#00ffaa; font-weight:bold; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;"></div>
+                            </div>
+                            <div class="key-item" style="background: rgba(255,204,0,0.02); border: 1px solid rgba(255,204,0,0.1); height: 32px; display:flex; align-items:center; padding: 0 8px;">
+                                <div id="slot-gadget2-content" style="flex:1; font-size:0.5rem; color:#ffcc00; font-weight:bold; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="border-top: 1px solid rgba(0,255,242,0.1); padding-top: 8px;">
+                        <div style="font-size: 0.5rem; color: #00fff2; letter-spacing: 1.5px; margin-bottom: 6px; font-family: monospace; display:flex; align-items:center; gap:5px;">
+                            <span style="display:inline-block; width:4px; height:4px; background:#00fff2; border-radius:50%; box-shadow: 0 0 5px #00fff2;"></span>
+                            ARTIFACT RELICS
+                        </div>
+                        <div id="artifact-scroll-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px;">
+                            <!-- Managed by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Center Sector: Game Canvas + Utility Bar -->
+            <div id="center-sector" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+            <canvas id="gameCanvas" width="484" height="484" style="border: 2px solid #333; box-shadow: 0 0 50px rgba(0,0,0,0.8);"></canvas>
+            
+            <!-- Bottom Sector: Integrated Tactical Controls (Compact) -->
+            <div id="utility-bar"
+                style="width: 100%; display: flex; gap: 20px; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.02); padding: 8px 10px; border-radius: 40px; border: 1px solid rgba(0, 255, 242, 0.1); box-sizing: border-box;">
+                <button onclick="openSaveLoad()"
+                    style="flex: 1; background: #00ffaa; color: #000; font-weight: 800; font-size: 0.75rem; padding: 8px 10px; border-radius: 20px; border:none; cursor:pointer; box-shadow: 0 0 15px rgba(0,255,170,0.1); white-space: nowrap;">💾 存档记录</button>
+                <button onclick="openSettings()"
+                    style="flex: 1; background: transparent; border: 2px solid #00fff2; color: #00fff2; padding: 8px 10px; font-size: 0.75rem; border-radius: 20px; cursor:pointer; font-weight: 800; white-space: nowrap;">⚙️ 系统</button>
+            </div>
+        </div>
+
+        <!-- Right: Monster HUD (Compact Symmetrical Mirror) -->
+        <div id="monster-hud" style="width: 320px; min-width: 320px; height: 545px; background: rgba(8, 8, 20, 0.95); border: 2px solid #00fff2; border-radius: 12px; backdrop-filter: blur(15px); box-sizing: border-box; display: flex; flex-direction: column; padding: 0; overflow: hidden;">
+                <div style="padding: 12px 15px; border-bottom: 2px solid rgba(0, 255, 242, 0.2); background: rgba(0, 255, 242, 0.05);">
+                    <h3 style="margin:0; font-size: 0.75rem; letter-spacing: 0.2em; color: #00fff2; text-transform: uppercase; display:flex; align-items:center; gap:8px;">
+                        <span>👁️</span> 矩阵实体深度图鉴
+                    </h3>
+                </div>
+                <div id="trap-alert" style="display:none; padding: 6px 15px; background: rgba(255, 51, 51, 0.1); border-bottom: 1px solid rgba(255, 51, 51, 0.2); font-size: 0.65rem; color: #ff3232; font-weight: bold; font-family: monospace;">
+                    <!-- Injected by JS -->
+                </div>
+                <div id="monster-list" style="flex: 1; height: 0; min-height: 0; overflow-y: auto; padding: 12px;">
+                    <!-- Records injected by JS -->
+                    暂无记录...
+                </div>
+            </div>
+
+        <div id="overlay">
+            <div id="overlay-card">
+                <h1 id="overlay-status">通关成功</h1>
+                <p id="overlay-msg">第 1 层已清理完毕。</p>
+                <div style="display:flex; gap: 10px;">
+                    <button onclick="location.reload()">重新开始</button>
+                    <button id="close-overlay"
+                        onclick="document.getElementById('overlay').style.display='none'">关闭</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Overlay -->
+        <div id="settings-overlay"
+            style="display:none; position: absolute; inset: 0; background: rgba(0,0,0,0.85); z-index: 300; align-items: center; justify-content: center; backdrop-filter: blur(8px);">
+            <div class="hud-group"
+                style="width: 260px; text-align: center; border: 2px solid #ff00ea; box-shadow: 0 0 30px rgba(255, 0, 234, 0.2);">
+                <h2 style="color: #ff00ea; margin-top: 0; letter-spacing: 0.1em;">系统菜单</h2>
+                <div style="display:flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+                    <button onclick="exportLog()" style="background: #00fff2; color: #000; font-weight: bold;">📊 导出游玩日志
+                        (JSON)</button>
+                    <button id="debug-toggle-btn" onclick="toggleDebug()" style="background: rgba(255, 255, 255, 0.1); border: 1px dashed #fff; color: white;">🛡️ 开启 Debug 模式</button>
+                    <button onclick="location.reload()" style="background: #ff00ea; color: white;">🔄 重新加载系统</button>
+                    <button onclick="closeSettings()"
+                        style="background: #333; margin-top: 10px; color: white;">返回游戏</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Shop UI (Non-blocking) -->
+        <div id="floating-shop"
+            style="display:none; position: absolute; pointer-events: auto; background: rgba(8, 8, 26, 0.95); border: 2px solid #00fff2; border-radius: 8px; padding: 12px; z-index: 800; box-shadow: 0 0 30px rgba(0, 255, 242, 0.3); backdrop-filter: blur(10px); min-width: 250px; user-select: none;">
+            <div id="shop-header"
+                style="color: #00fff2; font-weight: bold; font-size: 0.8rem; margin-bottom: 8px; border-bottom: 1px solid rgba(0, 255, 242, 0.2); padding-bottom: 5px; cursor: move; display: flex; justify-content: space-between; align-items: center;">
+                <span>🧬 赛博补给站</span>
+                <span style="font-size:0.55rem; color:#888; font-weight:normal;">[ ☩ 按住拖拽 ]</span>
+            </div>
+            <div style="display:flex; flex-direction: column; gap: 8px;">
+                <button id="shop-atk-btn" onclick="buyStat('atk')"
+                    style="background: rgba(0,255,170,0.1); border: 1px solid #00ffaa; color: #00ffaa; font-size: 0.75rem; padding: 6px; text-align: left;">[
+                    火力增强 ] +10 (30G)</button>
+                <button id="shop-def-btn" onclick="buyStat('def')"
+                    style="background: rgba(255,0,234,0.1); border: 1px solid #ff00ea; color: #ff00ea; font-size: 0.75rem; padding: 6px; text-align: left;">[
+                    装甲强化 ] +10 (30G)</button>
+                <div style="font-size: 0.65rem; color: #aaa; margin-top: 5px;">战术插件 (阶段限购):</div>
+                <button id="shop-special-btn" onclick="buySpecial('fixed')"
+                    style="background: rgba(255,100,0,0.1); border: 1px dashed #ff6400; color: #ff6400; font-size: 0.7rem; padding: 6px; text-align: center;">🔌
+                    获取防护插件A</button>
+                <button id="shop-special-btn-2" onclick="buySpecial('bio')"
+                    style="background: rgba(0,180,255,0.1); border: 1px dashed #00b4ff; color: #00b4ff; font-size: 0.7rem; padding: 6px; text-align: center;">🔌
+                    获取防护插件B</button>
+                <button id="shop-special-btn-3" onclick="buySpecial('relic')"
+                    style="display:none; background: rgba(0,255,242,0.1); border: 1px solid #00fff2; color: #00fff2; font-size: 0.7rem; padding: 6px; text-align: center;">💎 获取矩阵遗物</button>
+                
+                <div style="font-size: 0.65rem; color: #aaa; margin-top: 5px;">模块合成 (RECYCLE):</div>
+                <button id="shop-gem-vamp-btn" onclick="buyRelicWithGems('vamp')" style="background: rgba(255,50,50,0.1); border: 1px solid #ff3232; color: #ff3232; font-size: 0.65rem; padding: 6px; text-align: center;">💉 模块合成: 血液回流计 (8🔴 + 8🔵)</button>
+                
+                <div style="font-size: 0.65rem; color: #aaa; margin-top: 5px;">核心机能超载 (REINFORCE):</div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:5px;">
+                    <button id="shop-gem-atk-up" onclick="reinforceGem('atk')" style="background: rgba(255,50,50,0.1); border: 1px solid #ff3232; color: #ff3232; font-size: 0.6rem; padding: 6px; text-align: center;">🔴 穿透强化</button>
+                    <button id="shop-gem-def-up" onclick="reinforceGem('def')" style="background: rgba(0,180,255,0.1); border: 1px solid #00b4ff; color: #00b4ff; font-size: 0.6rem; padding: 6px; text-align: center;">🔵 抗性强化</button>
+                </div>
+
+                <div style="font-size: 0.65rem; color: #aaa; margin-top: 5px;">购买密钥卡:</div>
+                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
+                    <button id="shop-key-y" onclick="buyStat('key_y')"
+                        style="background: rgba(255,204,0,0.1); border: 1px solid #ffcc00; color: #ffcc00; font-size: 0.65rem; padding: 4px;">买黄</button>
+                    <button id="shop-key-b" onclick="buyStat('key_b')"
+                        style="background: rgba(0,153,255,0.1); border: 1px solid #0099ff; color: #0099ff; font-size: 0.65rem; padding: 4px;">买蓝</button>
+                    <button id="shop-key-r" onclick="buyStat('key_r')"
+                        style="background: rgba(255,51,51,0.1); border: 1px solid #ff3333; color: #ff3333; font-size: 0.65rem; padding: 4px;">买红</button>
+                </div>
+                <div style="font-size: 0.65rem; color: #aaa; margin-top: 5px;">折冲密钥卡 (回收换币):</div>
+                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
+                    <button id="shop-sell-y" onclick="sellStat('key_y')"
+                        style="background: rgba(255,204,0,0.05); border: 1px dashed #ffcc00; color: #ffcc00; font-size: 0.65rem; padding: 4px;">卖黄</button>
+                    <button id="shop-sell-b" onclick="sellStat('key_b')"
+                        style="background: rgba(0,153,255,0.05); border: 1px dashed #0099ff; color: #0099ff; font-size: 0.65rem; padding: 4px;">卖蓝</button>
+                    <button id="shop-sell-r" onclick="sellStat('key_r')"
+                        style="background: rgba(255,51,51,0.05); border: 1px dashed #ff3333; color: #ff3333; font-size: 0.65rem; padding: 4px;">卖红</button>
+                </div>
+            </div>
+            <div style="font-size: 0.6rem; color: #555; margin-top: 8px;">点击按钮立即交易 • 鼠标离开关闭</div>
+        </div>
+
+        <!-- Save/Load Proxy Modal -->
+        <div id="save-load-overlay"
+            style="display:none; position: absolute; inset: 0; background: rgba(0,0,0,0.9); z-index: 500; align-items: center; justify-content: center; backdrop-filter: blur(12px);">
+            <div class="hud-group"
+                style="width: 720px; max-height: 80vh; overflow: hidden; display: flex; flex-direction: column; border: 2px solid #00ffaa; box-shadow: 0 0 50px rgba(0, 255, 170, 0.15);">
+                <h2
+                    style="color: #00ffaa; margin-top: 0; display: flex; justify-content: space-between; align-items: center;">
+                    <span>💾 系统同步中心</span>
+                    <button onclick="closeSaveLoad()"
+                        style="background: #333; font-size: 0.8rem; color: #aaa; padding: 4px 10px;">关闭 ESC</button>
+                </h2>
+                <div id="save-slots-grid"
+                    style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 15px; overflow-y: auto; padding-right: 10px;">
+                    <!-- Slots will be injected here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Floor Selector Overlay -->
+        <div id="floor-overlay"
+            style="display:none; position: absolute; inset: 0; background: rgba(0,0,0,0.9); z-index: 600; align-items: center; justify-content: center; backdrop-filter: blur(15px);">
+            <div class="hud-group"
+                style="width: 600px; max-height: 80vh; overflow: hidden; display: flex; flex-direction: column; border: 2px solid #00fff2; box-shadow: 0 0 50px rgba(0, 255, 242, 0.2);">
+                <h2
+                    style="color: #00fff2; margin-top: 0; display: flex; justify-content: space-between; align-items: center;">
+                    <span>🛰️ 位面传送中心</span>
+                    <button onclick="closeFloorSelector()"
+                        style="background: #333; font-size: 0.8rem; color: #aaa; padding: 4px 10px;">取消</button>
+                </h2>
+                <div style="display: flex; gap: 20px; overflow: hidden;">
+                    <div id="floor-grid"
+                        style="flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 5px; overflow-y: auto; padding: 5px;">
+                        <!-- Floor buttons -->
+                    </div>
+                    <div id="floor-preview-panel"
+                        style="width: 200px; padding: 10px; background: rgba(0,0,0,0.3); border-left: 1px solid #111; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+                        <div style="color: #00fff2; font-size: 0.8rem; font-weight: bold;">楼层快照预览</div>
+                        <img id="floor-preview-img"
+                            style="width: 180px; height: 180px; border: 2px solid #222; background: #000; border-radius: 4px;"
+                            src="">
+                        <div id="floor-preview-info" style="color: #888; font-size: 0.65rem; text-align: center;">
+                            悬浮在楼层按钮上查看</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Styled Tooltip -->
+    <div id="custom-tooltip"
+        style="display:none; position:fixed; z-index:10000; pointer-events:none; background:rgba(10,10,25,0.95); border:1px solid #00fff2; padding:10px; color:#fff; font-size:0.65rem; border-radius:2px; box-shadow:0 0 20px rgba(0,255,242,0.3); max-width:240px; line-height:1.5; font-family: 'Segoe UI', sans-serif; backdrop-filter: blur(5px);">
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

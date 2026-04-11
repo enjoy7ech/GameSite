@@ -1,1 +1,77 @@
-(function(_0x1e7674,_0x4a425d){const _0x3e8258=_0x4ad5,_0x333720=_0x1e7674();while(!![]){try{const _0x400fac=parseInt(_0x3e8258(0x1b4))/0x1*(-parseInt(_0x3e8258(0x1cc))/0x2)+-parseInt(_0x3e8258(0x1b1))/0x3+parseInt(_0x3e8258(0x1c9))/0x4*(parseInt(_0x3e8258(0x1dc))/0x5)+parseInt(_0x3e8258(0x1e7))/0x6+-parseInt(_0x3e8258(0x1bf))/0x7+parseInt(_0x3e8258(0x1bd))/0x8+parseInt(_0x3e8258(0x1cf))/0x9*(parseInt(_0x3e8258(0x1c7))/0xa);if(_0x400fac===_0x4a425d)break;else _0x333720['push'](_0x333720['shift']());}catch(_0x937dbc){_0x333720['push'](_0x333720['shift']());}}}(_0x4420,0xbfaa9));import*as _0x44d50c from'three';function _0x4ad5(_0x160ccd,_0x2950d7){_0x160ccd=_0x160ccd-0x1a2;const _0x4420ed=_0x4420();let _0x4ad5cc=_0x4420ed[_0x160ccd];if(_0x4ad5['kDFjuM']===undefined){var _0x38b09e=function(_0x509b2d){const _0x254528='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x10954d='',_0x5a557f='';for(let _0x49fb0d=0x0,_0x17e116,_0x214536,_0x332cc2=0x0;_0x214536=_0x509b2d['charAt'](_0x332cc2++);~_0x214536&&(_0x17e116=_0x49fb0d%0x4?_0x17e116*0x40+_0x214536:_0x214536,_0x49fb0d++%0x4)?_0x10954d+=String['fromCharCode'](0xff&_0x17e116>>(-0x2*_0x49fb0d&0x6)):0x0){_0x214536=_0x254528['indexOf'](_0x214536);}for(let _0x2b1b91=0x0,_0x17a68f=_0x10954d['length'];_0x2b1b91<_0x17a68f;_0x2b1b91++){_0x5a557f+='%'+('00'+_0x10954d['charCodeAt'](_0x2b1b91)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x5a557f);};_0x4ad5['GJhSVx']=_0x38b09e,_0x4ad5['giFSdT']={},_0x4ad5['kDFjuM']=!![];}const _0x1398dd=_0x4420ed[0x0],_0x35138c=_0x160ccd+_0x1398dd,_0x72f54c=_0x4ad5['giFSdT'][_0x35138c];return!_0x72f54c?(_0x4ad5cc=_0x4ad5['GJhSVx'](_0x4ad5cc),_0x4ad5['giFSdT'][_0x35138c]=_0x4ad5cc):_0x4ad5cc=_0x72f54c,_0x4ad5cc;}import{GLTFLoader}from'three/examples/jsm/loaders/GLTFLoader.js';function _0x4420(){const _0x3ef956=['yxnZzxrZl2nVDxj0lMDSyG','tg9HzgLUz01HBMfNzxi','D2LKDgG','z2v0sgv4u3rYAw5N','mZi4nZvIAuXXtKe','Bg9HzgLUzY1VDMvYBgf5','Cg9ZAxrPB24','C2v0rNjVBu9IAMvJDa','tLHIvwe','Dg9mB3DLCKnHC2u','BgvYCa','sMTht2q','rxHLvfC','y2fZDfnOywrVDW','q29SB3i','mtC3ntaXnMHfsMXxCa','yxnZzxrZl2jHC2TLDgjHBgWUz2XI','y1rUC24','C2nHBgu','Bg9N','z2v0rwXLBwvUDej5swq','C2v0','CMvJzwL2zvnOywrVDW','y3jLyxrLuMfKAwfSr3jHzgLLBNq','zgLZCgXHEq','yxnZAwDU','Aw5JBhvKzxm','whfJDNy','q2fUDMfZvgv4DhvYzq','B3bHy2L0Eq','BMfTzq','mZK2nZa4mgHOr0f2qG','qM94mW','yMvNAw5qyxrO','nJu3mZC0z2zjz0X0','z2v0v29YBgrqB3nPDgLVBG','zMLSBa','Bg9Hza','vMvJDg9YmW','DhjHDMvYC2u','z2v0q29UDgv4Da','C3vI','zgLArNe','ndG3nJq2nejtuKn6va','y2fWywjPBgL0AwvZ','nJe3oti1mejqB2vYDq','Ag9VCa','CMDIysGWldaSmcWWlJiP','EMTVtvO','C2v0rgvJB2rLCLbHDgG','zKzXwM4','CMvUzgvYzxi','vLP5Cxq','mtb6DffjtMy','y3jLyxrLrwXLBwvUDa','mtmYA1DyyLDJ','C2nLBMu','l2DHBwvZl2jHC2TLDc1YywnLl2XPyI9KCMfJBY8','nhrHDMzrta','yw5PC290CM9WEq','BM9Uzq','mJG2ndi5odzwrvvpvgO','C2v0rfjbq09mB2fKzxi','y2fUDMfZ','C3r5Bgu','ywrK','ywrKq29SB3jtDg9W','yMfZA2v0yMfSBfrLBxbSyxrL','AeD3y3m','z2v0twf4qw5PC290CM9WEq'];_0x4420=function(){return _0x3ef956;};return _0x4420();}import{DRACOLoader}from'three/examples/jsm/loaders/DRACOLoader.js';import{state}from'./state.js';import{BALL_RADIUS,GLB_SCALE,HOOP_POS}from'./constants.js';export function createBasketballTexture(_0x3c0aa7=0xff8800){const _0x1770d5=_0x4ad5,_0x4b6287={'JkGOd':_0x1770d5(0x1d1),'ExeTW':function(_0x379c30,_0x3196fd){return _0x379c30*_0x3196fd;},'cTnsn':function(_0x2d935e,_0x50f5f5){return _0x2d935e%_0x50f5f5;},'NXbUa':function(_0x3b31b7,_0x183c76){return _0x3b31b7/_0x183c76;}},_0x29d0df=document[_0x1770d5(0x1c8)](_0x4b6287[_0x1770d5(0x1e3)]);_0x29d0df[_0x1770d5(0x1da)]=0x200,_0x29d0df['height']=0x200;const _0x1a445e=_0x29d0df[_0x1770d5(0x1ba)]('2d'),_0x1aab3c=_0x1a445e[_0x1770d5(0x1a9)](0x100,0x100,0xa,0x100,0x100,0x190);_0x1aab3c[_0x1770d5(0x1d4)](0x0,'#'+new _0x44d50c[(_0x1770d5(0x1e6))](_0x3c0aa7)[_0x1770d5(0x1db)]()),_0x1aab3c[_0x1770d5(0x1d4)](0x1,'#'+new _0x44d50c[(_0x1770d5(0x1e6))](_0x3c0aa7)[_0x1770d5(0x1e2)](new _0x44d50c[(_0x1770d5(0x1e6))](0x0),0.2)['getHexString']()),_0x1a445e['fillStyle']=_0x1aab3c,_0x1a445e['fillRect'](0x0,0x0,0x200,0x200),_0x1a445e['fillStyle']=_0x1770d5(0x1c1);for(let _0x28dd45=0x0;_0x28dd45<0x200;_0x28dd45+=0x4){for(let _0x5287fd=0x0;_0x5287fd<0x200;_0x5287fd+=0x4){const _0x15a89f=_0x4b6287[_0x1770d5(0x1e4)](_0x4b6287[_0x1770d5(0x1a3)](Math['floor'](_0x4b6287[_0x1770d5(0x1e0)](_0x5287fd,0x4)),0x2),0x2);_0x1a445e[_0x1770d5(0x1b3)](),_0x1a445e['arc'](_0x28dd45+_0x15a89f,_0x5287fd,0x1,0x0,Math['PI']*0x2),_0x1a445e[_0x1770d5(0x1b6)]();}}const _0x3ac939=new _0x44d50c[(_0x1770d5(0x1ae))](_0x29d0df);if(state[_0x1770d5(0x1c5)])_0x3ac939[_0x1770d5(0x1cd)]=state['renderer'][_0x1770d5(0x1be)][_0x1770d5(0x1d7)]();return _0x3ac939;}export function loadAssets(_0x5c6d0d){const _0x1be48d=_0x4ad5,_0x381953={'fFqZn':function(_0x5bc521,_0x22ac51){return _0x5bc521===_0x22ac51;},'zkoMZ':function(_0x272039,_0x100fb5,_0x472285){return _0x272039(_0x100fb5,_0x472285);},'JoEEu':'Found\x20mesh:','Xqcvv':_0x1be48d(0x1c0),'VZyqt':function(_0x2922d9){return _0x2922d9();},'eLahy':_0x1be48d(0x1cb),'wzfPP':_0x1be48d(0x1d8),'hGwcs':_0x1be48d(0x1a2)},_0x457e3f=new _0x44d50c[(_0x1be48d(0x1d9))](),_0x3cc639=new GLTFLoader(_0x457e3f),_0x1aedb5=new DRACOLoader();_0x1aedb5[_0x1be48d(0x1c3)](_0x381953['eLahy']),_0x3cc639[_0x1be48d(0x1d0)](_0x1aedb5);let _0x1d7599=0x0;const _0x81d5af=0x2,_0x539f81=()=>{const _0x2dca5a=_0x1be48d,_0xa1436e={'diZFq':_0x2dca5a(0x1ce)};_0x1d7599++;if(_0x381953[_0x2dca5a(0x1c4)](_0x1d7599,_0x81d5af)){const _0x4b359c=document[_0x2dca5a(0x1a6)](_0x2dca5a(0x1dd));_0x4b359c&&(_0x4b359c[_0x2dca5a(0x1d2)][_0x2dca5a(0x1af)]='0',_0x381953[_0x2dca5a(0x1c2)](setTimeout,()=>{const _0x5e2a2b=_0x2dca5a;_0x4b359c['style'][_0x5e2a2b(0x1aa)]=_0xa1436e[_0x5e2a2b(0x1bc)];},0x1f4));if(_0x5c6d0d)_0x5c6d0d();}};_0x3cc639[_0x1be48d(0x1b7)](_0x381953['wzfPP'],_0x53a804=>{const _0x4f219f=_0x1be48d,_0x364725=_0x53a804['scene'];_0x364725[_0x4f219f(0x1de)]['set'](0x0,0x0,0x0),_0x364725[_0x4f219f(0x1a4)][_0x4f219f(0x1a7)](GLB_SCALE,GLB_SCALE,GLB_SCALE),state[_0x4f219f(0x1ca)]['add'](_0x364725),_0x364725[_0x4f219f(0x1b9)](_0x147112=>{const _0x342a16=_0x4f219f;if(_0x147112['isMesh']){console[_0x342a16(0x1a5)](_0x381953['JoEEu'],_0x147112[_0x342a16(0x1b0)]),_0x147112[_0x342a16(0x1e5)]=!![],_0x147112[_0x342a16(0x1a8)]=!![];const _0x27bf75=(_0x147112[_0x342a16(0x1b0)]||'')[_0x342a16(0x1e1)]();if(_0x27bf75[_0x342a16(0x1ac)](_0x381953[_0x342a16(0x1ad)])||_0x27bf75['includes']('ring')){const _0x21fa90=new _0x44d50c[(_0x342a16(0x1b8))]();_0x147112[_0x342a16(0x1b5)](_0x21fa90),Object[_0x342a16(0x1ab)](HOOP_POS,_0x21fa90);}}}),_0x381953[_0x4f219f(0x1c6)](_0x539f81);},undefined,_0x539f81),_0x3cc639['load'](_0x381953[_0x1be48d(0x1d6)],_0x54fa42=>{const _0x4612be=_0x1be48d,_0x273b69=_0x54fa42['scene'],_0x1c723a=new _0x44d50c[(_0x4612be(0x1b2))]()[_0x4612be(0x1df)](_0x273b69),_0x511e22=_0x1c723a['getCenter'](new _0x44d50c['Vector3']()),_0xcfe3dc=new _0x44d50c['Group']();_0x273b69[_0x4612be(0x1de)][_0x4612be(0x1bb)](_0x511e22),_0xcfe3dc[_0x4612be(0x1d3)](_0x273b69),state[_0x4612be(0x1d5)]=_0xcfe3dc,_0x539f81();},undefined,_0x539f81);}
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
+import { state } from './state.js';
+import { BALL_RADIUS, GLB_SCALE, HOOP_POS } from './constants.js';
+
+export function createBasketballTexture(color = 0xff8800) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 512; canvas.height = 512;
+    const ctx = canvas.getContext('2d');
+    const grad = ctx.createRadialGradient(256, 256, 10, 256, 256, 400);
+    grad.addColorStop(0, '#' + new THREE.Color(color).getHexString());
+    grad.addColorStop(1, '#' + new THREE.Color(color).lerp(new THREE.Color(0x000000), 0.2).getHexString());
+    ctx.fillStyle = grad; ctx.fillRect(0, 0, 512, 512);
+
+    ctx.fillStyle = 'rgba(0,0,0,0.2)';
+    for (let x = 0; x < 512; x += 4) {
+        for (let y = 0; y < 512; y += 4) {
+            const offset = (Math.floor(y / 4) % 2) * 2;
+            ctx.beginPath(); ctx.arc(x + offset, y, 1.0, 0, Math.PI * 2); ctx.fill();
+        }
+    }
+    const tex = new THREE.CanvasTexture(canvas);
+    if (state.renderer) tex.anisotropy = state.renderer.capabilities.getMaxAnisotropy();
+    return tex;
+}
+
+export function loadAssets(onComplete) {
+    const manager = new THREE.LoadingManager();
+    const loader = new GLTFLoader(manager);
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('/games/basket-race/lib/draco/');
+    loader.setDRACOLoader(dracoLoader);
+
+    let assetsLoaded = 0;
+    const totalAssets = 2;
+
+    const checkDone = () => {
+        assetsLoaded++;
+        if (assetsLoaded === totalAssets) {
+            const ld = document.getElementById('loading-overlay');
+            if (ld) {
+                ld.style.opacity = '0';
+                setTimeout(() => { ld.style.display = 'none'; }, 500);
+            }
+            if (onComplete) onComplete();
+        }
+    };
+
+    loader.load('assets/court.glb', (gltf) => {
+        const model = gltf.scene;
+        model.position.set(0, 0, 0); model.scale.set(GLB_SCALE, GLB_SCALE, GLB_SCALE);
+        state.scene.add(model);
+        model.traverse(child => {
+            if (child.isMesh) {
+                console.log("Found mesh:", child.name);
+                child.castShadow = true; child.receiveShadow = true;
+                const name = (child.name || "").toLowerCase();
+                if (name.includes('hoop') || name.includes('ring')) {
+                    const worldPos = new THREE.Vector3(); child.getWorldPosition(worldPos);
+                    Object.assign(HOOP_POS, worldPos);
+                }
+            }
+        });
+        checkDone();
+    }, undefined, checkDone);
+
+    loader.load('assets/basketball.glb', (gltf) => {
+        const model = gltf.scene;
+        const box = new THREE.Box3().setFromObject(model);
+        const center = box.getCenter(new THREE.Vector3());
+        const wrapper = new THREE.Group();
+        model.position.sub(center); wrapper.add(model);
+        state.basketballTemplate = wrapper;
+        checkDone();
+    }, undefined, checkDone);
+}

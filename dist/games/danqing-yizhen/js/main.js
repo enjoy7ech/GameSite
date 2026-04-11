@@ -1,1 +1,22 @@
-function _0xf680(_0x96ac7,_0x466325){_0x96ac7=_0x96ac7-0x160;const _0x360474=_0x3604();let _0xf68093=_0x360474[_0x96ac7];if(_0xf680['qqWAnp']===undefined){var _0x4db047=function(_0x183e08){const _0x1b2a23='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x433ab9='',_0x3808a9='';for(let _0x563921=0x0,_0x4e543c,_0x407754,_0x2f131b=0x0;_0x407754=_0x183e08['charAt'](_0x2f131b++);~_0x407754&&(_0x4e543c=_0x563921%0x4?_0x4e543c*0x40+_0x407754:_0x407754,_0x563921++%0x4)?_0x433ab9+=String['fromCharCode'](0xff&_0x4e543c>>(-0x2*_0x563921&0x6)):0x0){_0x407754=_0x1b2a23['indexOf'](_0x407754);}for(let _0x318532=0x0,_0x160d8e=_0x433ab9['length'];_0x318532<_0x160d8e;_0x318532++){_0x3808a9+='%'+('00'+_0x433ab9['charCodeAt'](_0x318532)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x3808a9);};_0xf680['fcxhqr']=_0x4db047,_0xf680['RYeHmH']={},_0xf680['qqWAnp']=!![];}const _0x46f6cb=_0x360474[0x0],_0x1120ea=_0x96ac7+_0x46f6cb,_0x28b339=_0xf680['RYeHmH'][_0x1120ea];return!_0x28b339?(_0xf68093=_0xf680['fcxhqr'](_0xf68093),_0xf680['RYeHmH'][_0x1120ea]=_0xf68093):_0xf68093=_0x28b339,_0xf68093;}(function(_0x3a62cf,_0x502243){const _0x264b5d=_0xf680,_0x2e30a6=_0x3a62cf();while(!![]){try{const _0x451bbf=parseInt(_0x264b5d(0x164))/0x1+parseInt(_0x264b5d(0x160))/0x2*(parseInt(_0x264b5d(0x162))/0x3)+-parseInt(_0x264b5d(0x16f))/0x4*(-parseInt(_0x264b5d(0x16b))/0x5)+parseInt(_0x264b5d(0x161))/0x6+parseInt(_0x264b5d(0x163))/0x7*(-parseInt(_0x264b5d(0x165))/0x8)+-parseInt(_0x264b5d(0x16c))/0x9+parseInt(_0x264b5d(0x169))/0xa;if(_0x451bbf===_0x502243)break;else _0x2e30a6['push'](_0x2e30a6['shift']());}catch(_0x5db747){_0x2e30a6['push'](_0x2e30a6['shift']());}}}(_0x3604,0x34795));import{prepareUI,puzzle,events,autoStart,playing,animate}from'./core/Engine.js';function _0x3604(){const _0x23d0be=['mJCWotjLEKjwvM8','mLDjC3DJuq','nZyYodq2zgDqrK1U','nZG5nJe1wur6B2H6','n3PqyMjdvq','mtmYmta3qxL4Eujw','mJCZnJaXnNjnALDtsW','Aw1Hz2vmB2fKzwq','Cg9SEvbPzwnLCW','AxngywTL','mtq2mtaYmeruy2Pptq','BgvUz3rO','mty1uuL1BMv6','mZaXnJe2mvD5swnOzq','AxnqBgf5Aw5N','zMLSDgvY'];_0x3604=function(){return _0x23d0be;};return _0x3604();}import{GameManager}from'./game/GameManager.js';import{ItemSystem}from'./game/ItemSystem.js';const gm=new GameManager();setInterval(()=>{const _0x5097c6=_0xf680,_0x2a7592={'YzUmi':function(_0x1bf5c0,_0xbc58a3){return _0x1bf5c0===_0xbc58a3;}};if(gm[_0x5097c6(0x16d)]&&puzzle){if(puzzle[_0x5097c6(0x167)]&&puzzle[_0x5097c6(0x166)]){const _0x3fcb68=puzzle['polyPieces'][_0x5097c6(0x16e)](_0x38d63e=>!_0x38d63e[_0x5097c6(0x168)]);_0x2a7592['YzUmi'](_0x3fcb68[_0x5097c6(0x16a)],0x1)&&gm['winGame']();}}},0x3e8),window['gameManager']=gm;
+import { prepareUI, puzzle, events, autoStart, playing, animate } from './core/Engine.js';
+import { GameManager } from './game/GameManager.js';
+import { ItemSystem } from './game/ItemSystem.js';
+
+// Setup our wrapper systems
+const gm = new GameManager();
+// ItemSystem is already initialized inside GameManager constructor
+
+// Check if game won
+setInterval(() => {
+    if (gm.isPlaying && puzzle) {
+        if (puzzle.polyPieces && puzzle.imageLoaded) {
+            const realPieces = puzzle.polyPieces.filter(p => !p.isFake);
+            if (realPieces.length === 1) {
+                gm.winGame();
+            }
+        }
+    }
+}, 1000);
+
+// For Emerald item, let's fix it by adding a global helper or doing it directly in GameManager
+window.gameManager = gm;

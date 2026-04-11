@@ -1,1 +1,60 @@
-function _0x1721(_0x2144ef,_0x2b2f87){_0x2144ef=_0x2144ef-0x165;const _0xf61f4c=_0xf61f();let _0x172158=_0xf61f4c[_0x2144ef];if(_0x1721['LnuRRy']===undefined){var _0x5ea9bb=function(_0xe70dab){const _0x121578='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x581876='',_0x15e2b3='';for(let _0x3dc529=0x0,_0x25b780,_0x547f67,_0x1c519d=0x0;_0x547f67=_0xe70dab['charAt'](_0x1c519d++);~_0x547f67&&(_0x25b780=_0x3dc529%0x4?_0x25b780*0x40+_0x547f67:_0x547f67,_0x3dc529++%0x4)?_0x581876+=String['fromCharCode'](0xff&_0x25b780>>(-0x2*_0x3dc529&0x6)):0x0){_0x547f67=_0x121578['indexOf'](_0x547f67);}for(let _0x1c5140=0x0,_0x40ac5a=_0x581876['length'];_0x1c5140<_0x40ac5a;_0x1c5140++){_0x15e2b3+='%'+('00'+_0x581876['charCodeAt'](_0x1c5140)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x15e2b3);};_0x1721['LJHaoI']=_0x5ea9bb,_0x1721['VKTNkN']={},_0x1721['LnuRRy']=!![];}const _0x3b75df=_0xf61f4c[0x0],_0x393bd2=_0x2144ef+_0x3b75df,_0x157e57=_0x1721['VKTNkN'][_0x393bd2];return!_0x157e57?(_0x172158=_0x1721['LJHaoI'](_0x172158),_0x1721['VKTNkN'][_0x393bd2]=_0x172158):_0x172158=_0x157e57,_0x172158;}const _0x23ee20=_0x1721;(function(_0x3980c3,_0x2860e6){const _0x3a83f8=_0x1721,_0x26c1b3=_0x3980c3();while(!![]){try{const _0x361971=-parseInt(_0x3a83f8(0x177))/0x1+parseInt(_0x3a83f8(0x176))/0x2+parseInt(_0x3a83f8(0x175))/0x3*(parseInt(_0x3a83f8(0x172))/0x4)+parseInt(_0x3a83f8(0x16a))/0x5*(-parseInt(_0x3a83f8(0x17a))/0x6)+-parseInt(_0x3a83f8(0x17d))/0x7*(-parseInt(_0x3a83f8(0x174))/0x8)+-parseInt(_0x3a83f8(0x16c))/0x9+parseInt(_0x3a83f8(0x166))/0xa;if(_0x361971===_0x2860e6)break;else _0x26c1b3['push'](_0x26c1b3['shift']());}catch(_0x2d6d4b){_0x26c1b3['push'](_0x26c1b3['shift']());}}}(_0xf61f,0x59a52));export const HOOP_POS={'x':0x0,'y':8.1,'z':0x0};export const GLB_SCALE=0x3;export const RING_RADIUS=0.75;function _0xf61f(){const _0x392068=['Dg9gAxHLza','55UU5Qch5O2v6i63iq','ntG3otnOy01sDxO','6l295ywL5AsX6lsL77YA5zcm5Q2L546h5lIn6lAZ77Ym6k+35O+q5y2h56wE57Up6icq5y+x5BQM44cc','6l+E5yE76lEZ6lEd','56wE5Bce5OMliq','5Rc45lMf6l+T5lUJ','u1Dju0GHiq','5PE26zE05Agm57YP','mtq1nZCZme9eqMn4BG','ufjpve9dt0WGvvbhuKferuqH','5zoh5zg8iq','6ycg5Rwb5OYr5OIy','ntmXnwjsuxv1rW','5A6m576o6kgu5O6Liq','ntK3odm1ofnYwMfHtq','5PE26zE06lAf6Akr','thyU','5P6b6zMq6l+B55cdiq','5yIg5yc85ycn5yYw','ueHbu0uG','otCXoty4r2n6sunn','6kEg6kEj6isX6zkP','ntiWz2PhBLHR','nKLJB3rbCG','ntiZmJe0rfH5C09N','mJK4mZyYD0rWAfLc','5zcm5Q2L5AsX5PwiisdML6dMLyJMK43KVzZJGii','6l656zMf55sF5A2y','nJe4r1HuvuPp'];_0xf61f=function(){return _0x392068;};return _0xf61f();}export const BALL_RADIUS=0.5;export const BALL_COLORS={'NORMAL':0xee6730,'TIME':0xffcc,'GOLD':0xffd700,'COMBO':0xff0066,'BUFF':0x66ff};export const PUNISH_COLORS={'SIDE':0x8800ff,'JAIL':0x440022,'BLIND':0x111111,'TIMER':0xff3300};export const BALL_DESCRIPTIONS={'time':_0x23ee20(0x16d),'gold':_0x23ee20(0x170),'combo':_0x23ee20(0x17f),'buff':_0x23ee20(0x181),'side':_0x23ee20(0x179),'jail':_0x23ee20(0x169),'blind':_0x23ee20(0x173),'timer':_0x23ee20(0x165)};export const MESSAGES={'PRAISE':[_0x23ee20(0x16b),_0x23ee20(0x17c),'序列闭合!',_0x23ee20(0x168),'手感火热!',_0x23ee20(0x180),'不可思议!',_0x23ee20(0x16f)],'SWISH':_0x23ee20(0x182),'AIRBALL':_0x23ee20(0x178),'LEVEL_UP':_0x23ee20(0x167),'LEVEL_INFO':(_0x581876,_0x15e2b3)=>_0x23ee20(0x171)+_0x581876+'\x20-\x20目标同步:\x20'+_0x15e2b3,'RESULT_WIN':'同步成功：已解析球场序列。','RESULT_LOSE':_0x23ee20(0x17e),'BUFF_DISTANCE':_0x3dc529=>_0x23ee20(0x16e)+_0x3dc529,'BUFF_HEIGHT':_0x25b780=>'x'+_0x25b780[_0x23ee20(0x17b)](0x2),'BUFF_ANGLE':_0x547f67=>_0x547f67[_0x23ee20(0x17b)](0x1)+'%'};export const LEVELS=[{'target':0x64,'time':0x3c},{'target':0x12c,'time':0x3c},{'target':0x320,'time':0x32},{'target':0x7d0,'time':0x2d},{'target':0x1388,'time':0x28}];export const PHYS_FRICTION=0.1;export const PHYS_RESTITUTION=0.6;export const GRAVITY=-0x16;
+// --- STATIC SETTINGS ---
+export const HOOP_POS = { x: 0, y: 8.1, z: 0 };
+export const GLB_SCALE = 3;
+export const RING_RADIUS = 0.75;
+export const BALL_RADIUS = 0.5;
+
+// 球色定义 (奖励球)
+export const BALL_COLORS = {
+    NORMAL: 0xee6730,  // 经典橙 (普通)
+    TIME: 0x00ffcc,  // 霓虹绿 (加时 +15s)
+    GOLD: 0xffd700,  // 黄金色 (单次得分 x5)
+    COMBO: 0xff0066,  // 狂野粉 (连击数直接 +3)
+    BUFF: 0x0066ff   // 晶钻蓝 (系数永久提升)
+};
+
+export const PUNISH_COLORS = {
+    SIDE: 0x8800ff,  // 魅紫色 (死角挑战)
+    JAIL: 0x440022,  // 幽暗红 (地狱入篮)
+    BLIND: 0x111111,  // 漆黑 (盲投挑战)
+    TIMER: 0xff3300   // 亮红 (时间窃取)
+};
+
+export const BALL_DESCRIPTIONS = {
+    time: "时间超频",
+    gold: "分值倍化",
+    combo: "连击跳跃",
+    buff: "永久迭代",
+
+    side: "边际生存",
+    jail: "逆流挑战",
+    blind: "视觉脱钩",
+    timer: "时间塌缩"
+};
+
+// --- 游戏文案提示词管理 (Prompts & Messages) ---
+export const MESSAGES = {
+    PRAISE: ["完美衔接!", "目标捕获!", "序列闭合!", "哇呼!", "手感火热!", "神射手!", "不可思议!", "极限进球!"],
+    SWISH: "SWISH!!",
+    AIRBALL: "同步失效! 无效操作。",
+    LEVEL_UP: "PROTOCOL UPGRADED!",
+    LEVEL_INFO: (level, target) => `PHASE ${level} - 目标同步: ${target}`,
+    RESULT_WIN: "同步成功：已解析球场序列。",
+    RESULT_LOSE: "载入失败：同步率不足，请提升神经耐受度。",
+    BUFF_DISTANCE: (lv) => `Lv.${lv}`,
+    BUFF_HEIGHT: (val) => `x${val.toFixed(2)}`,
+    BUFF_ANGLE: (val) => `${val.toFixed(1)}%`
+};
+
+// 难度梯度配置
+export const LEVELS = [
+    { target: 100, time: 60 },
+    { target: 300, time: 60 },
+    { target: 800, time: 50 },
+    { target: 2000, time: 45 },
+    { target: 5000, time: 40 }
+];
+
+export const PHYS_FRICTION = 0.1;
+export const PHYS_RESTITUTION = 0.6;
+export const GRAVITY = -22; 

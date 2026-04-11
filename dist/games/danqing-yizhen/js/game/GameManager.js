@@ -1,1 +1,836 @@
-const _0x580252=_0x201a;function _0x201a(_0x224dad,_0x3ebf8c){_0x224dad=_0x224dad-0x13e;const _0x26b135=_0x26b1();let _0x201a91=_0x26b135[_0x224dad];if(_0x201a['ZzHXKS']===undefined){var _0x807689=function(_0xdf499e){const _0x2d054a='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x2b7258='',_0x29446e='';for(let _0x4b5172=0x0,_0x307829,_0x4a14a2,_0x440565=0x0;_0x4a14a2=_0xdf499e['charAt'](_0x440565++);~_0x4a14a2&&(_0x307829=_0x4b5172%0x4?_0x307829*0x40+_0x4a14a2:_0x4a14a2,_0x4b5172++%0x4)?_0x2b7258+=String['fromCharCode'](0xff&_0x307829>>(-0x2*_0x4b5172&0x6)):0x0){_0x4a14a2=_0x2d054a['indexOf'](_0x4a14a2);}for(let _0x443aa5=0x0,_0x48c864=_0x2b7258['length'];_0x443aa5<_0x48c864;_0x443aa5++){_0x29446e+='%'+('00'+_0x2b7258['charCodeAt'](_0x443aa5)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x29446e);};_0x201a['BgjMMZ']=_0x807689,_0x201a['fxDkzN']={},_0x201a['ZzHXKS']=!![];}const _0x104d8f=_0x26b135[0x0],_0xf27ecc=_0x224dad+_0x104d8f,_0x43377c=_0x201a['fxDkzN'][_0xf27ecc];return!_0x43377c?(_0x201a91=_0x201a['BgjMMZ'](_0x201a91),_0x201a['fxDkzN'][_0xf27ecc]=_0x201a91):_0x201a91=_0x43377c,_0x201a91;}(function(_0x581a0c,_0x26f6ae){const _0x2b6182=_0x201a,_0x52c2e3=_0x581a0c();while(!![]){try{const _0x144866=-parseInt(_0x2b6182(0x1dd))/0x1+parseInt(_0x2b6182(0x1e0))/0x2+-parseInt(_0x2b6182(0x22c))/0x3*(parseInt(_0x2b6182(0x1d2))/0x4)+-parseInt(_0x2b6182(0x256))/0x5*(parseInt(_0x2b6182(0x2a3))/0x6)+parseInt(_0x2b6182(0x16b))/0x7+parseInt(_0x2b6182(0x1b0))/0x8*(parseInt(_0x2b6182(0x165))/0x9)+-parseInt(_0x2b6182(0x194))/0xa;if(_0x144866===_0x26f6ae)break;else _0x52c2e3['push'](_0x52c2e3['shift']());}catch(_0x72676d){_0x52c2e3['push'](_0x52c2e3['shift']());}}}(_0x26b1,0x7d813));import{prepareUI,puzzle,events,PolyPiece}from'../core/Engine.js';import{ItemSystem}from'./ItemSystem.js';function _0x26b1(){const _0x3fb68a=['Bw92zun0Ea','nhW5Fdf8n3WZFdeWFdv8mtD8mtv8mtn8nNWXnhWXmxWXnNWYFdb8mtj8oa','5RAM54MP5PEG5AoW','DMrOq24','5PYQ6kEJ6zsb','zM9Nlw92zxjSyxK','renyuK0','CgfKu3rHCNq','zM9N','Aw5Uzxjive1m','z2v0qM91BMrPBMDdBgLLBNrszwn0','yxnZzxrZl3bHAw50Aw5Nms5WBMC','zM9Yuhv6EMXL','rNLYuwS','Chbysw5PDa','mI0X','BM90AwnLlw1VzgfS','AgLNAgvZDeXLDMvSsw5KzxG','C3r5Bgu','oujzquLhCW','wu5HDKu','BgvKv28','yLvnt1K','yxnZzxrZl3bHAw50Aw5Nos53zwjW','y29UDgfPBMvY','mJi3otu1mhrxsvLyvW','zMLUzeLUzgv4','BM9YBwfS','i2zMngq0za','Bw91C2vKB3DU','yxnZzxrZl3bHAw50Aw5NmtiUD2vICa','AhjLzG','yxnZzxrZl3bHAw50Aw5NmtmUD2vICa','C3rYAw5NAwz5','CM90yxrL','yxvYyMm','ms00','BM90AwnLlxrLEhq','C2LU','5y+m6yEn5y6l5yQB77YA6zUO5Rc055Qe5yAY5yI35lIo6jMA5ygh56ko54Mh55Qe6k+X5A+844cc','y29SBgfWC2vK','mY0Y','5A6m576o5l+U5Asn77Yb','5l+U5Asn5PYQ5OIq','Bgv2zwWTy2fYza','yxbWzw5Kq2HPBgq','yuX5Cxy','y29UDgfPBNm','y3jLyxrLrwXLBwvUDa','D2LKDgG','BgfZDe1VDxnLug9Z','y0X6Bhu','C3rHCNruAw1LCG','AgvPz2H0','5Rkz5Bcy44cb5Rwt6zU+5lIo5lYQ6ycG56ko54Mh6B2q6igA77Ym6icd6AQm5P6b5BQM57sN6iE055Qe6kEc5A+F5yQB44cc','yNrUlw5VDgLJzs1JBg9Zzq','CxvLCNLtzwXLy3rVCG','y29UDfDPzhrO','yMX1CNjPBMCRzMfRzq','Bwf4','yNrUlxjLC3vTzq','CgfYC2u','zgL2','zhjPzNrPBMCRzM9Nk2zHA2u','C2HVD05VDgLJzq','CLbUvwy','oty3odKWturmD2nt','DMfSDwu','q0v6ueO','zhjPzNrPBMCRzM9N','AxnqyxvZzwq','zMLSDgvY','5lMX5lQr5REX5Ase','r1DmEuG','shzcqLK','rMrcEw8','yNrUlxjLC3rHCNq','yNrUlw9Wzw4TC2HVCa','CgfYzw50rwXLBwvUDa','6zsM57UJ6yEn5ywj','zhLMvwO','r0vPEwS','yxnZzxrZl3bHAw50Aw5Noc53zwjW','AxrLBs10CMf5lxrVz2DSzq','C3jJugf0Aa','uff3rvG','tM5Quwy','DgLTzq','Bg9JyxrPB24','DxbKyxrLvgLTzxjeAxnWBgf5','DwPLs1a','t2T1vxy','y29PBNm','CM90yxrPB25tDgvW','nZa1nta3mM1dBujQCa','wuvcBxi','zhDcwem','qK9gzuS','yxnZzxrZl3bHAw50Aw5NnY53zwjW','ChGP','zxz0','AgfUzgXLrwrNzvbHBM5PBMC','x29YAwDPBMfSrhjHD1yX','Bg5dzem','AxnpDMvYDgLTzq','CxHXB3C','lMnOyxb0zxiTDgfIlMfJDgL2zq','6ygU55Y86l+36ycu','AhvKlxrPBwvY','CMDIysGYntuSiduWlca1mcWGmc40nsK','sMDkrgW','vuHnC0m','566a5y2v55QemtxNIyFLHAxPL6JVViZLNkJNOO7OO4lNMOtNU6lLUipKUk3LR7VLM57NLlVMHi/JGii','mI0Z','Bg9HzerHDge','qMXwzhe','yxnZAwDU','iow4GsaO5yYf5zcRia','vhbZzMK','r1LXDKS','EwrXv3G','nc0X','ywrK','tNbVyKe','vhvoD08','lMj0BI11CgDYywrLw2rHDgeTAwq9iG','C2f2zurHDge','A2v5CW','ntu2wwLQAefy','C3rHCNrfBNzvCgrHDgu','yLbNC2G','ywrKrxzLBNrmAxn0zw5LCG','rMfPBgvKihrVihbHCNnLihnHDMuGzgf0yq','5AsN6yEp5lYQ6ycG5Q6l54Mh5RE35ywL77Ym6k+355sO5PIo5B+d6yM06k+g56c044cc','wKPmweu','B3bHy2L0Eq','yNrUlxbHDxnL','mY00','EvfKAeK','odaWotu0rMjRr2rH','wuTXq2u','ntdNIyFLPi3MNylNOO7NIyFVViZOV5dNLkJPGzpLHBFOV5JLJP/OV5NLUyxKVkdKUjBLKi3KVzZJGii','mtiWmZa2mK9usKntwG','y2XPzw50wq','AxrLBuXLDMvSCW','DgLTzxjjBNrLCNzHBa','z2fTzs1VDMvYlxnJCMvLBG','zM9YrwfJAa','DgLTzxjtzwnVBMrZ','ywjZ','ruzIsfu','yMX1CKjHC2vsyxrL','C3jJsw1Hz2u','zu1iCvG','C3nTDLG','t3fTyvy','C3rHCNrhyw1L','z2v0rwXLBwvUDej5swq','Aw5JBhvKzxm','AMTryKW','Cwzyv0C','zgf0yxnLDa','tMnwEgO','yMvNAw5qyxrO','yxnZzxrZl3bHAw50Aw5Nns53zwjW','u09nyNO','BMjWAwvJzxm','AxrLBs1ODwq','wwL4DMe','B25vr3K','D2vIA2L0twfZA0LTywDL','Aw1N','C2v0DxbfBMDPBMvpDMvYCMLKzxm','mI0Y','C2v0sxrLBq','CMfKAwfSlwDYywrPzw50kgnPCMnSzsbHDca','lMj0BI1IDxLBzgf0ys1Pzd0I','EuL1sve','yxnZzxrZl3bHAw50Aw5NmtaUD2vICa','CM90','6AoE5Rkz6l+355Y877Ym5l2G55Qe5RsB6zIZ6zoY5PEG5Rov5l2/55sO44cc6Aoo5Rkz5RIq5AsN5lIu5Rwt6zU+6zsb5RgF77Ym5A+75OM+4OcC5A6A6Aoo54+G4OcD5PIV56c05Bga5lMl6zkL44cc','vunbwNy','yxnZzxrZl3bHAw50Aw5Nnc53zwjW','yw5PBwf0zs1WDwXZzq','Cgf1C2uTBwvUDq','B1zeuu4','DgLTzxiTzgLZCgXHEq','AxnnB3zPBMC','ChGSihrYyw5ZCgfYzw50idbWEcWGyMXHy2SGntbWEcK','CMvTB3zL','CMvZzxrmzxzLBfn0yxrL','De1PEKy','C3rVCa','yNrUlwnSB3nLlxnOB3a','BgfTCefJDgL2zq','C3rVCevUDLvWzgf0zq','Dg91y2HTB3zL','CgLLy2vZ','6AoE5Rkz6lwW5Rkz','z2fTzs1VDMvYlxrLEhq','CgXHEun0Ea','zwfYBKnVAw5Z','y3jLyxrL','D0DozKe','nc00','C2vSzwn0zwq','zhjPzNrPBMC','CLHXsNi','yxnZzxrZl3bHAw50Aw5NmteUD2vICa','y29PBNmTzgLZCgXHEq','Aw5UzxjuzxH0','ChjVDg90ExbL','y2XPzw50wa','Bg9ZzuDHBwu','ChGG','CMvUzgvYtgv2zwXnzw51','nc0Z','5PYu6Aoo5yID6lw3','mZm5m0zpDwzzqG','DM9Pzf9YzwXPy3nFC2f2zv92mq','C3bLBMrdB2LUCW','Dg9Nz2XL','6AoE5Rkz6l+355Y877Ym5l2G55Qe5RsB6zIZ6zoY5PEG5Rov5l2/55sO44cc5zYO6l+z6l+35AsX5lMl6zU+5lIT77Ym55U06z2I56M/6lAk5PYu6Aoo55Qe57Ui5P6b5l+U5Asn44cc','6jM954s26lAf5PE277Ym5l2g55s75y2357Ui5B6x5l+U5Asn44cc6Akg5yIW6ywS5yQZ77YA','CeLeDMi','5l+U5Asn5AsN6i635ywO6ioC77Yb6i635B6x5Aww6yEr77YA','ChjLDMvUDerLzMf1Bhq','5yID56QL6zEO5B6e','iow4GEAxTUMxTowLLUwkSsK','zw52sw50zxj2ywW','5RIq5ywL5l2Z5Akd','5y+x6l+36zU+6ygU6js977Ym5zsV5PYj54k55lQU55cj55kd54gV5PA55y+V55Yl5RIf5ywO5Bga44cc','Dg9Nz2XLugf1C2u','C2H1zMzSzufSBfbPzwnLCW','yxnZzxrZl3bHAw50Aw5NmtqUD2vICa','ChGSigjSywnRia','55s76A2c5B2s5l2n','C3rHCNqTC2nYzwvU','Aw5Qzwn0rMfRzvbPzwnLCW','r0TTs1q','ww5vy0C','pc9OmZ4kicaGicaGicaGicaGicaGicaGica8C3bHBJ4','ChvZAa','q2vQEg4','ywrKugf0Aa','lxvWzYjD','BhPwywG','5lMX5yop5lIB55sF77Ym5zYO6yEn6yEn6jMA5ygh5lIT6yEn546W5lYG5lIw5zcn5l2C55Qe6i2J5ywj44cc','zNHXt1u','54oF6zUO5yID5lI0','Cg9SEvbPzwnLCW','BwfW','y2XHC3nmAxn0','qwL2whe','DxbKyxrLsfve','y29SB3i','y3vYCMvUDeXLDMvS','y2HHChrLCG','Dw5SB2nRzwrjDgvTCW','D2TzwhG','mtKWwLjfzeLn','5y6F55s75PA55l2n6zsz5lMX77Ym6icd6AQm5l2G5A+55P6e5zU+55Qe5OsF55+L5yQB44cc','lMnOyxb0zxiTDgfI','DgfYz2v0','rgf5sNG','x21VDMLUz1n0yxrL','DNHYvvy','y3vYCMvUDejSDxi','C3jJ','i2q0ywyZnW','ChGSihrYyw5ZCgfYzw50ia','pc9IDxr0B24+cIaGicaGicaGicaGia','zw52AxjVBM1LBNqTCgfYDgLJBgvZ','C2f2zq','zhjHD1bVBhLqAwvJzxm','y2XPCa','CxvLCNLtzwXLy3rVCKfSBa','wMfmzMK','zxjYB3i','BgTwrMy','zML4zwrcEujYDxnO','iowpPoMsSEw4GEoaGGRLHO3MJQxLHO3LJONJGii','6zUO5yQ/5yQG6yEn77Ym5AkO6l+55yYw5BYa44cc5lY85lMo6l+y5PYj5lYQ5B2X5zYO5BMY5OMW6kEg57Q/44cc','BMjsB3q','zMfRzq','q21bDee','BMfTzq','AgvwAM8','6zUO54k55OMt5RM/5lQg6l6557Yy77Ym5zYO5y+y5QIH57ok5yMn5A6m5OIq5zci5BM244cc','ELvQqM0','BgvUz3rO','BgLUzvrV','C2HVCc1TB2rHBa','wu9pz0y','C29Tzq','vLjOEhy','zM9Nqwn0AxzL','rw5RvKm','vuTeDuG','DKnHA2S','Dg9W','zMXVB3i','yxnZzxrZl3bHAw50Aw5NmY5WBMC','quLWEve','yMX1CNjPBMC','zNjVBvnYy01HDhjPEa','zgLZywjSzwq','C3bSAxq','Bw91C2vTB3zL','zMTYsLu','AhvKlwnOyxb0zxi','BwLU','D2HPDgu','CuXtChG','y2XPy2S','we1ICge','C3rVCfrPBwvY','BM93','D2HLzwW','AgLKzgvU','zw52AxjVBM1LBNqTB3zLCMXHEq','CMfUzg9T','C2HVD01LBNu','5O+q5y2h56ko54Mh5PwW6yEp77Ym5OMt56oO5z+65PYS5yQF77Ym5l+U5Asn5Q6l56c055Qe5BgX5Rc044cc','Dg91y2HZDgfYDa','sKzLshu','ms0Z','yMX1CIG','AxngywTL','yxnZzxrZl3bHAw50Aw5NnI53zwjW','i2eWytbHma','vwnry0G','sKfKrNe','Bw92zvrV','ywn0AxzL','yNv0Dg9U','D29uy04','mZC5mdjiyuffr2e','5PYa57Ui56UG77YA5zYO5yc+55Ug5AsN6zUO5lIo5lMX6lgH5lYQ5B2X5lIT77Ym5A6i5OQK55s76A2c44cc','BwfYA2vKqNLnAxjYB3i','DKr6Dgy','uw5tq3i','Bgv2zwWTBgLZDa','yMvHzefJDgL2zq','B3bgBxO','qvDVq3u','yxnZzxrZl3bHAw50Aw5NmtuUD2vICa','C2v0vhjHBNnMB3jTCW','Dg9tDhjPBMC','yuv0zNG','AxnqBgf5Aw5N','y3rxvKi','yNrUlwv4AxqTz2fTzq','Aw1Hz2vmB2fKzwq','yMLUzev2zw50CW','AxrLBvn5C3rLBq','5yg35AsP5O2I5PEL','zhjHD0LTywDL','z2v0sxrLBq','D2LUzc1PBMrPy2f0B3i','CMvZDg9Yzq','BgvMDa','Dg91y2HLBMq','yxnZzxrZl3bHAw50Aw5NmI5WBMC','D2LUzfn0CMvUz3rO'];_0x26b1=function(){return _0x3fb68a;};return _0x26b1();}export const Levels=[{'id':'1-1','chapter':0x1,'name':_0x580252(0x235),'pieces':0xf,'rotate':![],'evt':_0x580252(0x16d),'img':_0x580252(0x15d),'desc':_0x580252(0x1c2),'time':0x78},{'id':'1-2','chapter':0x1,'name':_0x580252(0x238),'pieces':0x1e,'rotate':![],'evt':'normal','img':_0x580252(0x150),'desc':_0x580252(0x295),'time':0xf0},{'id':_0x580252(0x298),'chapter':0x1,'name':'小试牛刀','pieces':0x1e,'rotate':!![],'evt':'normal','img':_0x580252(0x280),'desc':_0x580252(0x257),'time':0x12c},{'id':_0x580252(0x176),'chapter':0x1,'name':'熟能生巧','pieces':0x32,'rotate':!![],'evt':_0x580252(0x16d),'img':_0x580252(0x208),'desc':_0x580252(0x1df),'time':0x1e0},{'id':_0x580252(0x161),'chapter':0x2,'name':_0x580252(0x1bd),'pieces':0x50,'rotate':!![],'evt':_0x580252(0x15a),'img':_0x580252(0x1f6),'desc':_0x580252(0x239),'time':0x258},{'id':_0x580252(0x1ff),'chapter':0x2,'name':_0x580252(0x149),'pieces':0x78,'rotate':!![],'evt':'fake','img':_0x580252(0x29b),'desc':_0x580252(0x1d7),'time':0x2d0},{'id':_0x580252(0x1c3),'chapter':0x2,'name':'登峰造极','pieces':0xa0,'rotate':!![],'evt':_0x580252(0x26e),'img':_0x580252(0x1b4),'desc':_0x580252(0x249),'time':0x384},{'id':'3-1','chapter':0x3,'name':_0x580252(0x22b),'pieces':0x50,'rotate':!![],'evt':_0x580252(0x197),'img':_0x580252(0x1a4),'desc':'飞沙迷眼，你的洛阳铲无法使用。在迷雾中稳住并寻找第一批碎片。','time':0x2d0},{'id':_0x580252(0x17b),'chapter':0x3,'name':_0x580252(0x218),'pieces':0x64,'rotate':!![],'evt':_0x580252(0x197),'img':_0x580252(0x169),'desc':_0x580252(0x206),'time':0x384},{'id':'3-3','chapter':0x3,'name':_0x580252(0x19a),'pieces':0x82,'rotate':!![],'evt':_0x580252(0x191),'img':_0x580252(0x204),'desc':_0x580252(0x188),'time':0x4b0},{'id':_0x580252(0x1db),'chapter':0x3,'name':_0x580252(0x1a1),'pieces':0xb4,'rotate':!![],'evt':_0x580252(0x197),'img':_0x580252(0x222),'desc':_0x580252(0x230),'time':0x5dc},{'id':_0x580252(0x1cb),'chapter':0x4,'name':_0x580252(0x24b),'pieces':0x64,'rotate':!![],'evt':'blurring','img':_0x580252(0x170),'desc':_0x580252(0x272),'time':0x384},{'id':'4-2','chapter':0x4,'name':_0x580252(0x154),'pieces':0x82,'rotate':!![],'evt':_0x580252(0x18c),'img':_0x580252(0x172),'desc':_0x580252(0x26c),'time':0x4b0},{'id':_0x580252(0x22a),'chapter':0x4,'name':_0x580252(0x23e),'pieces':0xa0,'rotate':!![],'evt':_0x580252(0x18c),'img':_0x580252(0x23c),'desc':_0x580252(0x179),'time':0x708},{'id':_0x580252(0x21e),'chapter':0x4,'name':'丹青不朽','pieces':0xdc,'rotate':!![],'evt':_0x580252(0x18c),'img':_0x580252(0x13f),'desc':_0x580252(0x2a4),'time':0x960}];export class GameManager{constructor(){const _0x105f70=_0x580252,_0x48e495=_0x105f70(0x153)[_0x105f70(0x285)]('|');let _0x55488d=0x0;while(!![]){switch(_0x48e495[_0x55488d++]){case'0':this[_0x105f70(0x1c4)]();continue;case'1':this[_0x105f70(0x1e3)]=null;continue;case'2':this[_0x105f70(0x147)]();continue;case'3':this[_0x105f70(0x1ba)]=![];continue;case'4':this[_0x105f70(0x1ae)]=0xc8;continue;case'5':this[_0x105f70(0x252)]=null;continue;case'6':this[_0x105f70(0x1e2)]={};continue;case'7':this[_0x105f70(0x237)]=null;continue;case'8':this[_0x105f70(0x1fe)]();continue;case'9':this[_0x105f70(0x1e6)]=0x0;continue;case'10':this['isPlaying']=![];continue;case'11':this[_0x105f70(0x151)]=0x0;continue;case'12':this['renderLevelMenu'](0x1);continue;case'13':this[_0x105f70(0x254)]={};continue;case'14':this[_0x105f70(0x27a)]=![];continue;case'15':this[_0x105f70(0x148)]=new ItemSystem(this);continue;case'16':this[_0x105f70(0x1e9)]=0x0;continue;case'17':this['highestLevelIndex']=0x0;continue;}break;}}[_0x580252(0x1fe)](){const _0x540bd4=_0x580252,_0x4ab889={'gEvpe':function(_0x336530,_0x7ded5d){return _0x336530>_0x7ded5d;},'tMizF':function(_0x16d94e,_0x5d98f1){return _0x16d94e%_0x5d98f1;},'AivXq':function(_0x557774,_0x7f5678){return _0x557774<_0x7f5678;},'oVDQN':function(_0x5b9f57,_0x3ce46e){return _0x5b9f57<_0x3ce46e;},'bBuIN':function(_0x17a74b,_0x48e0a5){return _0x17a74b*_0x48e0a5;},'LGtox':function(_0x173476,_0xe679de){return _0x173476/_0xe679de;}};!PolyPiece[_0x540bd4(0x225)][_0x540bd4(0x1b8)]&&(PolyPiece[_0x540bd4(0x225)][_0x540bd4(0x1b8)]=PolyPiece[_0x540bd4(0x225)]['drawImage'],PolyPiece['prototype'][_0x540bd4(0x14a)]=function(_0x2b055a){const _0x4edc65=_0x540bd4;let _0x28bdb2=this[_0x4edc65(0x20d)]?puzzle[_0x4edc65(0x152)]:puzzle[_0x4edc65(0x21a)];_0x4ab889['gEvpe'](this[_0x4edc65(0x25d)],0x0)?(_0x28bdb2[_0x4edc65(0x263)](),_0x28bdb2[_0x4edc65(0x199)]=_0x4edc65(0x299)+this[_0x4edc65(0x25d)]+_0x4edc65(0x1b5),this[_0x4edc65(0x1b8)](_0x2b055a),_0x28bdb2[_0x4edc65(0x14d)]()):this[_0x4edc65(0x1b8)](_0x2b055a);if(this[_0x4edc65(0x29a)]&&this[_0x4edc65(0x2a5)]){_0x28bdb2[_0x4edc65(0x263)]();let _0x3672df=new Path2D();_0x3672df[_0x4edc65(0x246)](this[_0x4edc65(0x1a6)],this[_0x4edc65(0x283)]),_0x28bdb2[_0x4edc65(0x265)](_0x3672df),_0x28bdb2['lineWidth']=1.8,_0x28bdb2['strokeStyle']=_0x4edc65(0x1bf);const _0x361d4e=0xf,_0x428856=_0x4ab889[_0x4edc65(0x211)](Date[_0x4edc65(0x28f)]()/0x7d0,0xf);for(let _0x1359d5=-0x3e8;_0x4ab889[_0x4edc65(0x24f)](_0x1359d5,0x7d0);_0x1359d5+=_0x361d4e){_0x28bdb2[_0x4edc65(0x1f5)]();for(let _0x36d32b=-0x1f4;_0x4ab889[_0x4edc65(0x20b)](_0x36d32b,0x7d0);_0x36d32b+=0xf){let _0x357316=_0x36d32b*0.5+_0x1359d5+_0x4ab889['bBuIN'](Math[_0x4edc65(0x178)](_0x4ab889['LGtox'](_0x36d32b+_0x428856*0xa,0x28)),0x8);if(_0x36d32b===-0x1f4)_0x28bdb2[_0x4edc65(0x29f)](_0x36d32b,_0x357316);else _0x28bdb2[_0x4edc65(0x275)](_0x36d32b,_0x357316);}_0x28bdb2['stroke']();}_0x28bdb2[_0x4edc65(0x14d)]();}});}[_0x580252(0x1c4)](){const _0x5a97ee=_0x580252,_0x36e77e={'dwBXC':'sold-out','ZJLXE':function(_0x3c88ca,_0xa87bc6){return _0x3c88ca>=_0xa87bc6;},'MNPxQ':'已满级\x20(Lv.3)','qLSpx':_0x5a97ee(0x22d),'lnCdC':function(_0x232659,_0x57673b){return _0x232659!==_0x57673b;},'NpobA':function(_0x16a560,_0x3c9f57){return _0x16a560!==_0x3c9f57;},'gjaDS':_0x5a97ee(0x1d6)},_0x4da131=localStorage[_0x5a97ee(0x14b)](_0x36e77e[_0x5a97ee(0x28b)]);if(_0x4da131)try{const _0x587f7d=JSON[_0x5a97ee(0x18f)](_0x4da131);if(_0x36e77e[_0x5a97ee(0x1b9)](_0x587f7d[_0x5a97ee(0x1ae)],undefined))this[_0x5a97ee(0x1ae)]=_0x587f7d['coins'];if(_0x36e77e[_0x5a97ee(0x1cd)](_0x587f7d['highestLevelIndex'],undefined))this[_0x5a97ee(0x163)]=_0x587f7d[_0x5a97ee(0x163)];if(_0x587f7d['unlockedItems']!==undefined)this[_0x5a97ee(0x254)]=_0x587f7d['unlockedItems'];if(_0x36e77e[_0x5a97ee(0x1cd)](_0x587f7d[_0x5a97ee(0x1e2)],undefined))this['itemLevels']=_0x587f7d['itemLevels'];}catch(_0x16ce47){console[_0x5a97ee(0x268)](_0x36e77e['gjaDS']);}this['updateHUD'](),Object[_0x5a97ee(0x1d1)](this[_0x5a97ee(0x254)])[_0x5a97ee(0x1e5)](_0x3b9f39=>{const _0x35b3b4=_0x5a97ee;if(this['unlockedItems'][_0x3b9f39]){const _0x37ae85=document['querySelector'](_0x35b3b4(0x202)+_0x3b9f39+'\x22]');_0x37ae85&&(_0x37ae85[_0x35b3b4(0x224)]='售罄',_0x37ae85[_0x35b3b4(0x24e)][_0x35b3b4(0x1cc)](_0x36e77e[_0x35b3b4(0x1b2)]));const _0x1f18e3=document[_0x35b3b4(0x18a)](_0x35b3b4(0x1cf)+_0x3b9f39+_0x35b3b4(0x247));if(_0x1f18e3){_0x1f18e3[_0x35b3b4(0x24e)]['remove'](_0x35b3b4(0x291));const _0x131c5f=this['itemLevels'][_0x3b9f39]||0x1;_0x36e77e[_0x35b3b4(0x1d8)](_0x131c5f,0x3)?(_0x1f18e3['innerText']=_0x36e77e['MNPxQ'],_0x1f18e3[_0x35b3b4(0x284)]=!![]):_0x1f18e3['innerText']='升级\x20(Lv.'+_0x131c5f+')';}}});}[_0x580252(0x1d0)](){const _0x230a47=_0x580252,_0x3c3947={'coins':this[_0x230a47(0x1ae)],'highestLevelIndex':this[_0x230a47(0x163)],'unlockedItems':this['unlockedItems'],'itemLevels':this[_0x230a47(0x1e2)]};localStorage[_0x230a47(0x200)](_0x230a47(0x22d),JSON[_0x230a47(0x173)](_0x3c3947));}[_0x580252(0x147)](){const _0xfb1ea7=_0x580252,_0x3b6077={'yQdhI':'item-hud','eMHqX':_0xfb1ea7(0x1a5),'TbZEP':_0xfb1ea7(0x291),'ledWo':_0xfb1ea7(0x2a0),'yRFoL':function(_0x49b10d,_0x3e5026,_0x211df9){return _0x49b10d(_0x3e5026,_0x211df9);},'Cejxn':'forPuzzle','KFbzK':function(_0x537187,_0x59c463){return _0x537187*_0x59c463;},'YnUcG':'click','BOFeK':_0xfb1ea7(0x1da),'dyfUj':_0xfb1ea7(0x18e),'yIuIQ':'btn-back-home','opFmz':_0xfb1ea7(0x286),'EnkVC':_0xfb1ea7(0x290),'QyYxc':_0xfb1ea7(0x216),'CmAtA':_0xfb1ea7(0x14f),'UHMsC':'btn-open-shop'};document[_0xfb1ea7(0x1ef)](_0xfb1ea7(0x19e))[_0xfb1ea7(0x1d5)](_0x3b6077['YnUcG'],()=>this['showMenu']()),document[_0xfb1ea7(0x1ef)](_0x3b6077[_0xfb1ea7(0x1b3)])[_0xfb1ea7(0x1d5)](_0xfb1ea7(0x28c),()=>this[_0xfb1ea7(0x23a)]()),document['getElementById'](_0x3b6077[_0xfb1ea7(0x1a2)])[_0xfb1ea7(0x1d5)](_0x3b6077[_0xfb1ea7(0x242)],()=>this[_0xfb1ea7(0x23a)]()),document['getElementById'](_0x3b6077[_0xfb1ea7(0x203)])[_0xfb1ea7(0x1d5)](_0x3b6077[_0xfb1ea7(0x242)],()=>{const _0x3bfb03=_0xfb1ea7;this['togglePause'](),this[_0x3bfb03(0x294)]();}),document['getElementById'](_0xfb1ea7(0x145))[_0xfb1ea7(0x1d5)](_0x3b6077[_0xfb1ea7(0x242)],()=>{const _0x194da8=_0xfb1ea7;window[_0x194da8(0x1aa)][_0x194da8(0x171)]='/';}),document[_0xfb1ea7(0x1ef)](_0x3b6077[_0xfb1ea7(0x1eb)])[_0xfb1ea7(0x1d5)](_0x3b6077['YnUcG'],()=>{const _0x18002d=_0xfb1ea7,_0xd46e77=document[_0x18002d(0x1ef)](_0x3b6077[_0x18002d(0x1dc)]);_0xd46e77['classList']['toggle']('collapsed'),document[_0x18002d(0x1ef)](_0x3b6077[_0x18002d(0x1eb)])['innerText']=_0xd46e77[_0x18002d(0x24e)][_0x18002d(0x181)](_0x18002d(0x17a))?'▲':'◈';});const _0x4e81a3=_0x246b4f=>{const _0x371a46=_0xfb1ea7;this['isPaused']&&(_0x246b4f['stopImmediatePropagation'](),_0x246b4f[_0x371a46(0x234)]());};[_0xfb1ea7(0x16f),_0x3b6077[_0xfb1ea7(0x2aa)],'mouseup',_0x3b6077[_0xfb1ea7(0x27b)],_0xfb1ea7(0x296),_0x3b6077['QyYxc'],_0x3b6077[_0xfb1ea7(0x26f)]][_0xfb1ea7(0x1e5)](_0x43c255=>{const _0x19e50c=_0xfb1ea7;document[_0x19e50c(0x1d5)](_0x43c255,_0x4e81a3,!![]);}),document[_0xfb1ea7(0x1ef)](_0x3b6077[_0xfb1ea7(0x1c1)])['addEventListener'](_0x3b6077['YnUcG'],()=>{const _0x5c4d2e=_0xfb1ea7;document[_0x5c4d2e(0x1ef)](_0x5c4d2e(0x276))[_0x5c4d2e(0x24e)][_0x5c4d2e(0x20f)](_0x5c4d2e(0x291));}),document['getElementById'](_0xfb1ea7(0x213))['addEventListener'](_0x3b6077[_0xfb1ea7(0x242)],()=>{const _0x57326c=_0xfb1ea7;document[_0x57326c(0x1ef)](_0x57326c(0x276))[_0x57326c(0x24e)][_0x57326c(0x1cc)](_0x3b6077['TbZEP']);}),document[_0xfb1ea7(0x1ef)](_0xfb1ea7(0x189))[_0xfb1ea7(0x1d5)]('click',()=>{const _0x1b49c1=_0xfb1ea7;document[_0x1b49c1(0x1ef)](_0x1b49c1(0x162))['classList'][_0x1b49c1(0x1cc)](_0x1b49c1(0x291));}),document[_0xfb1ea7(0x266)]('.chapter-tab')[_0xfb1ea7(0x1e5)](_0x48961e=>{const _0x1c43ec=_0xfb1ea7;_0x48961e[_0x1c43ec(0x1d5)](_0x1c43ec(0x28c),_0xef261f=>{const _0x721109=_0x1c43ec;document[_0x721109(0x266)](_0x721109(0x258))[_0x721109(0x1e5)](_0x401148=>_0x401148['classList']['remove']('active')),_0xef261f[_0x721109(0x259)][_0x721109(0x24e)][_0x721109(0x1cc)](_0x3b6077[_0x721109(0x167)]),this[_0x721109(0x229)](_0x3b6077['yRFoL'](parseInt,_0xef261f[_0x721109(0x259)][_0x721109(0x1f3)][_0x721109(0x253)],0xa));});}),document[_0xfb1ea7(0x1d5)](_0xfb1ea7(0x286),_0x594a55=>{const _0x2bdbcf=_0xfb1ea7,_0x54276c=document[_0x2bdbcf(0x1ef)](_0x3b6077[_0x2bdbcf(0x245)])[_0x2bdbcf(0x15c)]();this[_0x2bdbcf(0x184)]={'x':_0x594a55['clientX']-_0x54276c[_0x2bdbcf(0x14e)],'y':_0x594a55[_0x2bdbcf(0x1e1)]-_0x54276c[_0x2bdbcf(0x27e)]};if(!this[_0x2bdbcf(0x27a)]||this[_0x2bdbcf(0x198)])return;const _0x52e588=document[_0x2bdbcf(0x1ef)](_0x2bdbcf(0x157));if(this[_0x2bdbcf(0x148)][_0x2bdbcf(0x214)]){const _0x34769c=this['itemLevels']&&this['itemLevels']['lamp']||0x1,_0x8f00d2=[0x96,0xfa,0x190][_0x34769c-0x1];_0x52e588['style']['maskImage']=_0x2bdbcf(0x201)+_0x594a55[_0x2bdbcf(0x226)]+_0x2bdbcf(0x228)+_0x594a55[_0x2bdbcf(0x1e1)]+'px,\x20transparent\x20'+_0x8f00d2+_0x2bdbcf(0x23d)+_0x8f00d2*0x2+_0x2bdbcf(0x1b5),_0x52e588[_0x2bdbcf(0x164)][_0x2bdbcf(0x1fc)]='radial-gradient(circle\x20at\x20'+_0x594a55[_0x2bdbcf(0x226)]+'px\x20'+_0x594a55[_0x2bdbcf(0x1e1)]+_0x2bdbcf(0x260)+_0x8f00d2+_0x2bdbcf(0x23d)+_0x3b6077['KFbzK'](_0x8f00d2,0x2)+_0x2bdbcf(0x1b5);}else _0x52e588['style']['maskImage']=_0x2bdbcf(0x201)+_0x594a55['clientX']+_0x2bdbcf(0x228)+_0x594a55[_0x2bdbcf(0x1e1)]+_0x2bdbcf(0x20e),_0x52e588[_0x2bdbcf(0x164)][_0x2bdbcf(0x1fc)]=_0x2bdbcf(0x201)+_0x594a55[_0x2bdbcf(0x226)]+_0x2bdbcf(0x228)+_0x594a55[_0x2bdbcf(0x1e1)]+_0x2bdbcf(0x20e);});}[_0x580252(0x23a)](){const _0x211ec9=_0x580252;this[_0x211ec9(0x198)]=!this['isPaused'],document[_0x211ec9(0x1ef)](_0x211ec9(0x20a))[_0x211ec9(0x24e)][_0x211ec9(0x22f)](_0x211ec9(0x291),!this[_0x211ec9(0x198)]),this[_0x211ec9(0x198)]?(this['stopTimer'](),this[_0x211ec9(0x215)]()):(this['startTimer'](),this[_0x211ec9(0x1d3)]());}[_0x580252(0x229)](_0x421d36){const _0x1dc242=_0x580252,_0x23b45e={'ydqWx':_0x1dc242(0x190),'cLzlu':_0x1dc242(0x17e),'jkQbL':'\x20locked'},_0xf0be47=document['getElementById'](_0x1dc242(0x2a8));_0xf0be47[_0x1dc242(0x15b)]='',Levels['filter'](_0x397d0e=>_0x397d0e[_0x1dc242(0x253)]===_0x421d36)[_0x1dc242(0x1e5)](_0xb6d200=>{const _0x3ddde7=_0x1dc242,_0x3ab027=Levels[_0x3ddde7(0x16c)](_0x3f85c6=>_0x3f85c6['id']===_0xb6d200['id']),_0xff1c61=_0x3ab027>this[_0x3ddde7(0x163)],_0x3db7b4=document[_0x3ddde7(0x182)](_0x23b45e[_0x3ddde7(0x1ca)]);_0x3db7b4['className']=_0x23b45e[_0x3ddde7(0x185)]+(_0xff1c61?_0x23b45e[_0x3ddde7(0x1f1)]:''),_0x3db7b4[_0x3ddde7(0x15b)]='\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22level-info\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>'+_0xb6d200['id']+'\x20'+_0xb6d200['name']+_0x3ddde7(0x243)+_0xb6d200['desc']+'</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn-primary\x22\x20'+(_0xff1c61?'disabled\x20style=\x22background:\x20rgba(100,100,100,0.5);\x20border:\x20none;\x20color:\x20#aaa;\x20cursor:\x20not-allowed;\x22':'')+'>'+(_0xff1c61?_0x3ddde7(0x156):'修复')+_0x3ddde7(0x261),!_0xff1c61&&_0x3db7b4[_0x3ddde7(0x18a)](_0x3ddde7(0x2a1))[_0x3ddde7(0x1d5)](_0x3ddde7(0x28c),()=>this[_0x3ddde7(0x1ee)](_0xb6d200)),_0xf0be47[_0x3ddde7(0x17f)](_0x3db7b4);});}['showMenu'](){const _0x7b62b6=_0x580252,_0x53d5c9={'GYqvK':function(_0x45e22b,_0x237c80,_0x1c612f){return _0x45e22b(_0x237c80,_0x1c612f);},'ntKdw':_0x7b62b6(0x23f),'OkuUv':_0x7b62b6(0x2a0),'FdByo':_0x7b62b6(0x291),'NnjQf':_0x7b62b6(0x288),'jaCFv':'btn-open-shop','aEtfx':_0x7b62b6(0x1f9),'UAyaH':'game-over-screen','AWoCu':_0x7b62b6(0x20a),'NcVxj':_0x7b62b6(0x15e)};this['isPlaying']=![],this['isPaused']=![],this[_0x7b62b6(0x28e)](),this[_0x7b62b6(0x215)]();const _0x159605=document['querySelector'](_0x7b62b6(0x1bc));_0x159605&&this[_0x7b62b6(0x229)](_0x53d5c9[_0x7b62b6(0x1c9)](parseInt,_0x159605['dataset']['chapter'],0xa)),document[_0x7b62b6(0x1ef)](_0x53d5c9['ntKdw'])['classList'][_0x7b62b6(0x1cc)](_0x53d5c9[_0x7b62b6(0x1ad)]),document[_0x7b62b6(0x1ef)](_0x53d5c9['ntKdw'])[_0x7b62b6(0x24e)][_0x7b62b6(0x20f)](_0x53d5c9[_0x7b62b6(0x19d)]),document[_0x7b62b6(0x1ef)](_0x7b62b6(0x1be))[_0x7b62b6(0x24e)][_0x7b62b6(0x1cc)](_0x53d5c9[_0x7b62b6(0x19d)]),document[_0x7b62b6(0x1ef)](_0x53d5c9[_0x7b62b6(0x1a8)])[_0x7b62b6(0x24e)]['add'](_0x53d5c9[_0x7b62b6(0x19d)]),document[_0x7b62b6(0x1ef)](_0x7b62b6(0x1da))[_0x7b62b6(0x24e)][_0x7b62b6(0x1cc)](_0x7b62b6(0x291)),document[_0x7b62b6(0x1ef)](_0x53d5c9['jaCFv'])[_0x7b62b6(0x24e)]['remove'](_0x53d5c9[_0x7b62b6(0x19d)]),document[_0x7b62b6(0x1ef)](_0x53d5c9[_0x7b62b6(0x142)])[_0x7b62b6(0x24e)][_0x7b62b6(0x1cc)](_0x7b62b6(0x291)),document[_0x7b62b6(0x1ef)](_0x53d5c9['UAyaH'])['classList']['add'](_0x53d5c9['FdByo']),document[_0x7b62b6(0x1ef)](_0x53d5c9[_0x7b62b6(0x13e)])[_0x7b62b6(0x24e)][_0x7b62b6(0x1cc)](_0x7b62b6(0x291)),document[_0x7b62b6(0x1ef)](_0x7b62b6(0x157))['classList']['add'](_0x7b62b6(0x291)),document[_0x7b62b6(0x1ef)](_0x7b62b6(0x292))[_0x7b62b6(0x24e)]['add'](_0x7b62b6(0x291)),this['fogActive']=![],document[_0x7b62b6(0x1ef)](_0x53d5c9[_0x7b62b6(0x1f4)])[_0x7b62b6(0x164)][_0x7b62b6(0x1d9)]='0',events['push']({'event':_0x7b62b6(0x212)});}[_0x580252(0x1ee)](_0x44be5b){const _0x2d9197=_0x580252,_0x4c27e0={'SOMbz':function(_0x3e90bc,_0x11f261,_0x42f70e){return _0x3e90bc(_0x11f261,_0x42f70e);},'bUMOY':function(_0x5a7138,_0x490a11){return _0x5a7138(_0x490a11);},'TuNwO':function(_0xf47c04,_0x3ce0b0,_0x1038b2){return _0xf47c04(_0x3ce0b0,_0x1038b2);},'moMqh':_0x2d9197(0x23f),'vCakk':_0x2d9197(0x288),'lkVFf':'hidden','lzVah':_0x2d9197(0x1da),'QnSCr':_0x2d9197(0x19f),'bPgsh':_0x2d9197(0x1e4),'UKDuH':_0x2d9197(0x15e),'UCAZv':_0x2d9197(0x15a),'GRDMS':'drifting','JAdFq':_0x2d9197(0x282),'onUGy':_0x2d9197(0x157),'EFbHU':_0x2d9197(0x14c),'YOOgF':_0x2d9197(0x262),'VRhxv':'sanding','CObWz':function(_0x84d586,_0x1dda24){return _0x84d586+_0x1dda24;},'CEzPJ':'rotationstep'};this['currentLevel']=_0x44be5b,document[_0x2d9197(0x1ef)]('current-chapter-name')['innerText']='第'+_0x44be5b['chapter']+'章：'+_0x44be5b[_0x2d9197(0x270)]+'\x20('+_0x44be5b[_0x2d9197(0x217)]+'片)',document[_0x2d9197(0x1ef)](_0x4c27e0['moMqh'])[_0x2d9197(0x24e)][_0x2d9197(0x20f)](_0x2d9197(0x2a0)),setTimeout(()=>document['getElementById'](_0x2d9197(0x23f))[_0x2d9197(0x24e)][_0x2d9197(0x1cc)](_0x2d9197(0x291)),0x1f4),document[_0x2d9197(0x1ef)](_0x2d9197(0x1be))[_0x2d9197(0x24e)][_0x2d9197(0x20f)](_0x2d9197(0x291)),document[_0x2d9197(0x1ef)](_0x4c27e0[_0x2d9197(0x27d)])['classList'][_0x2d9197(0x20f)](_0x4c27e0[_0x2d9197(0x269)]),document['getElementById'](_0x4c27e0[_0x2d9197(0x248)])[_0x2d9197(0x24e)]['remove'](_0x2d9197(0x291)),document['getElementById'](_0x4c27e0[_0x2d9197(0x2a7)])[_0x2d9197(0x24e)]['add'](_0x4c27e0[_0x2d9197(0x269)]),document[_0x2d9197(0x1ef)]('item-hud')['classList'][_0x2d9197(0x20f)](_0x2d9197(0x291)),document['getElementById'](_0x4c27e0[_0x2d9197(0x1d4)])[_0x2d9197(0x24e)][_0x2d9197(0x1cc)](_0x4c27e0[_0x2d9197(0x269)]),document['getElementById'](_0x4c27e0[_0x2d9197(0x27c)])[_0x2d9197(0x164)]['opacity']='1';const _0x4af32d=_0x44be5b['evt'][_0x2d9197(0x1f0)](_0x4c27e0[_0x2d9197(0x207)]),_0x10e03b=_0x44be5b[_0x2d9197(0x1b6)][_0x2d9197(0x1f0)](_0x4c27e0['GRDMS']),_0x6f4031=_0x44be5b[_0x2d9197(0x1b6)][_0x2d9197(0x1f0)](_0x4c27e0[_0x2d9197(0x29e)]),_0x2dea71=document['getElementById'](_0x4c27e0[_0x2d9197(0x1fb)]);_0x2dea71[_0x2d9197(0x24e)][_0x2d9197(0x22f)](_0x2d9197(0x291),!_0x4af32d),this['fogActive']=_0x4af32d;const _0x571397=document[_0x2d9197(0x1ef)]('environment-overlay');_0x571397[_0x2d9197(0x24e)]['toggle'](_0x2d9197(0x291),!_0x10e03b&&!_0x6f4031),document[_0x2d9197(0x1ef)](_0x4c27e0[_0x2d9197(0x1e8)])[_0x2d9197(0x24e)][_0x2d9197(0x22f)]('hidden',!_0x10e03b);const _0x1afe46=document[_0x2d9197(0x1ef)](_0x4c27e0[_0x2d9197(0x277)]);_0x1afe46['classList'][_0x2d9197(0x22f)]('raining',_0x6f4031),_0x1afe46[_0x2d9197(0x24e)][_0x2d9197(0x22f)](_0x4c27e0[_0x2d9197(0x279)],_0x10e03b),puzzle[_0x2d9197(0x146)]=![],puzzle[_0x2d9197(0x1ea)][_0x2d9197(0x25e)]=_0x4c27e0['CObWz'](_0x44be5b[_0x2d9197(0x1fd)]+'?t=',Date[_0x2d9197(0x28f)]()),document[_0x2d9197(0x1ef)](_0x2d9197(0x1f8))[_0x2d9197(0x195)]=_0x44be5b[_0x2d9197(0x217)],document[_0x2d9197(0x1ef)](_0x4c27e0[_0x2d9197(0x196)])[_0x2d9197(0x195)]=_0x44be5b[_0x2d9197(0x174)]?0x6:0x0;const _0x57e2d7=setInterval(()=>{const _0x337ee6=_0x2d9197;puzzle[_0x337ee6(0x146)]&&(_0x4c27e0[_0x337ee6(0x168)](clearInterval,_0x57e2d7),_0x4c27e0[_0x337ee6(0x1ce)](setTimeout,()=>{const _0x2e40f9=_0x337ee6;events[_0x2e40f9(0x244)]({'event':'nbpieces','nbpieces':_0x44be5b[_0x2e40f9(0x217)]}),puzzle[_0x2e40f9(0x24c)]&&puzzle[_0x2e40f9(0x24c)]['forEach'](_0x4a14a0=>{const _0x314bfc=_0x2e40f9;_0x4a14a0[_0x314bfc(0x25d)]=0x0;}),_0x4c27e0[_0x2e40f9(0x1f7)](setTimeout,()=>{const _0x2b02de=_0x2e40f9;_0x44be5b[_0x2b02de(0x1b6)]['includes'](_0x2b02de(0x26e))&&this[_0x2b02de(0x240)](),this[_0x2b02de(0x23b)](),this[_0x2b02de(0x1d3)]();},0x258);},0x64));},0x32);this['isPlaying']=!![],this[_0x2d9197(0x198)]=![],this[_0x2d9197(0x1ba)]=![],this[_0x2d9197(0x148)][_0x2d9197(0x210)](),this['startTimer'](),this[_0x2d9197(0x250)]();}[_0x580252(0x1d3)](){const _0x1c6d32=_0x580252,_0x2019ee={'PQwEX':function(_0x335278,_0xca37f2){return _0x335278+_0xca37f2;},'ctWVB':_0x1c6d32(0x220),'GmKNK':function(_0x4ef3b0,_0x50e590){return _0x4ef3b0(_0x50e590);}};this[_0x1c6d32(0x215)]();if(this[_0x1c6d32(0x252)][_0x1c6d32(0x1b6)][_0x1c6d32(0x1f0)](_0x2019ee[_0x1c6d32(0x144)])){const _0x438f5a={'3-1':0.15,'3-2':0.3,'3-3':0.5,'3-4':0.8};this[_0x1c6d32(0x151)]=_0x438f5a[this[_0x1c6d32(0x252)]['id']]||0.2;}else{if(this[_0x1c6d32(0x252)][_0x1c6d32(0x1b6)]['includes']('blurring')){const _0x4845d0={'4-1':0.005,'4-2':0.01,'4-3':0.02,'4-4':0.04};this['blurBaseRate']=_0x4845d0[this['currentLevel']['id']]||0.01;}}const _0x338b04=()=>{const _0x33d21b=_0x1c6d32,_0x3f5685={'ZaLfi':function(_0x19188a,_0x2eb42f){return _0x19188a%_0x2eb42f;},'HvBBY':function(_0x3aec1d,_0x353c5b){const _0x3c61ba=_0x201a;return _0x2019ee[_0x3c61ba(0x1a7)](_0x3aec1d,_0x353c5b);},'ssmvX':_0x33d21b(0x282),'ujeKP':function(_0x32bb07,_0x1ddfae){return _0x32bb07<_0x1ddfae;},'GWLyH':function(_0x31d9c5,_0x26ed8e){const _0x225320=_0x33d21b;return _0x2019ee[_0x225320(0x1a7)](_0x31d9c5,_0x26ed8e);},'pIDvb':function(_0x427e0a,_0x4922d6){return _0x427e0a-_0x4922d6;},'yFCAg':function(_0x15a3e8,_0x45c672){return _0x15a3e8>_0x45c672;}};if(!this[_0x33d21b(0x143)]||this[_0x33d21b(0x198)]||!puzzle||!puzzle[_0x33d21b(0x24c)])return;this[_0x33d21b(0x1b7)]();let _0xf377d7=![];puzzle['polyPieces'][_0x33d21b(0x1e5)](_0x455cfe=>{const _0x2bbaf9=_0x33d21b;if(_0x455cfe['isMoving']||_0x455cfe[_0x2bbaf9(0x21f)])return;if(this[_0x2bbaf9(0x252)]['evt']['includes'](_0x2bbaf9(0x220))&&_0x455cfe[_0x2bbaf9(0x217)][_0x2bbaf9(0x274)]<0x3){if(!this[_0x2bbaf9(0x148)][_0x2bbaf9(0x2a9)]){_0x455cfe['x']+=this['windStrength'];if(Math[_0x2bbaf9(0x293)]()<0.001&&!_0x455cfe[_0x2bbaf9(0x26a)]){const _0x270f46=_0x455cfe[_0x2bbaf9(0x205)],_0x1aa230=Math['random']()>0.5?0x1:-0x1,_0x22e156=_0x3f5685[_0x2bbaf9(0x267)](_0x3f5685[_0x2bbaf9(0x19c)](_0x270f46+_0x1aa230,0x6),0x6);_0x455cfe[_0x2bbaf9(0x174)](_0x22e156);}_0x455cfe[_0x2bbaf9(0x140)](),_0xf377d7=!![];}}if(this[_0x2bbaf9(0x252)][_0x2bbaf9(0x1b6)][_0x2bbaf9(0x1f0)](_0x3f5685[_0x2bbaf9(0x1ec)])){_0x3f5685[_0x2bbaf9(0x1ac)](_0x455cfe[_0x2bbaf9(0x217)][_0x2bbaf9(0x274)],0x5)?_0x455cfe[_0x2bbaf9(0x25d)]=Math[_0x2bbaf9(0x289)](0x6,_0x3f5685[_0x2bbaf9(0x19b)](_0x455cfe[_0x2bbaf9(0x25d)],this[_0x2bbaf9(0x1e9)])):_0x455cfe[_0x2bbaf9(0x25d)]=Math[_0x2bbaf9(0x18d)](0x0,_0x3f5685[_0x2bbaf9(0x232)](_0x455cfe[_0x2bbaf9(0x25d)],0.1));if(_0x3f5685['yFCAg'](_0x455cfe[_0x2bbaf9(0x25d)],0x0))_0xf377d7=!![];}});if(_0xf377d7)puzzle[_0x33d21b(0x264)]();this[_0x33d21b(0x237)]=requestAnimationFrame(_0x338b04);};this['envInterval']=_0x2019ee['GmKNK'](requestAnimationFrame,_0x338b04);}['stopEnvUpdate'](){const _0x3bac23=_0x580252;if(this[_0x3bac23(0x237)])cancelAnimationFrame(this[_0x3bac23(0x237)]);this[_0x3bac23(0x237)]=null;}['handleEdgePanning'](){const _0x4ee605=_0x580252,_0x5bed23={'XMbpa':function(_0x1bd84e,_0x5a9938){return _0x1bd84e-_0x5a9938;},'GKmKT':function(_0x306145,_0x10f5bc){return _0x306145<_0x10f5bc;},'iwtUm':function(_0x2a24fa,_0x44867){return _0x2a24fa-_0x44867;},'cgBfr':function(_0x16a252,_0x4a9172){return _0x16a252!==_0x4a9172;}};if(!this[_0x4ee605(0x143)]||this['isPaused']||!puzzle||!puzzle[_0x4ee605(0x24c)]||!this[_0x4ee605(0x184)])return;const _0x40d0c3=puzzle[_0x4ee605(0x24c)][_0x4ee605(0x278)](_0x5700bf=>_0x5700bf[_0x4ee605(0x21f)]);if(!_0x40d0c3)return;const _0x2e3550=0x50,_0x2fb48c=0xc,_0x5516a1=puzzle[_0x4ee605(0x16a)][_0x4ee605(0x15c)](),_0x1c2cc8=this['lastMousePos']['x'],_0x12b7fd=this['lastMousePos']['y'];let _0x2ea4d4=0x0,_0x47e259=0x0;if(_0x1c2cc8<_0x2e3550)_0x2ea4d4=_0x2fb48c;else{if(_0x1c2cc8>_0x5bed23[_0x4ee605(0x28d)](_0x5516a1[_0x4ee605(0x183)],_0x2e3550))_0x2ea4d4=-_0x2fb48c;}if(_0x5bed23[_0x4ee605(0x241)](_0x12b7fd,_0x2e3550))_0x47e259=_0x2fb48c;else{if(_0x12b7fd>_0x5bed23['iwtUm'](_0x5516a1[_0x4ee605(0x187)],_0x2e3550))_0x47e259=-_0x2fb48c;}(_0x2ea4d4!==0x0||_0x47e259!==0x0)&&(puzzle['sweepBy'](_0x2ea4d4,_0x47e259),window['_movingState']&&_0x5bed23['cgBfr'](window[_0x4ee605(0x25b)][_0x4ee605(0x160)],undefined)&&(window[_0x4ee605(0x25b)][_0x4ee605(0x160)]+=_0x2ea4d4,window[_0x4ee605(0x25b)]['ppYInit']+=_0x47e259),puzzle[_0x4ee605(0x264)]());}['injectFakePieces'](){const _0x18548e=_0x580252,_0x5f4c27={'YEBmr':function(_0x1c6385,_0x48a676){return _0x1c6385<_0x48a676;},'rXqJr':function(_0x1ae121,_0x2626b3){return _0x1ae121*_0x2626b3;},'rPnUf':function(_0x1dc185,_0x2a7c74){return _0x1dc185*_0x2a7c74;},'ddCnC':function(_0x103d06,_0x507c54){return _0x103d06+_0x507c54;},'JFeHu':function(_0x6a9d9e,_0x5a5d47){return _0x6a9d9e*_0x5a5d47;},'fxqOU':function(_0x236ca5,_0x233856){return _0x236ca5-_0x233856;},'SXIMC':function(_0x27f0e2,_0x21390e){return _0x27f0e2+_0x21390e;},'KTxnN':function(_0x27e05b,_0x1852bb){return _0x27e05b*_0x1852bb;}};if(!puzzle||!puzzle[_0x18548e(0x24c)]||puzzle['polyPieces'][_0x18548e(0x274)]===0x0)return;const _0x3a118b=puzzle[_0x18548e(0x24c)][_0x18548e(0x24d)](_0x278b04=>({'x':_0x278b04['x'],'y':_0x278b04['y']})),_0x498845=Math[_0x18548e(0x18d)](0x3,Math['floor'](this['currentLevel'][_0x18548e(0x217)]*0.15));for(let _0x19e6e7=0x0;_0x5f4c27[_0x18548e(0x1b1)](_0x19e6e7,_0x498845);_0x19e6e7++){let _0x7d8d86=puzzle[_0x18548e(0x24c)][Math['floor'](_0x5f4c27[_0x18548e(0x221)](Math['random'](),puzzle[_0x18548e(0x24c)][_0x18548e(0x274)]))],_0x56eb22=_0x7d8d86[_0x18548e(0x217)][0x0],_0x3a1e7f=Object[_0x18548e(0x21c)](Object['getPrototypeOf'](_0x56eb22));Object[_0x18548e(0x1c6)](_0x3a1e7f,_0x56eb22);let _0x3e4134=new PolyPiece(_0x3a1e7f);_0x3e4134[_0x18548e(0x29a)]=!![],_0x3e4134['rot']=Math[_0x18548e(0x27f)](_0x5f4c27[_0x18548e(0x193)](Math[_0x18548e(0x293)](),0x6)),_0x3e4134[_0x18548e(0x2a5)]=![];const _0x443398=_0x3a118b[Math[_0x18548e(0x27f)](_0x5f4c27[_0x18548e(0x193)](Math[_0x18548e(0x293)](),_0x3a118b[_0x18548e(0x274)]))];_0x3e4134[_0x18548e(0x29f)](_0x5f4c27['ddCnC'](_0x443398['x'],_0x5f4c27[_0x18548e(0x297)](_0x5f4c27[_0x18548e(0x24a)](Math['random'](),0.5),0x28)),_0x5f4c27['SXIMC'](_0x443398['y'],_0x5f4c27['KTxnN'](Math[_0x18548e(0x293)]()-0.5,0x28))),puzzle[_0x18548e(0x24c)]['push'](_0x3e4134);}}[_0x580252(0x23b)](){const _0x470ca7=_0x580252,_0x46eeca={'JgJDl':function(_0x264150,_0x5a9c38){return _0x264150*_0x5a9c38;},'FyrQk':function(_0x1d0c37,_0x2dcb70){return _0x1d0c37-_0x2dcb70;},'Yixva':function(_0x16db96,_0x2289a6){return _0x16db96>_0x2289a6;},'vxrUV':function(_0x196f23,_0x327d03){return _0x196f23+_0x327d03;}};if(!puzzle||!puzzle[_0x470ca7(0x24c)]||puzzle[_0x470ca7(0x24c)][_0x470ca7(0x274)]===0x0)return;const _0x4311b3=puzzle[_0x470ca7(0x24c)],_0x539902=_0x4311b3[_0x470ca7(0x24d)](_0x1aee37=>({'x':_0x1aee37['x'],'y':_0x1aee37['y']})),_0x38e543=_0x4311b3[_0x470ca7(0x24d)](_0x315b37=>_0x315b37[_0x470ca7(0x205)]);for(let _0x18f753=_0x46eeca[_0x470ca7(0x15f)](_0x4311b3[_0x470ca7(0x274)],0x1);_0x18f753>0x0;_0x18f753--){const _0x458a40=Math[_0x470ca7(0x27f)](Math[_0x470ca7(0x293)]()*_0x46eeca[_0x470ca7(0x25c)](_0x18f753,0x1));[_0x4311b3[_0x18f753],_0x4311b3[_0x458a40]]=[_0x4311b3[_0x458a40],_0x4311b3[_0x18f753]];}_0x4311b3['forEach']((_0x1fafd1,_0x527be6)=>{const _0x5ae88f=_0x470ca7,_0x18fc65=puzzle[_0x5ae88f(0x18b)]/0x2,_0x534863=puzzle['contHeight']/0x2,_0x5a7158=_0x18fc65+_0x46eeca[_0x5ae88f(0x1c0)](_0x539902[_0x527be6]['x']-_0x18fc65,0.85),_0x495f49=_0x534863+_0x46eeca[_0x5ae88f(0x15f)](_0x539902[_0x527be6]['y'],_0x534863)*0.85;_0x1fafd1[_0x5ae88f(0x29f)](_0x5a7158,_0x495f49),puzzle[_0x5ae88f(0x1af)]>0x0?(_0x1fafd1[_0x5ae88f(0x205)]!==0x0||_0x46eeca[_0x5ae88f(0x1fa)](Math[_0x5ae88f(0x293)](),0.3))&&(_0x1fafd1[_0x5ae88f(0x205)]=Math[_0x5ae88f(0x27f)](Math[_0x5ae88f(0x293)]()*puzzle[_0x5ae88f(0x26d)])):_0x1fafd1[_0x5ae88f(0x205)]=0x0;}),puzzle[_0x470ca7(0x264)]();}[_0x580252(0x186)](){const _0x30604e=_0x580252,_0xe2ea7c={'heVjo':function(_0x2fb3be,_0x228f6d){return _0x2fb3be<=_0x228f6d;},'xQvHS':'#ff4d4d','oIrQZ':_0x30604e(0x20c),'vDztf':_0x30604e(0x1be),'UcQcH':_0x30604e(0x28a),'DayJx':function(_0x13175d,_0xe28456,_0x3fad71){return _0x13175d(_0xe28456,_0x3fad71);}};this[_0x30604e(0x1e6)]=this[_0x30604e(0x252)]['time'],this[_0x30604e(0x1ab)]();if(this[_0x30604e(0x1e3)])clearInterval(this[_0x30604e(0x1e3)]);this[_0x30604e(0x1e3)]=_0xe2ea7c[_0x30604e(0x25a)](setInterval,()=>{const _0x28d51c=_0x30604e;this['timerSeconds']--,this[_0x28d51c(0x1ab)]();if(_0xe2ea7c[_0x28d51c(0x271)](this[_0x28d51c(0x1e6)],0x0)){this[_0x28d51c(0x1e6)]=0x0,this[_0x28d51c(0x1ba)]=!![],this[_0x28d51c(0x28e)]();const _0x21084d=document[_0x28d51c(0x1ef)](_0x28d51c(0x1be));_0x21084d[_0x28d51c(0x164)][_0x28d51c(0x251)]=_0xe2ea7c['xQvHS'],document['getElementById'](_0xe2ea7c['oIrQZ'])[_0x28d51c(0x224)]='超时';}else{if(this['timerSeconds']<=0xa){const _0x198ac1=document[_0x28d51c(0x1ef)](_0xe2ea7c[_0x28d51c(0x2a6)]);_0x198ac1[_0x28d51c(0x164)]['color']=this['timerSeconds']%0x2===0x0?_0x28d51c(0x16e):_0xe2ea7c[_0x28d51c(0x29d)];}}},0x3e8);}[_0x580252(0x28e)](){const _0x11f372=_0x580252,_0xfab14={'wGNfA':function(_0x173ed5,_0xa06ee5){return _0x173ed5(_0xa06ee5);}};if(this[_0x11f372(0x1e3)])_0xfab14[_0x11f372(0x21d)](clearInterval,this[_0x11f372(0x1e3)]);document[_0x11f372(0x1ef)](_0x11f372(0x1be))[_0x11f372(0x164)][_0x11f372(0x251)]=_0x11f372(0x28a);}[_0x580252(0x1ab)](){const _0x4c23c0=_0x580252,_0x172b3={'dGehc':function(_0x5df10b,_0x88e794){return _0x5df10b/_0x88e794;},'YNavE':'timer-display'},_0x2f055c=Math[_0x4c23c0(0x27f)](_0x172b3['dGehc'](Math['abs'](this[_0x4c23c0(0x1e6)]),0x3c))[_0x4c23c0(0x141)]()['padStart'](0x2,'0'),_0x26d5b8=(Math[_0x4c23c0(0x1e7)](this[_0x4c23c0(0x1e6)])%0x3c)[_0x4c23c0(0x141)]()[_0x4c23c0(0x159)](0x2,'0');document[_0x4c23c0(0x1ef)](_0x172b3[_0x4c23c0(0x166)])[_0x4c23c0(0x224)]=_0x2f055c+':'+_0x26d5b8;}[_0x580252(0x21b)](_0x332ea9){const _0x6d4de5=_0x580252;this['coins']+=_0x332ea9,this[_0x6d4de5(0x250)](),this[_0x6d4de5(0x1d0)]();const _0x25c47e=document[_0x6d4de5(0x1ef)]('coins-display'),_0xced6f1=_0x25c47e[_0x6d4de5(0x1a0)];_0xced6f1&&(_0xced6f1[_0x6d4de5(0x24e)][_0x6d4de5(0x1cc)](_0x6d4de5(0x209)),setTimeout(()=>_0xced6f1['classList'][_0x6d4de5(0x20f)](_0x6d4de5(0x209)),0x1f4));}[_0x580252(0x22e)](_0x260ae7){const _0x23d35d=_0x580252,_0x4c8d30={'zUjBm':function(_0x23bcc6,_0x4265d6){return _0x23bcc6>=_0x4265d6;}};if(_0x4c8d30[_0x23d35d(0x273)](this['coins'],_0x260ae7))return this[_0x23d35d(0x1ae)]-=_0x260ae7,this['updateHUD'](),this[_0x23d35d(0x1d0)](),!![];return![];}[_0x580252(0x250)](){const _0x301554=_0x580252,_0x12bbf6=document[_0x301554(0x1ef)](_0x301554(0x223));if(_0x12bbf6)_0x12bbf6['innerText']=this[_0x301554(0x1ae)];}[_0x580252(0x192)](_0x3aee7b){const _0x1a7ca9=_0x580252,_0x4a791b={'BlVdq':_0x1a7ca9(0x162),'TCemw':_0x1a7ca9(0x291)},_0x1c0b92=document[_0x1a7ca9(0x1ef)](_0x4a791b[_0x1a7ca9(0x1c5)]),_0x3ad8f7=document[_0x1a7ca9(0x1ef)](_0x1a7ca9(0x177));_0x1c0b92&&_0x3ad8f7&&(_0x3ad8f7[_0x1a7ca9(0x224)]=_0x3aee7b,_0x1c0b92[_0x1a7ca9(0x24e)][_0x1a7ca9(0x20f)](_0x4a791b['TCemw']));}[_0x580252(0x227)](){const _0x560f09=_0x580252,_0x44adaf={'DCXRM':'game-over-screen','aurbc':_0x560f09(0x291),'OqmaV':_0x560f09(0x17d),'GEiyk':function(_0x411c74,_0xa76b9c){return _0x411c74*_0xa76b9c;}};this[_0x560f09(0x143)]=![],this['stopTimer'](),this['stopEnvUpdate']();const _0x5f0ffb=Math[_0x560f09(0x27f)](_0x44adaf[_0x560f09(0x1a3)](this[_0x560f09(0x252)][_0x560f09(0x217)],0.2));setTimeout(()=>{const _0x350788=_0x560f09,_0xefb87e=document[_0x350788(0x1ef)](_0x44adaf[_0x350788(0x158)]);_0xefb87e['classList'][_0x350788(0x20f)](_0x44adaf[_0x350788(0x175)]),_0xefb87e[_0x350788(0x18a)]('h2')[_0x350788(0x224)]=_0x44adaf[_0x350788(0x1ed)],_0xefb87e[_0x350788(0x18a)]('h2')[_0x350788(0x164)][_0x350788(0x251)]=_0x350788(0x29c),document[_0x350788(0x1ef)](_0x350788(0x219))[_0x350788(0x224)]='此次修复无功而返，仅得润笔费：'+_0x5f0ffb+_0x350788(0x26b),this[_0x350788(0x21b)](_0x5f0ffb);},0x1f4);}['winGame'](){const _0x44645f=_0x580252,_0x5c595a={'wkYXx':'game-over-screen','woTcN':_0x44645f(0x17c),'qxqow':'#c0c0c0','Tpsfi':_0x44645f(0x25f),'vdhCn':_0x44645f(0x219),'aLyqv':function(_0x9a75bd,_0x82c384){return _0x9a75bd*_0x82c384;},'AIpyQ':function(_0x823652,_0x2c06bd){return _0x823652*_0x2c06bd;},'fkrJU':function(_0x5adf92,_0x234125){return _0x5adf92*_0x234125;},'kuhdT':function(_0x1a6592,_0x3c2f69){return _0x1a6592+_0x3c2f69;},'YKqCe':function(_0x49bf90,_0x50915b){return _0x49bf90>=_0x50915b;},'qfXWG':function(_0x54fb8c,_0x387577){return _0x54fb8c<_0x387577;}};this[_0x44645f(0x143)]=![],this[_0x44645f(0x28e)](),this['stopEnvUpdate']();const _0x34793e=this[_0x44645f(0x252)],_0xf2e0d0=0x3,_0x32aa56=[0x1,1.5,2.2,3.5][_0x34793e[_0x44645f(0x253)]-0x1],_0x68c240=Math[_0x44645f(0x27f)](_0x5c595a[_0x44645f(0x180)](_0x34793e[_0x44645f(0x217)]*_0xf2e0d0,_0x32aa56));let _0x2a5f0b=0x0;if(this[_0x44645f(0x1ba)])_0x2a5f0b=Math['floor'](_0x5c595a[_0x44645f(0x281)](_0x68c240,0.5));else{const _0x40a38d=Math[_0x44645f(0x27f)](_0x5c595a[_0x44645f(0x287)](_0x68c240,this[_0x44645f(0x1e6)]/_0x34793e[_0x44645f(0x1a9)]));_0x2a5f0b=_0x5c595a['kuhdT'](_0x68c240,_0x40a38d);}_0x2a5f0b=Math[_0x44645f(0x18d)](_0x2a5f0b,0x32),this['earnCoins'](_0x2a5f0b);const _0x2c1d72=Levels[_0x44645f(0x16c)](_0x2c0045=>_0x2c0045['id']===this['currentLevel']['id']);_0x5c595a[_0x44645f(0x1de)](_0x2c1d72,this[_0x44645f(0x163)])&&_0x5c595a[_0x44645f(0x1f2)](_0x2c1d72,Levels[_0x44645f(0x274)]-0x1)&&(this[_0x44645f(0x163)]=_0x2c1d72+0x1),this[_0x44645f(0x1d0)](),setTimeout(()=>{const _0x10a95d=_0x44645f,_0x4baa17=document[_0x10a95d(0x1ef)](_0x5c595a[_0x10a95d(0x255)]);_0x4baa17[_0x10a95d(0x24e)][_0x10a95d(0x20f)](_0x10a95d(0x291)),_0x4baa17[_0x10a95d(0x18a)]('h2')['innerText']=this[_0x10a95d(0x1ba)]?'勉力修复':_0x5c595a[_0x10a95d(0x2a2)],_0x4baa17[_0x10a95d(0x18a)]('h2')['style'][_0x10a95d(0x251)]=this[_0x10a95d(0x1ba)]?_0x5c595a[_0x10a95d(0x1bb)]:_0x5c595a[_0x10a95d(0x1c8)],document[_0x10a95d(0x1ef)](_0x5c595a[_0x10a95d(0x155)])[_0x10a95d(0x224)]=this[_0x10a95d(0x1ba)]?_0x10a95d(0x231)+_0x2a5f0b+'\x20币':_0x10a95d(0x233)+_0x2a5f0b+_0x10a95d(0x1c7)+Math[_0x10a95d(0x27f)](_0x2a5f0b-_0x68c240)+_0x10a95d(0x236);},0x320);}}
+import { prepareUI, puzzle, events, PolyPiece } from '../core/Engine.js';
+import { ItemSystem } from './ItemSystem.js';
+
+export const Levels = [
+    // --- 第一章：锦绣入画 ---
+    { id: '1-1', chapter: 1, name: '初窥门径', pieces: 15, rotate: false, evt: 'normal', img: 'assets/painting1.png', desc: '简单的15片入门，在碎裂的绢布中寻回画意。', time: 120 },
+    { id: '1-2', chapter: 1, name: '渐入佳境', pieces: 30, rotate: false, evt: 'normal', img: 'assets/painting2.png', desc: '提升碎片数量，打磨基本功，修复残破的山水。', time: 240 },
+    { id: '1-3', chapter: 1, name: '小试牛刀', pieces: 30, rotate: true, evt: 'normal', img: 'assets/painting3.png', desc: '原画方位错乱，考验你对构图的感知力。', time: 300 },
+    { id: '1-4', chapter: 1, name: '熟能生巧', pieces: 50, rotate: true, evt: 'normal', img: 'assets/painting4.webp', desc: '50片复杂碎片，运用道具还原这幅传世名作。', time: 480 },
+
+    // --- 第二章：丹青幻境 ---
+    { id: '2-1', chapter: 2, name: '遮眼迷途', pieces: 80, rotate: true, evt: 'fog', img: 'assets/painting5.webp', desc: '受迷雾遮蔽，唯有点亮琉璃灯方可看清全局。', time: 600 },
+    { id: '2-2', chapter: 2, name: '偷天换日', pieces: 120, rotate: true, evt: 'fake', img: 'assets/painting6.webp', desc: '大量伪造残片混入，请用明心鉴识破。', time: 720 },
+    { id: '2-3', chapter: 2, name: '登峰造极', pieces: 160, rotate: true, evt: 'fake', img: 'assets/painting7.webp', desc: '乱像丛生，在重重虚假中重现传世名作的荣光。', time: 900 },
+
+    // --- 第三章：风卷残云 ---
+    { id: '3-1', chapter: 3, name: '朔风初起', pieces: 80, rotate: true, evt: 'drifting+fog', img: 'assets/painting8.webp', desc: '飞沙迷眼，你的洛阳铲无法使用。在迷雾中稳住并寻找第一批碎片。', time: 720 },
+    { id: '3-2', chapter: 3, name: '飞沙走沙', pieces: 100, rotate: true, evt: 'drifting+fog', img: 'assets/painting9.webp', desc: '飞沙迷眼，你的洛阳铲无法使用。风沙渐大且浓雾锁江，寻找“定风珠”是破局之钥。', time: 900 },
+    { id: '3-3', chapter: 3, name: '乱云深处', pieces: 130, rotate: true, evt: 'drifting+fog+fake', img: 'assets/painting10.webp', desc: '沙尘、浓雾与伪造碎片齐聚，考验极度紧致的观察力。', time: 1200 },
+    { id: '3-4', chapter: 3, name: '锦绣重光', pieces: 180, rotate: true, evt: 'drifting+fog', img: 'assets/painting11.webp', desc: '飞沙迷眼，你的洛阳铲无法使用。在这迷失之雾中，直面穿越朔风的终极修复。', time: 1500 },
+
+    // --- 第四章：墨染烟雨 ---
+    { id: '4-1', chapter: 4, name: '烟雨初临', pieces: 100, rotate: true, evt: 'blurring', img: 'assets/painting12.webp', desc: '雨点打湿了边缘，在变模糊前完成合并。', time: 900 },
+    { id: '4-2', chapter: 4, name: '润物无声', pieces: 130, rotate: true, evt: 'blurring+fake', img: 'assets/painting13.webp', desc: '雨势加重，墨迹化开。似乎还有伪影在干扰视线。', time: 1200 },
+    { id: '4-3', chapter: 4, name: '画魂归位', pieces: 160, rotate: true, evt: 'blurring+fake', img: 'assets/painting14.webp', desc: '双重压力：雨水的冲刷与虚假碎片的诱导。', time: 1800 },
+    { id: '4-4', chapter: 4, name: '丹青不朽', pieces: 220, rotate: true, evt: 'blurring+fake', img: 'assets/painting15.webp', desc: '最终章：在倾盆大雨与乱象伪影中，守护画魂。', time: 2400 },
+
+    // --- 第五章：归元化境 ---
+    { id: '5-1', chapter: 5, name: '天外云卷', pieces: 200, rotate: true, evt: 'drifting+fog+blurring+fake', img: 'assets/painting16.png', desc: '究极试炼：风、雾、雨与幻象交织，唯有心明手快方可破阵。', time: 1800 },
+    { id: '5-2', chapter: 5, name: '墨龙破空', pieces: 260, rotate: true, evt: 'drifting+fog+blurring+fake', img: 'assets/painting17.png', desc: '风暴之中，邪气肆虐。所有干扰全数降临。', time: 2400 },
+    { id: '5-3', chapter: 5, name: '凤舞涅槃', pieces: 320, rotate: true, evt: 'drifting+fog+blurring+fake', img: 'assets/painting18.png', desc: '在重重幻影与墨雨中，重塑涅槃之美。', time: 3000 },
+    { id: '5-4', chapter: 5, name: '万古长青', pieces: 400, rotate: true, evt: 'drifting+fog+blurring+fake', img: 'assets/painting19.png', desc: '大结局：守护丹青之魂的最后一战。', time: 3600 }
+];
+
+export class GameManager {
+    constructor() {
+        this.coins = 200;
+        this.timerSeconds = 0;
+        this.timerInterval = null;
+        this.envInterval = null;
+        this.isOvertime = false;
+        this.isPlaying = false;
+        this.currentLevel = null;
+
+        // Items and State
+        this.highestLevelIndex = 0;
+        this.itemSystem = new ItemSystem(this);
+        this.unlockedItems = {};
+        this.itemLevels = {};
+        this.fogActive = false;
+
+        // Environment State
+        this.windStrength = 0;
+        this.windAngle = 0;
+        this.windDX = 0;
+        this.windDY = 0;
+        this.blurBaseRate = 0;
+        this.blurredImage = null; // Pre-generated blurred texture
+        this.levelBlur = 0; // Global level blur for Chapter 4
+
+        this.bindEvents();
+        this.loadData();
+        this.renderLevelMenu(1);
+
+        this.setupEngineOverrides();
+    }
+
+    setupEngineOverrides() {
+        if (!PolyPiece.prototype._originalDrawV1) {
+            PolyPiece.prototype._originalDrawV1 = PolyPiece.prototype.drawImage;
+            
+            // Re-Implementation: Optimized Plan C (Pre-blurred Texture & Umbrella Range)
+            PolyPiece.prototype.drawImage = function(special) {
+                const gm = window.gameManager;
+                const isWet = gm && gm.currentLevel && gm.currentLevel.evt.includes('blurring');
+                const ctx = this.isMoving ? puzzle.moveCtx : puzzle.playCtx;
+                
+                if (isWet) {
+                    // Check Umbrella & Shovel Protection using piece center
+                    let isProtected = false;
+                    const im = gm.itemSystem;
+                    const mx = im.mouseX;
+                    const my = im.mouseY;
+
+                    if (im.umbrellaActive) {
+                        const radius = im.effectPower.umbrella[(gm.itemLevels.umbrella || 1) - 1] || 120;
+                        const pDisp = this.fromSrcMatrix.transformPoint(this.pCentre);
+                        const dx = pDisp.x - mx;
+                        const dy = pDisp.y - my;
+                        if (dx*dx + dy*dy < radius*radius) isProtected = true;
+                    }
+                    
+                    if (!isProtected && im.shovelActive) {
+                        const radius = [100, 180, 280][(gm.itemLevels.shovel || 1) - 1];
+                        const pDisp = this.fromSrcMatrix.transformPoint(this.pCentre);
+                        const dx = pDisp.x - mx;
+                        const dy = pDisp.y - my;
+                        if (dx*dx + dy*dy < radius*radius) isProtected = true;
+                    }
+
+                    // Use pre-blurred image if not protected and not moving
+                    const useBlur = !isProtected && !this.isMoving;
+                    const originalImg = puzzle.srcImage;
+                    
+                    if (useBlur && gm.blurredImage) {
+                        puzzle.srcImage = gm.blurredImage;
+                        ctx.save();
+                        // Optional: slight opacity fade for the ink effect
+                        ctx.globalAlpha = 0.85; 
+                        this._originalDrawV1(special);
+                        ctx.restore();
+                        puzzle.srcImage = originalImg;
+                    } else {
+                        this._originalDrawV1(special);
+                    }
+                } else {
+                    this._originalDrawV1(special);
+                }
+
+                // Handle Mirror Marks (Red Stripes)
+                if (this.isFake && this.markedByMirror) {
+                    ctx.save();
+                    let pth = new Path2D();
+                    pth.addPath(this.srcPath, this.fromSrcMatrix);
+                    ctx.clip(pth);
+                    ctx.lineWidth = 1.8;
+                    ctx.strokeStyle = 'rgba(255, 50, 50, 0.45)';
+                    const step = 15;
+                    const offset = (Date.now() / 2000) % 15;
+                    for(let i = -1000; i < 2000; i += step) {
+                        ctx.beginPath();
+                        for(let x = -500; x < 2000; x += 15) {
+                            let y = x * 0.5 + i + Math.sin((x + offset * 10) / 40) * 8;
+                            if (x === -500) ctx.moveTo(x, y);
+                            else ctx.lineTo(x, y);
+                        }
+                        ctx.stroke();
+                    }
+                    ctx.restore();
+                }
+            };
+        }
+        
+        // 2. Pure Drawing Loop
+        if (puzzle && !puzzle.constructor.prototype._originalDrawPolyPieces) {
+            const PuzzleClass = puzzle.constructor;
+            PuzzleClass.prototype._originalDrawPolyPieces = PuzzleClass.prototype.drawPolyPieces;
+
+            PuzzleClass.prototype.drawPolyPieces = function (butTop) {
+                const gm = window.gameManager;
+                if (!gm || !gm.currentLevel) return this._originalDrawPolyPieces(butTop);
+
+                const isBlur = gm.currentLevel.evt.includes('blurring');
+
+                if (isBlur) {
+                    // Clear and Redraw all - PolyPiece.drawImage handles texture switching
+                    this.playCtx.clearRect(0, 0, this.playCanvas.width, this.playCanvas.height);
+                    const max = this.polyPieces.length - (butTop ? 1 : 0);
+                    for (let k = 0; k < max; ++k) {
+                        this.polyPieces[k].drawImage();
+                    }
+                } else {
+                    this._originalDrawPolyPieces(butTop);
+                }
+
+                // Call Item Overlays to ensure they persist after main loop clears
+                if (gm.itemSystem.shovelActive) {
+                    gm.itemSystem.drawShovelReveal();
+                }
+                if (gm.itemSystem.umbrellaActive) {
+                    gm.itemSystem.drawUmbrellaVisual();
+                }
+            };
+        }
+    }
+
+    loadData() {
+        const saved = localStorage.getItem('void_relics_save_v1');
+        if (saved) {
+            try {
+                const data = JSON.parse(saved);
+                if (data.coins !== undefined) this.coins = data.coins;
+                if (data.highestLevelIndex !== undefined) this.highestLevelIndex = data.highestLevelIndex;
+                if (data.unlockedItems !== undefined) this.unlockedItems = data.unlockedItems;
+                if (data.itemLevels !== undefined) this.itemLevels = data.itemLevels;
+            } catch (e) {
+                console.error("Failed to parse save data");
+            }
+        }
+
+        this.updateHUD();
+        Object.keys(this.unlockedItems).forEach(id => {
+            if (this.unlockedItems[id]) {
+                const btn = document.querySelector(`.btn-buy[data-id="${id}"]`);
+                if (btn) {
+                    btn.innerText = '售罄';
+                    btn.classList.add('sold-out');
+                }
+
+                const upgBtn = document.querySelector(`.btn-upgrade[data-id="${id}-upg"]`);
+                if (upgBtn) {
+                    upgBtn.classList.remove('hidden');
+                    const level = this.itemLevels[id] || 1;
+                    if (level >= 3) {
+                        upgBtn.innerText = '已满级 (Lv.3)';
+                        upgBtn.disabled = true;
+                    } else {
+                        upgBtn.innerText = `升级 (Lv.${level})`;
+                    }
+                }
+            }
+        });
+    }
+
+    saveData() {
+        const data = {
+            coins: this.coins,
+            highestLevelIndex: this.highestLevelIndex,
+            unlockedItems: this.unlockedItems,
+            itemLevels: this.itemLevels
+        };
+        localStorage.setItem('void_relics_save_v1', JSON.stringify(data));
+    }
+
+    bindEvents() {
+        document.getElementById('btn-restart').addEventListener('click', () => this.showMenu());
+        document.getElementById('btn-pause').addEventListener('click', () => this.togglePause());
+        document.getElementById('btn-resume').addEventListener('click', () => this.togglePause());
+        document.getElementById('btn-back-home').addEventListener('click', () => {
+            this.togglePause();
+            this.showMenu();
+        });
+        document.getElementById('btn-exit-game').addEventListener('click', () => {
+            window.location.href = '/#games'; // Go back to game gallery on main site
+        });
+
+        document.getElementById('item-tray-toggle').addEventListener('click', () => {
+            const hud = document.getElementById('item-hud');
+            hud.classList.toggle('collapsed');
+            document.getElementById('item-tray-toggle').innerText = hud.classList.contains('collapsed') ? '▲' : '◈';
+        });
+
+        // Intercept all interactions when paused to freeze the engine's state
+        const blockInteraction = (e) => {
+            if (this.isPaused) {
+                e.stopImmediatePropagation();
+                e.preventDefault();
+            }
+        };
+        ['mousedown', 'mousemove', 'mouseup', 'wheel', 'touchstart', 'touchmove', 'touchend'].forEach(type => {
+            document.addEventListener(type, blockInteraction, true);
+        });
+
+        document.getElementById('btn-open-shop').addEventListener('click', () => {
+            document.getElementById('shop-modal').classList.remove('hidden');
+        });
+        document.getElementById('btn-close-shop').addEventListener('click', () => {
+            document.getElementById('shop-modal').classList.add('hidden');
+        });
+
+        document.getElementById('btn-notice-close').addEventListener('click', () => {
+            document.getElementById('notice-modal').classList.add('hidden');
+        });
+
+        document.querySelectorAll('.chapter-tab').forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                document.querySelectorAll('.chapter-tab').forEach(t => t.classList.remove('active'));
+                e.target.classList.add('active');
+                this.renderLevelMenu(parseInt(e.target.dataset.chapter, 10));
+            });
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            const rect = document.getElementById('forPuzzle').getBoundingClientRect();
+            this.lastMousePos = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+            if (!this.fogActive || this.isPaused) return;
+            const fog = document.getElementById('fog-overlay');
+            if (this.itemSystem.lampActive) {
+                const level = (this.itemLevels && this.itemLevels.lamp) || 1;
+                const radius = [150, 250, 400][level - 1];
+                fog.style.maskImage = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, transparent ${radius}px, black ${radius * 2}px)`;
+                fog.style.webkitMaskImage = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, transparent ${radius}px, black ${radius * 2}px)`;
+            } else {
+                fog.style.maskImage = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, transparent 0px, black 50px)`;
+                fog.style.webkitMaskImage = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, transparent 0px, black 50px)`;
+            }
+        });
+    }
+
+    togglePause() {
+        this.isPaused = !this.isPaused;
+        document.getElementById('pause-menu').classList.toggle('hidden', !this.isPaused);
+        if (this.isPaused) {
+            this.stopTimer();
+            this.stopEnvUpdate();
+        } else {
+            this.startTimer();
+            this.startEnvUpdate();
+        }
+    }
+
+    renderLevelMenu(chapterId) {
+        const list = document.getElementById('level-list');
+        list.innerHTML = '';
+        Levels.filter(l => l.chapter === chapterId).forEach(level => {
+            const levelIndex = Levels.findIndex(l => l.id === level.id);
+            const isLocked = levelIndex > this.highestLevelIndex;
+
+            const card = document.createElement('div');
+            card.className = 'level-card' + (isLocked ? ' locked' : '');
+
+            card.innerHTML = `
+                <div class="level-info">
+                    <h3>${level.id} ${level.name}</h3>
+                    <span>${level.desc}</span>
+                </div>
+                <button class="btn-primary" ${isLocked ? 'disabled style="background: rgba(100,100,100,0.5); border: none; color: #aaa; cursor: not-allowed;"' : ''}>${isLocked ? '未解锁' : '修复'}</button>
+            `;
+            if (!isLocked) {
+                card.querySelector('button').addEventListener('click', () => this.startGame(level));
+            }
+            list.appendChild(card);
+        });
+    }
+
+    showMenu() {
+        this.isPlaying = false;
+        this.isPaused = false;
+        this.stopTimer();
+        this.stopEnvUpdate();
+
+        const activeTab = document.querySelector('.chapter-tab.active');
+        if (activeTab) {
+            this.renderLevelMenu(parseInt(activeTab.dataset.chapter, 10));
+        }
+
+        document.getElementById('start-screen').classList.add('active');
+        document.getElementById('start-screen').classList.remove('hidden');
+
+        document.getElementById('hud-timer').classList.add('hidden');
+        document.getElementById('hud-chapter').classList.add('hidden');
+        document.getElementById('btn-pause').classList.add('hidden');
+        document.getElementById('btn-open-shop').classList.remove('hidden');
+
+        document.getElementById('item-hud').classList.add('hidden');
+        document.getElementById('game-over-screen').classList.add('hidden');
+        document.getElementById('pause-menu').classList.add('hidden');
+        document.getElementById('fog-overlay').classList.add('hidden');
+        document.getElementById('environment-overlay').classList.add('hidden');
+        this.fogActive = false;
+        document.getElementById('forPuzzle').style.opacity = '0';
+
+        events.push({ event: 'stop' });
+    }
+
+    startGame(level) {
+        this.currentLevel = level;
+        
+        // --- Snapshot Transition ---
+        this.captureSnapshot();
+
+        setTimeout(() => {
+            this.executeStartGame(level);
+        }, 400);
+    }
+    
+    captureSnapshot() {
+        const trCanvas = document.getElementById('transition-canvas');
+        if (!trCanvas || !puzzle.playCanvas) return;
+        
+        const ctx = trCanvas.getContext('2d');
+        trCanvas.width = puzzle.playCanvas.width;
+        trCanvas.height = puzzle.playCanvas.height;
+        
+        ctx.clearRect(0, 0, trCanvas.width, trCanvas.height);
+        ctx.drawImage(puzzle.playCanvas, 0, 0);
+        ctx.drawImage(puzzle.moveCanvas, 0, 0);
+        
+        trCanvas.classList.remove('hidden');
+        trCanvas.style.opacity = '1';
+        trCanvas.style.filter = 'none';
+        
+        requestAnimationFrame(() => {
+            trCanvas.style.filter = 'blur(20px) grayscale(0.6)';
+        });
+    }
+
+    executeStartGame(level) {
+        // Stop current logic
+        clearInterval(this.timerInterval);
+        clearInterval(this.envInterval);
+        
+        document.getElementById('current-chapter-name').innerText = `第${level.chapter}章：${level.name} (${level.pieces}片)`;
+
+        document.getElementById('start-screen').classList.remove('active');
+        setTimeout(() => document.getElementById('start-screen').classList.add('hidden'), 500);
+
+        document.getElementById('hud-timer').classList.remove('hidden');
+        document.getElementById('hud-chapter').classList.remove('hidden');
+        document.getElementById('btn-pause').classList.remove('hidden');
+        document.getElementById('btn-open-shop').classList.add('hidden');
+
+        document.getElementById('item-hud').classList.remove('hidden');
+        document.getElementById('game-over-screen').classList.add('hidden');
+        document.getElementById('forPuzzle').style.opacity = '1';
+
+        const trCanvas = document.getElementById('transition-canvas');
+        if (trCanvas) {
+            trCanvas.style.opacity = '0';
+            setTimeout(() => trCanvas.classList.add('hidden'), 800);
+        }
+
+        this.isPlaying = false;
+        this.itemSystem.resetLevelState();
+
+        const isFog = level.evt.includes('fog');
+        const isDrift = level.evt.includes('drifting');
+        const isBlur = level.evt.includes('blurring');
+
+        // Set Overlays
+        const fog = document.getElementById('fog-overlay');
+        fog.classList.toggle('hidden', !isFog);
+        this.fogActive = isFog;
+
+        // Reset/Setup environment scale (200% is only needed for rotating sandstorms)
+        const particles = document.getElementById('environment-particles');
+        particles.style.transform = 'none';
+        particles.style.width = '100%';
+        particles.style.height = '100%';
+        particles.style.left = '0';
+        particles.style.top = '0';
+
+        if (isDrift) {
+            this.windAngle = Math.random() * Math.PI * 2;
+            this.windDX = Math.cos(this.windAngle);
+            this.windDY = Math.sin(this.windAngle);
+
+            // Rotating sandstorm needs 200% size to cover corners
+            particles.style.width = '200%';
+            particles.style.height = '200%';
+
+            const deg = (this.windAngle * 180 / Math.PI);
+            particles.style.transform = `translate(-50%, -50%) rotate(${deg + 180}deg)`;
+            particles.style.left = '50%';
+            particles.style.top = '50%';
+
+            const windIndicator = document.getElementById('wind-text');
+            if (windIndicator) {
+                // Simplified arrow logic: ⮕ is 0deg, so we map deg directly
+                const arrows = ['⮕', '⬇', '⬅', '⬆'];
+                const arrowIdx = (Math.round(deg / 90) % 4 + 4) % 4;
+                windIndicator.innerText = `风起大漠 ${arrows[arrowIdx]}`;
+            }
+        }
+
+        const env = document.getElementById('environment-overlay');
+        env.classList.toggle('hidden', !isDrift && !isBlur);
+        document.getElementById('wind-indicator').classList.toggle('hidden', !isDrift);
+
+        particles.classList.toggle('raining', isBlur);
+        particles.classList.toggle('sanding', isDrift);
+
+        // Show Ink Loading Overlay
+        const loading = document.getElementById('ink-loading');
+        if (loading) {
+            loading.classList.remove('hidden');
+            loading.style.opacity = '1';
+        }
+
+        // Reset preview container style for new level AFTER ink is shown
+        const puzzleContainer = document.getElementById('forPuzzle');
+        puzzleContainer.style.filter = 'none';
+        puzzleContainer.style.opacity = '1';
+
+        puzzle.imageLoaded = false;
+        puzzle.srcImage.src = level.img + '?t=' + Date.now();
+
+        document.getElementById('nbpieces').value = level.pieces;
+        document.getElementById('rotationstep').value = level.rotate ? 6 : 0;
+
+        const waitLoad = setInterval(() => {
+            if (puzzle.imageLoaded) {
+                clearInterval(waitLoad);
+                
+                if (level.evt.includes('blurring')) {
+                    this.levelBlur = 0;
+                    this.createBlurredImage();
+                }
+                
+                // Start piece generation flow
+                events.push({ event: "nbpieces", nbpieces: level.pieces });
+
+                if (puzzle.polyPieces) {
+                    puzzle.polyPieces.forEach(p => { p.currentBlur = 0; });
+                }
+
+                setTimeout(() => {
+                    if (level.evt.includes('fake')) {
+                        this.injectFakePieces();
+                    }
+                    this.shuffleAllPieces();
+                    this.startEnvUpdate();
+                    this.isPlaying = true;
+                    this.updateHUD();
+                    
+                    // Fade out loading screen
+                    setTimeout(() => {
+                        if (loading) {
+                            loading.style.opacity = '0';
+                            setTimeout(() => loading.classList.add('hidden'), 800);
+                        }
+                    }, 1000); 
+                }, 800); // 800ms to ensure engine has processed nbpieces and created polyPieces
+            }
+        }, 50);
+
+        // Emergency safety timeout for loading screen UI only
+        setTimeout(() => {
+            if (loading && !loading.classList.contains('hidden')) {
+                clearInterval(waitLoad);
+                loading.style.opacity = '0';
+                setTimeout(() => loading.classList.add('hidden'), 800);
+                this.isPlaying = true;
+                this.updateHUD();
+            }
+        }, 6000);
+
+        this.isPlaying = true;
+        this.isPaused = false;
+        this.isOvertime = false;
+        this.itemSystem.resetLevelState();
+        this.startTimer();
+        this.updateHUD();
+    }
+
+    startEnvUpdate() {
+        this.stopEnvUpdate();
+
+        if (this.currentLevel.evt.includes('drifting')) {
+            const speedMap = { 
+                '3-1': 0.15, '3-2': 0.3, '3-3': 0.5, '3-4': 0.8,
+                '5-1': 0.45, '5-2': 0.75, '5-3': 1.1, '5-4': 1.6
+            };
+            this.windStrength = speedMap[this.currentLevel.id] || 0.3;
+        } else if (this.currentLevel.evt.includes('blurring')) {
+            const rateMap = { '4-1': 0.008, '4-2': 0.015, '4-3': 0.03, '4-4': 0.05 };
+            this.blurBaseRate = rateMap[this.currentLevel.id] || 0.01;
+        }
+
+        const runUpdate = (now) => {
+            if (!this.isPlaying || this.isPaused || !puzzle || !puzzle.polyPieces) return;
+
+            // Throttle environmental effects to ~20 FPS (every 50ms) to save CPU
+            const delta = now - (this.lastEnvTime || 0);
+            if (delta < 50) {
+                this.envInterval = requestAnimationFrame(runUpdate);
+                return;
+            }
+            this.lastEnvTime = now;
+
+            this.handleEdgePanning();
+
+            let needsRedraw = false;
+
+            if (this.currentLevel.evt.includes('blurring')) {
+                // Pre-generated blur doesn't need incrementing blurVal
+                needsRedraw = true; 
+            }
+
+            puzzle.polyPieces.forEach(pp => {
+                if (pp.isMoving || pp.selected) return;
+
+                if (this.currentLevel.evt.includes('drifting') && pp.pieces.length < 3) {
+                    if (!this.itemSystem.beadActive) {
+                        pp.x += this.windDX * this.windStrength;
+                        pp.y += this.windDY * this.windStrength;
+
+                        // v1.2: Occasional wind rotation (0.1% chance per frame)
+                        if (Math.random() < 0.001 && !pp.fixedByBrush) {
+                            const currentRot = pp.rot;
+                            const dir = Math.random() > 0.5 ? 1 : -1;
+                            const newRot = (currentRot + dir + 6) % 6;
+                            pp.rotate(newRot);
+                        }
+
+                        pp.setTransforms();
+                        needsRedraw = true;
+                    }
+                }
+            });
+
+            if (needsRedraw) puzzle.drawPolyPieces();
+            this.envInterval = requestAnimationFrame(runUpdate);
+        };
+        this.envInterval = requestAnimationFrame(runUpdate);
+    }
+
+    createBlurredImage() {
+        if (!puzzle || !puzzle.srcImage) return;
+        const src = puzzle.srcImage;
+        const canvas = document.createElement('canvas');
+        canvas.width = src.width;
+        canvas.height = src.height;
+        const ctx = canvas.getContext('2d');
+        ctx.filter = 'blur(10px)'; // High quality fixed blur
+        ctx.drawImage(src, 0, 0);
+        this.blurredImage = canvas;
+    }
+
+    stopEnvUpdate() {
+        if (this.envInterval) cancelAnimationFrame(this.envInterval);
+        this.envInterval = null;
+    }
+
+
+    handleEdgePanning() {
+        if (!this.isPlaying || this.isPaused || !puzzle || !puzzle.polyPieces || !this.lastMousePos) return;
+
+        // Only pan if a piece is currently grabbed
+        const isDragging = puzzle.polyPieces.some(p => p.selected);
+        if (!isDragging) return;
+
+        const margin = 80;
+        const panSpeed = 12;
+        const rect = puzzle.container.getBoundingClientRect();
+        const mx = this.lastMousePos.x;
+        const my = this.lastMousePos.y;
+
+        let dx = 0, dy = 0;
+        if (mx < margin) dx = panSpeed;
+        else if (mx > rect.width - margin) dx = -panSpeed;
+
+        if (my < margin) dy = panSpeed;
+        else if (my > rect.height - margin) dy = -panSpeed;
+
+        if (dx !== 0 || dy !== 0) {
+            puzzle.sweepBy(dx, dy);
+            // Fix: Synchronize Engine's drag capture point with the panning shift
+            if (window._movingState && window._movingState.ppXInit !== undefined) {
+                window._movingState.ppXInit += dx;
+                window._movingState.ppYInit += dy;
+            }
+            puzzle.drawPolyPieces();
+        }
+    }
+
+    injectFakePieces() {
+        if (!puzzle || !puzzle.polyPieces || puzzle.polyPieces.length === 0) return;
+
+        const gridPositions = puzzle.polyPieces.map(p => ({ x: p.x, y: p.y }));
+        const numFakes = Math.max(3, Math.floor(this.currentLevel.pieces * 0.15));
+
+        for (let i = 0; i < numFakes; i++) {
+            let src = puzzle.polyPieces[Math.floor(Math.random() * puzzle.polyPieces.length)];
+            let originalPiece = src.pieces[0];
+            let clonedPiece = Object.create(Object.getPrototypeOf(originalPiece));
+            Object.assign(clonedPiece, originalPiece);
+
+            let fakePoly = new PolyPiece(clonedPiece);
+            fakePoly.isFake = true;
+            fakePoly.rot = Math.floor(Math.random() * 6);
+            fakePoly.markedByMirror = false;
+
+            // Random jittered start position near a real slot (tighter)
+            const p = gridPositions[Math.floor(Math.random() * gridPositions.length)];
+            fakePoly.moveTo(p.x + (Math.random() - 0.5) * 40, p.y + (Math.random() - 0.5) * 40);
+
+            puzzle.polyPieces.push(fakePoly);
+        }
+        // Shuffle will be handled by the global caller shuffleAllPieces()
+    }
+
+    shuffleAllPieces() {
+        if (!puzzle || !puzzle.polyPieces || puzzle.polyPieces.length === 0) return;
+
+        const allPieces = puzzle.polyPieces;
+        const allPositions = allPieces.map(p => ({ x: p.x, y: p.y }));
+        const allRotations = allPieces.map(p => p.rot);
+
+        // Fisher-Yates piece identities
+        for (let i = allPieces.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [allPieces[i], allPieces[j]] = [allPieces[j], allPieces[i]];
+        }
+
+        // Re-assign positions and randomize all rotations (for non-fixed pieces)
+        allPieces.forEach((p, i) => {
+            // Apply a subtle centering force (15%) to keep pieces from flying to edges
+            const cx = puzzle.contWidth / 2;
+            const cy = puzzle.contHeight / 2;
+            const tx = cx + (allPositions[i].x - cx) * 0.85;
+            const ty = cy + (allPositions[i].y - cy) * 0.85;
+
+            p.moveTo(tx, ty);
+            // Only randomize rotation if the level allows it
+            if (puzzle.rotationStep > 0) {
+                if (p.rot !== 0 || Math.random() > 0.3) {
+                    p.rot = Math.floor(Math.random() * puzzle.nbRot);
+                }
+            } else {
+                p.rot = 0;
+            }
+        });
+
+        puzzle.drawPolyPieces();
+    }
+
+    startTimer() {
+        this.timerSeconds = this.currentLevel.time;
+        this.updateTimerDisplay();
+        if (this.timerInterval) clearInterval(this.timerInterval);
+        this.timerInterval = setInterval(() => {
+            this.timerSeconds--;
+            this.updateTimerDisplay();
+
+            if (this.timerSeconds <= 0) {
+                this.timerSeconds = 0;
+                this.isOvertime = true;
+                this.stopTimer();
+                const timerWrap = document.getElementById('hud-timer');
+                timerWrap.style.color = '#ff4d4d';
+                document.getElementById('timer-display').innerText = "超时";
+            } else if (this.timerSeconds <= 10) {
+                const timerWrap = document.getElementById('hud-timer');
+                timerWrap.style.color = (this.timerSeconds % 2 === 0) ? '#ff4d4d' : 'white';
+            }
+        }, 1000);
+    }
+
+    stopTimer() {
+        if (this.timerInterval) clearInterval(this.timerInterval);
+        document.getElementById('hud-timer').style.color = 'white';
+    }
+
+    updateTimerDisplay() {
+        const m = Math.floor(Math.abs(this.timerSeconds) / 60).toString().padStart(2, '0');
+        const s = (Math.abs(this.timerSeconds) % 60).toString().padStart(2, '0');
+        document.getElementById('timer-display').innerText = `${m}:${s}`;
+    }
+
+    earnCoins(amount) {
+        this.coins += amount;
+        this.updateHUD();
+        this.saveData();
+
+        const disp = document.getElementById('coins-display');
+        const parent = disp.parentElement;
+        if (parent) {
+            parent.classList.add('animate-pulse');
+            setTimeout(() => parent.classList.remove('animate-pulse'), 500);
+        }
+    }
+
+    spendCoins(amount) {
+        if (this.coins >= amount) {
+            this.coins -= amount;
+            this.updateHUD();
+            this.saveData();
+            return true;
+        }
+        return false;
+    }
+
+    updateHUD() {
+        const disp = document.getElementById('coins-display');
+        if (disp) disp.innerText = this.coins;
+    }
+
+    showNotice(msg) {
+        const modal = document.getElementById('notice-modal');
+        const text = document.getElementById('notice-text');
+        if (modal && text) {
+            text.innerText = msg;
+            modal.classList.remove('hidden');
+        }
+    }
+
+    loseGame() {
+        this.isPlaying = false;
+        this.stopTimer();
+        this.stopEnvUpdate();
+
+        // 润笔费：极少量保底
+        const baseReward = Math.floor(this.currentLevel.pieces * 0.2);
+
+        setTimeout(() => {
+            const screen = document.getElementById('game-over-screen');
+            screen.classList.remove('hidden');
+            screen.querySelector('h2').innerText = "修复未成";
+            screen.querySelector('h2').style.color = "#a0a0a0";
+            document.getElementById('game-over-text').innerText = `此次修复无功而返，仅得润笔费：${baseReward} 古钱币。\n再接再厉。`;
+            this.earnCoins(baseReward);
+        }, 500);
+    }
+
+    winGame() {
+        this.isPlaying = false;
+        this.stopTimer();
+        this.stopEnvUpdate();
+
+        const level = this.currentLevel;
+        // 奖励重构：基础奖励 = 碎片数 * 基础系数 * 章节倍率
+        const baseFactor = 3;
+        const chapterMult = [1, 1.5, 2.2, 3.5][level.chapter - 1];
+        const baseReward = Math.floor(level.pieces * baseFactor * chapterMult);
+
+        let reward = 0;
+        if (this.isOvertime) {
+            // 超时仅得一半基础奖金
+            reward = Math.floor(baseReward * 0.5);
+        } else {
+            // 时间奖励：剩余时间越多，额外奖金越高（最高额外奖励基础值的 100%）
+            const timeBonus = Math.floor(baseReward * (this.timerSeconds / level.time));
+            reward = baseReward + timeBonus;
+        }
+
+        reward = Math.max(reward, 50); // 全场最低奖
+        this.earnCoins(reward);
+
+        const levelIndex = Levels.findIndex(l => l.id === this.currentLevel.id);
+        if (levelIndex >= this.highestLevelIndex && levelIndex < Levels.length - 1) {
+            this.highestLevelIndex = levelIndex + 1;
+        }
+        this.saveData();
+
+        setTimeout(() => {
+            const screen = document.getElementById('game-over-screen');
+            screen.classList.remove('hidden');
+            screen.querySelector('h2').innerText = this.isOvertime ? "勉力修复" : "完美修复！";
+            screen.querySelector('h2').style.color = this.isOvertime ? "#c0c0c0" : "#d4af37";
+            document.getElementById('game-over-text').innerText = this.isOvertime
+                ? `虽然超时，但画卷终得修复。领到酬劳：${reward} 币`
+                : `修复大获全胜！获得奖金：${reward} 币 (包含 ${Math.floor(reward - baseReward)} 币时间奖励)`;
+        }, 800);
+    }
+}

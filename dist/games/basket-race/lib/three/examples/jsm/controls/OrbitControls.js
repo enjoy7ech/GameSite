@@ -1,1 +1,1287 @@
-function _0x3c40(_0x4bed4e,_0x3bc713){_0x4bed4e=_0x4bed4e-0x115;const _0x5328fc=_0x5328();let _0x3c400a=_0x5328fc[_0x4bed4e];if(_0x3c40['OKiuuk']===undefined){var _0x1afe4d=function(_0x18c396){const _0x39674d='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x114839='',_0x240d3b='';for(let _0x36f88c=0x0,_0x15d8f3,_0x139eaa,_0x4c52cd=0x0;_0x139eaa=_0x18c396['charAt'](_0x4c52cd++);~_0x139eaa&&(_0x15d8f3=_0x36f88c%0x4?_0x15d8f3*0x40+_0x139eaa:_0x139eaa,_0x36f88c++%0x4)?_0x114839+=String['fromCharCode'](0xff&_0x15d8f3>>(-0x2*_0x36f88c&0x6)):0x0){_0x139eaa=_0x39674d['indexOf'](_0x139eaa);}for(let _0x351b6e=0x0,_0x593130=_0x114839['length'];_0x351b6e<_0x593130;_0x351b6e++){_0x240d3b+='%'+('00'+_0x114839['charCodeAt'](_0x351b6e)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x240d3b);};_0x3c40['OlOLOe']=_0x1afe4d,_0x3c40['JzuEni']={},_0x3c40['OKiuuk']=!![];}const _0x340840=_0x5328fc[0x0],_0x2d117=_0x4bed4e+_0x340840,_0x3c4816=_0x3c40['JzuEni'][_0x2d117];return!_0x3c4816?(_0x3c400a=_0x3c40['OlOLOe'](_0x3c400a),_0x3c40['JzuEni'][_0x2d117]=_0x3c400a):_0x3c400a=_0x3c4816,_0x3c400a;}const _0x574abd=_0x3c40;(function(_0x1c6f3a,_0x3453e5){const _0x4f9965=_0x3c40,_0x496f2d=_0x1c6f3a();while(!![]){try{const _0x598cd5=parseInt(_0x4f9965(0x1b3))/0x1+parseInt(_0x4f9965(0x1d3))/0x2*(-parseInt(_0x4f9965(0x1e3))/0x3)+parseInt(_0x4f9965(0x161))/0x4*(-parseInt(_0x4f9965(0x153))/0x5)+-parseInt(_0x4f9965(0x1e9))/0x6+-parseInt(_0x4f9965(0x178))/0x7*(parseInt(_0x4f9965(0x1de))/0x8)+parseInt(_0x4f9965(0x131))/0x9+parseInt(_0x4f9965(0x164))/0xa;if(_0x598cd5===_0x3453e5)break;else _0x496f2d['push'](_0x496f2d['shift']());}catch(_0x46c19f){_0x496f2d['push'](_0x496f2d['shift']());}}}(_0x5328,0x6c71d));function _0x5328(){const _0x388e8d=['y29Kzq','twHLy2q','qLfmB2u','DgfYz2v0ma','Cg9PBNrLCKLK','ve9vq0HFre9mtfLFuK9uqvrf','C2v0rNjVBu1HDhjPEenVBhvTBG','CxvHDgvYBMLVBG','zw5HyMXLrgfTCgLUzW','D2Hks2C','Bg9VA0f0','C0jptg8','BwLUqxPPBxv0AefUz2XL','A2v5ugfUu3bLzwq','Cg93','zgLZDgfUy2vuB1nXDwfYzwq','zgfTCgLUz0zHy3rVCG','yxv0B1jVDgf0zq','DgfU','B01SB0K','tLrUwK8','rgfnyNG','ugPorw8','EgDJzKi','yvDnDe8','A3fku3e','zg90','y2XPzw50sgvPz2H0','C3rHCNq','mJHAzwP6wMG','yxv0B1jVDgf0zvnWzwvK','vuDwA1i','zgLZCgf0y2HfDMvUDa','svzAuuy','zhPpsNu','AePysu8','re9mtfLFuefo','C3vI','t2XiBLq','DhHuC1u','ofnVyurdqW','yM90Dg9T','B2jQzwn0','C3bSAxq','re9mtfLFuK9uqvrf','mZi2odvltvHArKy','ze52D3y','ALnqA2u','z2v0ug9SyxjbBMDSzq','x2rVBuvSzw1LBNrlzxLfDMvUDhm','t05f','ndmXnZm2mhnOt0XWuW','vNDey2S','zw5HyMXLza','Dg91y2G','uK9uqvrf','qxjYB3DvCa','ywrK','qxjYB3Dmzwz0','y2zmDhu','tK9orq','q3fKrfK','t0nAA0y','quXPtuO','t1rTwK4','BwLUrgLZDgfUy2u','re9mtfK','BwLUug9SyxjbBMDSzq','rgv1CMi','DgfYz2v0','BgvUz3rO','Cg9PBNrLCNvW','A2v5CW','AxnqzxjZCgvJDgL2zunHBwvYyq','zw5HyMXLwM9VBq','uLvcC2e','BgLZDgvUvg9lzxLfDMvUDhm','zg9TrwXLBwvUDa','DNPIAKi','y2XVBMu','y2XPzw50v2LKDgG','BvvZC3i','mZyWmZyWouPRver5yG','C2nYzwvUu3bHy2vqyw5UAw5N','vfDp','BwLUwM9VBq','zuPuzvO','BM9Uzq','zgvSDgfz','BxvSDgLWBhLty2fSyxi','Aw52zxj0','y0HwA04','ve9vq0HFuK9uqvrf','zw5HyMXLuM90yxrL','ELrQshq','zLfMAgK','CgfUu3bLzwq','vKLJrvq','BKPStfq','Cg9ZAxrPB24','Bwf0CML4','zgLZDgfUy2vuBW','Bw91C2vcDxr0B25Z','tevgva','y3rYBeTLEq','CMLNAhq','DuzhA3C','ugL3DLq','Dg9W','vwPoy2q','wwLJu20','qNvwvwm','EeriBgK','BgXjCNG','CgfNzvG','CM90yxrLu3bLzwq','mJm4mtKWnxPjEwTWEG','yxbWBhLrDwf0zxjUAw9U','C3bSAwnL','vLbTrwK','A0zyzNK','CuvUCvG','uKLhsfq','C2f2zvn0yxrL','z2v0qxPPBxv0AgfSqw5NBgu','Dw1MDum','Cg9PBNrLCMrVD24','BwLU','tMzbBgy','Bwf4wM9VBq','nfHbs01wtW','uefo','y2XPzw50wa','mtCXnZi2ndbJBvbSz3K','wffwBNi','zw5K','CvPbrKu','EhrHtvu','weXYqva','tuDcwKW','CMfKAxvZ','Cg9PBNrLCMnHBMnLBa','ru1guwS','EM9VBq','vLbNuuy','shvtsui','ChjLDMvUDerLzMf1Bhq','A2v5zg93BG','ve9vq0HFuefo','AxnpCNrOB2DYyxbOAwndyw1LCMe','re1XAMi','C2v0ug9PBNrLCKnHChr1CMu','qNP0B3e','ndeYmdy3nNHPzg5HCq','Bwf4rgLZDgfUy2u','CMvTB3zLrxzLBNrmAxn0zw5LCG','C2v0rNjVBvvUAxrwzwn0B3jZ','zgHgzNu','CxL2qwq','BgvMDa','CNjWDhu','y29UDgv4Dg1LBNu','CgfNzvK','EM9VBvnWzwvK','DxbKyxrLuhjVAMvJDgLVBK1HDhjPEa','zgLZCg9Zzq','vePQAKG','C2v0','ExP2EgO','Cg9PBNrLCLr5Cgu','ywrKrxzLBNrmAxn0zw5LCG','s1HPAw0','Cg9PBNrLCM1VDMu','v0fstKLorZOGt3jIAxrdB250CM9SCY5QCYbLBMnVDw50zxjLzcbHBIb1BMTUB3DUignHBwvYysb0ExbLic0GCgfUigrPC2fIBgvKlG','yNvjuwS','DgHLDge','CgHP','Cg9ZAxrPB24W','y29WEq','rwHPu0q','y1fos08','CfbNDhy','CMvZzxq','ve9vq0HFre9mtfLFuefo','EM9VBta','B3Lns2i','Dg91y2HLCW','qxjYB3DsAwDODa','DxbKyxrL','rxnQBvK','sK1XtKq','C3fYDa','tuLereXf','AwfWDei','C3vIvMvJDg9YCW','sM9nzuu','zw5HyMXLugfU','qxjYB3DeB3DU','C2HPzNrlzxK','qK9uve9n','u0Lxtwi','Bwf4qxPPBxv0AefUz2XL','v3rqAuC','Bwv0yuTLEq','Bwf4','ChvZAa','Bvn5BNm','Bwf4ug9SyxjbBMDSzq','s1rPzLq','D2fYBG','y2XPzw50wq','Dg91y2Hby3rPB24','mJyZnJyZu2Tzq2Dh','y3jVC3nwzwn0B3jZ','nxWXFdz8mNWWFdn8na'];_0x5328=function(){return _0x388e8d;};return _0x5328();}import{EventDispatcher,MOUSE,Quaternion,Spherical,TOUCH,Vector2,Vector3}from'three';const _changeEvent={'type':'change'},_startEvent={'type':_0x574abd(0x1d2)},_endEvent={'type':_0x574abd(0x166)};class OrbitControls extends EventDispatcher{constructor(_0x13e900,_0x38fe1c){const _0xde3022=_0x574abd,_0x55398c={'KTifT':_0xde3022(0x1b5),'txTsU':function(_0x280909,_0x51c22a){return _0x280909===_0x51c22a;},'OTmZN':function(_0x56699b){return _0x56699b();},'RUBsa':function(_0x175c0d,_0x5a47eb){return _0x175c0d*_0x5a47eb;},'SIWMb':function(_0x3a0761,_0x584fe1){return _0x3a0761>_0x584fe1;},'XQVnr':function(_0x1a8f06,_0x486eee){return _0x1a8f06*_0x486eee;},'CqdDY':'wheel','Bztoq':_0xde3022(0x172),'VwDck':function(_0x3e3815,_0x2dbe13){return _0x3e3815/_0x2dbe13;},'BuVUc':function(_0x2ef8be,_0x595822){return _0x2ef8be===_0x595822;},'hJXIO':function(_0x503008,_0x180b2c){return _0x503008*_0x180b2c;},'aWMtO':function(_0x18ec8c,_0x5760eb){return _0x18ec8c*_0x5760eb;},'OCZkF':function(_0x28daed,_0x2da4da,_0xedafeb){return _0x28daed(_0x2da4da,_0xedafeb);},'ALiMJ':function(_0x356529,_0x5a1a03){return _0x356529*_0x5a1a03;},'rrptu':function(_0x21cf3c,_0x49b1aa){return _0x21cf3c/_0x49b1aa;},'PjNEo':function(_0x259366,_0x4b60bc){return _0x259366(_0x4b60bc);},'dNvwv':function(_0x3b3de4,_0xa1e51b){return _0x3b3de4/_0xa1e51b;},'dHcOe':function(_0xfeff22,_0x190bae){return _0xfeff22*_0x190bae;},'oMloI':function(_0x36b813){return _0x36b813();},'eJTeZ':function(_0x4abb47){return _0x4abb47();},'cfLtu':function(_0x22b01c,_0x3c2d5f){return _0x22b01c<_0x3c2d5f;},'NTnZO':function(_0x2a92c4){return _0x2a92c4();},'xgcfB':function(_0x474b02,_0x73318){return _0x474b02*_0x73318;},'VPgQF':function(_0x57fc94,_0x42285c){return _0x57fc94*_0x42285c;},'Deurb':function(_0x7df30d,_0x446e6b){return _0x7df30d/_0x446e6b;},'sBOLo':function(_0x1be629,_0x2e4c48){return _0x1be629*_0x2e4c48;},'kqJSq':function(_0x5a2be4,_0x405350,_0x47eeb2){return _0x5a2be4(_0x405350,_0x47eeb2);},'qEnqX':function(_0x1a7e78,_0x3f76db,_0x4b0cb8){return _0x1a7e78(_0x3f76db,_0x4b0cb8);},'zTjHt':function(_0x6f9054,_0x53443a){return _0x6f9054*_0x53443a;},'EMFQk':function(_0xd8f29a,_0x4cad05){return _0xd8f29a===_0x4cad05;},'fFvHo':function(_0x564758,_0x52b976){return _0x564758*_0x52b976;},'HuSIB':function(_0x5cba23,_0x59c9b8){return _0x5cba23+_0x59c9b8;},'PiwvT':function(_0x272ebc){return _0x272ebc();},'EsjmY':function(_0x4eca24,_0x306555){return _0x4eca24==_0x306555;},'JMqND':function(_0x4b9cb1,_0x33994c){return _0x4b9cb1+_0x33994c;},'pagDW':function(_0x5cbad3,_0xeeafb1){return _0x5cbad3*_0xeeafb1;},'whJKg':function(_0x1f8639,_0x36ac08){return _0x1f8639(_0x36ac08);},'fQfhi':function(_0x23cfbb,_0x4fea06){return _0x23cfbb-_0x4fea06;},'qyvAd':function(_0xecb384,_0x32cf72){return _0xecb384+_0x32cf72;},'inVQD':function(_0x31ade3,_0x352934){return _0x31ade3*_0x352934;},'QsdMm':function(_0x5a4a5c,_0x23c1e6){return _0x5a4a5c/_0x23c1e6;},'TJjjH':function(_0x5f2670,_0x80b02){return _0x5f2670(_0x80b02);},'EhiSD':_0xde3022(0x18b),'iaptB':_0xde3022(0x126),'umfuC':function(_0x171e80,_0x520017){return _0x171e80===_0x520017;},'OlHnT':function(_0x4fda03,_0x3f1b3d){return _0x4fda03(_0x3f1b3d);},'WtPiG':function(_0x7c1c5f,_0x55979e){return _0x7c1c5f===_0x55979e;},'xDHli':_0xde3022(0x115),'uFGkw':function(_0x39c41f,_0x2b0dc6){return _0x39c41f(_0x2b0dc6);},'oyMKb':function(_0x349190,_0x44e0f6){return _0x349190===_0x44e0f6;},'OlwCj':function(_0x1f528b,_0x5545aa){return _0x1f528b===_0x5545aa;},'KXiim':function(_0x4f848f,_0xedf2db){return _0x4f848f!==_0xedf2db;},'UjNcd':function(_0x6f8c0d,_0x5ed587){return _0x6f8c0d===_0x5ed587;},'gCWeq':function(_0x3aeb15,_0x11ae57){return _0x3aeb15===_0x11ae57;},'VIcET':function(_0x5c4abc,_0xa300ea){return _0x5c4abc===_0xa300ea;},'DMqjb':function(_0x946bf8,_0x413e1b){return _0x946bf8(_0x413e1b);},'eCloG':function(_0x1ae818){return _0x1ae818();},'FKfDn':function(_0x3f539b,_0x7a0bf7){return _0x3f539b===_0x7a0bf7;},'gWkIO':function(_0x1dc6cc,_0x59cbb0){return _0x1dc6cc===_0x59cbb0;},'xtaMU':function(_0x290884){return _0x290884();},'mxKVw':function(_0x55011b,_0x3ff62e){return _0x55011b(_0x3ff62e);},'yzvxj':function(_0xfdfadc,_0x5d10fc){return _0xfdfadc===_0x5d10fc;},'qZAFE':function(_0x25b016,_0x46c7c3){return _0x25b016===_0x46c7c3;},'jSPke':function(_0x41a712,_0x811c68){return _0x41a712===_0x811c68;},'DaMbx':_0xde3022(0x119),'BQLoe':_0xde3022(0x19a),'buIQk':_0xde3022(0x180),'VPmEi':_0xde3022(0x16c)};super(),this[_0xde3022(0x1e0)]=_0x13e900,this[_0xde3022(0x12c)]=_0x38fe1c,this[_0xde3022(0x12c)]['style'][_0xde3022(0x1b2)]=_0xde3022(0x136),this[_0xde3022(0x1eb)]=!![],this[_0xde3022(0x124)]=new Vector3(),this['minDistance']=0x0,this[_0xde3022(0x179)]=Infinity,this[_0xde3022(0x134)]=0x0,this[_0xde3022(0x160)]=Infinity,this['minPolarAngle']=0x0,this[_0xde3022(0x1ae)]=Math['PI'],this[_0xde3022(0x1c2)]=-Infinity,this[_0xde3022(0x1a8)]=Infinity,this[_0xde3022(0x1be)]=![],this[_0xde3022(0x1c6)]=0.05,this['enableZoom']=!![],this[_0xde3022(0x182)]=0x1,this['enableRotate']=!![],this[_0xde3022(0x152)]=0x1,this[_0xde3022(0x1a3)]=!![],this['panSpeed']=0x1,this['screenSpacePanning']=!![],this[_0xde3022(0x1c3)]=0x7,this[_0xde3022(0x1c7)]=![],this['autoRotateSpeed']=0x2,this['keys']={'LEFT':_0x55398c[_0xde3022(0x1cb)],'UP':_0xde3022(0x117),'RIGHT':_0x55398c[_0xde3022(0x1b8)],'BOTTOM':_0xde3022(0x1a4)},this[_0xde3022(0x145)]={'LEFT':MOUSE[_0xde3022(0x116)],'MIDDLE':MOUSE[_0xde3022(0x121)],'RIGHT':MOUSE[_0xde3022(0x162)]},this[_0xde3022(0x199)]={'ONE':TOUCH['ROTATE'],'TWO':TOUCH[_0xde3022(0x1da)]},this['target0']=this['target'][_0xde3022(0x12e)](),this['position0']=this[_0xde3022(0x1e0)]['position']['clone'](),this[_0xde3022(0x197)]=this[_0xde3022(0x1e0)][_0xde3022(0x16e)],this[_0xde3022(0x1e7)]=null,this[_0xde3022(0x1e6)]=function(){const _0x3ef7bd=_0xde3022;return _0x3325e8[_0x3ef7bd(0x18f)];},this[_0xde3022(0x15b)]=function(){return _0x3325e8['theta'];},this['getDistance']=function(){const _0x232986=_0xde3022;return this[_0x232986(0x1e0)][_0x232986(0x142)][_0x232986(0x144)](this[_0x232986(0x124)]);},this[_0xde3022(0x12b)]=function(_0xdacd6f){const _0x50b4a1=_0xde3022;_0xdacd6f[_0x50b4a1(0x189)](_0x50b4a1(0x172),_0x2b295d),this['_domElementKeyEvents']=_0xdacd6f;},this[_0xde3022(0x15a)]=function(){const _0x294794=_0xde3022;_0x28f19c[_0x294794(0x1b9)]['copy'](_0x28f19c[_0x294794(0x124)]),_0x28f19c[_0x294794(0x190)][_0x294794(0x191)](_0x28f19c[_0x294794(0x1e0)][_0x294794(0x142)]),_0x28f19c[_0x294794(0x197)]=_0x28f19c['object'][_0x294794(0x16e)];},this[_0xde3022(0x195)]=function(){const _0x25229b=_0xde3022,_0x472840=_0x55398c[_0x25229b(0x1af)][_0x25229b(0x1e1)]('|');let _0x3e181a=0x0;while(!![]){switch(_0x472840[_0x3e181a++]){case'0':_0x28f19c['dispatchEvent'](_changeEvent);continue;case'1':_0x28f19c[_0x25229b(0x1e0)][_0x25229b(0x142)][_0x25229b(0x191)](_0x28f19c['position0']);continue;case'2':_0x28f19c[_0x25229b(0x1e0)]['updateProjectionMatrix']();continue;case'3':_0x28f19c[_0x25229b(0x19b)]();continue;case'4':_0x502d48=_0x387d15['NONE'];continue;case'5':_0x28f19c[_0x25229b(0x124)][_0x25229b(0x191)](_0x28f19c[_0x25229b(0x1b9)]);continue;case'6':_0x28f19c['object'][_0x25229b(0x16e)]=_0x28f19c['zoom0'];continue;}break;}},this[_0xde3022(0x19b)]=(function(){const _0x4dba8a=_0xde3022,_0x3f3581={'IVZQF':function(_0x47de53,_0x43f2a6){const _0x3dc231=_0x3c40;return _0x55398c[_0x3dc231(0x1dd)](_0x47de53,_0x43f2a6);},'cHVkN':function(_0x4b4495,_0x3fc927){return _0x4b4495(_0x3fc927);},'efJaU':function(_0x26eba8){const _0x687f1b=_0x3c40;return _0x55398c[_0x687f1b(0x11f)](_0x26eba8);},'vzbjB':function(_0x47c6c3,_0x4a533f){const _0x1f3acd=_0x3c40;return _0x55398c[_0x1f3acd(0x12a)](_0x47c6c3,_0x4a533f);},'JoMeE':function(_0x576a38,_0x16bf32){const _0x2e9afb=_0x3c40;return _0x55398c[_0x2e9afb(0x12a)](_0x576a38,_0x16bf32);},'llIrx':function(_0x4a887d,_0x56b10a){return _0x4a887d(_0x56b10a);},'kFXfy':function(_0x259968,_0x191d81){return _0x259968(_0x191d81);},'pPgtv':function(_0x1590c6,_0x724a08){return _0x1590c6<_0x724a08;},'YicSm':function(_0x38380f,_0x5dcc94){return _0x55398c['SIWMb'](_0x38380f,_0x5dcc94);},'KeDaV':function(_0x35f744,_0x34af9f){return _0x35f744===_0x34af9f;},'UGVkR':function(_0x42e0d8,_0x248f73){return _0x42e0d8-_0x248f73;},'nJlLT':function(_0xd06c32,_0x48ccf1){const _0x395cbe=_0x3c40;return _0x55398c[_0x395cbe(0x1a7)](_0xd06c32,_0x48ccf1);}},_0x4915fa=new Vector3(),_0x456b33=new Quaternion()[_0x4dba8a(0x17b)](_0x13e900['up'],new Vector3(0x0,0x1,0x0)),_0x14fb29=_0x456b33[_0x4dba8a(0x12e)]()[_0x4dba8a(0x139)](),_0x3448aa=new Vector3(),_0xa9454f=new Quaternion(),_0x30a819=_0x55398c['XQVnr'](0x2,Math['PI']);return function _0x2a367b(){const _0x1fc946=_0x4dba8a,_0x42318b=_0x28f19c[_0x1fc946(0x1e0)][_0x1fc946(0x142)];_0x4915fa[_0x1fc946(0x191)](_0x42318b)[_0x1fc946(0x1db)](_0x28f19c[_0x1fc946(0x124)]),_0x4915fa[_0x1fc946(0x154)](_0x456b33),_0x3325e8['setFromVector3'](_0x4915fa);_0x28f19c[_0x1fc946(0x1c7)]&&_0x3f3581[_0x1fc946(0x1d7)](_0x502d48,_0x387d15[_0x1fc946(0x11b)])&&_0x3f3581[_0x1fc946(0x13a)](_0x177ac2,_0x3f3581['efJaU'](_0x35636d));_0x28f19c[_0x1fc946(0x1be)]?(_0x3325e8[_0x1fc946(0x18e)]+=_0x3f3581[_0x1fc946(0x12d)](_0x86fd3f[_0x1fc946(0x18e)],_0x28f19c[_0x1fc946(0x1c6)]),_0x3325e8[_0x1fc946(0x18f)]+=_0x3f3581[_0x1fc946(0x1a2)](_0x86fd3f[_0x1fc946(0x18f)],_0x28f19c['dampingFactor'])):(_0x3325e8[_0x1fc946(0x18e)]+=_0x86fd3f[_0x1fc946(0x18e)],_0x3325e8[_0x1fc946(0x18f)]+=_0x86fd3f[_0x1fc946(0x18f)]);let _0x432775=_0x28f19c[_0x1fc946(0x1c2)],_0x4de870=_0x28f19c[_0x1fc946(0x1a8)];if(_0x3f3581[_0x1fc946(0x150)](isFinite,_0x432775)&&_0x3f3581[_0x1fc946(0x157)](isFinite,_0x4de870)){if(_0x432775<-Math['PI'])_0x432775+=_0x30a819;else{if(_0x432775>Math['PI'])_0x432775-=_0x30a819;}if(_0x3f3581[_0x1fc946(0x194)](_0x4de870,-Math['PI']))_0x4de870+=_0x30a819;else{if(_0x4de870>Math['PI'])_0x4de870-=_0x30a819;}_0x432775<=_0x4de870?_0x3325e8['theta']=Math['max'](_0x432775,Math[_0x1fc946(0x15e)](_0x4de870,_0x3325e8[_0x1fc946(0x18e)])):_0x3325e8[_0x1fc946(0x18e)]=_0x3f3581[_0x1fc946(0x14d)](_0x3325e8[_0x1fc946(0x18e)],(_0x432775+_0x4de870)/0x2)?Math[_0x1fc946(0x1ab)](_0x432775,_0x3325e8['theta']):Math[_0x1fc946(0x15e)](_0x4de870,_0x3325e8['theta']);}_0x3325e8[_0x1fc946(0x18f)]=Math['max'](_0x28f19c[_0x1fc946(0x122)],Math[_0x1fc946(0x15e)](_0x28f19c[_0x1fc946(0x1ae)],_0x3325e8['phi'])),_0x3325e8['makeSafe'](),_0x3325e8[_0x1fc946(0x16b)]*=_0x343242,_0x3325e8['radius']=Math[_0x1fc946(0x1ab)](_0x28f19c[_0x1fc946(0x120)],Math[_0x1fc946(0x15e)](_0x28f19c[_0x1fc946(0x179)],_0x3325e8[_0x1fc946(0x16b)]));_0x28f19c['enableDamping']===!![]?_0x28f19c[_0x1fc946(0x124)]['addScaledVector'](_0x595ba5,_0x28f19c['dampingFactor']):_0x28f19c['target'][_0x1fc946(0x118)](_0x595ba5);_0x4915fa['setFromSpherical'](_0x3325e8),_0x4915fa[_0x1fc946(0x154)](_0x14fb29),_0x42318b[_0x1fc946(0x191)](_0x28f19c[_0x1fc946(0x124)])['add'](_0x4915fa),_0x28f19c[_0x1fc946(0x1e0)][_0x1fc946(0x1c0)](_0x28f19c[_0x1fc946(0x124)]);_0x3f3581['KeDaV'](_0x28f19c['enableDamping'],!![])?(_0x86fd3f[_0x1fc946(0x18e)]*=0x1-_0x28f19c[_0x1fc946(0x1c6)],_0x86fd3f['phi']*=_0x3f3581[_0x1fc946(0x1d5)](0x1,_0x28f19c[_0x1fc946(0x1c6)]),_0x595ba5[_0x1fc946(0x138)](0x1-_0x28f19c[_0x1fc946(0x1c6)])):(_0x86fd3f['set'](0x0,0x0,0x0),_0x595ba5['set'](0x0,0x0,0x0));_0x343242=0x1;if(_0x529a4f||_0x3448aa[_0x1fc946(0x1c5)](_0x28f19c[_0x1fc946(0x1e0)]['position'])>_0x2a77a3||_0x3f3581[_0x1fc946(0x141)](_0x3f3581[_0x1fc946(0x1a2)](0x8,0x1-_0xa9454f[_0x1fc946(0x1d0)](_0x28f19c['object']['quaternion'])),_0x2a77a3))return _0x28f19c['dispatchEvent'](_changeEvent),_0x3448aa['copy'](_0x28f19c[_0x1fc946(0x1e0)]['position']),_0xa9454f[_0x1fc946(0x191)](_0x28f19c[_0x1fc946(0x1e0)][_0x1fc946(0x1bd)]),_0x529a4f=![],!![];return![];};}()),this[_0xde3022(0x184)]=function(){const _0x15aaaf=_0xde3022;_0x28f19c['domElement'][_0x15aaaf(0x17a)](_0x15aaaf(0x180),_0x45a384),_0x28f19c[_0x15aaaf(0x12c)][_0x15aaaf(0x17a)](_0x15aaaf(0x15d),_0xa70462),_0x28f19c[_0x15aaaf(0x12c)]['removeEventListener'](_0x15aaaf(0x16c),_0x129a60),_0x28f19c[_0x15aaaf(0x12c)][_0x15aaaf(0x17a)](_0x55398c[_0x15aaaf(0x11c)],_0x1c57d9),_0x28f19c[_0x15aaaf(0x12c)][_0x15aaaf(0x17a)](_0x15aaaf(0x18b),_0x2dd2b5),_0x28f19c[_0x15aaaf(0x12c)]['removeEventListener']('pointerup',_0x96eedb),_0x28f19c[_0x15aaaf(0x1e7)]!==null&&_0x28f19c[_0x15aaaf(0x1e7)][_0x15aaaf(0x17a)](_0x55398c[_0x15aaaf(0x177)],_0x2b295d);};const _0x28f19c=this,_0x387d15={'NONE':-0x1,'ROTATE':0x0,'DOLLY':0x1,'PAN':0x2,'TOUCH_ROTATE':0x3,'TOUCH_PAN':0x4,'TOUCH_DOLLY_PAN':0x5,'TOUCH_DOLLY_ROTATE':0x6};let _0x502d48=_0x387d15[_0xde3022(0x11b)];const _0x2a77a3=0.000001,_0x3325e8=new Spherical(),_0x86fd3f=new Spherical();let _0x343242=0x1;const _0x595ba5=new Vector3();let _0x529a4f=![];const _0xd7f17=new Vector2(),_0x374636=new Vector2(),_0x2e685b=new Vector2(),_0x1730c7=new Vector2(),_0x51485a=new Vector2(),_0x20e9c8=new Vector2(),_0x147820=new Vector2(),_0x32010a=new Vector2(),_0x3c26f4=new Vector2(),_0x492d1a=[],_0x28f3cc={};function _0x35636d(){const _0x1ea9dd=_0xde3022;return _0x55398c['VwDck'](0x2*Math['PI'],0x3c)/0x3c*_0x28f19c[_0x1ea9dd(0x1d4)];}function _0x2d4f8f(){const _0x5c1fab=_0xde3022;return Math[_0x5c1fab(0x1c4)](0.95,_0x28f19c[_0x5c1fab(0x182)]);}function _0x177ac2(_0x3f1f85){_0x86fd3f['theta']-=_0x3f1f85;}function _0x5cbf75(_0x5b7eab){const _0xfa5f70=_0xde3022;_0x86fd3f[_0xfa5f70(0x18f)]-=_0x5b7eab;}const _0x105e2b=(function(){const _0x10d321=new Vector3();return function _0x3a104b(_0x2fb770,_0x1066bc){const _0x1c818b=_0x3c40;_0x10d321[_0x1c818b(0x1bc)](_0x1066bc,0x0),_0x10d321['multiplyScalar'](-_0x2fb770),_0x595ba5['add'](_0x10d321);};}()),_0x33da78=(function(){const _0x4c3c90={'NfAlf':function(_0x3db3d0,_0x28ec8d){const _0x333a9c=_0x3c40;return _0x55398c[_0x333a9c(0x14e)](_0x3db3d0,_0x28ec8d);}},_0x3ad54b=new Vector3();return function _0x1913d3(_0x5120bc,_0xc16411){const _0x331174=_0x3c40;_0x4c3c90[_0x331174(0x15f)](_0x28f19c[_0x331174(0x132)],!![])?_0x3ad54b['setFromMatrixColumn'](_0xc16411,0x1):(_0x3ad54b[_0x331174(0x1bc)](_0xc16411,0x0),_0x3ad54b[_0x331174(0x1b4)](_0x28f19c[_0x331174(0x1e0)]['up'],_0x3ad54b)),_0x3ad54b['multiplyScalar'](_0x5120bc),_0x595ba5[_0x331174(0x118)](_0x3ad54b);};}()),_0x106027=(function(){const _0x54b6e9={'XLrAP':function(_0x79d22f,_0x9994f8){return _0x79d22f/_0x9994f8;},'cQNKO':function(_0x5a3683,_0x16d3b1){return _0x5a3683*_0x16d3b1;},'mSyns':function(_0x3cb57d,_0x3386ab,_0xe28587){return _0x3cb57d(_0x3386ab,_0xe28587);},'Mhecd':function(_0x5c4d4f,_0x38e55b){const _0x513648=_0x3c40;return _0x55398c[_0x513648(0x1d9)](_0x5c4d4f,_0x38e55b);},'dzOJu':function(_0x496ac8,_0x10988c){const _0x33074e=_0x3c40;return _0x55398c[_0x33074e(0x1ce)](_0x496ac8,_0x10988c);},'Pdlod':function(_0x86a570,_0x4ed13c,_0x4839bf){const _0x49d455=_0x3c40;return _0x55398c[_0x49d455(0x11d)](_0x86a570,_0x4ed13c,_0x4839bf);},'mUssr':function(_0x506181,_0xfc0be7){return _0x506181/_0xfc0be7;},'MGBZL':function(_0x289bba,_0x11c9e4){return _0x55398c['ALiMJ'](_0x289bba,_0x11c9e4);},'yNvRf':function(_0xe1fd1f,_0x54b2bc,_0x2cedf4){return _0xe1fd1f(_0x54b2bc,_0x2cedf4);},'dhFfu':function(_0x57cd03,_0x216ba2){const _0x55afe8=_0x3c40;return _0x55398c[_0x55afe8(0x17f)](_0x57cd03,_0x216ba2);},'OEJCF':function(_0x256df1,_0x1ffa53){const _0x314db4=_0x3c40;return _0x55398c[_0x314db4(0x165)](_0x256df1,_0x1ffa53);}},_0x173d11=new Vector3();return function _0x4dafe2(_0x21827a,_0x15acd8){const _0x43fd7b=_0x3c40,_0x5a3e5f=_0x28f19c[_0x43fd7b(0x12c)];if(_0x28f19c[_0x43fd7b(0x1e0)]['isPerspectiveCamera']){const _0x2ec3c8=_0x28f19c[_0x43fd7b(0x1e0)]['position'];_0x173d11['copy'](_0x2ec3c8)[_0x43fd7b(0x1db)](_0x28f19c[_0x43fd7b(0x124)]);let _0x1cd37b=_0x173d11[_0x43fd7b(0x125)]();_0x1cd37b*=Math[_0x43fd7b(0x1c8)](_0x54b6e9[_0x43fd7b(0x169)](_0x54b6e9[_0x43fd7b(0x193)](_0x54b6e9[_0x43fd7b(0x169)](_0x28f19c[_0x43fd7b(0x1e0)]['fov'],0x2),Math['PI']),0xb4)),_0x54b6e9[_0x43fd7b(0x1ad)](_0x105e2b,_0x54b6e9[_0x43fd7b(0x169)](_0x54b6e9[_0x43fd7b(0x1b7)](_0x54b6e9[_0x43fd7b(0x1b7)](0x2,_0x21827a),_0x1cd37b),_0x5a3e5f[_0x43fd7b(0x1d1)]),_0x28f19c[_0x43fd7b(0x1e0)][_0x43fd7b(0x143)]),_0x33da78(_0x54b6e9[_0x43fd7b(0x1d8)](0x2*_0x15acd8,_0x1cd37b)/_0x5a3e5f['clientHeight'],_0x28f19c[_0x43fd7b(0x1e0)]['matrix']);}else _0x28f19c[_0x43fd7b(0x1e0)]['isOrthographicCamera']?(_0x54b6e9['Pdlod'](_0x105e2b,_0x54b6e9[_0x43fd7b(0x130)](_0x54b6e9[_0x43fd7b(0x130)](_0x54b6e9[_0x43fd7b(0x16a)](_0x21827a,_0x28f19c['object'][_0x43fd7b(0x148)]-_0x28f19c[_0x43fd7b(0x1e0)][_0x43fd7b(0x17e)]),_0x28f19c[_0x43fd7b(0x1e0)]['zoom']),_0x5a3e5f[_0x43fd7b(0x12f)]),_0x28f19c[_0x43fd7b(0x1e0)][_0x43fd7b(0x143)]),_0x54b6e9['yNvRf'](_0x33da78,_0x54b6e9[_0x43fd7b(0x17c)](_0x54b6e9['OEJCF'](_0x15acd8,_0x28f19c[_0x43fd7b(0x1e0)][_0x43fd7b(0x14b)]-_0x28f19c[_0x43fd7b(0x1e0)][_0x43fd7b(0x1df)])/_0x28f19c['object']['zoom'],_0x5a3e5f[_0x43fd7b(0x1d1)]),_0x28f19c[_0x43fd7b(0x1e0)]['matrix'])):(console[_0x43fd7b(0x1b0)](_0x43fd7b(0x18c)),_0x28f19c[_0x43fd7b(0x1a3)]=![]);};}());function _0x58222b(_0xdac0b2){const _0x3e73e6=_0xde3022;if(_0x28f19c['object']['isPerspectiveCamera'])_0x343242/=_0xdac0b2;else _0x28f19c[_0x3e73e6(0x1e0)][_0x3e73e6(0x174)]?(_0x28f19c[_0x3e73e6(0x1e0)][_0x3e73e6(0x16e)]=Math['max'](_0x28f19c[_0x3e73e6(0x134)],Math[_0x3e73e6(0x15e)](_0x28f19c[_0x3e73e6(0x160)],_0x28f19c['object'][_0x3e73e6(0x16e)]*_0xdac0b2)),_0x28f19c[_0x3e73e6(0x1e0)][_0x3e73e6(0x183)](),_0x529a4f=!![]):(console[_0x3e73e6(0x1b0)]('WARNING:\x20OrbitControls.js\x20encountered\x20an\x20unknown\x20camera\x20type\x20-\x20dolly/zoom\x20disabled.'),_0x28f19c[_0x3e73e6(0x129)]=![]);}function _0x364e89(_0xe0abcb){const _0x9a00b8=_0xde3022;if(_0x28f19c[_0x9a00b8(0x1e0)][_0x9a00b8(0x128)])_0x343242*=_0xe0abcb;else _0x28f19c['object']['isOrthographicCamera']?(_0x28f19c[_0x9a00b8(0x1e0)][_0x9a00b8(0x16e)]=Math[_0x9a00b8(0x1ab)](_0x28f19c[_0x9a00b8(0x134)],Math['min'](_0x28f19c['maxZoom'],_0x55398c[_0x9a00b8(0x1ea)](_0x28f19c['object']['zoom'],_0xe0abcb))),_0x28f19c['object'][_0x9a00b8(0x183)](),_0x529a4f=!![]):(console[_0x9a00b8(0x1b0)]('WARNING:\x20OrbitControls.js\x20encountered\x20an\x20unknown\x20camera\x20type\x20-\x20dolly/zoom\x20disabled.'),_0x28f19c[_0x9a00b8(0x129)]=![]);}function _0x2e9a1f(_0x59b72e){const _0x5d3ff1=_0xde3022;_0xd7f17[_0x5d3ff1(0x186)](_0x59b72e[_0x5d3ff1(0x163)],_0x59b72e[_0x5d3ff1(0x1b1)]);}function _0x3ca6dc(_0x435f52){const _0x40fe7d=_0xde3022;_0x147820['set'](_0x435f52[_0x40fe7d(0x163)],_0x435f52[_0x40fe7d(0x1b1)]);}function _0xd0efd4(_0x3fa086){const _0x305c0b=_0xde3022;_0x1730c7[_0x305c0b(0x186)](_0x3fa086['clientX'],_0x3fa086[_0x305c0b(0x1b1)]);}function _0x52953f(_0x2dfdc9){const _0x4f34b1=_0xde3022;_0x374636[_0x4f34b1(0x186)](_0x2dfdc9['clientX'],_0x2dfdc9[_0x4f34b1(0x1b1)]),_0x2e685b[_0x4f34b1(0x1a1)](_0x374636,_0xd7f17)[_0x4f34b1(0x138)](_0x28f19c['rotateSpeed']);const _0xcb297e=_0x28f19c[_0x4f34b1(0x12c)];_0x55398c['PjNEo'](_0x177ac2,_0x55398c[_0x4f34b1(0x1e4)](_0x55398c['dHcOe'](0x2,Math['PI'])*_0x2e685b['x'],_0xcb297e[_0x4f34b1(0x1d1)])),_0x55398c[_0x4f34b1(0x1cc)](_0x5cbf75,_0x55398c[_0x4f34b1(0x1ce)](0x2*Math['PI'],_0x2e685b['y'])/_0xcb297e[_0x4f34b1(0x1d1)]),_0xd7f17[_0x4f34b1(0x191)](_0x374636),_0x28f19c['update']();}function _0x57e648(_0x32f85d){const _0x40ecbf=_0xde3022;_0x32010a['set'](_0x32f85d[_0x40ecbf(0x163)],_0x32f85d['clientY']),_0x3c26f4[_0x40ecbf(0x1a1)](_0x32010a,_0x147820);if(_0x3c26f4['y']>0x0)_0x58222b(_0x55398c[_0x40ecbf(0x1c9)](_0x2d4f8f));else _0x3c26f4['y']<0x0&&_0x364e89(_0x55398c[_0x40ecbf(0x135)](_0x2d4f8f));_0x147820[_0x40ecbf(0x191)](_0x32010a),_0x28f19c[_0x40ecbf(0x19b)]();}function _0x5cfff8(_0x320d63){const _0x6a25d3=_0xde3022;_0x51485a['set'](_0x320d63[_0x6a25d3(0x163)],_0x320d63[_0x6a25d3(0x1b1)]),_0x20e9c8[_0x6a25d3(0x1a1)](_0x51485a,_0x1730c7)[_0x6a25d3(0x138)](_0x28f19c[_0x6a25d3(0x13f)]),_0x106027(_0x20e9c8['x'],_0x20e9c8['y']),_0x1730c7[_0x6a25d3(0x191)](_0x51485a),_0x28f19c[_0x6a25d3(0x19b)]();}function _0x5807ce(_0x32eb55){const _0x46c2ab=_0xde3022;if(_0x55398c[_0x46c2ab(0x11a)](_0x32eb55[_0x46c2ab(0x137)],0x0))_0x55398c[_0x46c2ab(0x1cc)](_0x364e89,_0x55398c[_0x46c2ab(0x1ca)](_0x2d4f8f));else _0x55398c[_0x46c2ab(0x1a7)](_0x32eb55[_0x46c2ab(0x137)],0x0)&&_0x58222b(_0x2d4f8f());_0x28f19c[_0x46c2ab(0x19b)]();}function _0x93f8(_0x38f8c8){const _0x29e96e=_0xde3022;let _0x5085ec=![];switch(_0x38f8c8[_0x29e96e(0x1b6)]){case _0x28f19c[_0x29e96e(0x127)]['UP']:_0x38f8c8[_0x29e96e(0x147)]||_0x38f8c8[_0x29e96e(0x1aa)]||_0x38f8c8['shiftKey']?_0x5cbf75(_0x55398c[_0x29e96e(0x1cd)](_0x55398c[_0x29e96e(0x16f)](0x2,Math['PI']),_0x28f19c['rotateSpeed'])/_0x28f19c['domElement']['clientHeight']):_0x106027(0x0,_0x28f19c[_0x29e96e(0x1c3)]);_0x5085ec=!![];break;case _0x28f19c[_0x29e96e(0x127)][_0x29e96e(0x1a6)]:_0x38f8c8['ctrlKey']||_0x38f8c8['metaKey']||_0x38f8c8['shiftKey']?_0x5cbf75(_0x55398c[_0x29e96e(0x123)](_0x55398c[_0x29e96e(0x165)](_0x55398c[_0x29e96e(0x1c1)](-0x2,Math['PI']),_0x28f19c['rotateSpeed']),_0x28f19c[_0x29e96e(0x12c)][_0x29e96e(0x1d1)])):_0x55398c[_0x29e96e(0x1cf)](_0x106027,0x0,-_0x28f19c[_0x29e96e(0x1c3)]);_0x5085ec=!![];break;case _0x28f19c['keys'][_0x29e96e(0x146)]:_0x38f8c8[_0x29e96e(0x147)]||_0x38f8c8[_0x29e96e(0x1aa)]||_0x38f8c8[_0x29e96e(0x1a5)]?_0x177ac2(_0x55398c[_0x29e96e(0x1d9)](0x2*Math['PI'],_0x28f19c[_0x29e96e(0x152)])/_0x28f19c['domElement']['clientHeight']):_0x55398c[_0x29e96e(0x158)](_0x106027,_0x28f19c[_0x29e96e(0x1c3)],0x0);_0x5085ec=!![];break;case _0x28f19c['keys'][_0x29e96e(0x159)]:_0x38f8c8['ctrlKey']||_0x38f8c8[_0x29e96e(0x1aa)]||_0x38f8c8[_0x29e96e(0x1a5)]?_0x177ac2(_0x55398c[_0x29e96e(0x13d)](_0x55398c[_0x29e96e(0x11e)](-0x2,Math['PI']),_0x28f19c[_0x29e96e(0x152)])/_0x28f19c[_0x29e96e(0x12c)][_0x29e96e(0x1d1)]):_0x106027(-_0x28f19c[_0x29e96e(0x1c3)],0x0);_0x5085ec=!![];break;}_0x5085ec&&(_0x38f8c8['preventDefault'](),_0x28f19c[_0x29e96e(0x19b)]());}function _0x4e6800(){const _0x3e3d7e=_0xde3022;if(_0x55398c[_0x3e3d7e(0x16d)](_0x492d1a[_0x3e3d7e(0x125)],0x1))_0xd7f17[_0x3e3d7e(0x186)](_0x492d1a[0x0][_0x3e3d7e(0x151)],_0x492d1a[0x0][_0x3e3d7e(0x181)]);else{const _0x1dd7a9=_0x55398c[_0x3e3d7e(0x1cd)](0.5,_0x492d1a[0x0]['pageX']+_0x492d1a[0x1]['pageX']),_0x517dde=0.5*(_0x492d1a[0x0][_0x3e3d7e(0x181)]+_0x492d1a[0x1][_0x3e3d7e(0x181)]);_0xd7f17[_0x3e3d7e(0x186)](_0x1dd7a9,_0x517dde);}}function _0x2fd918(){const _0x16c236=_0xde3022;if(_0x492d1a[_0x16c236(0x125)]===0x1)_0x1730c7[_0x16c236(0x186)](_0x492d1a[0x0][_0x16c236(0x151)],_0x492d1a[0x0][_0x16c236(0x181)]);else{const _0x92fae8=0.5*(_0x492d1a[0x0][_0x16c236(0x151)]+_0x492d1a[0x1][_0x16c236(0x151)]),_0x1fdd10=_0x55398c['fFvHo'](0.5,_0x55398c[_0x16c236(0x170)](_0x492d1a[0x0][_0x16c236(0x181)],_0x492d1a[0x1][_0x16c236(0x181)]));_0x1730c7['set'](_0x92fae8,_0x1fdd10);}}function _0x356f76(){const _0x3966b8=_0xde3022,_0x2bcd77=_0x492d1a[0x0][_0x3966b8(0x151)]-_0x492d1a[0x1][_0x3966b8(0x151)],_0x5b8515=_0x492d1a[0x0][_0x3966b8(0x181)]-_0x492d1a[0x1][_0x3966b8(0x181)],_0x1f6018=Math[_0x3966b8(0x19e)](_0x2bcd77*_0x2bcd77+_0x5b8515*_0x5b8515);_0x147820[_0x3966b8(0x186)](0x0,_0x1f6018);}function _0x56132b(){const _0x1a0ee8=_0xde3022;if(_0x28f19c[_0x1a0ee8(0x129)])_0x55398c[_0x1a0ee8(0x14a)](_0x356f76);if(_0x28f19c[_0x1a0ee8(0x1a3)])_0x2fd918();}function _0x92bb6b(){const _0x4fb469=_0xde3022;if(_0x28f19c['enableZoom'])_0x356f76();if(_0x28f19c[_0x4fb469(0x13c)])_0x4e6800();}function _0x3cc873(_0x413d0c){const _0x35aac9=_0xde3022;if(_0x55398c[_0x35aac9(0x19c)](_0x492d1a[_0x35aac9(0x125)],0x1))_0x374636[_0x35aac9(0x186)](_0x413d0c[_0x35aac9(0x151)],_0x413d0c[_0x35aac9(0x181)]);else{const _0x85c924=_0x57813a(_0x413d0c),_0x4ecc09=0.5*_0x55398c[_0x35aac9(0x19d)](_0x413d0c[_0x35aac9(0x151)],_0x85c924['x']),_0x463725=_0x55398c['pagDW'](0.5,_0x55398c[_0x35aac9(0x19d)](_0x413d0c['pageY'],_0x85c924['y']));_0x374636[_0x35aac9(0x186)](_0x4ecc09,_0x463725);}_0x2e685b['subVectors'](_0x374636,_0xd7f17)['multiplyScalar'](_0x28f19c['rotateSpeed']);const _0x1b503b=_0x28f19c[_0x35aac9(0x12c)];_0x177ac2(_0x55398c[_0x35aac9(0x1ea)](0x2*Math['PI']*_0x2e685b['x'],_0x1b503b[_0x35aac9(0x1d1)])),_0x55398c[_0x35aac9(0x1cc)](_0x5cbf75,0x2*Math['PI']*_0x2e685b['y']/_0x1b503b[_0x35aac9(0x1d1)]),_0xd7f17['copy'](_0x374636);}function _0x30403f(_0x134a6f){const _0x58f15b=_0xde3022;if(_0x55398c[_0x58f15b(0x1dd)](_0x492d1a[_0x58f15b(0x125)],0x1))_0x51485a[_0x58f15b(0x186)](_0x134a6f[_0x58f15b(0x151)],_0x134a6f['pageY']);else{const _0x27572a=_0x55398c['PjNEo'](_0x57813a,_0x134a6f),_0xdca48=0.5*(_0x134a6f[_0x58f15b(0x151)]+_0x27572a['x']),_0x3f8df0=0.5*(_0x134a6f[_0x58f15b(0x181)]+_0x27572a['y']);_0x51485a['set'](_0xdca48,_0x3f8df0);}_0x20e9c8[_0x58f15b(0x1a1)](_0x51485a,_0x1730c7)[_0x58f15b(0x138)](_0x28f19c[_0x58f15b(0x13f)]),_0x106027(_0x20e9c8['x'],_0x20e9c8['y']),_0x1730c7[_0x58f15b(0x191)](_0x51485a);}function _0x1b1173(_0x18566e){const _0x1d35df=_0xde3022,_0x52ac1c=_0x55398c[_0x1d35df(0x1bf)](_0x57813a,_0x18566e),_0x3a7654=_0x55398c[_0x1d35df(0x13e)](_0x18566e['pageX'],_0x52ac1c['x']),_0x15bdb1=_0x18566e['pageY']-_0x52ac1c['y'],_0x288368=Math[_0x1d35df(0x19e)](_0x55398c[_0x1d35df(0x17d)](_0x3a7654*_0x3a7654,_0x55398c['inVQD'](_0x15bdb1,_0x15bdb1)));_0x32010a[_0x1d35df(0x186)](0x0,_0x288368),_0x3c26f4[_0x1d35df(0x186)](0x0,Math['pow'](_0x55398c['QsdMm'](_0x32010a['y'],_0x147820['y']),_0x28f19c[_0x1d35df(0x182)])),_0x58222b(_0x3c26f4['y']),_0x147820[_0x1d35df(0x191)](_0x32010a);}function _0x3e7d39(_0x554add){const _0x335329=_0xde3022;if(_0x28f19c[_0x335329(0x129)])_0x55398c[_0x335329(0x1cc)](_0x1b1173,_0x554add);if(_0x28f19c['enablePan'])_0x55398c[_0x335329(0x1cc)](_0x30403f,_0x554add);}function _0x270db1(_0x51c984){const _0x4a04cf=_0xde3022;if(_0x28f19c[_0x4a04cf(0x129)])_0x55398c[_0x4a04cf(0x185)](_0x1b1173,_0x51c984);if(_0x28f19c[_0x4a04cf(0x13c)])_0x55398c[_0x4a04cf(0x1bf)](_0x3cc873,_0x51c984);}function _0xa70462(_0x173f9a){const _0x565613=_0xde3022;if(_0x28f19c[_0x565613(0x1eb)]===![])return;_0x492d1a['length']===0x0&&(_0x28f19c[_0x565613(0x12c)][_0x565613(0x176)](_0x173f9a[_0x565613(0x1ba)]),_0x28f19c['domElement'][_0x565613(0x189)](_0x55398c[_0x565613(0x192)],_0x2dd2b5),_0x28f19c[_0x565613(0x12c)][_0x565613(0x189)](_0x55398c[_0x565613(0x1a0)],_0x96eedb)),_0x1e558d(_0x173f9a),_0x55398c[_0x565613(0x15c)](_0x173f9a['pointerType'],_0x565613(0x115))?_0x55398c[_0x565613(0x185)](_0x5f14e2,_0x173f9a):_0x55398c['OlHnT'](_0x20f41d,_0x173f9a);}function _0x2dd2b5(_0x418902){const _0x3e4b50=_0xde3022;if(_0x28f19c[_0x3e4b50(0x1eb)]===![])return;_0x55398c[_0x3e4b50(0x1a9)](_0x418902[_0x3e4b50(0x188)],_0x55398c[_0x3e4b50(0x14f)])?_0x55398c[_0x3e4b50(0x149)](_0x40bf32,_0x418902):_0x55398c[_0x3e4b50(0x149)](_0x58cf9e,_0x418902);}function _0x96eedb(_0x14a1ee){const _0x3443a3=_0xde3022;_0x21f01a(_0x14a1ee),_0x492d1a[_0x3443a3(0x125)]===0x0&&(_0x28f19c[_0x3443a3(0x12c)]['releasePointerCapture'](_0x14a1ee[_0x3443a3(0x1ba)]),_0x28f19c[_0x3443a3(0x12c)]['removeEventListener']('pointermove',_0x2dd2b5),_0x28f19c['domElement']['removeEventListener']('pointerup',_0x96eedb)),_0x28f19c[_0x3443a3(0x1d6)](_endEvent),_0x502d48=_0x387d15[_0x3443a3(0x11b)];}function _0x129a60(_0xd48800){const _0x333b51=_0xde3022;_0x55398c[_0x333b51(0x1cc)](_0x21f01a,_0xd48800);}function _0x20f41d(_0x555796){const _0x1a584d=_0xde3022;let _0x146436;switch(_0x555796['button']){case 0x0:_0x146436=_0x28f19c[_0x1a584d(0x145)][_0x1a584d(0x146)];break;case 0x1:_0x146436=_0x28f19c[_0x1a584d(0x145)][_0x1a584d(0x19f)];break;case 0x2:_0x146436=_0x28f19c[_0x1a584d(0x145)][_0x1a584d(0x159)];break;default:_0x146436=-0x1;}switch(_0x146436){case MOUSE[_0x1a584d(0x121)]:if(_0x55398c[_0x1a584d(0x1a9)](_0x28f19c[_0x1a584d(0x129)],![]))return;_0x55398c[_0x1a584d(0x1dc)](_0x3ca6dc,_0x555796),_0x502d48=_0x387d15[_0x1a584d(0x121)];break;case MOUSE[_0x1a584d(0x116)]:if(_0x555796[_0x1a584d(0x147)]||_0x555796['metaKey']||_0x555796['shiftKey']){if(_0x55398c[_0x1a584d(0x198)](_0x28f19c[_0x1a584d(0x1a3)],![]))return;_0xd0efd4(_0x555796),_0x502d48=_0x387d15[_0x1a584d(0x162)];}else{if(_0x55398c['OlwCj'](_0x28f19c[_0x1a584d(0x13c)],![]))return;_0x2e9a1f(_0x555796),_0x502d48=_0x387d15['ROTATE'];}break;case MOUSE[_0x1a584d(0x162)]:if(_0x555796[_0x1a584d(0x147)]||_0x555796['metaKey']||_0x555796[_0x1a584d(0x1a5)]){if(_0x28f19c[_0x1a584d(0x13c)]===![])return;_0x2e9a1f(_0x555796),_0x502d48=_0x387d15[_0x1a584d(0x116)];}else{if(_0x28f19c[_0x1a584d(0x1a3)]===![])return;_0xd0efd4(_0x555796),_0x502d48=_0x387d15[_0x1a584d(0x162)];}break;default:_0x502d48=_0x387d15['NONE'];}_0x55398c[_0x1a584d(0x18a)](_0x502d48,_0x387d15[_0x1a584d(0x11b)])&&_0x28f19c[_0x1a584d(0x1d6)](_startEvent);}function _0x58cf9e(_0x21daa8){const _0xe1ab42=_0xde3022;switch(_0x502d48){case _0x387d15['ROTATE']:if(_0x55398c[_0xe1ab42(0x14c)](_0x28f19c[_0xe1ab42(0x13c)],![]))return;_0x52953f(_0x21daa8);break;case _0x387d15[_0xe1ab42(0x121)]:if(_0x28f19c['enableZoom']===![])return;_0x57e648(_0x21daa8);break;case _0x387d15[_0xe1ab42(0x162)]:if(_0x28f19c[_0xe1ab42(0x1a3)]===![])return;_0x5cfff8(_0x21daa8);break;}}function _0x1c57d9(_0x17d0a0){const _0x4fadfa=_0xde3022;if(_0x55398c[_0x4fadfa(0x14c)](_0x28f19c[_0x4fadfa(0x1eb)],![])||_0x55398c['gCWeq'](_0x28f19c[_0x4fadfa(0x129)],![])||_0x502d48!==_0x387d15[_0x4fadfa(0x11b)])return;_0x17d0a0[_0x4fadfa(0x171)](),_0x28f19c[_0x4fadfa(0x1d6)](_startEvent),_0x5807ce(_0x17d0a0),_0x28f19c[_0x4fadfa(0x1d6)](_endEvent);}function _0x2b295d(_0x2b478f){const _0x3d553a=_0xde3022;if(_0x28f19c[_0x3d553a(0x1eb)]===![]||_0x55398c[_0x3d553a(0x140)](_0x28f19c['enablePan'],![]))return;_0x93f8(_0x2b478f);}function _0x5f14e2(_0x43b5f4){const _0x571994=_0xde3022;_0x55398c[_0x571994(0x175)](_0x133f44,_0x43b5f4);switch(_0x492d1a[_0x571994(0x125)]){case 0x1:switch(_0x28f19c[_0x571994(0x199)][_0x571994(0x1e8)]){case TOUCH[_0x571994(0x116)]:if(_0x55398c['txTsU'](_0x28f19c['enableRotate'],![]))return;_0x55398c['eCloG'](_0x4e6800),_0x502d48=_0x387d15[_0x571994(0x13b)];break;case TOUCH['PAN']:if(_0x55398c['FKfDn'](_0x28f19c['enablePan'],![]))return;_0x2fd918(),_0x502d48=_0x387d15[_0x571994(0x173)];break;default:_0x502d48=_0x387d15[_0x571994(0x11b)];}break;case 0x2:switch(_0x28f19c['touches']['TWO']){case TOUCH[_0x571994(0x1da)]:if(_0x55398c['BuVUc'](_0x28f19c[_0x571994(0x129)],![])&&_0x28f19c[_0x571994(0x1a3)]===![])return;_0x55398c[_0x571994(0x14a)](_0x56132b),_0x502d48=_0x387d15[_0x571994(0x196)];break;case TOUCH['DOLLY_ROTATE']:if(_0x55398c['gWkIO'](_0x28f19c['enableZoom'],![])&&_0x28f19c['enableRotate']===![])return;_0x55398c[_0x571994(0x168)](_0x92bb6b),_0x502d48=_0x387d15[_0x571994(0x1bb)];break;default:_0x502d48=_0x387d15['NONE'];}break;default:_0x502d48=_0x387d15['NONE'];}_0x55398c[_0x571994(0x18a)](_0x502d48,_0x387d15['NONE'])&&_0x28f19c[_0x571994(0x1d6)](_startEvent);}function _0x40bf32(_0x311cf4){const _0x1ce617=_0xde3022;_0x133f44(_0x311cf4);switch(_0x502d48){case _0x387d15[_0x1ce617(0x13b)]:if(_0x28f19c['enableRotate']===![])return;_0x55398c['mxKVw'](_0x3cc873,_0x311cf4),_0x28f19c[_0x1ce617(0x19b)]();break;case _0x387d15[_0x1ce617(0x173)]:if(_0x55398c[_0x1ce617(0x187)](_0x28f19c[_0x1ce617(0x1a3)],![]))return;_0x30403f(_0x311cf4),_0x28f19c[_0x1ce617(0x19b)]();break;case _0x387d15['TOUCH_DOLLY_PAN']:if(_0x55398c[_0x1ce617(0x167)](_0x28f19c['enableZoom'],![])&&_0x28f19c[_0x1ce617(0x1a3)]===![])return;_0x3e7d39(_0x311cf4),_0x28f19c['update']();break;case _0x387d15[_0x1ce617(0x1bb)]:if(_0x28f19c['enableZoom']===![]&&_0x55398c[_0x1ce617(0x1e5)](_0x28f19c['enableRotate'],![]))return;_0x55398c[_0x1ce617(0x1bf)](_0x270db1,_0x311cf4),_0x28f19c[_0x1ce617(0x19b)]();break;default:_0x502d48=_0x387d15[_0x1ce617(0x11b)];}}function _0x45a384(_0xc06c6c){const _0x556588=_0xde3022;if(_0x28f19c[_0x556588(0x1eb)]===![])return;_0xc06c6c[_0x556588(0x171)]();}function _0x1e558d(_0x22c40d){const _0x58c324=_0xde3022;_0x492d1a[_0x58c324(0x1ac)](_0x22c40d);}function _0x21f01a(_0x3cc31d){const _0x231e23=_0xde3022;delete _0x28f3cc[_0x3cc31d[_0x231e23(0x1ba)]];for(let _0x5b0ca0=0x0;_0x5b0ca0<_0x492d1a['length'];_0x5b0ca0++){if(_0x55398c[_0x231e23(0x19c)](_0x492d1a[_0x5b0ca0]['pointerId'],_0x3cc31d[_0x231e23(0x1ba)])){_0x492d1a[_0x231e23(0x155)](_0x5b0ca0,0x1);return;}}}function _0x133f44(_0x4405ad){const _0x3013f2=_0xde3022;let _0x32bf31=_0x28f3cc[_0x4405ad['pointerId']];_0x32bf31===undefined&&(_0x32bf31=new Vector2(),_0x28f3cc[_0x4405ad[_0x3013f2(0x1ba)]]=_0x32bf31),_0x32bf31[_0x3013f2(0x186)](_0x4405ad[_0x3013f2(0x151)],_0x4405ad[_0x3013f2(0x181)]);}function _0x57813a(_0x1cffaf){const _0x3f3f94=_0xde3022,_0x18faf4=_0x1cffaf[_0x3f3f94(0x1ba)]===_0x492d1a[0x0][_0x3f3f94(0x1ba)]?_0x492d1a[0x1]:_0x492d1a[0x0];return _0x28f3cc[_0x18faf4[_0x3f3f94(0x1ba)]];}_0x28f19c[_0xde3022(0x12c)][_0xde3022(0x189)](_0x55398c[_0xde3022(0x18d)],_0x45a384),_0x28f19c['domElement'][_0xde3022(0x189)](_0xde3022(0x15d),_0xa70462),_0x28f19c[_0xde3022(0x12c)][_0xde3022(0x189)](_0x55398c[_0xde3022(0x156)],_0x129a60),_0x28f19c['domElement'][_0xde3022(0x189)](_0x55398c[_0xde3022(0x11c)],_0x1c57d9,{'passive':![]}),this[_0xde3022(0x19b)]();}}class MapControls extends OrbitControls{constructor(_0x3d1c7f,_0x11c055){const _0x24e32e=_0x574abd;super(_0x3d1c7f,_0x11c055),this[_0x24e32e(0x132)]=![],this['mouseButtons'][_0x24e32e(0x146)]=MOUSE[_0x24e32e(0x162)],this['mouseButtons'][_0x24e32e(0x159)]=MOUSE['ROTATE'],this[_0x24e32e(0x199)][_0x24e32e(0x1e8)]=TOUCH[_0x24e32e(0x162)],this[_0x24e32e(0x199)][_0x24e32e(0x133)]=TOUCH[_0x24e32e(0x1e2)];}}export{OrbitControls,MapControls};
+import {
+	EventDispatcher,
+	MOUSE,
+	Quaternion,
+	Spherical,
+	TOUCH,
+	Vector2,
+	Vector3
+} from 'three';
+
+// This set of controls performs orbiting, dollying (zooming), and panning.
+// Unlike TrackballControls, it maintains the "up" direction object.up (+Y by default).
+//
+//    Orbit - left mouse / touch: one-finger move
+//    Zoom - middle mouse, or mousewheel / touch: two-finger spread or squish
+//    Pan - right mouse, or left mouse + ctrl/meta/shiftKey, or arrow keys / touch: two-finger move
+
+const _changeEvent = { type: 'change' };
+const _startEvent = { type: 'start' };
+const _endEvent = { type: 'end' };
+
+class OrbitControls extends EventDispatcher {
+
+	constructor( object, domElement ) {
+
+		super();
+
+		this.object = object;
+		this.domElement = domElement;
+		this.domElement.style.touchAction = 'none'; // disable touch scroll
+
+		// Set to false to disable this control
+		this.enabled = true;
+
+		// "target" sets the location of focus, where the object orbits around
+		this.target = new Vector3();
+
+		// How far you can dolly in and out ( PerspectiveCamera only )
+		this.minDistance = 0;
+		this.maxDistance = Infinity;
+
+		// How far you can zoom in and out ( OrthographicCamera only )
+		this.minZoom = 0;
+		this.maxZoom = Infinity;
+
+		// How far you can orbit vertically, upper and lower limits.
+		// Range is 0 to Math.PI radians.
+		this.minPolarAngle = 0; // radians
+		this.maxPolarAngle = Math.PI; // radians
+
+		// How far you can orbit horizontally, upper and lower limits.
+		// If set, the interval [ min, max ] must be a sub-interval of [ - 2 PI, 2 PI ], with ( max - min < 2 PI )
+		this.minAzimuthAngle = - Infinity; // radians
+		this.maxAzimuthAngle = Infinity; // radians
+
+		// Set to true to enable damping (inertia)
+		// If damping is enabled, you must call controls.update() in your animation loop
+		this.enableDamping = false;
+		this.dampingFactor = 0.05;
+
+		// This option actually enables dollying in and out; left as "zoom" for backwards compatibility.
+		// Set to false to disable zooming
+		this.enableZoom = true;
+		this.zoomSpeed = 1.0;
+
+		// Set to false to disable rotating
+		this.enableRotate = true;
+		this.rotateSpeed = 1.0;
+
+		// Set to false to disable panning
+		this.enablePan = true;
+		this.panSpeed = 1.0;
+		this.screenSpacePanning = true; // if false, pan orthogonal to world-space direction camera.up
+		this.keyPanSpeed = 7.0;	// pixels moved per arrow key push
+
+		// Set to true to automatically rotate around the target
+		// If auto-rotate is enabled, you must call controls.update() in your animation loop
+		this.autoRotate = false;
+		this.autoRotateSpeed = 2.0; // 30 seconds per orbit when fps is 60
+
+		// The four arrow keys
+		this.keys = { LEFT: 'ArrowLeft', UP: 'ArrowUp', RIGHT: 'ArrowRight', BOTTOM: 'ArrowDown' };
+
+		// Mouse buttons
+		this.mouseButtons = { LEFT: MOUSE.ROTATE, MIDDLE: MOUSE.DOLLY, RIGHT: MOUSE.PAN };
+
+		// Touch fingers
+		this.touches = { ONE: TOUCH.ROTATE, TWO: TOUCH.DOLLY_PAN };
+
+		// for reset
+		this.target0 = this.target.clone();
+		this.position0 = this.object.position.clone();
+		this.zoom0 = this.object.zoom;
+
+		// the target DOM element for key events
+		this._domElementKeyEvents = null;
+
+		//
+		// public methods
+		//
+
+		this.getPolarAngle = function () {
+
+			return spherical.phi;
+
+		};
+
+		this.getAzimuthalAngle = function () {
+
+			return spherical.theta;
+
+		};
+
+		this.getDistance = function () {
+
+			return this.object.position.distanceTo( this.target );
+
+		};
+
+		this.listenToKeyEvents = function ( domElement ) {
+
+			domElement.addEventListener( 'keydown', onKeyDown );
+			this._domElementKeyEvents = domElement;
+
+		};
+
+		this.saveState = function () {
+
+			scope.target0.copy( scope.target );
+			scope.position0.copy( scope.object.position );
+			scope.zoom0 = scope.object.zoom;
+
+		};
+
+		this.reset = function () {
+
+			scope.target.copy( scope.target0 );
+			scope.object.position.copy( scope.position0 );
+			scope.object.zoom = scope.zoom0;
+
+			scope.object.updateProjectionMatrix();
+			scope.dispatchEvent( _changeEvent );
+
+			scope.update();
+
+			state = STATE.NONE;
+
+		};
+
+		// this method is exposed, but perhaps it would be better if we can make it private...
+		this.update = function () {
+
+			const offset = new Vector3();
+
+			// so camera.up is the orbit axis
+			const quat = new Quaternion().setFromUnitVectors( object.up, new Vector3( 0, 1, 0 ) );
+			const quatInverse = quat.clone().invert();
+
+			const lastPosition = new Vector3();
+			const lastQuaternion = new Quaternion();
+
+			const twoPI = 2 * Math.PI;
+
+			return function update() {
+
+				const position = scope.object.position;
+
+				offset.copy( position ).sub( scope.target );
+
+				// rotate offset to "y-axis-is-up" space
+				offset.applyQuaternion( quat );
+
+				// angle from z-axis around y-axis
+				spherical.setFromVector3( offset );
+
+				if ( scope.autoRotate && state === STATE.NONE ) {
+
+					rotateLeft( getAutoRotationAngle() );
+
+				}
+
+				if ( scope.enableDamping ) {
+
+					spherical.theta += sphericalDelta.theta * scope.dampingFactor;
+					spherical.phi += sphericalDelta.phi * scope.dampingFactor;
+
+				} else {
+
+					spherical.theta += sphericalDelta.theta;
+					spherical.phi += sphericalDelta.phi;
+
+				}
+
+				// restrict theta to be between desired limits
+
+				let min = scope.minAzimuthAngle;
+				let max = scope.maxAzimuthAngle;
+
+				if ( isFinite( min ) && isFinite( max ) ) {
+
+					if ( min < - Math.PI ) min += twoPI; else if ( min > Math.PI ) min -= twoPI;
+
+					if ( max < - Math.PI ) max += twoPI; else if ( max > Math.PI ) max -= twoPI;
+
+					if ( min <= max ) {
+
+						spherical.theta = Math.max( min, Math.min( max, spherical.theta ) );
+
+					} else {
+
+						spherical.theta = ( spherical.theta > ( min + max ) / 2 ) ?
+							Math.max( min, spherical.theta ) :
+							Math.min( max, spherical.theta );
+
+					}
+
+				}
+
+				// restrict phi to be between desired limits
+				spherical.phi = Math.max( scope.minPolarAngle, Math.min( scope.maxPolarAngle, spherical.phi ) );
+
+				spherical.makeSafe();
+
+
+				spherical.radius *= scale;
+
+				// restrict radius to be between desired limits
+				spherical.radius = Math.max( scope.minDistance, Math.min( scope.maxDistance, spherical.radius ) );
+
+				// move target to panned location
+
+				if ( scope.enableDamping === true ) {
+
+					scope.target.addScaledVector( panOffset, scope.dampingFactor );
+
+				} else {
+
+					scope.target.add( panOffset );
+
+				}
+
+				offset.setFromSpherical( spherical );
+
+				// rotate offset back to "camera-up-vector-is-up" space
+				offset.applyQuaternion( quatInverse );
+
+				position.copy( scope.target ).add( offset );
+
+				scope.object.lookAt( scope.target );
+
+				if ( scope.enableDamping === true ) {
+
+					sphericalDelta.theta *= ( 1 - scope.dampingFactor );
+					sphericalDelta.phi *= ( 1 - scope.dampingFactor );
+
+					panOffset.multiplyScalar( 1 - scope.dampingFactor );
+
+				} else {
+
+					sphericalDelta.set( 0, 0, 0 );
+
+					panOffset.set( 0, 0, 0 );
+
+				}
+
+				scale = 1;
+
+				// update condition is:
+				// min(camera displacement, camera rotation in radians)^2 > EPS
+				// using small-angle approximation cos(x/2) = 1 - x^2 / 8
+
+				if ( zoomChanged ||
+					lastPosition.distanceToSquared( scope.object.position ) > EPS ||
+					8 * ( 1 - lastQuaternion.dot( scope.object.quaternion ) ) > EPS ) {
+
+					scope.dispatchEvent( _changeEvent );
+
+					lastPosition.copy( scope.object.position );
+					lastQuaternion.copy( scope.object.quaternion );
+					zoomChanged = false;
+
+					return true;
+
+				}
+
+				return false;
+
+			};
+
+		}();
+
+		this.dispose = function () {
+
+			scope.domElement.removeEventListener( 'contextmenu', onContextMenu );
+
+			scope.domElement.removeEventListener( 'pointerdown', onPointerDown );
+			scope.domElement.removeEventListener( 'pointercancel', onPointerCancel );
+			scope.domElement.removeEventListener( 'wheel', onMouseWheel );
+
+			scope.domElement.removeEventListener( 'pointermove', onPointerMove );
+			scope.domElement.removeEventListener( 'pointerup', onPointerUp );
+
+
+			if ( scope._domElementKeyEvents !== null ) {
+
+				scope._domElementKeyEvents.removeEventListener( 'keydown', onKeyDown );
+
+			}
+
+			//scope.dispatchEvent( { type: 'dispose' } ); // should this be added here?
+
+		};
+
+		//
+		// internals
+		//
+
+		const scope = this;
+
+		const STATE = {
+			NONE: - 1,
+			ROTATE: 0,
+			DOLLY: 1,
+			PAN: 2,
+			TOUCH_ROTATE: 3,
+			TOUCH_PAN: 4,
+			TOUCH_DOLLY_PAN: 5,
+			TOUCH_DOLLY_ROTATE: 6
+		};
+
+		let state = STATE.NONE;
+
+		const EPS = 0.000001;
+
+		// current position in spherical coordinates
+		const spherical = new Spherical();
+		const sphericalDelta = new Spherical();
+
+		let scale = 1;
+		const panOffset = new Vector3();
+		let zoomChanged = false;
+
+		const rotateStart = new Vector2();
+		const rotateEnd = new Vector2();
+		const rotateDelta = new Vector2();
+
+		const panStart = new Vector2();
+		const panEnd = new Vector2();
+		const panDelta = new Vector2();
+
+		const dollyStart = new Vector2();
+		const dollyEnd = new Vector2();
+		const dollyDelta = new Vector2();
+
+		const pointers = [];
+		const pointerPositions = {};
+
+		function getAutoRotationAngle() {
+
+			return 2 * Math.PI / 60 / 60 * scope.autoRotateSpeed;
+
+		}
+
+		function getZoomScale() {
+
+			return Math.pow( 0.95, scope.zoomSpeed );
+
+		}
+
+		function rotateLeft( angle ) {
+
+			sphericalDelta.theta -= angle;
+
+		}
+
+		function rotateUp( angle ) {
+
+			sphericalDelta.phi -= angle;
+
+		}
+
+		const panLeft = function () {
+
+			const v = new Vector3();
+
+			return function panLeft( distance, objectMatrix ) {
+
+				v.setFromMatrixColumn( objectMatrix, 0 ); // get X column of objectMatrix
+				v.multiplyScalar( - distance );
+
+				panOffset.add( v );
+
+			};
+
+		}();
+
+		const panUp = function () {
+
+			const v = new Vector3();
+
+			return function panUp( distance, objectMatrix ) {
+
+				if ( scope.screenSpacePanning === true ) {
+
+					v.setFromMatrixColumn( objectMatrix, 1 );
+
+				} else {
+
+					v.setFromMatrixColumn( objectMatrix, 0 );
+					v.crossVectors( scope.object.up, v );
+
+				}
+
+				v.multiplyScalar( distance );
+
+				panOffset.add( v );
+
+			};
+
+		}();
+
+		// deltaX and deltaY are in pixels; right and down are positive
+		const pan = function () {
+
+			const offset = new Vector3();
+
+			return function pan( deltaX, deltaY ) {
+
+				const element = scope.domElement;
+
+				if ( scope.object.isPerspectiveCamera ) {
+
+					// perspective
+					const position = scope.object.position;
+					offset.copy( position ).sub( scope.target );
+					let targetDistance = offset.length();
+
+					// half of the fov is center to top of screen
+					targetDistance *= Math.tan( ( scope.object.fov / 2 ) * Math.PI / 180.0 );
+
+					// we use only clientHeight here so aspect ratio does not distort speed
+					panLeft( 2 * deltaX * targetDistance / element.clientHeight, scope.object.matrix );
+					panUp( 2 * deltaY * targetDistance / element.clientHeight, scope.object.matrix );
+
+				} else if ( scope.object.isOrthographicCamera ) {
+
+					// orthographic
+					panLeft( deltaX * ( scope.object.right - scope.object.left ) / scope.object.zoom / element.clientWidth, scope.object.matrix );
+					panUp( deltaY * ( scope.object.top - scope.object.bottom ) / scope.object.zoom / element.clientHeight, scope.object.matrix );
+
+				} else {
+
+					// camera neither orthographic nor perspective
+					console.warn( 'WARNING: OrbitControls.js encountered an unknown camera type - pan disabled.' );
+					scope.enablePan = false;
+
+				}
+
+			};
+
+		}();
+
+		function dollyOut( dollyScale ) {
+
+			if ( scope.object.isPerspectiveCamera ) {
+
+				scale /= dollyScale;
+
+			} else if ( scope.object.isOrthographicCamera ) {
+
+				scope.object.zoom = Math.max( scope.minZoom, Math.min( scope.maxZoom, scope.object.zoom * dollyScale ) );
+				scope.object.updateProjectionMatrix();
+				zoomChanged = true;
+
+			} else {
+
+				console.warn( 'WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled.' );
+				scope.enableZoom = false;
+
+			}
+
+		}
+
+		function dollyIn( dollyScale ) {
+
+			if ( scope.object.isPerspectiveCamera ) {
+
+				scale *= dollyScale;
+
+			} else if ( scope.object.isOrthographicCamera ) {
+
+				scope.object.zoom = Math.max( scope.minZoom, Math.min( scope.maxZoom, scope.object.zoom / dollyScale ) );
+				scope.object.updateProjectionMatrix();
+				zoomChanged = true;
+
+			} else {
+
+				console.warn( 'WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled.' );
+				scope.enableZoom = false;
+
+			}
+
+		}
+
+		//
+		// event callbacks - update the object state
+		//
+
+		function handleMouseDownRotate( event ) {
+
+			rotateStart.set( event.clientX, event.clientY );
+
+		}
+
+		function handleMouseDownDolly( event ) {
+
+			dollyStart.set( event.clientX, event.clientY );
+
+		}
+
+		function handleMouseDownPan( event ) {
+
+			panStart.set( event.clientX, event.clientY );
+
+		}
+
+		function handleMouseMoveRotate( event ) {
+
+			rotateEnd.set( event.clientX, event.clientY );
+
+			rotateDelta.subVectors( rotateEnd, rotateStart ).multiplyScalar( scope.rotateSpeed );
+
+			const element = scope.domElement;
+
+			rotateLeft( 2 * Math.PI * rotateDelta.x / element.clientHeight ); // yes, height
+
+			rotateUp( 2 * Math.PI * rotateDelta.y / element.clientHeight );
+
+			rotateStart.copy( rotateEnd );
+
+			scope.update();
+
+		}
+
+		function handleMouseMoveDolly( event ) {
+
+			dollyEnd.set( event.clientX, event.clientY );
+
+			dollyDelta.subVectors( dollyEnd, dollyStart );
+
+			if ( dollyDelta.y > 0 ) {
+
+				dollyOut( getZoomScale() );
+
+			} else if ( dollyDelta.y < 0 ) {
+
+				dollyIn( getZoomScale() );
+
+			}
+
+			dollyStart.copy( dollyEnd );
+
+			scope.update();
+
+		}
+
+		function handleMouseMovePan( event ) {
+
+			panEnd.set( event.clientX, event.clientY );
+
+			panDelta.subVectors( panEnd, panStart ).multiplyScalar( scope.panSpeed );
+
+			pan( panDelta.x, panDelta.y );
+
+			panStart.copy( panEnd );
+
+			scope.update();
+
+		}
+
+		function handleMouseWheel( event ) {
+
+			if ( event.deltaY < 0 ) {
+
+				dollyIn( getZoomScale() );
+
+			} else if ( event.deltaY > 0 ) {
+
+				dollyOut( getZoomScale() );
+
+			}
+
+			scope.update();
+
+		}
+
+		function handleKeyDown( event ) {
+
+			let needsUpdate = false;
+
+			switch ( event.code ) {
+
+				case scope.keys.UP:
+
+					if ( event.ctrlKey || event.metaKey || event.shiftKey ) {
+
+						rotateUp( 2 * Math.PI * scope.rotateSpeed / scope.domElement.clientHeight );
+
+					} else {
+
+						pan( 0, scope.keyPanSpeed );
+
+					}
+
+					needsUpdate = true;
+					break;
+
+				case scope.keys.BOTTOM:
+
+					if ( event.ctrlKey || event.metaKey || event.shiftKey ) {
+
+						rotateUp( - 2 * Math.PI * scope.rotateSpeed / scope.domElement.clientHeight );
+
+					} else {
+
+						pan( 0, - scope.keyPanSpeed );
+
+					}
+
+					needsUpdate = true;
+					break;
+
+				case scope.keys.LEFT:
+
+					if ( event.ctrlKey || event.metaKey || event.shiftKey ) {
+
+						rotateLeft( 2 * Math.PI * scope.rotateSpeed / scope.domElement.clientHeight );
+
+					} else {
+
+						pan( scope.keyPanSpeed, 0 );
+
+					}
+
+					needsUpdate = true;
+					break;
+
+				case scope.keys.RIGHT:
+
+					if ( event.ctrlKey || event.metaKey || event.shiftKey ) {
+
+						rotateLeft( - 2 * Math.PI * scope.rotateSpeed / scope.domElement.clientHeight );
+
+					} else {
+
+						pan( - scope.keyPanSpeed, 0 );
+
+					}
+
+					needsUpdate = true;
+					break;
+
+			}
+
+			if ( needsUpdate ) {
+
+				// prevent the browser from scrolling on cursor keys
+				event.preventDefault();
+
+				scope.update();
+
+			}
+
+
+		}
+
+		function handleTouchStartRotate() {
+
+			if ( pointers.length === 1 ) {
+
+				rotateStart.set( pointers[ 0 ].pageX, pointers[ 0 ].pageY );
+
+			} else {
+
+				const x = 0.5 * ( pointers[ 0 ].pageX + pointers[ 1 ].pageX );
+				const y = 0.5 * ( pointers[ 0 ].pageY + pointers[ 1 ].pageY );
+
+				rotateStart.set( x, y );
+
+			}
+
+		}
+
+		function handleTouchStartPan() {
+
+			if ( pointers.length === 1 ) {
+
+				panStart.set( pointers[ 0 ].pageX, pointers[ 0 ].pageY );
+
+			} else {
+
+				const x = 0.5 * ( pointers[ 0 ].pageX + pointers[ 1 ].pageX );
+				const y = 0.5 * ( pointers[ 0 ].pageY + pointers[ 1 ].pageY );
+
+				panStart.set( x, y );
+
+			}
+
+		}
+
+		function handleTouchStartDolly() {
+
+			const dx = pointers[ 0 ].pageX - pointers[ 1 ].pageX;
+			const dy = pointers[ 0 ].pageY - pointers[ 1 ].pageY;
+
+			const distance = Math.sqrt( dx * dx + dy * dy );
+
+			dollyStart.set( 0, distance );
+
+		}
+
+		function handleTouchStartDollyPan() {
+
+			if ( scope.enableZoom ) handleTouchStartDolly();
+
+			if ( scope.enablePan ) handleTouchStartPan();
+
+		}
+
+		function handleTouchStartDollyRotate() {
+
+			if ( scope.enableZoom ) handleTouchStartDolly();
+
+			if ( scope.enableRotate ) handleTouchStartRotate();
+
+		}
+
+		function handleTouchMoveRotate( event ) {
+
+			if ( pointers.length == 1 ) {
+
+				rotateEnd.set( event.pageX, event.pageY );
+
+			} else {
+
+				const position = getSecondPointerPosition( event );
+
+				const x = 0.5 * ( event.pageX + position.x );
+				const y = 0.5 * ( event.pageY + position.y );
+
+				rotateEnd.set( x, y );
+
+			}
+
+			rotateDelta.subVectors( rotateEnd, rotateStart ).multiplyScalar( scope.rotateSpeed );
+
+			const element = scope.domElement;
+
+			rotateLeft( 2 * Math.PI * rotateDelta.x / element.clientHeight ); // yes, height
+
+			rotateUp( 2 * Math.PI * rotateDelta.y / element.clientHeight );
+
+			rotateStart.copy( rotateEnd );
+
+		}
+
+		function handleTouchMovePan( event ) {
+
+			if ( pointers.length === 1 ) {
+
+				panEnd.set( event.pageX, event.pageY );
+
+			} else {
+
+				const position = getSecondPointerPosition( event );
+
+				const x = 0.5 * ( event.pageX + position.x );
+				const y = 0.5 * ( event.pageY + position.y );
+
+				panEnd.set( x, y );
+
+			}
+
+			panDelta.subVectors( panEnd, panStart ).multiplyScalar( scope.panSpeed );
+
+			pan( panDelta.x, panDelta.y );
+
+			panStart.copy( panEnd );
+
+		}
+
+		function handleTouchMoveDolly( event ) {
+
+			const position = getSecondPointerPosition( event );
+
+			const dx = event.pageX - position.x;
+			const dy = event.pageY - position.y;
+
+			const distance = Math.sqrt( dx * dx + dy * dy );
+
+			dollyEnd.set( 0, distance );
+
+			dollyDelta.set( 0, Math.pow( dollyEnd.y / dollyStart.y, scope.zoomSpeed ) );
+
+			dollyOut( dollyDelta.y );
+
+			dollyStart.copy( dollyEnd );
+
+		}
+
+		function handleTouchMoveDollyPan( event ) {
+
+			if ( scope.enableZoom ) handleTouchMoveDolly( event );
+
+			if ( scope.enablePan ) handleTouchMovePan( event );
+
+		}
+
+		function handleTouchMoveDollyRotate( event ) {
+
+			if ( scope.enableZoom ) handleTouchMoveDolly( event );
+
+			if ( scope.enableRotate ) handleTouchMoveRotate( event );
+
+		}
+
+		//
+		// event handlers - FSM: listen for events and reset state
+		//
+
+		function onPointerDown( event ) {
+
+			if ( scope.enabled === false ) return;
+
+			if ( pointers.length === 0 ) {
+
+				scope.domElement.setPointerCapture( event.pointerId );
+
+				scope.domElement.addEventListener( 'pointermove', onPointerMove );
+				scope.domElement.addEventListener( 'pointerup', onPointerUp );
+
+			}
+
+			//
+
+			addPointer( event );
+
+			if ( event.pointerType === 'touch' ) {
+
+				onTouchStart( event );
+
+			} else {
+
+				onMouseDown( event );
+
+			}
+
+		}
+
+		function onPointerMove( event ) {
+
+			if ( scope.enabled === false ) return;
+
+			if ( event.pointerType === 'touch' ) {
+
+				onTouchMove( event );
+
+			} else {
+
+				onMouseMove( event );
+
+			}
+
+		}
+
+		function onPointerUp( event ) {
+
+		    removePointer( event );
+
+		    if ( pointers.length === 0 ) {
+
+		        scope.domElement.releasePointerCapture( event.pointerId );
+
+		        scope.domElement.removeEventListener( 'pointermove', onPointerMove );
+		        scope.domElement.removeEventListener( 'pointerup', onPointerUp );
+
+		    }
+
+		    scope.dispatchEvent( _endEvent );
+
+		    state = STATE.NONE;
+
+		}
+
+		function onPointerCancel( event ) {
+
+			removePointer( event );
+
+		}
+
+		function onMouseDown( event ) {
+
+			let mouseAction;
+
+			switch ( event.button ) {
+
+				case 0:
+
+					mouseAction = scope.mouseButtons.LEFT;
+					break;
+
+				case 1:
+
+					mouseAction = scope.mouseButtons.MIDDLE;
+					break;
+
+				case 2:
+
+					mouseAction = scope.mouseButtons.RIGHT;
+					break;
+
+				default:
+
+					mouseAction = - 1;
+
+			}
+
+			switch ( mouseAction ) {
+
+				case MOUSE.DOLLY:
+
+					if ( scope.enableZoom === false ) return;
+
+					handleMouseDownDolly( event );
+
+					state = STATE.DOLLY;
+
+					break;
+
+				case MOUSE.ROTATE:
+
+					if ( event.ctrlKey || event.metaKey || event.shiftKey ) {
+
+						if ( scope.enablePan === false ) return;
+
+						handleMouseDownPan( event );
+
+						state = STATE.PAN;
+
+					} else {
+
+						if ( scope.enableRotate === false ) return;
+
+						handleMouseDownRotate( event );
+
+						state = STATE.ROTATE;
+
+					}
+
+					break;
+
+				case MOUSE.PAN:
+
+					if ( event.ctrlKey || event.metaKey || event.shiftKey ) {
+
+						if ( scope.enableRotate === false ) return;
+
+						handleMouseDownRotate( event );
+
+						state = STATE.ROTATE;
+
+					} else {
+
+						if ( scope.enablePan === false ) return;
+
+						handleMouseDownPan( event );
+
+						state = STATE.PAN;
+
+					}
+
+					break;
+
+				default:
+
+					state = STATE.NONE;
+
+			}
+
+			if ( state !== STATE.NONE ) {
+
+				scope.dispatchEvent( _startEvent );
+
+			}
+
+		}
+
+		function onMouseMove( event ) {
+
+			switch ( state ) {
+
+				case STATE.ROTATE:
+
+					if ( scope.enableRotate === false ) return;
+
+					handleMouseMoveRotate( event );
+
+					break;
+
+				case STATE.DOLLY:
+
+					if ( scope.enableZoom === false ) return;
+
+					handleMouseMoveDolly( event );
+
+					break;
+
+				case STATE.PAN:
+
+					if ( scope.enablePan === false ) return;
+
+					handleMouseMovePan( event );
+
+					break;
+
+			}
+
+		}
+
+		function onMouseWheel( event ) {
+
+			if ( scope.enabled === false || scope.enableZoom === false || state !== STATE.NONE ) return;
+
+			event.preventDefault();
+
+			scope.dispatchEvent( _startEvent );
+
+			handleMouseWheel( event );
+
+			scope.dispatchEvent( _endEvent );
+
+		}
+
+		function onKeyDown( event ) {
+
+			if ( scope.enabled === false || scope.enablePan === false ) return;
+
+			handleKeyDown( event );
+
+		}
+
+		function onTouchStart( event ) {
+
+			trackPointer( event );
+
+			switch ( pointers.length ) {
+
+				case 1:
+
+					switch ( scope.touches.ONE ) {
+
+						case TOUCH.ROTATE:
+
+							if ( scope.enableRotate === false ) return;
+
+							handleTouchStartRotate();
+
+							state = STATE.TOUCH_ROTATE;
+
+							break;
+
+						case TOUCH.PAN:
+
+							if ( scope.enablePan === false ) return;
+
+							handleTouchStartPan();
+
+							state = STATE.TOUCH_PAN;
+
+							break;
+
+						default:
+
+							state = STATE.NONE;
+
+					}
+
+					break;
+
+				case 2:
+
+					switch ( scope.touches.TWO ) {
+
+						case TOUCH.DOLLY_PAN:
+
+							if ( scope.enableZoom === false && scope.enablePan === false ) return;
+
+							handleTouchStartDollyPan();
+
+							state = STATE.TOUCH_DOLLY_PAN;
+
+							break;
+
+						case TOUCH.DOLLY_ROTATE:
+
+							if ( scope.enableZoom === false && scope.enableRotate === false ) return;
+
+							handleTouchStartDollyRotate();
+
+							state = STATE.TOUCH_DOLLY_ROTATE;
+
+							break;
+
+						default:
+
+							state = STATE.NONE;
+
+					}
+
+					break;
+
+				default:
+
+					state = STATE.NONE;
+
+			}
+
+			if ( state !== STATE.NONE ) {
+
+				scope.dispatchEvent( _startEvent );
+
+			}
+
+		}
+
+		function onTouchMove( event ) {
+
+			trackPointer( event );
+
+			switch ( state ) {
+
+				case STATE.TOUCH_ROTATE:
+
+					if ( scope.enableRotate === false ) return;
+
+					handleTouchMoveRotate( event );
+
+					scope.update();
+
+					break;
+
+				case STATE.TOUCH_PAN:
+
+					if ( scope.enablePan === false ) return;
+
+					handleTouchMovePan( event );
+
+					scope.update();
+
+					break;
+
+				case STATE.TOUCH_DOLLY_PAN:
+
+					if ( scope.enableZoom === false && scope.enablePan === false ) return;
+
+					handleTouchMoveDollyPan( event );
+
+					scope.update();
+
+					break;
+
+				case STATE.TOUCH_DOLLY_ROTATE:
+
+					if ( scope.enableZoom === false && scope.enableRotate === false ) return;
+
+					handleTouchMoveDollyRotate( event );
+
+					scope.update();
+
+					break;
+
+				default:
+
+					state = STATE.NONE;
+
+			}
+
+		}
+
+		function onContextMenu( event ) {
+
+			if ( scope.enabled === false ) return;
+
+			event.preventDefault();
+
+		}
+
+		function addPointer( event ) {
+
+			pointers.push( event );
+
+		}
+
+		function removePointer( event ) {
+
+			delete pointerPositions[ event.pointerId ];
+
+			for ( let i = 0; i < pointers.length; i ++ ) {
+
+				if ( pointers[ i ].pointerId == event.pointerId ) {
+
+					pointers.splice( i, 1 );
+					return;
+
+				}
+
+			}
+
+		}
+
+		function trackPointer( event ) {
+
+			let position = pointerPositions[ event.pointerId ];
+
+			if ( position === undefined ) {
+
+				position = new Vector2();
+				pointerPositions[ event.pointerId ] = position;
+
+			}
+
+			position.set( event.pageX, event.pageY );
+
+		}
+
+		function getSecondPointerPosition( event ) {
+
+			const pointer = ( event.pointerId === pointers[ 0 ].pointerId ) ? pointers[ 1 ] : pointers[ 0 ];
+
+			return pointerPositions[ pointer.pointerId ];
+
+		}
+
+		//
+
+		scope.domElement.addEventListener( 'contextmenu', onContextMenu );
+
+		scope.domElement.addEventListener( 'pointerdown', onPointerDown );
+		scope.domElement.addEventListener( 'pointercancel', onPointerCancel );
+		scope.domElement.addEventListener( 'wheel', onMouseWheel, { passive: false } );
+
+		// force an update at start
+
+		this.update();
+
+	}
+
+}
+
+
+// This set of controls performs orbiting, dollying (zooming), and panning.
+// Unlike TrackballControls, it maintains the "up" direction object.up (+Y by default).
+// This is very similar to OrbitControls, another set of touch behavior
+//
+//    Orbit - right mouse, or left mouse + ctrl/meta/shiftKey / touch: two-finger rotate
+//    Zoom - middle mouse, or mousewheel / touch: two-finger spread or squish
+//    Pan - left mouse, or arrow keys / touch: one-finger move
+
+class MapControls extends OrbitControls {
+
+	constructor( object, domElement ) {
+
+		super( object, domElement );
+
+		this.screenSpacePanning = false; // pan orthogonal to world-space direction camera.up
+
+		this.mouseButtons.LEFT = MOUSE.PAN;
+		this.mouseButtons.RIGHT = MOUSE.ROTATE;
+
+		this.touches.ONE = TOUCH.PAN;
+		this.touches.TWO = TOUCH.DOLLY_ROTATE;
+
+	}
+
+}
+
+export { OrbitControls, MapControls };

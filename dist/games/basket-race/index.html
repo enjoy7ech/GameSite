@@ -1,6 +1,674 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Basket Race</title><base href="/games/basket-race/"><link rel="stylesheet" href="/games/basket-race/index.css"><link rel="stylesheet" href="/games/basket-race/lib/fonts.css"><script type="importmap">{
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basket Race</title>
+    <base href="/games/basket-race/">
+    <link rel="stylesheet" href="/games/basket-race/index.css">
+    <link rel="stylesheet" href="/games/basket-race/lib/fonts.css">
+    <script type="importmap">
+        {
             "imports": {
                 "three": "/games/basket-race/lib/three/three.module.js",
                 "three/examples/jsm/": "/games/basket-race/lib/three/examples/jsm/"
             }
-        }</script><style>body{margin:0;width:100vw;height:100vh;overflow:hidden;background:#000}canvas{display:block}@keyframes fire-pulse{0%{transform:scale(1) skewX(0);filter:brightness(1.2) drop-shadow(0 0 5px #ff0044)}50%{transform:scale(1.1) skewX(-2deg);filter:brightness(1.8) drop-shadow(0 0 15px #ff0044)}100%{transform:scale(1.05) skewX(2deg);filter:brightness(1.4) drop-shadow(0 0 10px #ff0000)}}@keyframes swish-gold-burst{0%{transform:scale(.5) rotate(-10deg);filter:brightness(1) drop-shadow(0 0 0px #ffae00);opacity:0}20%{transform:scale(1.5) rotate(5deg);filter:brightness(2.5) drop-shadow(0 0 40px #ffae00);opacity:1}80%{transform:scale(1.2) rotate(0);filter:brightness(1.5) drop-shadow(0 0 20px #ffae00);opacity:1}100%{transform:scale(1) rotate(0);filter:brightness(1) drop-shadow(0 0 5px #ffae00);opacity:0}}@keyframes screen-shake{0%{transform:translate(0,0)}10%{transform:translate(-3px,3px)}20%{transform:translate(3px,-3px)}30%{transform:translate(-5px,0)}40%{transform:translate(5px,2px)}50%{transform:translate(-2px,-4px)}60%{transform:translate(2px,4px)}70%{transform:translate(-3px,1px)}80%{transform:translate(3px,-1px)}100%{transform:translate(0,0)}}#ui-container.shaking{animation:screen-shake .3s ease-out both}#ui-container.flash{background:rgba(0,255,242,.1);transition:background .1s ease}.swish-text{color:#ffae00!important;font-family:Orbitron,sans-serif!important;font-size:64px!important;font-weight:900!important;text-shadow:0 0 20px #ffae00,0 0 40px #ffae00;animation:swish-gold-burst 1s forwards cubic-bezier(.175,.885,.32,1.275)!important}#status-bar{position:absolute;top:20px;right:30px;display:flex;align-items:center;gap:25px;pointer-events:none;z-index:100}.stat-group{display:flex;gap:15px;font-family:Orbitron,sans-serif;font-size:13px;color:#fe0;text-shadow:0 0 8px rgba(255,238,0,.6);letter-spacing:1px}#combo-fire{color:#f04;font-family:Orbitron,sans-serif;font-size:26px;font-weight:900;font-style:italic;animation:fire-pulse .4s infinite alternate ease-in-out;display:none}#manual-panel{position:absolute;bottom:20px;right:20px;font-family:Orbitron,sans-serif;color:rgba(0,255,242,.7);font-size:11px;text-align:right;pointer-events:auto;line-height:1.6;background:rgba(0,0,0,.5);padding:15px;border-radius:8px;border-right:4px solid #00fff2;z-index:100;transition:transform .3s cubic-bezier(.4, 0, .2, 1);backdrop-filter:blur(10px)}#manual-panel.collapsed{transform:translateX(calc(100% + 40px))}#manual-toggle-btn{position:absolute;bottom:20px;right:20px;background:rgba(0,255,242,.1);border:1px solid #00fff2;color:#00fff2;font-family:Orbitron,sans-serif;font-size:10px;padding:5px 10px;cursor:pointer;border-radius:4px;z-index:101;transition:all .2s}#manual-toggle-btn:hover{background:rgba(0,255,242,.3)}#loading-overlay{position:fixed;inset:0;background:#050510;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:10000}#loading-text{color:#00fff2;font-family:Orbitron,sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;animation:text-pulse 1.5s infinite ease-in-out}@keyframes text-pulse{0%{opacity:.3;transform:scale(.95);filter:blur(2px)}50%{opacity:1;transform:scale(1);filter:blur(0px)}100%{opacity:.3;transform:scale(.95);filter:blur(2px)}}.rush-btn{background:rgba(0,0,0,.4);border:1px solid var(--c);color:var(--c);width:45px;height:45px;font-family:Orbitron,sans-serif;font-size:18px;cursor:pointer;border-radius:6px;transition:all .2s cubic-bezier(.4, 0, .2, 1);display:flex;align-items:center;justify-content:center;box-shadow:0 0 5px rgba(var(--c),.2)}.rush-btn:hover{background:var(--c);color:#000;box-shadow:0 0 15px var(--c);transform:scale(1.1)}.rush-btn:active{transform:scale(.95)}#menu-trigger{position:fixed;top:auto;bottom:25px;left:25px;width:50px;height:50px;background:rgba(0,255,242,.1);border:2px solid #00fff2;color:#00fff2;font-size:24px;display:flex;align-items:center;justify-content:center;border-radius:50%;cursor:pointer;z-index:200;box-shadow:0 0 15px rgba(0,255,242,.3);text-shadow:0 0 5px #00fff2;transition:all .2s cubic-bezier(.4, 0, .2, 1);pointer-events:auto}#menu-trigger:hover{background:rgba(0,255,242,.3);box-shadow:0 0 25px #00fff2;transform:scale(1.1)}#menu-trigger:active{transform:scale(.9)}@media (max-width:768px){#menu-trigger{position:fixed;top:auto;bottom:20px;left:20px;width:45px;height:45px;font-size:20px}#status-bar{top:5px;right:8px;left:auto;gap:5px;flex-direction:column;align-items:flex-end;width:auto}.stat-group{gap:5px;font-size:10px;padding:0;justify-content:flex-end}#stat-mem,#stat-ms{display:none!important}#ui-container{left:10px;top:5px;pointer-events:none}#level-info{font-size:9px;margin-bottom:2px}#scoreboard{font-size:20px}#timer{font-size:28px;margin-top:2px}#combo-fire{margin-top:2px}#punish-warning-container{align-items:flex-end;scale:0.8;transform-origin:right top}#combo-fire span[style*="font-size: 20px"]{font-size:14px!important}#combo-fire #combo-value{font-size:34px!important}.swish-text{font-size:28px!important;text-shadow:0 0 10px #ffae00,0 0 20px #ffae00!important}#score-msg{position:absolute;width:100%;left:0;top:40%;text-align:center;pointer-events:none;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:24px;overflow:hidden!important}#stat-fps,#stat-mem,#stat-ms,.stat-group:nth-child(2){display:none!important}#manual-panel{width:90%;left:5%;right:auto;transform:none;bottom:70px;text-align:left;font-size:10px;padding:10px}#manual-panel.collapsed{transform:translateY(200%)}#manual-toggle-btn{right:auto;left:50%;transform:translateX(-50%);bottom:15px;padding:10px 25px;font-size:12px;min-width:140px}.cover-btn-group{width:90%}.cover-btn{font-size:16px;padding:15px}.rush-btn{width:45px;height:45px;font-size:18px}#reward-phase-ui,#side-punish-ui{width:90%}#reward-phase-ui>div:nth-child(2),#side-punish-ui>div:nth-child(2){width:100%!important}#menu-content,.result-card{width:90%;margin-left:5%;padding:15px}#menu-overlay{align-items:flex-end!important;justify-content:flex-start!important;padding:20px;background:rgba(0,0,0,.7)!important}#menu-content{width:250px!important;margin:0!important;border-radius:8px!important;border-left:4px solid #00fff2!important;background:rgba(10,10,20,.95)!important;animation:slide-in-left .3s cubic-bezier(.4,0,.2,1)}@keyframes slide-in-left{from{transform:translateX(-50px) translateY(50px);opacity:0}to{transform:translateX(0) translateY(0);opacity:1}}@keyframes swish-gold-burst{0%{transform:scale(.8) rotate(-5deg);opacity:0}50%{transform:scale(1.1) rotate(5deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:0}}}</style></head><body><div id="ui-container"><div id="level-info">PHASE 01 - 目标同步: 100</div><div id="scoreboard-container" style="display:flex;align-items:baseline;gap:15px"><div id="scoreboard">核心得分: 0</div><div id="score-pop"></div></div><div id="timer">00:00</div><div id="combo-fire" style="display:none;align-items:baseline;gap:8px;margin-top:15px"><span style="color:#fc0;font-family:Orbitron,sans-serif;font-size:20px;font-weight:900;font-style:italic;text-shadow:2px 2px 0 #000,0 0 10px #f60">COMBO</span> <span id="combo-value" style="color:red;font-family:Orbitron,sans-serif;font-size:58px;font-weight:900;-webkit-text-stroke:2px #fff;text-shadow:4px 4px 0 #000,0 0 25px red;animation:fire-pulse .4s infinite alternate;line-height:1">0</span></div></div><div id="side-punish-ui" style="display:none;position:absolute;bottom:15%;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;z-index:10;width:90%;max-width:300px"><div style="color:#ff00ea;font-family:Orbitron,sans-serif;font-size:14px;letter-spacing:2px;text-shadow:0 0 10px rgba(255,0,234,.8)">死角挑战剩余时间</div><div style="background:rgba(0,0,0,.5);border:1px solid #ff00ea;padding:2px;border-radius:4px;width:100%;height:12px;margin:5px auto;overflow:hidden"><div id="side-punish-fill" style="width:100%;height:100%;background:linear-gradient(90deg,#ff00ea,#80f);box-shadow:0 0 15px #ff00ea"></div></div><div id="side-punish-timer" style="color:#fff;font-family:monospace;font-size:18px;font-weight:700;text-shadow:2px 2px 0 #000">30.0s</div></div><div id="reward-phase-ui" style="display:none;position:absolute;bottom:20%;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;z-index:10;width:90%;max-width:350px"><div style="color:#00fff2;font-family:Orbitron,sans-serif;font-size:16px;font-weight:900;letter-spacing:4px;text-shadow:0 0 15px #00fff2">REWARD FRENZY // 疯狂同步模式</div><div style="background:rgba(0,0,0,.6);border:2px solid #00fff2;padding:2px;border-radius:6px;width:100%;height:16px;margin:8px auto;overflow:hidden;box-shadow:0 0 20px rgba(0,255,242,.3)"><div id="reward-phase-fill" style="width:100%;height:100%;background:linear-gradient(90deg,#00fff2,#06f);box-shadow:0 0 15px #00fff2"></div></div><div id="reward-phase-timer" style="color:#fff;font-family:Orbitron,sans-serif;font-size:20px;font-weight:900;text-shadow:0 0 10px #00fff2">15.0s</div></div><div id="status-bar"><div class="stat-group"><div id="stat-diff"><span style="color:#ff00ea;font-weight:700">同步系数:</span> <span id="current-diff" style="color:#fff">0</span></div><div id="stat-dist" style="display:none"><span id="dist-label" style="color:#00fff2">远射等级:</span> <span id="dist-coeff">...</span></div><div id="stat-height" style="display:none"><span id="height-label" style="color:#00fff2">地势加成:</span> <span id="height-coeff">...</span></div><div id="stat-angle" style="display:none"><span id="angle-label" style="color:#00fff2">命中率:</span> <span id="hit-rate" style="color:#0f8;font-weight:700">0%</span></div></div><div id="punish-warning-container" style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><div style="color:#f30;font-family:Orbitron,sans-serif;font-size:9px;letter-spacing:1px;font-weight:700;opacity:.8">PUNISHMENT SYSTEM</div><div id="punish-progress-bar-bg" style="width:120px;height:6px;background:rgba(255,51,0,.1);border:1px solid rgba(255,51,0,.3);border-radius:2px;overflow:hidden;position:relative"><div id="punish-progress-fill" style="width:0%;height:100%;background:linear-gradient(90deg,#f60,red);transition:width .3s cubic-bezier(.4, 0, .2, 1);box-shadow:0 0 10px rgba(255,0,0,.5)"></div></div><div id="punish-count-text" style="color:#f60;font-family:monospace;font-size:10px;opacity:.6">MISS: 0/5</div></div></div><div id="score-msg"></div><div id="score-breakdown"></div><div id="loading-overlay"><div id="loading-text">SYSTEM SYNCING...</div><div style="color:#444;margin-top:10px;font-family:monospace;font-size:10px">PROCESING GLB_COURT // RECLAMATION_BASKETBALL</div></div><div id="cover-screen"><canvas id="shader-canvas" style="position:absolute;inset:0;z-index:-1"></canvas><div class="cover-btn-group"><button onclick="startGame()" class="cover-btn btn-primary">生涯模式 • 生存挑战</button><div style="margin-top:20px;text-align:center"><div style="color:#00fff2;font-family:Orbitron,sans-serif;font-size:14px;letter-spacing:2px;margin-bottom:12px;opacity:.8">RUSH MODE // 极限挑战 60S</div><div style="display:flex;justify-content:center;gap:10px"><button onclick='startRush("D")' class="rush-btn" style="--c:#00ff88">D</button> <button onclick='startRush("C")' class="rush-btn" style="--c:#00fff2">C</button> <button onclick='startRush("B")' class="rush-btn" style="--c:#ffee00">B</button> <button onclick='startRush("A")' class="rush-btn" style="--c:#ffae00">A</button> <button onclick='startRush("S")' class="rush-btn" style="--c:#ff0044;border-width:2px;font-weight:700">S</button></div></div></div><div style="position:absolute;bottom:30px;font-size:.75rem;color:#444;font-family:monospace;letter-spacing:2px">V2.5 核心物理引擎已加载 // 神经传感器自检完毕 // @ENJOY7ECH</div></div><div id="menu-overlay" class="hidden"><div id="menu-content"><h2 class="menu-title">同步已暂停</h2><div class="menu-items"><button onclick="toggleMenu()" class="action-btn primary">恢复同步</button><div class="menu-setting"><label>背景音乐</label> <input type="range" id="bgm-volume" min="0" max="1" step="0.05" value="0.08" style="flex:1;cursor:pointer"></div><div class="menu-setting"><label>游戏速度</label><div style="display:flex;align-items:center;gap:10px;flex:1"><input type="range" id="speed-scale" min="0.75" max="3.0" step="0.25" value="1.5" style="flex:1;cursor:pointer"> <span id="speed-value" style="color:#00fff2;font-family:monospace;min-width:35px">1.0x</span></div></div><button onclick="restartGame()" class="action-btn secondary">重新载入</button> <button onclick="quitGame()" class="action-btn secondary">断开连接</button><div id="menu-manual" style="margin-top:20px;padding-top:15px;border-top:1px solid rgba(0,255,242,.2);font-size:11px;color:rgba(255,255,255,.7);line-height:1.6"><div style="color:#00fff2;font-weight:700;margin-bottom:8px;font-size:12px;letter-spacing:1px">OPERATING PROTOCOL // 操作协议</div>• [拖拽球体] 控制射球路径与力度<br>• [点击空白] 调整全局观察视角<br>• [松开] 释放核心能量（确认射出）<br><div style="color:#ffae00;margin-top:8px;font-style:italic;font-size:10px">* 连击(COMBO)增加倍率，空心重置奖励时间。</div></div></div></div></div><div id="result-overlay" class="hidden"><div class="result-card"><h2 id="result-status">连接已中断</h2><div class="result-stats"><div class="stat-item"><span class="stat-label">最终同步分值</span> <span id="final-score" class="stat-value">0</span></div><div class="stat-item"><span class="stat-label">巅峰连击序列</span> <span id="max-combo" class="stat-value">X1</span></div></div><p id="result-msg">检测到神经同步连接中断...</p><div class="result-actions"><button onclick="restartGame()" class="action-btn primary">重新接入协议</button> <button onclick="quitGame()" class="action-btn secondary">终止连接 • 退出</button></div></div></div><button id="menu-trigger" onclick="toggleMenu()">☰</button><script src="/games/basket-race/lib/cannon.min.js"></script><script type="module" src="/games/basket-race/js/index.js"></script></body></html>
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #000;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        /* 极致浮夸动画 */
+        @keyframes fire-pulse {
+            0% {
+                transform: scale(1) skewX(0deg);
+                filter: brightness(1.2) drop-shadow(0 0 5px #ff0044);
+            }
+
+            50% {
+                transform: scale(1.1) skewX(-2deg);
+                filter: brightness(1.8) drop-shadow(0 0 15px #ff0044);
+            }
+
+            100% {
+                transform: scale(1.05) skewX(2deg);
+                filter: brightness(1.4) drop-shadow(0 0 10px #ff0000);
+            }
+        }
+
+        @keyframes swish-gold-burst {
+            0% {
+                transform: scale(0.5) rotate(-10deg);
+                filter: brightness(1) drop-shadow(0 0 0px #ffae00);
+                opacity: 0;
+            }
+
+            20% {
+                transform: scale(1.5) rotate(5deg);
+                filter: brightness(2.5) drop-shadow(0 0 40px #ffae00);
+                opacity: 1;
+            }
+
+            80% {
+                transform: scale(1.2) rotate(0deg);
+                filter: brightness(1.5) drop-shadow(0 0 20px #ffae00);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.0) rotate(0deg);
+                filter: brightness(1) drop-shadow(0 0 5px #ffae00);
+                opacity: 0;
+            }
+        }
+
+        @keyframes screen-shake {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            10% {
+                transform: translate(-3px, 3px);
+            }
+
+            20% {
+                transform: translate(3px, -3px);
+            }
+
+            30% {
+                transform: translate(-5px, 0px);
+            }
+
+            40% {
+                transform: translate(5px, 2px);
+            }
+
+            50% {
+                transform: translate(-2px, -4px);
+            }
+
+            60% {
+                transform: translate(2px, 4px);
+            }
+
+            70% {
+                transform: translate(-3px, 1px);
+            }
+
+            80% {
+                transform: translate(3px, -1px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        #ui-container.shaking {
+            animation: screen-shake 0.3s ease-out both;
+        }
+
+        #ui-container.flash {
+            background: rgba(0, 255, 242, 0.1);
+            transition: background 0.1s ease;
+        }
+
+        .swish-text {
+            color: #ffae00 !important;
+            font-family: 'Orbitron', sans-serif !important;
+            font-size: 64px !important;
+            font-weight: 900 !important;
+            text-shadow: 0 0 20px #ffae00, 0 0 40px #ffae00;
+            animation: swish-gold-burst 1s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        }
+
+        #status-bar {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .stat-group {
+            display: flex;
+            gap: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            color: #ffee00;
+            text-shadow: 0 0 8px rgba(255, 238, 0, 0.6);
+            letter-spacing: 1px;
+        }
+
+        #combo-fire {
+            color: #ff0044;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            font-weight: 900;
+            font-style: italic;
+            animation: fire-pulse 0.4s infinite alternate ease-in-out;
+            display: none;
+            /* 初始隐藏，有连击才显示 */
+        }
+
+        #manual-panel {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-family: 'Orbitron', sans-serif;
+            color: rgba(0, 255, 242, 0.7);
+            font-size: 11px;
+            text-align: right;
+            pointer-events: auto;
+            line-height: 1.6;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 4px solid #00fff2;
+            z-index: 100;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        #manual-panel.collapsed {
+            transform: translateX(calc(100% + 40px));
+        }
+
+        #manual-toggle-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 255, 242, 0.1);
+            border: 1px solid #00fff2;
+            color: #00fff2;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            z-index: 101;
+            transition: all 0.2s;
+        }
+
+        #manual-toggle-btn:hover {
+            background: rgba(0, 255, 242, 0.3);
+        }
+
+        /* 加载页面样式 */
+        #loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: #050510;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        #loading-text {
+            color: #00fff2;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            animation: text-pulse 1.5s infinite ease-in-out;
+        }
+
+        @keyframes text-pulse {
+            0% {
+                opacity: 0.3;
+                transform: scale(0.95);
+                filter: blur(2px);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0px);
+            }
+
+            100% {
+                opacity: 0.3;
+                transform: scale(0.95);
+                filter: blur(2px);
+            }
+        }
+
+        .rush-btn {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--c);
+            color: var(--c);
+            width: 45px;
+            height: 45px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 5px rgba(var(--c), 0.2);
+        }
+
+        .rush-btn:hover {
+            background: var(--c);
+            color: #000;
+            box-shadow: 0 0 15px var(--c);
+            transform: scale(1.1);
+        }
+
+        .rush-btn:active {
+            transform: scale(0.95);
+        }
+
+        #menu-trigger {
+            position: fixed;
+            top: auto;
+            bottom: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 255, 242, 0.1);
+            border: 2px solid #00fff2;
+            color: #00fff2;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 200;
+            box-shadow: 0 0 15px rgba(0, 255, 242, 0.3);
+            text-shadow: 0 0 5px #00fff2;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: auto;
+        }
+
+        #menu-trigger:hover {
+            background: rgba(0, 255, 242, 0.3);
+            box-shadow: 0 0 25px #00fff2;
+            transform: scale(1.1);
+        }
+
+        #menu-trigger:active {
+            transform: scale(0.9);
+        }
+
+        /* --- 手机端适配 (Mobile Portrait Adaptation) --- */
+@media (max-width: 768px) {
+    #menu-trigger {
+        position: fixed;
+        top: auto;
+        bottom: 20px;
+        left: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+            #status-bar {
+                top: 5px;
+                right: 8px;
+                left: auto; /* 不限制左侧，防止拉伸 */
+                gap: 5px;
+                flex-direction: column;
+                align-items: flex-end;
+                width: auto;
+            }
+
+            .stat-group {
+                gap: 5px;
+                font-size: 10px;
+                padding: 0;
+                justify-content: flex-end;
+            }
+
+            /* 隐藏 MS 和 MEM 等次要性能参数，节省空间 */
+            #stat-ms, #stat-mem { display: none !important; }
+
+            #ui-container {
+                left: 10px;
+                top: 5px;
+                pointer-events: none;
+            }
+
+            #level-info {
+                font-size: 9px;
+                margin-bottom: 2px;
+            }
+
+            #scoreboard {
+                font-size: 20px;
+            }
+
+            #timer {
+                font-size: 28px;
+                margin-top: 2px;
+            }
+
+            #combo-fire {
+                margin-top: 2px;
+            }
+
+            /* 惩罚条变小 */
+            #punish-warning-container {
+                align-items: flex-end;
+                scale: 0.8;
+                transform-origin: right top;
+            }
+
+            #combo-fire span[style*="font-size: 20px"] { font-size: 14px !important; }
+            #combo-fire #combo-value { font-size: 34px !important; }
+
+            /* 播报大字适配 */
+            .swish-text {
+                font-size: 28px !important;
+                text-shadow: 0 0 10px #ffae00, 0 0 20px #ffae00 !important;
+            }
+            #score-msg {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 40%;
+                text-align: center;
+                pointer-events: none;
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                overflow: hidden !important;
+            }
+
+            /* 性能 UI 彻底通过 CSS 阻断 */
+            #stat-fps, #stat-ms, #stat-mem, .stat-group:nth-child(2) {
+                display: none !important;
+            }
+
+            #manual-panel {
+                width: 90%;
+                left: 5%;
+                right: auto;
+                transform: none;
+                bottom: 70px;
+                text-align: left;
+                font-size: 10px;
+                padding: 10px;
+            }
+
+            #manual-panel.collapsed {
+                transform: translateY(200%);
+            }
+
+            #manual-toggle-btn {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 15px;
+                padding: 10px 25px;
+                font-size: 12px;
+                min-width: 140px;
+            }
+
+            .cover-btn-group {
+                width: 90%;
+            }
+
+            .cover-btn {
+                font-size: 16px;
+                padding: 15px;
+            }
+
+            .rush-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            #reward-phase-ui, #side-punish-ui {
+                width: 90%;
+            }
+            #reward-phase-ui > div:nth-child(2), #side-punish-ui > div:nth-child(2) {
+                width: 100% !important;
+            }
+
+            /* 响应式结果与菜单容器适配 */
+            .result-card, #menu-content {
+                width: 90%;
+                margin-left: 5%;
+                padding: 15px;
+            }
+
+            /* 特别要求：将 ESC 菜单统一移动到左下角 */
+            #menu-overlay {
+                align-items: flex-end !important;
+                justify-content: flex-start !important;
+                padding: 20px;
+                background: rgba(0,0,0,0.7) !important; /* 让中心区域可见度更高 */
+            }
+
+            #menu-content {
+                width: 250px !important;
+                margin: 0 !important;
+                border-radius: 8px !important;
+                border-left: 4px solid #00fff2 !important;
+                background: rgba(10, 10, 20, 0.95) !important;
+                animation: slide-in-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            @keyframes slide-in-left {
+                from { transform: translateX(-50px) translateY(50px); opacity: 0; }
+                to { transform: translateX(0) translateY(0); opacity: 1; }
+            }
+
+            /* 关键：手机端重写动画，限制最大缩放倍率，防止撑破屏幕 */
+            @keyframes swish-gold-burst {
+                0% { transform: scale(0.8) rotate(-5deg); opacity: 0; }
+                50% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+                100% { transform: scale(1.0) rotate(0deg); opacity: 0; }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ui-container">
+        <div id="level-info">PHASE 01 - 目标同步: 100</div>
+        <div id="scoreboard-container" style="display: flex; align-items: baseline; gap: 15px;">
+            <div id="scoreboard">核心得分: 0</div>
+            <div id="score-pop"></div>
+        </div>
+        <div id="timer">00:00</div>
+        <!-- Combo 移至时间轴下方，并极度加强视觉效果 -->
+        <div id="combo-fire" style="display: none; align-items: baseline; gap: 8px; margin-top: 15px;">
+            <span
+                style="color: #ffcc00; font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 900; font-style: italic; text-shadow: 2px 2px 0 #000, 0 0 10px #ff6600;">COMBO</span>
+            <span id="combo-value"
+                style="color: #ff0000; font-family: 'Orbitron', sans-serif; font-size: 58px; font-weight: 900; -webkit-text-stroke: 2px #fff; text-shadow: 4px 4px 0 #000, 0 0 25px #ff0000; animation: fire-pulse 0.4s infinite alternate; line-height: 1;">0</span>
+        </div>
+    </div>
+
+    <!-- 死角惩罚倒计时 UI (中下部) -->
+    <div id="side-punish-ui"
+        style="display: none; position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; z-index: 10; width: 90%; max-width: 300px;">
+        <div
+            style="color: #ff00ea; font-family: 'Orbitron', sans-serif; font-size: 14px; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255, 0, 234, 0.8);">
+            死角挑战剩余时间</div>
+        <div
+            style="background: rgba(0,0,0,0.5); border: 1px solid #ff00ea; padding: 2px; border-radius: 4px; width: 100%; height: 12px; margin: 5px auto; overflow: hidden;">
+            <div id="side-punish-fill"
+                style="width: 100%; height: 100%; background: linear-gradient(90deg, #ff00ea, #8800ff); box-shadow: 0 0 15px #ff00ea;">
+            </div>
+        </div>
+        <div id="side-punish-timer"
+            style="color: #ffffff; font-family: monospace; font-size: 18px; font-weight: bold; text-shadow: 2px 2px 0px #000;">
+            30.0s</div>
+    </div>
+
+    <!-- 奖励时间 UI (中下部，与惩罚隔离显示) -->
+    <div id="reward-phase-ui"
+        style="display: none; position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; z-index: 10; width: 90%; max-width: 350px;">
+        <div
+            style="color: #00fff2; font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 900; letter-spacing: 4px; text-shadow: 0 0 15px rgba(0, 255, 242, 1);">
+            REWARD FRENZY // 疯狂同步模式</div>
+        <div
+            style="background: rgba(0,0,0,0.6); border: 2px solid #00fff2; padding: 2px; border-radius: 6px; width: 100%; height: 16px; margin: 8px auto; overflow: hidden; box-shadow: 0 0 20px rgba(0, 255, 242, 0.3);">
+            <div id="reward-phase-fill"
+                style="width: 100%; height: 100%; background: linear-gradient(90deg, #00fff2, #0066ff); box-shadow: 0 0 15px #00fff2;">
+            </div>
+        </div>
+        <div id="reward-phase-timer"
+            style="color: #ffffff; font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 900; text-shadow: 0 0 10px #00fff2;">
+            15.0s</div>
+    </div>
+
+    <!-- 重新设计的单行状态栏 (靠顶显示) -->
+    <div id="status-bar">
+
+        <div class="stat-group">
+            <div id="stat-diff"><span style="color:#ff00ea; font-weight:bold;">同步系数:</span> <span id="current-diff"
+                    style="color:#ffffff;">0</span></div>
+            <div id="stat-dist" style="display:none;"><span id="dist-label" style="color:#00fff2;">远射等级:</span> <span
+                    id="dist-coeff">...</span></div>
+            <div id="stat-height" style="display:none;"><span id="height-label" style="color:#00fff2;">地势加成:</span> <span
+                    id="height-coeff">...</span></div>
+            <div id="stat-angle" style="display:none;"><span id="angle-label" style="color:#00fff2;">命中率:</span> <span id="hit-rate"
+                    style="color:#00ff88; font-weight:bold;">0%</span></div>
+        </div>
+
+        <!-- 惩罚球警告条 -->
+        <div id="punish-warning-container"
+            style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+            <div
+                style="color: #ff3300; font-family: 'Orbitron', sans-serif; font-size: 9px; letter-spacing: 1px; font-weight: bold; opacity: 0.8;">
+                PUNISHMENT SYSTEM</div>
+            <div id="punish-progress-bar-bg"
+                style="width: 120px; height: 6px; background: rgba(255, 51, 0, 0.1); border: 1px solid rgba(255, 51, 0, 0.3); border-radius: 2px; overflow: hidden; position: relative;">
+                <div id="punish-progress-fill"
+                    style="width: 0%; height: 100%; background: linear-gradient(90deg, #ff6600, #ff0000); transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);">
+                </div>
+            </div>
+            <div id="punish-count-text" style="color: #ff6600; font-family: monospace; font-size: 10px; opacity: 0.6;">
+                MISS: 0/5</div>
+        </div>
+    </div>
+
+    <div id="score-msg"></div>
+    <div id="score-breakdown"></div>
+
+
+
+    <div id="loading-overlay">
+        <div id="loading-text">SYSTEM SYNCING...</div>
+        <div style="color: #444; margin-top: 10px; font-family: monospace; font-size: 10px;">PROCESING GLB_COURT //
+            RECLAMATION_BASKETBALL</div>
+    </div>
+
+    <div id="cover-screen">
+        <canvas id="shader-canvas" style="position: absolute; inset: 0; z-index: -1;"></canvas>
+
+        <div class="cover-btn-group">
+            <button onclick="startGame()" class="cover-btn btn-primary">生涯模式 • 生存挑战</button>
+            <div style="margin-top:20px; text-align:center;">
+                <div style="color: #00fff2; font-family: 'Orbitron', sans-serif; font-size: 14px; letter-spacing: 2px; margin-bottom: 12px; opacity: 0.8;">
+                    RUSH MODE // 极限挑战 60S
+                </div>
+                <div style="display:flex; justify-content:center; gap:10px;">
+                    <button onclick="startRush('D')" class="rush-btn" style="--c:#00ff88;">D</button>
+                    <button onclick="startRush('C')" class="rush-btn" style="--c:#00fff2;">C</button>
+                    <button onclick="startRush('B')" class="rush-btn" style="--c:#ffee00;">B</button>
+                    <button onclick="startRush('A')" class="rush-btn" style="--c:#ffae00;">A</button>
+                    <button onclick="startRush('S')" class="rush-btn" style="--c:#ff0044; border-width:2px; font-weight:bold;">S</button>
+                </div>
+            </div>
+        </div>
+
+        <div
+            style="position: absolute; bottom: 30px; font-size: 0.75rem; color: #444; font-family: monospace; letter-spacing: 2px;">
+            V2.5 核心物理引擎已加载 // 神经传感器自检完毕 // @ENJOY7ECH
+        </div>
+    </div>
+
+    <!-- Pause Menu -->
+    <div id="menu-overlay" class="hidden">
+        <div id="menu-content">
+            <h2 class="menu-title">同步已暂停</h2>
+            <div class="menu-items">
+                <button onclick="toggleMenu()" class="action-btn primary">恢复同步</button>
+                <div class="menu-setting">
+                    <label>背景音乐</label>
+                    <input type="range" id="bgm-volume" min="0" max="1" step="0.05" value="0.08"
+                        style="flex:1; cursor:pointer;">
+                </div>
+                <!-- 游戏速度调节 -->
+                <div class="menu-setting">
+                    <label>游戏速度</label>
+                    <div style="display:flex; align-items:center; gap:10px; flex:1;">
+                        <input type="range" id="speed-scale" min="0.75" max="3.0" step="0.25" value="1.5"
+                            style="flex:1; cursor:pointer;">
+                        <span id="speed-value" style="color:#00fff2; font-family:monospace; min-width:35px;">1.0x</span>
+                    </div>
+                </div>
+                <button onclick="restartGame()" class="action-btn secondary">重新载入</button>
+                <button onclick="quitGame()" class="action-btn secondary">断开连接</button>
+
+                <!-- 整合后的操作说明 -->
+                <div id="menu-manual" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(0, 255, 242, 0.2); font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.6;">
+                    <div style="color: #00fff2; font-weight: bold; margin-bottom: 8px; font-size: 12px; letter-spacing: 1px;">OPERATING PROTOCOL // 操作协议</div>
+                    • [拖拽球体] 控制射球路径与力度<br>
+                    • [点击空白] 调整全局观察视角<br>
+                    • [松开] 释放核心能量（确认射出）<br>
+                    <div style="color: #ffae00; margin-top: 8px; font-style: italic; font-size: 10px;">
+                        * 连击(COMBO)增加倍率，空心重置奖励时间。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Overlay -->
+    <div id="result-overlay" class="hidden">
+        <div class="result-card">
+            <h2 id="result-status">连接已中断</h2>
+            <div class="result-stats">
+                <div class="stat-item">
+                    <span class="stat-label">最终同步分值</span>
+                    <span id="final-score" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">巅峰连击序列</span>
+                    <span id="max-combo" class="stat-value">X1</span>
+                </div>
+            </div>
+            <p id="result-msg">检测到神经同步连接中断...</p>
+            <div class="result-actions">
+                <button onclick="restartGame()" class="action-btn primary">重新接入协议</button>
+                <button onclick="quitGame()" class="action-btn secondary">终止连接 • 退出</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu triggered via ESC key -->
+    <button id="menu-trigger" onclick="toggleMenu()">☰</button>
+
+    <script src="/games/basket-race/lib/cannon.min.js"></script>
+    <script type="module" src="/games/basket-race/js/index.js"></script>
+</body>
+
+</html>

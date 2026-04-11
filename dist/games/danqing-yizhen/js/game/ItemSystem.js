@@ -1,1 +1,686 @@
-const _0x1f7244=_0x16c8;(function(_0x555db3,_0x28d83b){const _0x492a6e=_0x16c8,_0x27aee1=_0x555db3();while(!![]){try{const _0x2bfeb4=parseInt(_0x492a6e(0x256))/0x1+parseInt(_0x492a6e(0x167))/0x2+-parseInt(_0x492a6e(0x24d))/0x3+parseInt(_0x492a6e(0x247))/0x4+-parseInt(_0x492a6e(0x217))/0x5*(-parseInt(_0x492a6e(0x222))/0x6)+parseInt(_0x492a6e(0x16e))/0x7+-parseInt(_0x492a6e(0x166))/0x8*(parseInt(_0x492a6e(0x21e))/0x9);if(_0x2bfeb4===_0x28d83b)break;else _0x27aee1['push'](_0x27aee1['shift']());}catch(_0x1087ba){_0x27aee1['push'](_0x27aee1['shift']());}}}(_0x3fba,0xa57a9));import{puzzle}from'../core/Engine.js';function _0x3fba(){const _0x151a89=['tgvSvhm','yxfzEeu','yMfKz2uTCg9WidaUm3mGy3vIAwmTyMv6AwvYkdaUmtC1lcaWlJG4nsWGmc4ZmIWGms4YnZuP','y2XPCa','v2PiuLK','DvrlAe8','BhzevhO','C2HVD05VDgLJzq','zKXdq2y','z2XVyMfSqwXWAge','DNLHDK0','y29SB3i','AxrLBs1Syw1W','5y2h57QNicHmDI4','yw5PBwf0zu1Hz25LDgLJqxr0CMfJDgLVBG','55cj55kd54gV','5PIo5B+d6yM0','ruzPC1e','zNjVBvnYy01HDhjPEa','rvzovxO','sKL2Cui','AgLKzgvU','Bw91C2vKB3DU','sxLxu3K','suPqzNe','u0zQrui','teXMEhe','DxnLu2HVDMvS','DxbKyxrLtwLYCM9YuMv2zwfS','Au9frKK','yxv0BW','sLzIqw0','zMfRzq','DMX6z2y','Bw1eB2C','Cg93','uufSANi','C291CMnLlw92zxi','lMj0BI1IDxK','zwzMzwn0ug93zxi','DgfYz2v0','AxrLBs1ZAg92zwW','y2rZ','vLH2wxO','BwfYA2vKqNLnAxjYB3i','DxnLqNj1C2G','DxbKyxrLsfvevMLZAwjPBgL0Eq','y2vUC2vYq2HHCMDLCW','z01wzNG','yMvHza','DhLLAw8','C3rYB2TLu3r5Bgu','Dw5SB2nRzwrjDgvTCW','ywrK','vffmz0m','u0z3t04','CxvLCNLtzwXLy3rVCG','zxz0','yuLqDgq','C3bLBMrdB2LUCW','zxHlvvq','y2XHC3nmAxn0','zMLSDgvY','6Aoo5OQv5RoI5OgV','CMvTB3zL','AxrLBs1TAxjYB3i','C3fMr0G','yMfKz2uTCg9WidaUm3m','B2zMC2v0sgvPz2H0','CMvZDg9Yzq','ywn0AxzL','DMX4zM8','yxjJ','yNj1C2G','ChvZAa','6Aoo6lw35AsN5RYGiokTHG','qNjRuMS','nvrvDLbyEa','v21XwM8','zM9N','lMj0BI11CgDYywrL','BgHpuNi','zLDhsva','Dg9W','mtmWnJG5ywDzBuj3','y2XPzw50wq','lwjHzgDL','DKvOv2W','ndqZnJeZmgTHA3zuuG','D2LUzc1PBMrPy2f0B3i','C3jJsw1Hz2u','5PYS5Bga5RkH5PYj5lYQ6ycG56ko54Mh5BMY5OMW77Ym5PEG6zYa5l2/55sO5PIo5B+d6yM077Yb','sNzHtey','y2vUC2vY','BgvMDa','zMXVB3i','y29gD3O','AxnnzxjNzuHPz2HSAwDODa','BMnSte0','DxbKyxrLq2HHCMDLvuK','C29YDa','AxnjDgvTsgLNAgXPz2H0','z2XVyMfSq29TCg9ZAxrLt3bLCMf0Aw9U','Cg9SExm','DxnLq2vUC2vY','CgvYzM9YBvrHCMDLDgvKq2vUC2vY','yMvHzefJDgL2zq','CM90','AMzsuwS','DxbNCMfKzuL0zw0','C2HVDMvS','rK1fre4','D2LUzc1ZDwj0zxH0','zML4zwrcEujYDxnO','sLLxzM4','AgfUzgXLsxrLBune','z21JshK','AxrLBs1IzwfK','BgfTCa','BwLYCM9Yqwn0AxzL','C3bSAxq','rw5pDvC','lxvWzYjD','C2f2zurHDge','BM9Uzq','mJeWmtC2neHVqxrMDa','ioEbTEAvIowKP+wINU+8GEw9K+wjJEETIEE6PZOG','uu1Zsvm','ExzWq1e','r2z1zwy','terireq','mtaYnZC2mvfIA1zHyq','sxrfrwG','BgfTCefJDgL2zq','zhjHD0LTywDL','AxrLBs1Jzw5Zzxi','DxnLqMvHza','C3rHCNrdB29Szg93BG','DxnLtwLYCM9Y','CxvLCNLtzwXLy3rVCKfSBa','mJG3odi2r3b4yKzn','Cg9SEvbPzwnLCW','mtaWofbrzNHlrq','mteYnJiYvgnAren0','mxWZFdr8mNWW','5A6A6Aoo54+G','CM5RD08','AKLWCLa','CMDIysGYntuSmJu1ldi1nsWWlJqP','vhvTzMm','ody4nZCWn1vqtM5Stq','C3r5Bgu','C2nHBgu','D2LUzc10zxH0','DxbKyxrLu2HVDMvStwLYCM9Y','y29ZDhm','uxnLBKS','lMj0BI11CgDYywrLw2rHDgeTAwq9iG','sNvuExK','C2npDMG','5y+K6zkX5BIb5lIn6lAZ77Ym5PEG5Rov57Ut57Yy5Q2K5Rov5A6D77Yb','wuHgvee','rLbOC1q','veXzDxq','sujXtfK','y2HHCMDLtwf4','AxnqB2LUDeLUugf0Aa','Dw1Rt1u','vK1HBKK','6Aoo5PYQ6lw377Ym5PEG6zYa5yQO55sO5A6A6Aoo54+G44cc','qMfdruu','ywrKq2HHCMDL','Aw5UzxjuzxH0','y29UDgfPBMvY','ywrKrxzLBNrmAxn0zw5LCG','AxzbD2i','yw5PBwf0Aw9U','B2jQ','y2HHCMDLCW','C2v0vhjHBNnMB3jT','zMLUza','CenLBNrYzq','AxrLBuXLDMvSCW','CMvWBgfJzq','AxnqyxvZzwq','zM9YrwfJAa','u2HyEgG','Aw5JBhvKzxm','uNrpvxG','C2HVDMvSqwn0AxzL','Cg9SEq','zgLZywjSzu1LCMDLrxzLBNq','C2f2zq','C2v0vhjHBNnMB3jTCW','CM90yxrL','Be1kwKu','zhjHD1bVBhLqAwvJzxm','tuzdqLq','AgvPz2H0','zhjPzNrPBMC','y2ruAw1LCNm','yNv5sxrLBq','CMfUzg9T','z2v0rwXLBwvUDej5swq','Ag92zxjLze1PCNjVCLbPzwnL','y2vUC2vYqwn0AxzL','y3vYCMvUDeXLDMvS','wKzqsuS','AxngywTL','DhrjA2G','DhjHBNnMB3jTug9PBNq','5BEY5RUH57QNicHmDI4Zkq','C3rYB2TL','z2v0qM91BMrPBMDdBgLLBNrszwn0','BMrLr0S','CNHNBuC','Cg9PBNrLCKv2zw50CW','BMHStxu','A0zRz1q','BwfW','BwLU','5l2z6AkD5lIn6lAZ77Ym5BcA5lIn6io95O+q5y2h5Q2K5Rov5A6D54g15yQB44cc','lxvWzW','AxrLBs0','zgvZDgLUyxrPB24TB3zLCG','zMLpCfa','CMvZzxruCMfUC2zVCM0','AgfUzgXLr2XVyMfSq2XPy2S','sfj1ueO','y2XPy2S','y2XPzw50wa','BgvUz3rO','AxnqBgf5Aw5N','BwLYCM9Y','yMLUzev2zw50CW','CgXHEun0Ea','zgf0yxnLDa','DxbKyxrLqMfKz2u','z05rCLO','C3rHCNrz','EuvXAg4','z0XNB20'];_0x3fba=function(){return _0x151a89;};return _0x3fba();}function _0x16c8(_0x83a1be,_0x5e4db5){_0x83a1be=_0x83a1be-0x165;const _0x3fbaca=_0x3fba();let _0x16c8b7=_0x3fbaca[_0x83a1be];if(_0x16c8['nzldDI']===undefined){var _0x2f1ccd=function(_0x10d310){const _0x43d534='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x30c126='',_0x3bf15e='';for(let _0x455d46=0x0,_0x17f5a6,_0x14d8f1,_0x59f253=0x0;_0x14d8f1=_0x10d310['charAt'](_0x59f253++);~_0x14d8f1&&(_0x17f5a6=_0x455d46%0x4?_0x17f5a6*0x40+_0x14d8f1:_0x14d8f1,_0x455d46++%0x4)?_0x30c126+=String['fromCharCode'](0xff&_0x17f5a6>>(-0x2*_0x455d46&0x6)):0x0){_0x14d8f1=_0x43d534['indexOf'](_0x14d8f1);}for(let _0x58b273=0x0,_0x4b21ce=_0x30c126['length'];_0x58b273<_0x4b21ce;_0x58b273++){_0x3bf15e+='%'+('00'+_0x30c126['charCodeAt'](_0x58b273)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x3bf15e);};_0x16c8['nKMSix']=_0x2f1ccd,_0x16c8['ZyKkYt']={},_0x16c8['nzldDI']=!![];}const _0x148e8e=_0x3fbaca[0x0],_0x45163d=_0x83a1be+_0x148e8e,_0x3ccb3a=_0x16c8['ZyKkYt'][_0x45163d];return!_0x3ccb3a?(_0x16c8b7=_0x16c8['nKMSix'](_0x16c8b7),_0x16c8['ZyKkYt'][_0x45163d]=_0x16c8b7):_0x16c8b7=_0x3ccb3a,_0x16c8b7;}export class ItemSystem{constructor(_0x2848c3){const _0x54ec8c=_0x16c8;this['gm']=_0x2848c3,this[_0x54ec8c(0x173)]={'censer':0x190,'brush':0xfa,'shovel':0x12c,'lamp':0x1f4,'mirror':0x320,'bead':0x258},this[_0x54ec8c(0x1f4)]={'censer':0x1e,'brush':0xb4,'shovel':0xa,'lamp':0x3c,'mirror':0x2d,'bead':0x3c},this[_0x54ec8c(0x1a0)]={'censer':0x0,'brush':0x0,'shovel':0x0,'lamp':0x0,'mirror':0x0,'bead':0x0},this[_0x54ec8c(0x17d)]={'censer':[0x6,0x4,0x3],'brush':[0x5,0x4,0x3],'mirror':[0x3,0x2,0x1]},this['effectPower']={'censer':[0x2,0x3,0x5],'brush':[0x4,0x8,0xf],'mirror':[0x1,0x1,0x1]},this[_0x54ec8c(0x195)]=![],this[_0x54ec8c(0x24f)]=![],this[_0x54ec8c(0x241)]=![],this[_0x54ec8c(0x234)]=![],this[_0x54ec8c(0x1a5)]=![],this[_0x54ec8c(0x1f9)]=0x0,this['hoveredMirrorPiece']=null,this['bindEvents']();}[_0x1f7244(0x1c2)](){const _0x1944c2=_0x1f7244,_0x1e2088={'ndeGK':_0x1944c2(0x1bd),'MwFgb':'item-brush','wfRnC':_0x1944c2(0x23f),'ORhLu':_0x1944c2(0x1e0),'jIprP':_0x1944c2(0x21a),'gSeos':'mousemove'};document[_0x1944c2(0x1a3)]('item-censer')[_0x1944c2(0x186)](_0x1944c2(0x1bd),()=>this[_0x1944c2(0x23d)](_0x1944c2(0x227),()=>this[_0x1944c2(0x232)]())),document[_0x1944c2(0x1a3)](_0x1e2088['MwFgb'])['addEventListener']('click',()=>this[_0x1944c2(0x23d)](_0x1944c2(0x213),()=>this[_0x1944c2(0x1f7)]())),document[_0x1944c2(0x1a3)](_0x1944c2(0x1f3))['addEventListener'](_0x1e2088[_0x1944c2(0x1ae)],()=>this['handleItemCD'](_0x1944c2(0x238),()=>this[_0x1944c2(0x1e5)]())),document[_0x1944c2(0x1a3)](_0x1944c2(0x1d6))[_0x1944c2(0x186)](_0x1e2088['ndeGK'],()=>this[_0x1944c2(0x23d)]('lamp',()=>this['useLamp']())),document[_0x1944c2(0x1a3)](_0x1944c2(0x20b))[_0x1944c2(0x186)](_0x1e2088[_0x1944c2(0x1ae)],()=>this[_0x1944c2(0x23d)](_0x1944c2(0x1c1),()=>this[_0x1944c2(0x254)]())),document[_0x1944c2(0x1a3)](_0x1e2088['wfRnC'])[_0x1944c2(0x186)]('click',()=>this[_0x1944c2(0x23d)](_0x1944c2(0x1fb),()=>this[_0x1944c2(0x252)]())),document[_0x1944c2(0x186)](_0x1e2088['ORhLu'],_0x2d0fcc=>this[_0x1944c2(0x1bb)](_0x2d0fcc),!![]),document[_0x1944c2(0x255)](_0x1944c2(0x1f0))['forEach'](_0x3e7dd6=>{const _0x3155c3=_0x1944c2;_0x3e7dd6[_0x3155c3(0x186)](_0x3155c3(0x1bd),_0x537677=>{const _0x493f6c=_0x3155c3,_0x208758=_0x537677[_0x493f6c(0x1f2)][_0x493f6c(0x1c4)]['id'];this[_0x493f6c(0x1a1)](_0x208758,_0x537677[_0x493f6c(0x1f2)]);});}),document[_0x1944c2(0x255)](_0x1e2088[_0x1944c2(0x16b)])[_0x1944c2(0x191)](_0x48313d=>{const _0xe0eafb=_0x1944c2;_0x48313d[_0xe0eafb(0x186)](_0x1e2088[_0xe0eafb(0x1ae)],_0x219fc7=>{const _0x47bff5=_0xe0eafb,_0x3a68d0=_0x219fc7[_0x47bff5(0x1f2)][_0x47bff5(0x1c4)]['id'][_0x47bff5(0x18f)](_0x47bff5(0x1b6),'');this[_0x47bff5(0x237)](_0x3a68d0,_0x219fc7[_0x47bff5(0x1f2)]);});}),document[_0x1944c2(0x186)](_0x1e2088['gSeos'],_0x6f4d03=>{const _0x32d206=_0x1944c2;this[_0x32d206(0x195)]&&this[_0x32d206(0x172)](_0x6f4d03[_0x32d206(0x1be)],_0x6f4d03[_0x32d206(0x21f)]),this['mirrorActive']&&this[_0x32d206(0x1e6)](_0x6f4d03['clientX'],_0x6f4d03[_0x32d206(0x21f)]);});}['buyItem'](_0x821ac1,_0x399928){const _0x451905=_0x1f7244,_0x409246={'FFqvi':'sold-out','uTKhO':_0x451905(0x1df),'aIPtd':_0x451905(0x178)};if(this['gm'][_0x451905(0x1fe)][_0x821ac1])return;if(this['gm'][_0x451905(0x205)](this[_0x451905(0x173)][_0x821ac1])){this['gm'][_0x451905(0x1fe)][_0x821ac1]=!![];if(_0x821ac1==='shovel'&&!this['gm']['itemLevels'])this['gm'][_0x451905(0x18e)]={};if(_0x821ac1==='shovel')this['gm'][_0x451905(0x18e)]['shovel']=0x1;this['gm'][_0x451905(0x245)](),_0x399928[_0x451905(0x184)]='售罄',_0x399928[_0x451905(0x207)][_0x451905(0x1ff)](_0x409246['FFqvi']);const _0x5d35a8=document[_0x451905(0x202)](_0x451905(0x175)+_0x821ac1+_0x451905(0x244));if(_0x5d35a8)_0x5d35a8['classList'][_0x451905(0x20a)](_0x409246[_0x451905(0x1cf)]);this[_0x451905(0x1f8)]();}else this['gm'][_0x451905(0x1d1)](_0x409246[_0x451905(0x204)]);}['upgradeItem'](_0x327e41,_0x839d16){const _0x2f689f=_0x1f7244,_0x57d40a={'fiOpP':function(_0x27640d,_0x4f024f){return _0x27640d===_0x4f024f;},'RtOUx':_0x2f689f(0x1ab),'Tumfc':_0x2f689f(0x1da),'jfRQk':_0x2f689f(0x169)},_0x528e8a=this['gm'][_0x2f689f(0x18e)][_0x327e41]||0x1;if(_0x528e8a>=0x3)return;let _0x115e8a=_0x528e8a===0x1?0x1f4:0x3e8;_0x57d40a[_0x2f689f(0x1b9)](_0x327e41,_0x2f689f(0x227))&&(_0x115e8a=_0x528e8a===0x1?0x4b0:0x9c4);if(this['gm'][_0x2f689f(0x205)](_0x115e8a)){this['gm'][_0x2f689f(0x18e)][_0x327e41]=_0x528e8a+0x1,this['gm'][_0x2f689f(0x245)]();this['gm'][_0x2f689f(0x18e)][_0x327e41]>=0x3?(_0x839d16[_0x2f689f(0x184)]=_0x57d40a[_0x2f689f(0x194)],_0x839d16['disabled']=!![]):_0x839d16[_0x2f689f(0x184)]=_0x2f689f(0x1d7)+this['gm'][_0x2f689f(0x18e)][_0x327e41]+')';const _0x976732={'censer':'焚香炉','brush':'灵笔','shovel':'洛阳铲','lamp':_0x2f689f(0x1d9),'mirror':_0x57d40a[_0x2f689f(0x16d)],'bead':_0x57d40a[_0x2f689f(0x236)]}[_0x327e41]||_0x327e41;this['gm'][_0x2f689f(0x1d1)](_0x976732+_0x2f689f(0x248)+this['gm'][_0x2f689f(0x18e)][_0x327e41]);}else this['gm']['showNotice'](_0x2f689f(0x1b5));}['resetLevelState'](){const _0x104cb7=_0x1f7244,_0x16746f={'exKUT':function(_0x45996f,_0x5ac7a2){return _0x45996f-_0x5ac7a2;},'TQLgC':_0x104cb7(0x227),'VXvYz':_0x104cb7(0x1c1),'xFuRR':_0x104cb7(0x213),'lhORr':_0x104cb7(0x1e8),'nhlMu':_0x104cb7(0x210),'EnOuW':_0x104cb7(0x246)};this[_0x104cb7(0x24f)]=![],this[_0x104cb7(0x241)]=![],this[_0x104cb7(0x234)]=![],this['shovelActive']=![],this[_0x104cb7(0x1a5)]=![];if(!this[_0x104cb7(0x18a)])this[_0x104cb7(0x18a)]={'censer':0x0,'brush':0x0,'mirror':0x0};[_0x16746f[_0x104cb7(0x200)],'brush',_0x16746f[_0x104cb7(0x1f5)]]['forEach'](_0x149bbb=>{const _0x6cfe6d=_0x104cb7,_0x439660=this['gm'][_0x6cfe6d(0x18e)]&&this['gm'][_0x6cfe6d(0x18e)][_0x149bbb]||0x1;this['charges'][_0x149bbb]=this[_0x6cfe6d(0x17d)][_0x149bbb][_0x16746f[_0x6cfe6d(0x206)](_0x439660,0x1)],this[_0x6cfe6d(0x22d)](_0x149bbb,this['chargeMax'][_0x149bbb][_0x439660-0x1]);});for(const _0x104309 in this['cdTimers']){this[_0x104cb7(0x1a0)][_0x104309]=0x0;const _0xa91ca6=document['getElementById']('item-'+_0x104309);if(_0xa91ca6){const _0x1dad8a=_0xa91ca6[_0x104cb7(0x202)]('.cd-overlay');_0x1dad8a&&![_0x16746f[_0x104cb7(0x200)],_0x16746f['xFuRR'],_0x104cb7(0x1c1)]['includes'](_0x104309)&&(_0x1dad8a[_0x104cb7(0x16f)][_0x104cb7(0x19e)]='0%'),_0xa91ca6[_0x104cb7(0x16f)][_0x104cb7(0x1b0)]=_0x16746f[_0x104cb7(0x21b)],_0xa91ca6['classList'][_0x104cb7(0x20a)](_0x16746f[_0x104cb7(0x1b1)]),_0xa91ca6[_0x104cb7(0x16f)]['filter']=_0x16746f[_0x104cb7(0x243)];}}this[_0x104cb7(0x1f8)](),puzzle&&(puzzle['onMerge']=()=>this[_0x104cb7(0x183)]());}['addCharge'](){const _0x164131=_0x1f7244,_0x15f11f={'KeClR':_0x164131(0x227),'gMVfx':function(_0x14d13d,_0x59f056){return _0x14d13d-_0x59f056;},'JuTyy':function(_0x32da29,_0x492a32){return _0x32da29<_0x492a32;},'JYWfn':_0x164131(0x213),'EVNUz':function(_0xb2d6b2,_0x4f6335){return _0xb2d6b2-_0x4f6335;},'lsQAw':function(_0x526ef9,_0xc0148a){return _0x526ef9<_0xc0148a;},'IBqLY':_0x164131(0x1c1)};if(!this['gm'][_0x164131(0x1c0)])return;if(this['gm'][_0x164131(0x1fe)][_0x164131(0x227)]){const _0x3749f9=this['gm']['itemLevels'][_0x15f11f['KeClR']]||0x1,_0x4c7263=this[_0x164131(0x17d)][_0x164131(0x227)][_0x15f11f[_0x164131(0x1fa)](_0x3749f9,0x1)];_0x15f11f[_0x164131(0x176)](this['charges'][_0x164131(0x227)],_0x4c7263)&&(this[_0x164131(0x18a)]['censer']++,this[_0x164131(0x22d)](_0x164131(0x227),_0x4c7263));}if(this['gm'][_0x164131(0x1fe)][_0x15f11f[_0x164131(0x23c)]]){const _0x3a580f=this['gm'][_0x164131(0x18e)][_0x15f11f[_0x164131(0x23c)]]||0x1,_0xc73524=this[_0x164131(0x17d)][_0x164131(0x213)][_0x15f11f[_0x164131(0x1dd)](_0x3a580f,0x1)];_0x15f11f['lsQAw'](this['charges'][_0x164131(0x213)],_0xc73524)&&(this['charges'][_0x164131(0x213)]++,this[_0x164131(0x22d)](_0x15f11f[_0x164131(0x23c)],_0xc73524));}if(this['gm'][_0x164131(0x1fe)][_0x164131(0x1c1)]){const _0x4c5429=this['gm'][_0x164131(0x18e)][_0x15f11f['IBqLY']]||0x1,_0x418d52=this[_0x164131(0x17d)]['mirror'][_0x4c5429-0x1];this[_0x164131(0x18a)][_0x164131(0x1c1)]<_0x418d52&&(this[_0x164131(0x18a)][_0x164131(0x1c1)]++,this[_0x164131(0x22d)](_0x15f11f[_0x164131(0x17c)],_0x418d52));}}[_0x1f7244(0x22d)](_0x4b9077,_0x624648){const _0x410390=_0x1f7244,_0x34fbff={'fBfvi':function(_0x757b9d,_0x97b234){return _0x757b9d*_0x97b234;},'yvpCQ':function(_0x5b2c8b,_0x67c5f7){return _0x5b2c8b-_0x67c5f7;},'HRuPJ':function(_0xe3dca1,_0x1e4512){return _0xe3dca1/_0x1e4512;}},_0x4d94b2=document[_0x410390(0x1a3)](_0x410390(0x1b7)+_0x4b9077),_0x27217b=_0x4d94b2[_0x410390(0x202)]('.cd-overlay');if(_0x27217b){const _0x2e8679=_0x34fbff['fBfvi'](_0x34fbff[_0x410390(0x24a)](0x1,_0x34fbff[_0x410390(0x1bc)](this['charges'][_0x4b9077],_0x624648)),0x64);_0x27217b[_0x410390(0x16f)][_0x410390(0x19e)]=_0x2e8679+'%';}this[_0x410390(0x18a)][_0x4b9077]>=_0x624648&&(_0x4d94b2[_0x410390(0x16f)][_0x410390(0x188)]=_0x410390(0x20d),setTimeout(()=>_0x4d94b2[_0x410390(0x16f)][_0x410390(0x188)]='',0x12c));}[_0x1f7244(0x1f8)](){const _0xc72294=_0x1f7244,_0x23f91e={'scOvh':'hidden','SFwON':_0xc72294(0x227),'WmqZo':_0xc72294(0x238),'DlJEo':_0xc72294(0x240),'MFCBT':_0xc72294(0x1c1)};[_0x23f91e[_0xc72294(0x201)],_0xc72294(0x213),_0x23f91e[_0xc72294(0x218)],_0x23f91e['DlJEo'],_0x23f91e[_0xc72294(0x19d)],'bead'][_0xc72294(0x191)](_0x3a82e7=>{const _0x349ee5=_0xc72294,_0x6605fa=document['getElementById']('item-'+_0x3a82e7);this['gm']['unlockedItems'][_0x3a82e7]?(_0x6605fa[_0x349ee5(0x207)][_0x349ee5(0x20a)](_0x23f91e[_0x349ee5(0x177)]),this[_0x349ee5(0x1c5)](_0x3a82e7)):_0x6605fa[_0x349ee5(0x207)]['add'](_0x349ee5(0x1df));});}['updateBadge'](_0xc565c4){const _0xf73df=_0x1f7244,_0x349b5e={'vlzgf':function(_0x5123cf,_0x61895b){return _0x5123cf===_0x61895b;},'eZevn':_0xf73df(0x227),'TLYut':_0xf73df(0x168),'ItEEh':_0xf73df(0x1df),'JvaLF':_0xf73df(0x246)},_0x369eb8=document[_0xf73df(0x1a3)](_0xf73df(0x1b7)+_0xc565c4+_0xf73df(0x220));if(!_0x369eb8)return;if(_0x349b5e[_0xf73df(0x1eb)](_0xc565c4,_0x349b5e['eZevn'])){const _0x3aaa20=_0x349b5e[_0xf73df(0x17b)][_0xf73df(0x242)]('|');let _0x3b95df=0x0;while(!![]){switch(_0x3aaa20[_0x3b95df++]){case'0':_0x369eb8[_0xf73df(0x16f)]['animation']=_0xf73df(0x1cc);continue;case'1':_0x369eb8[_0xf73df(0x184)]=this[_0xf73df(0x1f9)]||0x0;continue;case'2':_0x369eb8[_0xf73df(0x20e)];continue;case'3':_0x369eb8[_0xf73df(0x207)][_0xf73df(0x20a)](_0x349b5e[_0xf73df(0x24e)]);continue;case'4':_0x369eb8[_0xf73df(0x16f)][_0xf73df(0x188)]=_0x349b5e[_0xf73df(0x226)];continue;}break;}}else _0x369eb8['classList'][_0xf73df(0x1ff)](_0xf73df(0x1df));}[_0x1f7244(0x23d)](_0x1faec1,_0x262ddc){const _0x19d54a=_0x1f7244,_0x4e9287={'QAljr':function(_0x432af9,_0x2fc308){return _0x432af9===_0x2fc308;},'vyavM':function(_0x1a6fab,_0x1d0066){return _0x1a6fab!==_0x1d0066;},'IJPfq':_0x19d54a(0x1c1),'ivAwb':_0x19d54a(0x227),'inPYI':function(_0x2a56c7,_0xc44026){return _0x2a56c7-_0xc44026;},'Gfuef':function(_0x52394e,_0x3af6da){return _0x52394e===_0x3af6da;},'vlxfo':_0x19d54a(0x213),'VManI':function(_0x4d094b,_0x1635c1){return _0x4d094b-_0x1635c1;},'rnkwO':function(_0x4ce53f,_0x53ceeb){return _0x4ce53f<_0x53ceeb;},'BaCEE':function(_0x2dc08b,_0x4a03e){return _0x2dc08b!==_0x4a03e;}};if(!this['gm'][_0x19d54a(0x1c0)]||this['gm']['isPaused'])return;if(_0x1faec1===_0x19d54a(0x238)||_0x4e9287['QAljr'](_0x1faec1,_0x19d54a(0x240))){_0x262ddc();return;}if(_0x4e9287[_0x19d54a(0x1d4)](_0x1faec1,_0x19d54a(0x227))&&_0x1faec1!=='brush'&&_0x4e9287[_0x19d54a(0x1d4)](_0x1faec1,_0x4e9287[_0x19d54a(0x1e2)])&&this[_0x19d54a(0x1a0)][_0x1faec1]>0x0)return;if(_0x4e9287[_0x19d54a(0x1ee)](_0x1faec1,_0x4e9287[_0x19d54a(0x187)])){const _0x230886=this['gm']['itemLevels']['censer']||0x1,_0x4e7b07=this[_0x19d54a(0x17d)][_0x19d54a(0x227)][_0x4e9287['inPYI'](_0x230886,0x1)];if(this['censerActive']||this[_0x19d54a(0x18a)][_0x19d54a(0x227)]<_0x4e7b07)return;}if(_0x4e9287[_0x19d54a(0x24b)](_0x1faec1,_0x19d54a(0x213))){const _0x29a4fd=this['gm'][_0x19d54a(0x18e)][_0x4e9287[_0x19d54a(0x211)]]||0x1,_0x47ac8e=this[_0x19d54a(0x17d)][_0x19d54a(0x213)][_0x4e9287[_0x19d54a(0x180)](_0x29a4fd,0x1)];if(_0x4e9287[_0x19d54a(0x16a)](this[_0x19d54a(0x18a)][_0x19d54a(0x213)],_0x47ac8e))return;}if(_0x1faec1===_0x4e9287[_0x19d54a(0x1e2)]){const _0x3244ef=this['gm'][_0x19d54a(0x18e)][_0x19d54a(0x1c1)]||0x1,_0x111483=this[_0x19d54a(0x17d)][_0x19d54a(0x1c1)][_0x4e9287['VManI'](_0x3244ef,0x1)];if(this[_0x19d54a(0x241)]||this[_0x19d54a(0x18a)][_0x19d54a(0x1c1)]<_0x111483)return;}_0x262ddc(),_0x1faec1!==_0x19d54a(0x227)&&_0x4e9287[_0x19d54a(0x1d4)](_0x1faec1,_0x4e9287[_0x19d54a(0x211)])&&_0x4e9287[_0x19d54a(0x182)](_0x1faec1,_0x19d54a(0x1c1))&&this[_0x19d54a(0x253)](_0x1faec1,this[_0x19d54a(0x1f4)][_0x1faec1]);}[_0x1f7244(0x253)](_0xc1f536,_0x2681ea){const _0x1fa601=_0x1f7244,_0xb784a7={'tyeio':function(_0x54771a,_0x21a106,_0x41c47b){return _0x54771a(_0x21a106,_0x41c47b);},'yEqhn':_0x1fa601(0x1e8),'lvDTz':function(_0x7a5869,_0x406156){return _0x7a5869*_0x406156;},'FMEDN':function(_0x5563e2,_0x429040){return _0x5563e2/_0x429040;},'nclLM':_0x1fa601(0x246),'kFkgT':function(_0x25374a){return _0x25374a();}};this[_0x1fa601(0x1a0)][_0xc1f536]=_0x2681ea;const _0x15af07=document[_0x1fa601(0x1a3)](_0x1fa601(0x1b7)+_0xc1f536),_0x4a6a06=_0x15af07[_0x1fa601(0x202)]('.cd-overlay');_0x15af07[_0x1fa601(0x16f)][_0x1fa601(0x1b0)]=_0xb784a7[_0x1fa601(0x22c)];const _0x4f9112=()=>{const _0x465071=_0x1fa601;if(!this['gm'][_0x465071(0x1c0)])return;if(this['gm'][_0x465071(0x190)]){_0xb784a7[_0x465071(0x1fc)](setTimeout,_0x4f9112,0x64);return;}if(this[_0x465071(0x1a0)][_0xc1f536]<=0x0){_0x4a6a06[_0x465071(0x16f)][_0x465071(0x19e)]='0%',_0x15af07[_0x465071(0x16f)][_0x465071(0x1b0)]=_0xb784a7[_0x465071(0x1c8)];return;}const _0x475c14=_0xb784a7[_0x465071(0x1d0)](_0xb784a7[_0x465071(0x239)](this['cdTimers'][_0xc1f536],_0x2681ea),0x64);_0x4a6a06[_0x465071(0x16f)][_0x465071(0x19e)]=_0x475c14+'%',this[_0x465071(0x1a0)][_0xc1f536]-=0.1,setTimeout(_0x4f9112,0x64);};_0xb784a7[_0x1fa601(0x1b2)](_0x4f9112);}[_0x1f7244(0x232)](){const _0x2bfe75=_0x1f7244,_0x4bd012={'ZFPIK':'item-censer'};this['censerActive']=!![],document[_0x2bfe75(0x1a3)](_0x4bd012[_0x2bfe75(0x1a7)])[_0x2bfe75(0x207)]['add'](_0x2bfe75(0x210));}[_0x1f7244(0x1bb)](_0x4aa056){const _0x3f7ee7=_0x1f7244,_0x2f9f3a={'eZJij':function(_0x455e4c,_0x4af632){return _0x455e4c-_0x4af632;}};if(!this[_0x3f7ee7(0x1a5)]||!this['gm']['isPlaying']||this['gm'][_0x3f7ee7(0x190)]||!puzzle)return;const _0x485c46=puzzle[_0x3f7ee7(0x185)][_0x3f7ee7(0x1ad)](),_0x588942=_0x4aa056[_0x3f7ee7(0x1be)]-_0x485c46[_0x3f7ee7(0x228)],_0x30e1bf=_0x2f9f3a['eZJij'](_0x4aa056[_0x3f7ee7(0x21f)],_0x485c46[_0x3f7ee7(0x21d)]),_0x335c63=puzzle[_0x3f7ee7(0x165)][_0x3f7ee7(0x18c)](_0x149916=>_0x149916[_0x3f7ee7(0x17e)]({'x':_0x588942,'y':_0x30e1bf}));_0x335c63&&(_0x4aa056['stopPropagation'](),_0x4aa056['preventDefault'](),this[_0x3f7ee7(0x233)](_0x335c63));}[_0x1f7244(0x233)](_0x3e5c77){const _0xfb21d6=_0x1f7244,_0x552317={'FPhsT':function(_0x542376,_0x3f78fd){return _0x542376===_0x3f78fd;},'aqYxE':function(_0x2af8ea,_0x15fb53){return _0x2af8ea>_0x15fb53;},'Qfcub':function(_0x1e5542,_0x13b488){return _0x1e5542===_0x13b488;},'ShXxh':'此残片周围暂无邻近碎片。'};if(!_0x3e5c77)return;const _0x38df1d=[];for(const _0x799ee6 of puzzle[_0xfb21d6(0x165)]){if(_0x552317[_0xfb21d6(0x17a)](_0x799ee6,_0x3e5c77))continue;let _0xe119d6=![];for(const _0x3036b9 of _0x3e5c77['pieces']){for(const _0xf879a4 of _0x3036b9['sides']){if(_0xf879a4['polys'][_0xfb21d6(0x1bf)]===0x2){const _0xa325f4=_0x552317[_0xfb21d6(0x17a)](_0xf879a4['polys'][0x0],_0x3036b9)?_0xf879a4['polys'][0x1]:_0xf879a4[_0xfb21d6(0x231)][0x0];if(_0xa325f4[_0xfb21d6(0x196)]===_0x799ee6){_0xe119d6=!![];break;}}}if(_0xe119d6)break;}_0xe119d6&&_0x38df1d[_0xfb21d6(0x214)](_0x799ee6);}const _0x6be450=this['gm'][_0xfb21d6(0x18e)]['censer']||0x1,_0x16c593=this['effectPower'][_0xfb21d6(0x227)][_0x6be450-0x1];let _0x42a347=_0x38df1d;_0x552317[_0xfb21d6(0x1cb)](_0x38df1d[_0xfb21d6(0x1bf)],_0x16c593)&&(_0x42a347=_0x38df1d['sort'](()=>Math[_0xfb21d6(0x1a2)]()-0.5)['slice'](0x0,_0x16c593));if(_0x552317['Qfcub'](_0x42a347[_0xfb21d6(0x1bf)],0x0)){this['gm'][_0xfb21d6(0x1d1)](_0x552317[_0xfb21d6(0x192)]);return;}puzzle[_0xfb21d6(0x197)]=!![],this[_0xfb21d6(0x1d8)](_0x3e5c77,_0x42a347),this[_0xfb21d6(0x1a5)]=![],this[_0xfb21d6(0x18a)][_0xfb21d6(0x227)]=0x0,this[_0xfb21d6(0x22d)](_0xfb21d6(0x227),this['chargeMax'][_0xfb21d6(0x227)][_0x6be450-0x1]);const _0x1af788=document[_0xfb21d6(0x1a3)](_0xfb21d6(0x251));if(_0x1af788)_0x1af788[_0xfb21d6(0x207)][_0xfb21d6(0x20a)](_0xfb21d6(0x210));setTimeout(()=>{const _0x31680d=_0xfb21d6;puzzle[_0x31680d(0x197)]=![];},0x3e8);}['animateMagneticAttraction'](_0x1c5a7a,_0x34538d){const _0x4f9f03=_0x1f7244,_0x4fab01={'umkOU':function(_0x2feeaa,_0x358945){return _0x2feeaa+_0x358945;},'rPnbU':function(_0x3c0707,_0x32ed1b){return _0x3c0707*_0x32ed1b;},'WjHRY':function(_0x11cba0,_0x4ab682){return _0x11cba0>_0x4ab682;},'iOEFI':function(_0x36e3b9,_0x55632c){return _0x36e3b9-_0x55632c;},'EFisQ':function(_0x1a6111,_0xa9c675){return _0x1a6111/_0xa9c675;},'vEhWl':function(_0x1619f0,_0x5d60b2){return _0x1619f0-_0x5d60b2;},'atFTz':function(_0x229ab7,_0x32cdc1){return _0x229ab7<_0x32cdc1;},'gLgom':function(_0x5f1f4c,_0xbffdbf){return _0x5f1f4c(_0xbffdbf);}},_0x4c88ca=0x258,_0x36bb9a=performance['now'](),_0x52724d=_0x34538d[_0x4f9f03(0x1b3)](_0x2eba6e=>({'obj':_0x2eba6e,'startX':_0x2eba6e['x'],'startY':_0x2eba6e['y'],'startRot':_0x2eba6e[_0x4f9f03(0x235)]})),_0x1b31d7=_0x1923c3=>{const _0x1d9f93=_0x4f9f03,_0x4db150=_0x4fab01[_0x1d9f93(0x1e7)](_0x1923c3,_0x36bb9a),_0x5243a5=Math[_0x1d9f93(0x1b4)](0x1,_0x4fab01[_0x1d9f93(0x1db)](_0x4db150,_0x4c88ca)),_0x12a1d3=_0x4fab01[_0x1d9f93(0x1e7)](0x1,Math[_0x1d9f93(0x1ed)](_0x4fab01[_0x1d9f93(0x221)](0x1,_0x5243a5),0x3));_0x52724d['forEach'](_0x355d86=>{const _0x283422=_0x1d9f93;_0x355d86[_0x283422(0x189)]['x']=_0x4fab01['umkOU'](_0x355d86['startX'],(_0x1c5a7a['x']-_0x355d86['startX'])*_0x12a1d3),_0x355d86[_0x283422(0x189)]['y']=_0x4fab01[_0x283422(0x17f)](_0x355d86[_0x283422(0x1c7)],_0x4fab01['rPnbU'](_0x1c5a7a['y']-_0x355d86[_0x283422(0x1c7)],_0x12a1d3));if(_0x4fab01[_0x283422(0x1ce)](_0x5243a5,0.5))_0x355d86['obj']['rot']=_0x1c5a7a[_0x283422(0x235)];_0x355d86[_0x283422(0x189)][_0x283422(0x199)]();}),puzzle[_0x1d9f93(0x19c)](),_0x4fab01['atFTz'](_0x5243a5,0x1)?requestAnimationFrame(_0x1b31d7):(_0x34538d[_0x1d9f93(0x191)](_0x17f4cb=>_0x1c5a7a['merge'](_0x17f4cb)),_0x1c5a7a[_0x1d9f93(0x22b)]=!![],setTimeout(()=>{const _0x3eb4a7=_0x1d9f93;_0x1c5a7a[_0x3eb4a7(0x22b)]=![],puzzle[_0x3eb4a7(0x19c)]();},0x1f4),puzzle['evaluateOrder'](),puzzle[_0x1d9f93(0x19c)]());};_0x4fab01[_0x4f9f03(0x1c9)](requestAnimationFrame,_0x1b31d7);}['useBrush'](){const _0x12541=_0x1f7244,_0x246b08={'LDHDD':function(_0x2f9bb0,_0x5a5d78){return _0x2f9bb0-_0x5a5d78;}};if(puzzle&&puzzle[_0x12541(0x165)]){const _0x38e00f=this['gm'][_0x12541(0x18e)]&&this['gm'][_0x12541(0x18e)]['brush']||0x1,_0xec759c=this[_0x12541(0x1f1)][_0x12541(0x213)][_0x246b08['LDHDD'](_0x38e00f,0x1)],_0x3ffc58=puzzle[_0x12541(0x165)][_0x12541(0x208)](_0x50ec1b=>_0x50ec1b['rot']!==0x0);if(_0x3ffc58[_0x12541(0x1bf)]===0x0){this['gm'][_0x12541(0x1d1)]('所有残片方位已正，无需动笔。');return;}this['charges'][_0x12541(0x213)]=0x0,this[_0x12541(0x22d)](_0x12541(0x213),this[_0x12541(0x17d)][_0x12541(0x213)][_0x246b08[_0x12541(0x24c)](_0x38e00f,0x1)]);const _0x169549=_0x3ffc58[_0x12541(0x22e)](()=>Math[_0x12541(0x1a2)]()-0.5)['slice'](0x0,_0xec759c);_0x169549[_0x12541(0x191)](_0x12f410=>{const _0x5ea4c8=_0x12541;_0x12f410[_0x5ea4c8(0x19a)](0x0),_0x12f410[_0x5ea4c8(0x199)](),_0x12f410[_0x5ea4c8(0x22f)]=!![],_0x12f410[_0x5ea4c8(0x23b)]=!![];}),puzzle[_0x12541(0x19c)]();}}['useLamp'](){const _0x117d38=_0x1f7244,_0x217ac7={'LelTs':_0x117d38(0x219),'RxFqf':'当前没有迷雾，不需要使用提灯！','fLCCf':'item-lamp','adPsf':'active'};if(!this['gm'][_0x117d38(0x1a6)][_0x117d38(0x203)][_0x117d38(0x193)](_0x217ac7[_0x117d38(0x1ca)])){this['gm'][_0x117d38(0x1d1)](_0x217ac7['RxFqf']);return;}this[_0x117d38(0x24f)]=!this[_0x117d38(0x24f)];const _0x5a90a7=document[_0x117d38(0x1a3)](_0x217ac7[_0x117d38(0x1d2)]);this[_0x117d38(0x24f)]?_0x5a90a7['classList']['add'](_0x217ac7['adPsf']):_0x5a90a7[_0x117d38(0x207)]['remove']('active');}[_0x1f7244(0x254)](){const _0x2219ae=_0x1f7244,_0x5aaa57={'JVbAm':'场上已无可疑痕迹，明心鉴亦无法再见更多。','IyWSy':_0x2219ae(0x1c1),'fWGIP':function(_0x4e2616,_0x3006d4){return _0x4e2616*_0x3006d4;}};if(!this['gm'][_0x2219ae(0x1a6)][_0x2219ae(0x203)][_0x2219ae(0x193)](_0x2219ae(0x1ea))){this['gm'][_0x2219ae(0x1d1)](_0x2219ae(0x225));return;}const _0x4a5acc=this['gm'][_0x2219ae(0x18e)]&&this['gm'][_0x2219ae(0x18e)]['mirror']||0x1,_0x314d35=(puzzle['polyPieces']||[])[_0x2219ae(0x208)](_0x1ceadc=>_0x1ceadc[_0x2219ae(0x1a8)]&&!_0x1ceadc[_0x2219ae(0x1f6)]);if(_0x314d35[_0x2219ae(0x1bf)]===0x0){this['gm']['showNotice'](_0x5aaa57[_0x2219ae(0x1e9)]);return;}this[_0x2219ae(0x18a)]['mirror']=0x0,this[_0x2219ae(0x22d)](_0x5aaa57[_0x2219ae(0x1e1)],this['chargeMax'][_0x2219ae(0x1c1)][_0x4a5acc-0x1]);const _0xcc7cdd=_0x314d35[Math[_0x2219ae(0x229)](_0x5aaa57[_0x2219ae(0x21c)](Math['random'](),_0x314d35[_0x2219ae(0x1bf)]))];_0xcc7cdd[_0x2219ae(0x1f6)]=!![],_0xcc7cdd[_0x2219ae(0x22f)]=!![];if(puzzle)puzzle[_0x2219ae(0x19c)]();if(_0x4a5acc===0x1)this['gm']['showNotice']('明心鉴显灵，已标记\x201\x20处伪作。');}[_0x1f7244(0x252)](){const _0x4d761d=_0x1f7244,_0x50471f={'JIvqB':_0x4d761d(0x210),'gNQrZ':_0x4d761d(0x171),'sqfGH':_0x4d761d(0x23a),'QsenK':'hidden','YHFTA':function(_0x136f76,_0x69673b){return _0x136f76-_0x69673b;},'rxgmG':_0x4d761d(0x23f),'QMsIS':_0x4d761d(0x223),'BrkRk':'#4fc3f7'};if(![_0x4d761d(0x19f)]['some'](_0x4da5dc=>this['gm'][_0x4d761d(0x1a6)][_0x4d761d(0x203)][_0x4d761d(0x193)](_0x4da5dc))){this['gm']['showNotice'](_0x4d761d(0x181)),this[_0x4d761d(0x1a0)]['bead']=0x0;return;}const _0x38a036=this['gm']['itemLevels']&&this['gm']['itemLevels']['bead']||0x1,_0x535020=[0x3a98,0x7530,0xea60][_0x50471f[_0x4d761d(0x179)](_0x38a036,0x1)];this[_0x4d761d(0x234)]=!![];const _0x274b9f=document[_0x4d761d(0x1a3)](_0x50471f[_0x4d761d(0x1af)]),_0x294639=document[_0x4d761d(0x1a3)](_0x50471f[_0x4d761d(0x249)]);_0x274b9f['classList'][_0x4d761d(0x1ff)](_0x50471f[_0x4d761d(0x1de)]);if(_0x294639){const _0x490e51=document[_0x4d761d(0x1a3)](_0x50471f['gNQrZ']),_0xcc6de4=document[_0x4d761d(0x1a3)]('wind-subtext');_0x490e51&&(_0x490e51['innerText']=_0x4d761d(0x209),_0x490e51['style'][_0x4d761d(0x1d5)]=_0x50471f[_0x4d761d(0x216)]);if(_0xcc6de4)_0xcc6de4['classList'][_0x4d761d(0x1ff)](_0x4d761d(0x1df));}setTimeout(()=>{const _0x3faef9=_0x4d761d;this[_0x3faef9(0x234)]=![],_0x274b9f[_0x3faef9(0x207)][_0x3faef9(0x20a)](_0x50471f[_0x3faef9(0x1de)]);if(_0x294639){const _0x11a104=document[_0x3faef9(0x1a3)](_0x50471f[_0x3faef9(0x1c6)]),_0x486776=document['getElementById'](_0x50471f[_0x3faef9(0x20c)]);_0x11a104&&(_0x11a104[_0x3faef9(0x184)]=_0x3faef9(0x215),_0x11a104[_0x3faef9(0x16f)]['color']=_0x3faef9(0x16c));if(_0x486776)_0x486776['classList']['remove'](_0x50471f[_0x3faef9(0x174)]);}},_0x535020);}[_0x1f7244(0x1e6)](_0xf78c37,_0x1d7b61){const _0xd6010e=_0x1f7244,_0x4df03f={'coFwz':function(_0x51b409,_0x497e9d){return _0x51b409-_0x497e9d;},'lMJZE':function(_0x34a4ed,_0x1cdd01){return _0x34a4ed!==_0x1cdd01;}};if(!puzzle||!this[_0xd6010e(0x241)])return;const _0x10548d=puzzle[_0xd6010e(0x185)][_0xd6010e(0x1ad)](),_0x175287=_0x4df03f[_0xd6010e(0x22a)](_0xf78c37,_0x10548d[_0xd6010e(0x228)]),_0x29172f=_0x4df03f[_0xd6010e(0x22a)](_0x1d7b61,_0x10548d[_0xd6010e(0x21d)]),_0x430086=puzzle[_0xd6010e(0x165)][_0xd6010e(0x18c)](_0x564e9b=>_0x564e9b[_0xd6010e(0x17e)]({'x':_0x175287,'y':_0x29172f}));_0x4df03f[_0xd6010e(0x19b)](this[_0xd6010e(0x1a4)],_0x430086)&&(this[_0xd6010e(0x1a4)]=_0x430086,puzzle['drawPolyPieces']());}[_0x1f7244(0x1e5)](){const _0x540761=_0x1f7244,_0x4b7173={'gmcHy':_0x540761(0x1f3),'ttIkh':_0x540761(0x210)};this[_0x540761(0x195)]=!this['shovelActive'];const _0x1bbd80=document['getElementById'](_0x4b7173[_0x540761(0x23e)]);if(this[_0x540761(0x195)])_0x1bbd80[_0x540761(0x207)][_0x540761(0x1ff)](_0x540761(0x210));else{_0x1bbd80[_0x540761(0x207)][_0x540761(0x20a)](_0x4b7173[_0x540761(0x1a9)]);if(puzzle)puzzle['drawPolyPieces']();}}[_0x1f7244(0x172)](_0x19b542,_0x371354){const _0x1c1a40=_0x1f7244,_0x1a5840={'SFjEB':'drifting','mmDog':function(_0x2d624c,_0x1d3ee4){return _0x2d624c-_0x1d3ee4;},'LLfxq':function(_0x36d65b,_0x4ea4da){return _0x36d65b-_0x4ea4da;},'vOiFS':_0x1c1a40(0x1ef)};if(!puzzle||!this['shovelActive'])return;if(this['gm'][_0x1c1a40(0x1a6)][_0x1c1a40(0x203)][_0x1c1a40(0x193)](_0x1a5840[_0x1c1a40(0x1e3)])&&!this[_0x1c1a40(0x234)])return;const _0x534e11=puzzle['container'][_0x1c1a40(0x1ad)](),_0x46820b=_0x1a5840[_0x1c1a40(0x1ec)](_0x19b542,_0x534e11[_0x1c1a40(0x228)]),_0x5f5d91=_0x1a5840[_0x1c1a40(0x1e4)](_0x371354,_0x534e11['top']),_0x147621=puzzle[_0x1c1a40(0x165)][_0x1c1a40(0x18c)](_0x1dd413=>_0x1dd413[_0x1c1a40(0x17e)]({'x':_0x46820b,'y':_0x5f5d91}));if(!_0x147621)return;const _0x344d9f=this['gm'][_0x1c1a40(0x18e)]&&this['gm'][_0x1c1a40(0x18e)][_0x1c1a40(0x238)]||0x1,_0x459a3e=[0x64,0xb4,0x118][_0x344d9f-0x1];puzzle[_0x1c1a40(0x19c)]();const _0x3fc676=puzzle[_0x1c1a40(0x1c3)];_0x3fc676[_0x1c1a40(0x198)]();const _0x41f353=_0x147621[_0x1c1a40(0x1dc)][_0x1c1a40(0x1aa)](_0x147621[_0x1c1a40(0x18d)]),_0x425971=new Path2D();_0x425971[_0x1c1a40(0x212)](_0x41f353['x'],_0x41f353['y'],_0x459a3e,0x0,Math['PI']*0x2),_0x3fc676[_0x1c1a40(0x1cd)](_0x425971),_0x3fc676[_0x1c1a40(0x230)]=_0x1c1a40(0x1b8),_0x3fc676[_0x1c1a40(0x1d3)]=0.4;const _0x1782ea=puzzle[_0x1c1a40(0x170)];_0x3fc676[_0x1c1a40(0x18b)](_0x1782ea,0x0,0x0,_0x1782ea,_0x41f353['x']-_0x147621[_0x1c1a40(0x18d)]['x']*_0x1782ea,_0x41f353['y']-_0x147621[_0x1c1a40(0x18d)]['y']*_0x1782ea),_0x3fc676[_0x1c1a40(0x250)](puzzle[_0x1c1a40(0x224)],0x0,0x0),_0x3fc676[_0x1c1a40(0x1ba)](),_0x3fc676[_0x1c1a40(0x230)]=_0x1a5840['vOiFS'],_0x3fc676[_0x1c1a40(0x1d3)]=0x1,_0x3fc676[_0x1c1a40(0x1fd)]='rgba(212,\x20175,\x2055,\x200.7)',_0x3fc676['lineWidth']=0x4,_0x3fc676[_0x1c1a40(0x1ac)](_0x425971),_0x3fc676[_0x1c1a40(0x20f)]();}}
+import { puzzle } from '../core/Engine.js';
+
+export class ItemSystem {
+    constructor(gameManager) {
+        this.gm = gameManager;
+        
+        this.costs = { censer: 400, brush: 250, shovel: 300, lamp: 500, mirror: 800, bead: 600, compass: 1000, umbrella: 700 };
+        this.cds = { censer: 30, brush: 180, shovel: 10, lamp: 60, mirror: 45, bead: 60, compass: 0, umbrella: 0 };
+        
+        this.cdTimers = { censer: 0, brush: 0, shovel: 0, lamp: 0, mirror: 0, bead: 0, compass: 0, umbrella: 0 };
+        this.chargeMax = { censer: [6, 4, 3], brush: [5, 4, 3], mirror: [3, 2, 1] };
+        this.effectPower = { censer: [2, 3, 5], brush: [4, 8, 15], mirror: [1, 1, 1], umbrella: [180, 300, 450] };
+        
+        this.shovelActive = false;
+        this.lampActive = false;
+        this.mirrorActive = false;
+        this.beadActive = false;
+        this.censerActive = false;
+        this.umbrellaActive = false;
+        this.mouseX = 0;
+        this.mouseY = 0;
+        this.censerCharges = 0;
+        this.hoveredMirrorPiece = null;
+        
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        // In-game item buttons
+        document.getElementById('item-censer').addEventListener('click', () => this.handleItemCD('censer', () => this.useCenser()));
+        document.getElementById('item-brush').addEventListener('click', () => this.handleItemCD('brush', () => this.useBrush()));
+        document.getElementById('item-shovel').addEventListener('click', () => this.handleItemCD('shovel', () => this.useShovel()));
+        document.getElementById('item-lamp').addEventListener('click', () => this.handleItemCD('lamp', () => this.useLamp()));
+        document.getElementById('item-mirror').addEventListener('click', () => this.handleItemCD('mirror', () => this.useMirror()));
+        document.getElementById('item-bead').addEventListener('click', () => this.handleItemCD('bead', () => this.useBead()));
+        document.getElementById('item-compass').addEventListener('click', () => this.handleItemCD('compass', () => this.useCompass()));
+        document.getElementById('item-umbrella').addEventListener('click', () => this.handleItemCD('umbrella', () => this.useUmbrella()));
+
+        // Add global click listener for targeted items (like Censer)
+        document.addEventListener('mousedown', (e) => this.handleGlobalClick(e), true);
+
+        // Shop buy buttons
+        document.querySelectorAll('.btn-buy').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = e.target.dataset.id;
+                this.buyItem(id, e.target);
+            });
+        });
+
+        // Shop upgrade buttons
+        document.querySelectorAll('.btn-upgrade').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = e.target.dataset.id.replace('-upg', '');
+                this.upgradeItem(id, e.target);
+            });
+        });
+
+        // Shovel & Mirror cursor tracking
+        document.addEventListener('mousemove', (e) => {
+            if (puzzle) {
+                const rect = puzzle.container.getBoundingClientRect();
+                this.mouseX = e.clientX - rect.left;
+                this.mouseY = e.clientY - rect.top;
+            }
+
+            if (this.shovelActive) {
+                this.updateShovelMirror(e.clientX, e.clientY);
+            }
+            if (this.mirrorActive) {
+                this.updateMirrorReveal(e.clientX, e.clientY);
+            }
+            if (this.umbrellaActive && this.gm.currentLevel && this.gm.currentLevel.evt.includes('blurring')) {
+                if (puzzle) {
+                    puzzle.drawPolyPieces(); 
+                }
+            }
+        });
+    }
+
+    drawUmbrellaVisual() {
+        if (!this.umbrellaActive || !puzzle) return;
+        const lx = this.mouseX;
+        const ly = this.mouseY;
+
+        const level = (this.gm.itemLevels && this.gm.itemLevels.umbrella) || 1;
+        const radius = this.effectPower.umbrella[level - 1];
+
+        const ctx = puzzle.playCtx;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(lx, ly, radius, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(212, 175, 55, 0.4)';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([5, 5]); // Dashed line for a "spiritual" look
+        ctx.stroke();
+        
+        // Add a subtle glow
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#d4af37';
+        ctx.stroke();
+        ctx.restore();
+    }
+
+    buyItem(id, btnElement) {
+        if (this.gm.unlockedItems[id]) return; // already bought
+        if (this.gm.spendCoins(this.costs[id])) {
+            this.gm.unlockedItems[id] = true;
+            if (id === 'shovel' && !this.gm.itemLevels) this.gm.itemLevels = {};
+            if (id === 'shovel') this.gm.itemLevels.shovel = 1;
+            
+            this.gm.saveData(); // Persist unlock
+            btnElement.innerText = '售罄';
+            btnElement.classList.add('sold-out');
+            
+            // Show upgrade button if applicable
+            const upgBtn = document.querySelector(`.btn-upgrade[data-id="${id}-upg"]`);
+            if (upgBtn) upgBtn.classList.remove('hidden');
+
+            // Immediately show it in the game HUD if we happen to buy it during a game
+            this.updateHUDVisibility();
+        } else {
+            this.gm.showNotice('古钱币不足，无法结缘此法宝！');
+        }
+    }
+    upgradeItem(id, btnElement) {
+        const currentLevel = this.gm.itemLevels[id] || 1;
+        if (currentLevel >= 3) return;
+        
+        // Censer has higher premium upgrade costs
+        let upgradeCost = currentLevel === 1 ? 500 : 1000;
+        if (id === 'censer') {
+            upgradeCost = currentLevel === 1 ? 1200 : 2500;
+        }
+
+        if (this.gm.spendCoins(upgradeCost)) {
+            this.gm.itemLevels[id] = currentLevel + 1;
+            this.gm.saveData();
+            
+            if (this.gm.itemLevels[id] >= 3) {
+                btnElement.innerText = '已满级 (Lv.3)';
+                btnElement.disabled = true;
+            } else {
+                btnElement.innerText = `升级 (Lv.${this.gm.itemLevels[id]})`;
+            }
+            const itemName = {
+                'censer': '焚香炉',
+                'brush': '灵笔',
+                'shovel': '洛阳铲',
+                'lamp': '琉璃灯',
+                'mirror': '明心鉴',
+                'bead': '定风珠',
+                'compass': '寻龙尺',
+                'umbrella': '油纸伞'
+            }[id] || id;
+
+            this.gm.showNotice(`${itemName} 灵效大增！当前等级: ${this.gm.itemLevels[id]}`);
+        } else {
+            this.gm.showNotice('余额不足，尚不能提升此法宝灵力。');
+        }
+    }
+    
+    resetLevelState() {
+        this.lampActive = false;
+        this.mirrorActive = false;
+        this.beadActive = false;
+        this.shovelActive = false;
+        this.censerActive = false;
+        
+        // Reset Charges - All items enter the level FULLY CHARGED
+        if (!this.charges) this.charges = { censer: 0, brush: 0, mirror: 0 };
+        
+        ['censer', 'brush', 'mirror'].forEach(id => {
+            const level = (this.gm.itemLevels && this.gm.itemLevels[id]) || 1;
+            this.charges[id] = this.chargeMax[id][level - 1];
+            this.updateChargeUI(id, this.chargeMax[id][level - 1]);
+        });
+
+        // Reset all cooldowns (time-based items like Shovel, Lamp, Bead)
+        for (const id in this.cdTimers) {
+            this.cdTimers[id] = 0;
+            const btn = document.getElementById(`item-${id}`);
+            if (btn) {
+                const overlay = btn.querySelector('.cd-overlay');
+                // Charge UI already handled by updateChargeUI above
+                if (overlay && !['censer', 'brush', 'mirror'].includes(id)) {
+                    overlay.style.height = '0%';
+                }
+                btn.style.pointerEvents = 'auto';
+                btn.classList.remove('active');
+                btn.style.filter = 'none';
+            }
+        }
+
+        this.updateHUDVisibility();
+        
+        // Hook into puzzle merge event
+        if (puzzle) {
+            puzzle.onMerge = () => this.addCharge();
+        }
+    }
+    
+    addCharge() {
+        if (!this.gm.isPlaying) return;
+        
+        if (this.gm.unlockedItems['censer']) {
+            const clvl = this.gm.itemLevels['censer'] || 1;
+            const maxC = this.chargeMax.censer[clvl - 1];
+            if (this.charges.censer < maxC) {
+                this.charges.censer++;
+                this.updateChargeUI('censer', maxC);
+            }
+        }
+        
+        if (this.gm.unlockedItems['brush']) {
+            const blvl = this.gm.itemLevels['brush'] || 1;
+            const maxB = this.chargeMax.brush[blvl - 1];
+            if (this.charges.brush < maxB) {
+                this.charges.brush++;
+                this.updateChargeUI('brush', maxB);
+            }
+        }
+
+        if (this.gm.unlockedItems['mirror']) {
+            const mlvl = this.gm.itemLevels['mirror'] || 1;
+            const maxM = this.chargeMax.mirror[mlvl - 1];
+            if (this.charges.mirror < maxM) {
+                this.charges.mirror++;
+                this.updateChargeUI('mirror', maxM);
+            }
+        }
+    }
+
+    updateChargeUI(id, max) {
+        const btn = document.getElementById(`item-${id}`);
+        const overlay = btn.querySelector('.cd-overlay');
+        if (overlay) {
+            const pct = (1 - (this.charges[id] / max)) * 100;
+            overlay.style.height = `${pct}%`;
+        }
+        if (this.charges[id] >= max) {
+            // Provide a small visual pop when charged
+            btn.style.animation = 'badge-pop 0.3s';
+            setTimeout(() => btn.style.animation = '', 300);
+        }
+    }
+
+    updateHUDVisibility() {
+        // Show only unlocked items in the in-game tray
+        ['compass', 'umbrella', 'censer', 'brush', 'shovel', 'lamp', 'mirror', 'bead'].forEach(id => {
+            const btn = document.getElementById(`item-${id}`);
+            if (this.gm.unlockedItems[id]) {
+                btn.classList.remove('hidden');
+                this.updateBadge(id);
+            } else {
+                btn.classList.add('hidden');
+            }
+        });
+    }
+
+    updateBadge(id) {
+        const badge = document.getElementById(`item-${id}-badge`);
+        if (!badge) return;
+        
+        if (id === 'censer') {
+            badge.innerText = this.censerCharges || 0;
+            badge.classList.remove('hidden');
+            // Add a small pop animation
+            badge.style.animation = 'none';
+            badge.offsetHeight; // trigger reflow
+            badge.style.animation = 'badge-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        } else {
+            badge.classList.add('hidden');
+        }
+    }
+
+    handleItemCD(id, effectFn) {
+        if (!this.gm.isPlaying || this.gm.isPaused) return;
+        
+        // Items that are toggles or CD-less
+        if (id === 'shovel' || id === 'lamp' || id === 'compass' || id === 'umbrella') {
+            effectFn();
+            return;
+        }
+
+        // Shovel, Lamp, Bead are Time CDs
+        if (id !== 'censer' && id !== 'brush' && id !== 'mirror' && this.cdTimers[id] > 0) return;
+        
+        // Censer, Brush, Mirror are Charge based
+        if (id === 'censer') {
+            const clvl = this.gm.itemLevels['censer'] || 1;
+            const maxC = this.chargeMax.censer[clvl - 1];
+            if (this.censerActive || this.charges.censer < maxC) return;
+        }
+        if (id === 'brush') {
+            const blvl = this.gm.itemLevels['brush'] || 1;
+            const maxB = this.chargeMax.brush[blvl - 1];
+            if (this.charges.brush < maxB) return;
+        }
+        if (id === 'mirror') {
+            const mlvl = this.gm.itemLevels['mirror'] || 1;
+            const maxM = this.chargeMax.mirror[mlvl - 1];
+            if (this.mirrorActive || this.charges.mirror < maxM) return;
+        }
+        
+        // Apply effect
+        effectFn();
+        
+        // Start CD for non-charge items
+        if (id !== 'censer' && id !== 'brush' && id !== 'mirror') {
+            this.startCooldown(id, this.cds[id]);
+        }
+    }
+    
+    startCooldown(id, seconds) {
+        this.cdTimers[id] = seconds;
+        const btn = document.getElementById(`item-${id}`);
+        const overlay = btn.querySelector('.cd-overlay');
+        
+        btn.style.pointerEvents = 'none';
+        
+        const updateCD = () => {
+            if (!this.gm.isPlaying) return;
+            if (this.gm.isPaused) {
+                setTimeout(updateCD, 100);
+                return;
+            }
+            if (this.cdTimers[id] <= 0) {
+                overlay.style.height = '0%';
+                btn.style.pointerEvents = 'auto';
+                return;
+            }
+            const pct = (this.cdTimers[id] / seconds) * 100;
+            overlay.style.height = `${pct}%`;
+            this.cdTimers[id] -= 0.1;
+            setTimeout(updateCD, 100);
+        };
+        updateCD();
+    }
+
+    useCenser() {
+        this.censerActive = true;
+        document.getElementById('item-censer').classList.add('active');
+    }
+
+    handleGlobalClick(e) {
+        if (!this.censerActive || !this.gm.isPlaying || this.gm.isPaused || !puzzle) return;
+        
+        // Check if we clicked on the puzzle canvas
+        const puzzleRect = puzzle.container.getBoundingClientRect();
+        const mx = e.clientX - puzzleRect.left;
+        const my = e.clientY - puzzleRect.top;
+        
+        const pp = puzzle.polyPieces.find(p => p.isPointInPath({x: mx, y: my}));
+        
+        if (pp) {
+            // STOP propagation so Engine.js doesn't pick it up as a normal drag/rotate
+            e.stopPropagation();
+            e.preventDefault();
+            
+            this.performTargetedCenser(pp);
+        }
+    }
+    
+    performTargetedCenser(pp) {
+        if (!pp) return;
+        
+        // 1. Find all physical neighbors that logically belong next to pp
+        const neighbors = [];
+        for (const other of puzzle.polyPieces) {
+            if (other === pp) continue;
+            
+            let isNeighborGroup = false;
+            for (const pc1 of pp.pieces) {
+                for (const side of pc1.sides) {
+                    if (side.polys.length === 2) {
+                        const pc2 = (side.polys[0] === pc1) ? side.polys[1] : side.polys[0];
+                        if (pc2.poly === other) {
+                            isNeighborGroup = true;
+                            break;
+                        }
+                    }
+                }
+                if (isNeighborGroup) break;
+            }
+
+            if (isNeighborGroup) {
+                neighbors.push(other);
+            }
+        }
+
+        const clvl = this.gm.itemLevels['censer'] || 1;
+        const maxEffect = this.effectPower.censer[clvl - 1];
+        
+        let targetNeighbors = neighbors;
+        if (neighbors.length > maxEffect) {
+            targetNeighbors = neighbors.sort(() => Math.random() - 0.5).slice(0, maxEffect);
+        }
+
+        if (targetNeighbors.length === 0) {
+            this.gm.showNotice('此残片周围暂无邻近碎片。');
+            return;
+        }
+
+        // 2. Animate neighbors towards target pp (pp stays still)
+        puzzle.disableMergeEvent = true;
+        this.animateMagneticAttraction(pp, targetNeighbors);
+
+        // 3. Single-use: Deactivate and deplete charge
+        this.censerActive = false;
+        this.charges.censer = 0;
+        this.updateChargeUI('censer', this.chargeMax.censer[clvl - 1]);
+        
+        const btn = document.getElementById('item-censer');
+        if (btn) btn.classList.remove('active');
+        
+        // Re-enable merge hook after animation is theoretically done (we'll do it safely via a timeout or wait)
+        setTimeout(() => {
+            puzzle.disableMergeEvent = false;
+        }, 1000);
+    }
+
+    animateMagneticAttraction(target, neighbors) {
+        const duration = 600; // ms
+        const startTime = performance.now();
+        
+        // Store initial states for lerping
+        const initialStates = neighbors.map(n => ({
+            obj: n,
+            startX: n.x,
+            startY: n.y,
+            startRot: n.rot
+        }));
+
+        const step = (now) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(1, elapsed / duration);
+            const ease = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+
+            initialStates.forEach(s => {
+                // Target position for neighbor is same as target piece pp
+                s.obj.x = s.startX + (target.x - s.startX) * ease;
+                s.obj.y = s.startY + (target.y - s.startY) * ease;
+                
+                // Rotations are tricky - snap to target.rot early or lerp if possible
+                if (progress > 0.5) s.obj.rot = target.rot;
+                
+                s.obj.setTransforms();
+            });
+
+            puzzle.drawPolyPieces();
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                // Final merge
+                neighbors.forEach(n => target.merge(n));
+                target.isMergeHighlight = true;
+                setTimeout(() => {
+                    target.isMergeHighlight = false;
+                    puzzle.drawPolyPieces();
+                }, 500);
+                
+                puzzle.evaluateOrder();
+                puzzle.drawPolyPieces();
+            }
+        };
+
+        requestAnimationFrame(step);
+    }
+
+    useBrush() {
+        if(puzzle && puzzle.polyPieces) {
+            const level = (this.gm.itemLevels && this.gm.itemLevels.brush) || 1;
+            const count = this.effectPower.brush[level - 1];
+
+            // Filter only rotated pieces
+            const rotatedPieces = puzzle.polyPieces.filter(p => p.rot !== 0);
+            if (rotatedPieces.length === 0) {
+                this.gm.showNotice('所有残片方位已正，无需动笔。');
+                return;
+            }
+            
+            // Consume charge
+            this.charges.brush = 0;
+            this.updateChargeUI('brush', this.chargeMax.brush[level - 1]);
+            
+            // Shuffle and pick
+            const toFix = rotatedPieces
+                .sort(() => Math.random() - 0.5)
+                .slice(0, count);
+                
+            toFix.forEach(p => { 
+                p.rotate(0); 
+                p.setTransforms();
+                p.isItemHighlight = true;
+                p.fixedByBrush = true; // Mark as fixed
+            });
+            puzzle.drawPolyPieces();
+        }
+    }
+
+    useLamp() {
+        if (!this.gm.currentLevel.evt.includes('fog')) {
+            this.gm.showNotice('当前没有迷雾，不需要使用提灯！');
+            return;
+        }
+        
+        this.lampActive = !this.lampActive;
+        const btn = document.getElementById('item-lamp');
+        if (this.lampActive) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    }
+
+    useMirror() {
+        if (!this.gm.currentLevel.evt.includes('fake')) {
+            this.gm.showNotice('本局没有伪造碎片干扰，无需使用明心鉴！');
+            return;
+        }
+        
+        const level = (this.gm.itemLevels && this.gm.itemLevels.mirror) || 1;
+
+        // Find unmarked fakes
+        const unmarkedFakes = (puzzle.polyPieces || []).filter(p => p.isFake && !p.markedByMirror);
+        
+        if (unmarkedFakes.length === 0) {
+            this.gm.showNotice('场上已无可疑痕迹，明心鉴亦无法再见更多。');
+            return;
+        }
+
+        // Consume charges
+        this.charges.mirror = 0;
+        this.updateChargeUI('mirror', this.chargeMax.mirror[level - 1]);
+
+        // Select 1 random unmarked fake and mark it
+        const target = unmarkedFakes[Math.floor(Math.random() * unmarkedFakes.length)];
+        target.markedByMirror = true;
+        target.isItemHighlight = true; // Briefly pulse red
+
+        if (puzzle) puzzle.drawPolyPieces();
+        // Reduced notice frequency: only show if level is 1
+        if (level === 1) this.gm.showNotice(`明心鉴显灵，已标记 1 处伪作。`);
+    }
+
+    useBead() {
+        if (!['drifting'].some(e => this.gm.currentLevel.evt.includes(e))) {
+            this.gm.showNotice('风未起，无需动用定风珠。');
+            this.cdTimers['bead'] = 0;
+            return;
+        }
+        
+        const level = (this.gm.itemLevels && this.gm.itemLevels.bead) || 1;
+        const duration = [15000, 30000, 60000][level - 1];
+        
+        this.beadActive = true;
+        const btn = document.getElementById('item-bead');
+        const indicator = document.getElementById('wind-indicator');
+        
+        btn.classList.add('active');
+        if (indicator) {
+            const windText = document.getElementById('wind-text');
+            const subText = document.getElementById('wind-subtext');
+            if (windText) {
+                windText.innerText = '风投波息';
+                windText.style.color = '#4fc3f7';
+            }
+            if (subText) subText.classList.add('hidden');
+        }
+        
+        setTimeout(() => {
+            this.beadActive = false;
+            btn.classList.remove('active');
+            if (indicator) {
+                const windText = document.getElementById('wind-text');
+                const subText = document.getElementById('wind-subtext');
+                if (windText) {
+                    windText.innerText = '风起大漠 ⭆';
+                    windText.style.color = 'rgba(255,255,255,0.4)';
+                }
+                if (subText) subText.classList.remove('hidden');
+            }
+        }, duration);
+    }
+    
+    useCompass() {
+        if (puzzle) {
+            puzzle.showImage(true);
+        }
+    }
+
+    useUmbrella() {
+        if (!this.gm.currentLevel.evt.includes('blurring')) {
+            this.gm.showNotice('晴空万里，画意通透，无需动用油纸伞。');
+            return;
+        }
+
+        this.umbrellaActive = !this.umbrellaActive;
+        const btn = document.getElementById('item-umbrella');
+        btn.classList.toggle('active', this.umbrellaActive);
+        
+        if (puzzle) puzzle.drawPolyPieces();
+    }
+
+    updateMirrorReveal(mx, my) {
+        if (!puzzle || !this.mirrorActive) return;
+        
+        // Check if we found a piece
+        const puzzleRect = puzzle.container.getBoundingClientRect();
+        const localX = mx - puzzleRect.left;
+        const localY = my - puzzleRect.top;
+        
+        const pp = puzzle.polyPieces.find(p => p.isPointInPath({x: localX, y: localY}));
+        
+        if (this.hoveredMirrorPiece !== pp) {
+            this.hoveredMirrorPiece = pp;
+            puzzle.drawPolyPieces(); // This will trigger drawImage which handles the fake effect
+        }
+    }
+
+    useShovel() {
+        this.shovelActive = !this.shovelActive;
+        
+        const btn = document.getElementById('item-shovel');
+        if (this.shovelActive) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+            if (puzzle) puzzle.drawPolyPieces(); // Clear the reveal circle
+        }
+    }
+
+    updateShovelMirror(mx, my) {
+        if (!puzzle || !this.shovelActive) return;
+        
+        if (this.gm.currentLevel.evt.includes('drifting') && !this.beadActive) {
+            return; // Effect is suppressed by sandstorm
+        }
+
+        // logic moved to drawShovelReveal for consistent main-loop rendering
+        puzzle.drawPolyPieces();
+    }
+
+    drawShovelReveal() {
+        if (!puzzle || !this.shovelActive) return;
+        
+        // Find if a piece is under cursor using stored coordinates
+        const hoveredPiece = puzzle.polyPieces.find(p => p.isPointInPath({x: this.mouseX, y: this.mouseY}));
+        if (!hoveredPiece) return;
+
+        const level = (this.gm.itemLevels && this.gm.itemLevels.shovel) || 1;
+        const radius = [100, 180, 280][level - 1];
+        
+        const ctx = puzzle.playCtx;
+        ctx.save();
+        
+        // Center of the reveal (current physical position of the piece)
+        const displayCenter = hoveredPiece.fromSrcMatrix.transformPoint(hoveredPiece.pCentre);
+        
+        // Draw the reveal circle at the piece's center
+        const circle = new Path2D();
+        circle.arc(displayCenter.x, displayCenter.y, radius, 0, Math.PI * 2);
+        ctx.clip(circle);
+        
+        // REVEAL LOGIC: 
+        // Move to bottom layer so it doesn't cover the puzzle piece
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.globalAlpha = 0.5; // Slightly increased for visibility
+        
+        const scale = puzzle.scale;
+        ctx.setTransform(scale, 0, 0, scale, displayCenter.x - hoveredPiece.pCentre.x * scale, displayCenter.y - hoveredPiece.pCentre.y * scale);
+        
+        ctx.drawImage(puzzle.srcImage, 0, 0);
+        
+        // Clear transform and effect for border (Border should be on top)
+        ctx.resetTransform();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 1.0;
+        ctx.strokeStyle = 'rgba(212, 175, 55, 0.7)';
+        ctx.lineWidth = 3;
+        ctx.stroke(circle);
+        
+        ctx.restore();
+    }
+}

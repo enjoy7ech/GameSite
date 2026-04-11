@@ -1,1 +1,307 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>丹青遗珍：古画修复大师</title><link rel="stylesheet" href="./css/style.css"></head><body><div id="forPuzzle"></div><div id="game-overlay"><header class="glass-header" id="main-header" style="position:absolute;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;box-sizing:border-box;z-index:60"><div class="stats" style="display:flex;gap:20px;align-items:center"><div class="coins" style="white-space:nowrap;display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.1rem">🪙 古钱币 <span id="coins-display" style="color:#fff;font-size:1.3rem">200</span></div><div class="timer hidden" id="hud-timer" style="white-space:nowrap;font-weight:700;font-size:1.1rem;color:#ccc">⏱ 时间: <span id="timer-display" style="color:#fff">00:00</span></div></div><div class="chapter-info hidden" id="hud-chapter"><span id="current-chapter-name" style="font-weight:700;font-size:1.2rem;color:#d4af37">第一章：寻遗</span></div><div class="actions" style="display:flex;gap:15px;align-items:center"><button id="btn-open-shop" class="btn-primary" style="width:auto;margin-top:0;padding:8px 20px;font-size:1rem">珍宝阁</button> <button id="btn-pause" class="btn-secondary hidden" style="padding:8px 12px;font-size:1rem;margin-top:0;min-width:80px">⏸ 暂停</button></div></header><div id="shop-modal" class="glass-panel hidden" style="position:absolute;width:60%;max-width:600px;left:50%;top:50%;transform:translate(-50%,-50%);z-index:300;padding:30px"><h2 style="font-family:'Ma Shan Zheng',cursive;font-size:2.5rem;color:#d4af37;margin:0 0 5px 0;text-align:center">珍宝阁</h2><p class="sub-title" style="margin-bottom:20px;text-align:center">此处可使用古钱币结缘法宝。法宝经久不衰，只需购入一次。</p><div class="shop-grid"><div class="shop-card"><div class="item-icon censer"></div><h4>焚香炉</h4><p>自动吸附相邻残片。<br>靠独立拼合充能，升级增加吸附数并降低耗能。</p><div class="shop-group"><button class="btn-buy" data-id="censer">400 币</button> <button class="btn-upgrade hidden" data-id="censer-upg">升级 (Lv.1)</button></div></div><div class="shop-card"><div class="item-icon brush"></div><h4>灵笔</h4><p>自动矫正残片角度。<br>靠独立拼合充能，升级增强效力并降低能级。</p><div class="shop-group"><button class="btn-buy" data-id="brush">250 币</button> <button class="btn-upgrade hidden" data-id="brush-upg">升级 (Lv.1)</button></div></div><div class="shop-card"><div class="item-icon shovel"></div><h4>洛阳铲</h4><p>悬浮拼图上可探测周围图案。</p><div class="shop-group"><button class="btn-buy" data-id="shovel">300 币</button> <button class="btn-upgrade hidden" data-id="shovel-upg">升级 (Lv.1)</button></div></div><div class="shop-card"><div class="item-icon lamp"></div><h4>琉璃灯</h4><p>在迷雾中驱散视界上的浓雾。</p><div class="shop-group"><button class="btn-buy" data-id="lamp">500 币</button> <button class="btn-upgrade hidden" data-id="lamp-upg">升级 (Lv.1)</button></div></div><div class="shop-card"><div class="item-icon mirror"></div><h4>明心鉴</h4><p>鉴别真伪干扰碎片。<br>升级后极速充能，精准标记 1 枚伪作。</p><div class="shop-group"><button class="btn-buy" data-id="mirror">800 币</button> <button class="btn-upgrade hidden" data-id="mirror-upg">升级 (Lv.1)</button></div></div><div class="shop-card"><div class="item-icon bead"></div><h4>定风珠</h4><p>锁死受风力影响严重的碎片，使其无法偏移和旋转。</p><div class="shop-group"><button class="btn-buy" data-id="bead">600 币</button> <button class="btn-upgrade hidden" data-id="bead-upg">升级 (Lv.1)</button></div></div></div><button id="btn-close-shop" class="btn-primary" style="margin-top:20px">离开珍宝阁</button></div><div id="fog-overlay" class="hidden"></div><div id="start-screen" class="glass-panel active" style="margin-top:60px"><div class="title-container"><h1 class="main-title">丹青遗珍</h1><p class="sub-title">古画修复大师 · Paintings of the Past</p><div class="divider"></div></div><div class="level-select"><div class="chapter-tabs"><div class="chapter-tab active" data-chapter="1">第一章</div><div class="chapter-tab" data-chapter="2">第二章</div><div class="chapter-tab" data-chapter="3">第三章</div><div class="chapter-tab" data-chapter="4">第四章</div></div><div id="level-list" class="levels-container"></div></div></div><div id="environment-overlay" class="hidden" style="position:absolute;inset:0;pointer-events:none;z-index:45"><div id="wind-indicator" class="hidden" style="position:absolute;top:80px;left:50%;transform:translateX(-50%);font-family:'Ma Shan Zheng';text-align:center"><div id="wind-text" style="color:rgba(255,255,255,.4);font-size:1.5rem;letter-spacing:5px">风起大漠 ⭆</div><div id="wind-subtext" style="color:#d4af37;font-size:1rem;margin-top:8px">飞沙迷眼，洛阳铲失效</div></div><div id="environment-particles" style="position:absolute;inset:0"></div></div><div id="game-over-screen" class="glass-panel hidden"><h2 class="main-title">修复完成！</h2><p id="game-over-text" class="sub-title"></p><button id="btn-restart" class="btn-primary">返回工坊</button></div><div id="pause-menu" class="glass-panel hidden" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:500;width:300px;padding:40px;text-align:center;border:1px solid rgba(212,175,55,.4)"><h2 class="main-title" style="font-size:2.2rem;margin-bottom:30px;letter-spacing:4px">书斋小憩</h2><div style="display:flex;flex-direction:column;gap:18px"><button id="btn-resume" class="btn-primary" style="width:100%">回到案台</button> <button id="btn-back-home" class="btn-secondary" style="width:100%">撤离案台</button> <button id="btn-exit-game" class="btn-secondary" style="width:100%;border-color:rgba(140,40,40,.6);color:#f99">退出游戏</button></div></div><div id="notice-modal" class="glass-panel hidden" style="position:absolute;width:300px;left:50%;top:40%;transform:translate(-50%,-50%);z-index:400;padding:20px;text-align:center;border:2px solid #d4af37"><div id="notice-text" style="color:#fff;margin-bottom:20px;font-size:1.1rem;line-height:1.5"></div><button id="btn-notice-close" class="btn-primary" style="margin-top:0;padding:8px 30px">知晓</button></div><div id="item-hud" class="item-tray hidden"><div id="item-tray-toggle" class="item-tray-handle" title="收起/展开法宝栏">◈</div><button class="item-btn hidden" id="item-censer" title="焚香炉：使特定残片吸附周围逻辑邻居"><div class="item-shimmer"></div><div class="item-icon censer"></div><div class="item-info"><span class="item-name">焚香炉</span></div><div class="cd-overlay"></div></button> <button class="item-btn hidden" id="item-brush" title="灵笔：重置所有拼图角度"><div class="item-shimmer"></div><div class="item-icon brush"></div><div class="item-badge" id="item-brush-badge"></div><div class="item-info"><span class="item-name">灵笔</span></div><div class="cd-overlay"></div></button> <button class="item-btn hidden" id="item-shovel" title="洛阳铲：悬浮探测周围图案"><div class="item-shimmer"></div><div class="item-icon shovel"></div><div class="item-badge" id="item-shovel-badge"></div><div class="item-info"><span class="item-name">洛阳铲</span></div><div class="cd-overlay"></div></button> <button class="item-btn hidden" id="item-lamp" title="琉璃提灯：驱散案台周围迷雾"><div class="item-shimmer"></div><div class="item-icon lamp"></div><div class="item-badge" id="item-lamp-badge"></div><div class="item-info"><span class="item-name">琉璃灯</span></div><div class="cd-overlay"></div></button> <button class="item-btn hidden" id="item-mirror" title="明心鉴：短时间内洞察赝品"><div class="item-shimmer"></div><div class="item-icon mirror"></div><div class="item-badge" id="item-mirror-badge"></div><div class="item-info"><span class="item-name">明心鉴</span></div><div class="cd-overlay"></div></button> <button class="item-btn hidden" id="item-bead" title="定风珠：止息大漠狂风与偏移"><div class="item-shimmer"></div><div class="item-icon bead"></div><div class="item-badge" id="item-bead-badge"></div><div class="item-info"><span class="item-name">定风珠</span></div><div class="cd-overlay"></div></button></div></div><div id="hidden-engine-ui" style="display:none"><button id="default"></button> <button id="load"></button> <button id="help"></button> <button id="start"></button> <button id="stop"></button> <button id="save"></button> <button id="restore"></button> <button id="fsave"></button> <button id="frestore"></button> <button id="helpstorage"></button> <button id="helpfile"></button> <button id="show"></button> <select id="rotationstep"><option value="0"></option><option value="6" selected="selected"></option></select> <select id="shape"><option value="1" selected="selected"></option></select> <select id="nbpieces"><option value="12"></option><option value="25" selected="selected"></option><option value="50"></option><option value="100"></option></select> <select id="drawmode"><option value="1" selected="selected"></option></select> <input id="saveas"><span id="saveext"></span><div id="menu"><p id="controls"></p><div id="showhide"></div></div></div><script type="module" src="./js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丹青遗珍：古画修复大师</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div id="forPuzzle"></div>
+
+    <!-- Our Custom Premium UI Overlay -->
+    <div id="game-overlay">
+        <!-- Unified Header -->
+        <header class="glass-header" id="main-header"
+            style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; z-index: 60;">
+            <div class="stats" style="display: flex; gap: 20px; align-items: center;">
+                <div class="coins"
+                    style="white-space: nowrap; display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 1.1rem;">
+                    🪙 古钱币 <span id="coins-display" style="color: white; font-size: 1.3rem;">200</span></div>
+                <div class="timer hidden" id="hud-timer"
+                    style="white-space: nowrap; font-weight: bold; font-size: 1.1rem; color: #ccc;">⏱ 时间: <span
+                        id="timer-display" style="color: white;">00:00</span></div>
+            </div>
+
+            <div class="chapter-info hidden" id="hud-chapter">
+                <span id="current-chapter-name"
+                    style="font-weight: bold; font-size: 1.2rem; color: #d4af37;">第一章：寻遗</span>
+            </div>
+
+            <div class="actions" style="display: flex; gap: 15px; align-items: center;">
+                <button id="btn-open-shop" class="btn-primary"
+                    style="width: auto; margin-top: 0; padding: 8px 20px; font-size: 1rem;">珍宝阁</button>
+                <button id="btn-pause" class="btn-secondary hidden"
+                    style="padding: 8px 12px; font-size: 1rem; margin-top: 0; min-width: 80px;">⏸ 暂停</button>
+            </div>
+        </header>
+
+        <!-- Shop Modal -->
+        <div id="shop-modal" class="glass-panel hidden"
+            style="position: absolute; width: 60%; max-width: 600px; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 300; padding: 30px;">
+            <h2
+                style="font-family: 'Ma Shan Zheng', cursive; font-size: 2.5rem; color: #d4af37; margin: 0 0 5px 0; text-align: center;">
+                珍宝阁</h2>
+            <p class="sub-title" style="margin-bottom: 20px; text-align: center;">此处可使用古钱币结缘法宝。法宝经久不衰，只需购入一次。</p>
+
+            <div class="shop-grid">
+                <div class="shop-card">
+                    <div class="item-icon compass"></div>
+                    <h4>寻龙尺</h4>
+                    <p>相传可寻天下龙脉。点击后可显现完整古画（一次性购买，不可升级）。</p>
+                    <div class="shop-group">
+                        <button class="btn-buy" data-id="compass">1000 币</button>
+                    </div>
+                </div>
+                <div class="shop-card">
+                    <div class="item-icon censer"></div>
+                    <h4>焚香炉</h4>
+                    <p>自动吸附相邻残片。<br>靠独立拼合充能，升级增加吸附数并降低耗能。</p>
+                    <div class="shop-group">
+                        <button class="btn-buy" data-id="censer">400 币</button>
+                        <button class="btn-upgrade hidden" data-id="censer-upg">升级 (Lv.1)</button>
+                    </div>
+                </div>
+                <div class="shop-card">
+                    <div class="item-icon brush"></div>
+                    <h4>灵笔</h4>
+                    <p>自动矫正残片角度。<br>靠独立拼合充能，升级增强效力并降低能级。</p>
+                    <div class="shop-group">
+                        <button class="btn-buy" data-id="brush">250 币</button>
+                        <button class="btn-upgrade hidden" data-id="brush-upg">升级 (Lv.1)</button>
+                    </div>
+                </div>
+                <div class="shop-card">
+                    <div class="item-icon shovel"></div>
+                    <h4>洛阳铲</h4>
+                    <p>悬浮拼图上可探测周围图案。</p>
+                    <div class="shop-group">
+                        <button class="btn-buy" data-id="shovel">300 币</button>
+                        <button class="btn-upgrade hidden" data-id="shovel-upg">升级 (Lv.1)</button>
+                    </div>
+                </div>
+                <div class="shop-card">
+                    <div class="item-icon lamp"></div>
+                    <h4>琉璃灯</h4>
+                    <p>在迷雾中驱散视界上的浓雾。</p>
+                    <div class="shop-group">
+                        <button class="btn-buy" data-id="lamp">500 币</button>
+                        <button class="btn-upgrade hidden" data-id="lamp-upg">升级 (Lv.1)</button>
+                    </div>
+                </div>
+                <div class="shop-card">
+                    <div class="item-icon mirror"></div>
+                    <h4>明心鉴</h4>
+                    <p>鉴别真伪干扰碎片。<br>升级后极速充能，精准标记 1 枚伪作。</p>
+                    <div class="shop-group">
+                        <button class="btn-buy" data-id="mirror">800 币</button>
+                        <button class="btn-upgrade hidden" data-id="mirror-upg">升级 (Lv.1)</button>
+                    </div>
+                </div>
+                <div class="shop-card">
+                    <div class="item-icon bead"></div>
+                    <h4>定风珠</h4>
+                    <p>锁死受风力影响严重的碎片，使其无法偏移和旋转。</p>
+                    <div class="shop-group">
+                        <button class="btn-buy" data-id="bead">600 币</button>
+                        <button class="btn-upgrade hidden" data-id="bead-upg">升级 (Lv.1)</button>
+                    </div>
+                </div>
+
+                <div class="shop-card">
+                    <div class="item-icon umbrella"></div>
+                    <h4>油纸伞</h4>
+                    <p>避雨遮泥。在模糊关卡中撑开一片清晰区域。<br>升级可扩大遮护范围。</p>
+                    <div class="shop-group">
+                        <button class="btn-buy" data-id="umbrella">700 币</button>
+                        <button class="btn-upgrade hidden" data-id="umbrella-upg">升级 (Lv.1)</button>
+                    </div>
+                </div>
+
+            </div>
+            <button id="btn-close-shop" class="btn-primary" style="margin-top: 20px;">离开珍宝阁</button>
+        </div>
+
+        <!-- Fog Overlay -->
+        <div id="fog-overlay" class="hidden"></div>
+
+        <!-- Start Screen / Menu -->
+        <div id="start-screen" class="glass-panel active" style="margin-top: 60px;">
+            <div class="title-container">
+                <h1 class="main-title">丹青遗珍</h1>
+                <p class="sub-title">古画修复大师 · Paintings of the Past</p>
+                <div class="divider"></div>
+            </div>
+
+            <div class="level-select">
+                <div class="chapter-tabs">
+                    <div class="chapter-tab active" data-chapter="1">第一章</div>
+                    <div class="chapter-tab" data-chapter="2">第二章</div>
+                    <div class="chapter-tab" data-chapter="3">第三章</div>
+                    <div class="chapter-tab" data-chapter="4">第四章</div>
+                    <div class="chapter-tab" data-chapter="5">第五章</div>
+                </div>
+
+                <div id="level-list" class="levels-container">
+                    <!-- Levels injected by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Global Environment Overlay (for Wind/Rain particles) -->
+        <div id="environment-overlay" class="hidden"
+            style="position: absolute; inset: 0; pointer-events: none; z-index: 45;">
+            <div id="wind-indicator" class="hidden"
+                style="position: absolute; top: 80px; left: 50%; transform: translateX(-50%); font-family: 'Ma Shan Zheng'; text-align: center;">
+                <div id="wind-text" style="color: rgba(255,255,255,0.4); font-size: 1.5rem; letter-spacing: 5px;">风起大漠 ⭆
+                </div>
+                <div id="wind-subtext" style="color: #d4af37; font-size: 1rem; margin-top: 8px;">飞沙迷眼，洛阳铲失效</div>
+            </div>
+            <div id="environment-particles" style="position: absolute; inset: 0;"></div>
+        </div>
+
+        <div id="game-over-screen" class="glass-panel hidden">
+            <h2 class="main-title">修复完成！</h2>
+            <p id="game-over-text" class="sub-title"></p>
+            <button id="btn-restart" class="btn-primary">返回工坊</button>
+        </div>
+
+        <!-- System Menu / Pause Menu -->
+        <div id="pause-menu" class="glass-panel hidden"
+            style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 500; width: 300px; padding: 40px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.4);">
+            <h2 class="main-title" style="font-size: 2.2rem; margin-bottom: 30px; letter-spacing: 4px;">书斋小憩</h2>
+            <div style="display: flex; flex-direction: column; gap: 18px;">
+                <button id="btn-resume" class="btn-primary" style="width: 100%;">回到案台</button>
+                <button id="btn-back-home" class="btn-secondary" style="width: 100%;">撤离案台</button>
+                <button id="btn-exit-game" class="btn-secondary"
+                    style="width: 100%; border-color: rgba(140, 40, 40, 0.6); color: #f99;">退出游戏</button>
+            </div>
+        </div>
+
+        <!-- Custom Notice Modal (to replace alert) -->
+        <div id="notice-modal" class="glass-panel hidden"
+            style="position: absolute; width: 300px; left: 50%; top: 40%; transform: translate(-50%, -50%); z-index: 400; padding: 20px; text-align: center; border: 2px solid #d4af37;">
+            <div id="notice-text" style="color: white; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.5;"></div>
+            <button id="btn-notice-close" class="btn-primary" style="margin-top: 0; padding: 8px 30px;">知晓</button>
+        </div>
+
+        <!-- Item System HUD (Visible only during gameplay) -->
+        <div id="item-hud" class="item-tray hidden">
+            <div id="item-tray-toggle" class="item-tray-handle" title="收起/展开法宝栏">◈</div>
+            <!-- Items sorted by request -->
+            <button class="item-btn hidden" id="item-compass" title="寻龙尺：查看古画全貌">
+                <div class="item-shimmer"></div>
+                <div class="item-icon compass"></div>
+                <div class="item-info"><span class="item-name">寻龙尺</span></div>
+            </button>
+            <button class="item-btn hidden" id="item-censer" title="焚香炉：使特定残片吸附周围逻辑邻居">
+                <div class="item-shimmer"></div>
+                <div class="item-icon censer"></div>
+                <div class="item-info"><span class="item-name">焚香炉</span></div>
+                <div class="cd-overlay"></div>
+            </button>
+            <button class="item-btn hidden" id="item-brush" title="灵笔：重置所有拼图角度">
+                <div class="item-shimmer"></div>
+                <div class="item-icon brush"></div>
+                <div class="item-badge" id="item-brush-badge"></div>
+                <div class="item-info"><span class="item-name">灵笔</span></div>
+                <div class="cd-overlay"></div>
+            </button>
+            <button class="item-btn hidden" id="item-shovel" title="洛阳铲：悬浮探测周围图案">
+                <div class="item-shimmer"></div>
+                <div class="item-icon shovel"></div>
+                <div class="item-badge" id="item-shovel-badge"></div>
+                <div class="item-info"><span class="item-name">洛阳铲</span></div>
+                <div class="cd-overlay"></div>
+            </button>
+            <button class="item-btn hidden" id="item-lamp" title="琉璃提灯：驱散案台周围迷雾">
+                <div class="item-shimmer"></div>
+                <div class="item-icon lamp"></div>
+                <div class="item-badge" id="item-lamp-badge"></div>
+                <div class="item-info"><span class="item-name">琉璃灯</span></div>
+                <div class="cd-overlay"></div>
+            </button>
+            <button class="item-btn hidden" id="item-mirror" title="明心鉴：短时间内洞察赝品">
+                <div class="item-shimmer"></div>
+                <div class="item-icon mirror"></div>
+                <div class="item-badge" id="item-mirror-badge"></div>
+                <div class="item-info"><span class="item-name">明心鉴</span></div>
+                <div class="cd-overlay"></div>
+            </button>
+            <button class="item-btn hidden" id="item-bead" title="定风珠：止息大漠狂风与偏移">
+                <div class="item-shimmer"></div>
+                <div class="item-icon bead"></div>
+                <div class="item-badge" id="item-bead-badge"></div>
+                <div class="item-info"><span class="item-name">定风珠</span></div>
+                <div class="cd-overlay"></div>
+            </button>
+            <button class="item-btn hidden" id="item-umbrella" title="油纸伞：避雨清心，局部除雾">
+                <div class="item-shimmer"></div>
+                <div class="item-icon umbrella"></div>
+                <div class="item-info"><span class="item-name">油纸伞</span></div>
+            </button>
+        </div>
+        <!-- Snapshot Canvas for Transitions -->
+        <canvas id="transition-canvas" class="hidden"
+            style="position: absolute; inset: 0; z-index: 999; width: 100%; height: 100%; pointer-events: none; transition: filter 0.8s ease-out, opacity 0.8s ease-out;"></canvas>
+
+        <!-- Ink Loading Overlay -->
+        <div id="ink-loading" class="hidden"
+            style="position: absolute; inset: 0; background: #f4f1ea; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s;">
+            <div class="ink-blob-container"
+                style="position: relative; width: 200px; height: 200px; margin-bottom: 30px;">
+                <div class="ink-blob blob-1"></div>
+                <div class="ink-blob blob-2"></div>
+                <div class="ink-blob blob-3"></div>
+            </div>
+            <div class="loading-text"
+                style="font-family: 'Ma Shan Zheng'; font-size: 2.2rem; color: #333; letter-spacing: 6px; animation: text-fade 2s infinite;">
+                画卷铺展中...
+            </div>
+            <div style="margin-top: 15px; color: #888; letter-spacing: 2px; font-size: 0.9rem;">正在唤醒丹青之魂</div>
+        </div>
+    </div>
+
+    <!-- Hidden elements for Engine.js compatibility -->
+    <div id="hidden-engine-ui" style="display:none;">
+        <button id="default"></button>
+        <button id="load"></button>
+        <button id="help"></button>
+        <button id="start"></button>
+        <button id="stop"></button>
+        <button id="save"></button>
+        <button id="restore"></button>
+        <button id="fsave"></button>
+        <button id="frestore"></button>
+        <button id="helpstorage"></button>
+        <button id="helpfile"></button>
+        <button id="show"></button>
+        <select id="rotationstep">
+            <option value="0"></option>
+            <option value="6" selected></option>
+        </select>
+        <select id="shape">
+            <option value="1" selected></option>
+        </select>
+        <select id="nbpieces">
+            <option value="12"></option>
+            <option value="25" selected></option>
+            <option value="50"></option>
+            <option value="100"></option>
+        </select>
+        <select id="drawmode">
+            <option value="1" selected></option>
+        </select>
+        <input type="text" id="saveas"><span id="saveext"></span>
+        <div id="menu">
+            <p id="controls"></p>
+            <div id="showhide"></div>
+        </div>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
