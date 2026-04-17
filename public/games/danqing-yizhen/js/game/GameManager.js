@@ -57,6 +57,20 @@ export class GameManager {
         this.blurBaseRate = 0;
         this.blurredImage = null; // Pre-generated blurred texture
         this.levelBlur = 0; // Global level blur for Chapter 4
+        
+        // Audio Management
+        this.bgm = new Audio();
+        this.bgm.loop = true;
+        this.windSfx = new Audio('assets/audio/wind-sfx.mp3');
+        this.windSfx.loop = true;
+        this.rainSfx = new Audio('assets/audio/rain-and-thunder.mp3');
+        this.rainSfx.loop = true;
+        
+        // Volume States
+        this.bgmVolume = 0.5;
+        this.sfxVolume = 0.7;
+        
+        this.audioManualInteractionRequested = true; // Wait for first user click to start BGM due to browser policies
 
         this.bindEvents();
         this.loadData();
@@ -117,7 +131,31 @@ export class GameManager {
                     this._originalDrawV1(special);
                 }
 
-                // Handle Mirror Marks (Red Stripes)
+                // 1. Reveal Special Effect (Mirror Pulse)
+                if (this.isMirrorPulse) {
+                    const pDisp = this.fromSrcMatrix.transformPoint(this.pCentre);
+                    const pulse = (Date.now() % 1000) / 1000;
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.arc(pDisp.x, pDisp.y, 40 + pulse * 120, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(212, 175, 55, ${1 - pulse})`;
+                    ctx.lineWidth = 4;
+                    ctx.setLineDash([10, 5]);
+                    ctx.stroke();
+                    
+                    // Extra inner glow
+                    ctx.beginPath();
+                    ctx.arc(pDisp.x, pDisp.y, 20 + pulse * 60, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - pulse) * 0.5})`;
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    ctx.restore();
+                    
+                    // Force refresh during animation
+                    setTimeout(() => puzzle.drawPolyPieces(), 30);
+                }
+
+                // 2. Handle Mirror Marks (Red Stripes)
                 if (this.isFake && this.markedByMirror) {
                     ctx.save();
                     let pth = new Path2D();
@@ -183,10 +221,20 @@ export class GameManager {
                 if (data.highestLevelIndex !== undefined) this.highestLevelIndex = data.highestLevelIndex;
                 if (data.unlockedItems !== undefined) this.unlockedItems = data.unlockedItems;
                 if (data.itemLevels !== undefined) this.itemLevels = data.itemLevels;
+                if (data.bgmVolume !== undefined) this.bgmVolume = data.bgmVolume;
+                if (data.sfxVolume !== undefined) this.sfxVolume = data.sfxVolume;
             } catch (e) {
                 console.error("Failed to parse save data");
             }
         }
+
+        this.applyVolumes();
+        
+        // Sync sliders in UI
+        const bgmSlider = document.getElementById('volume-bgm');
+        const sfxSlider = document.getElementById('volume-sfx');
+        if (bgmSlider) bgmSlider.value = this.bgmVolume;
+        if (sfxSlider) sfxSlider.value = this.sfxVolume;
 
         this.updateHUD();
         Object.keys(this.unlockedItems).forEach(id => {
@@ -217,7 +265,9 @@ export class GameManager {
             coins: this.coins,
             highestLevelIndex: this.highestLevelIndex,
             unlockedItems: this.unlockedItems,
-            itemLevels: this.itemLevels
+            itemLevels: this.itemLevels,
+            bgmVolume: this.bgmVolume,
+            sfxVolume: this.sfxVolume
         };
         localStorage.setItem('void_relics_save_v1', JSON.stringify(data));
     }
@@ -243,12 +293,15 @@ export class GameManager {
         // Intercept all interactions when paused to freeze the engine's state
         const blockInteraction = (e) => {
             if (this.isPaused) {
+                // Allow interactions with any UI elements (headers, modals, panels)
+                if (e.target.closest('.glass-header') || e.target.closest('.glass-panel')) return;
+                
                 e.stopImmediatePropagation();
                 e.preventDefault();
             }
         };
         ['mousedown', 'mousemove', 'mouseup', 'wheel', 'touchstart', 'touchmove', 'touchend'].forEach(type => {
-            document.addEventListener(type, blockInteraction, true);
+            document.addEventListener(type, blockInteraction, { capture: true, passive: false });
         });
 
         document.getElementById('btn-open-shop').addEventListener('click', () => {
@@ -285,6 +338,76 @@ export class GameManager {
                 fog.style.webkitMaskImage = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, transparent 0px, black 50px)`;
             }
         });
+
+        // Volume Sliders
+        const bgmSlider = document.getElementById('volume-bgm');
+        const sfxSlider = document.getElementById('volume-sfx');
+        if (bgmSlider) {
+            bgmSlider.addEventListener('input', (e) => {
+                this.bgmVolume = parseFloat(e.target.value);
+                this.applyVolumes();
+                this.saveData();
+            });
+        }
+        if (sfxSlider) {
+            sfxSlider.addEventListener('input', (e) => {
+                this.sfxVolume = parseFloat(e.target.value);
+                this.applyVolumes();
+                this.saveData();
+            });
+        }
+
+        // Handle Audio Resume on First Click
+        const resumeAudio = () => {
+            if (this.audioManualInteractionRequested) {
+                this.audioManualInteractionRequested = false;
+                this.playBGM('assets/audio/c1.mp3');
+                document.removeEventListener('mousedown', resumeAudio);
+                document.removeEventListener('keydown', resumeAudio);
+            }
+        };
+        document.addEventListener('mousedown', resumeAudio);
+        document.addEventListener('keydown', resumeAudio);
+    }
+
+    playBGM(src) {
+        const fullSrc = src.startsWith('http') ? src : window.location.origin + window.location.pathname.replace('index.html', '') + src;
+        if (this.bgm.src === fullSrc) return;
+        
+        this.bgm.src = src;
+        this.bgm.play().catch(e => console.log("BGM autoplay prevented:", e));
+    }
+
+    stopBGM() {
+        this.bgm.pause();
+    }
+
+    applyVolumes() {
+        if (this.bgm) this.bgm.volume = this.bgmVolume;
+        if (this.windSfx) this.windSfx.volume = this.sfxVolume;
+        if (this.rainSfx) this.rainSfx.volume = this.sfxVolume;
+    }
+
+    playWindSfx() {
+        if (this.windSfx.paused) {
+            this.windSfx.currentTime = 0;
+            this.windSfx.play().catch(e => console.log("Wind Sfx autoplay prevented:", e));
+        }
+    }
+
+    stopWindSfx() {
+        this.windSfx.pause();
+    }
+
+    playRainSfx() {
+        if (this.rainSfx.paused) {
+            this.rainSfx.currentTime = 0;
+            this.rainSfx.play().catch(e => console.log("Rain Sfx autoplay prevented:", e));
+        }
+    }
+
+    stopRainSfx() {
+        this.rainSfx.pause();
     }
 
     togglePause() {
@@ -293,9 +416,18 @@ export class GameManager {
         if (this.isPaused) {
             this.stopTimer();
             this.stopEnvUpdate();
+            this.stopWindSfx();
+            this.stopRainSfx();
         } else {
             this.startTimer();
             this.startEnvUpdate();
+            // Resume sfx if applicable
+            if (this.currentLevel && this.currentLevel.evt.includes('drifting') && !this.itemSystem.beadActive) {
+                this.playWindSfx();
+            }
+            if (this.currentLevel && this.currentLevel.evt.includes('blurring')) {
+                this.playRainSfx();
+            }
         }
     }
 
@@ -349,6 +481,20 @@ export class GameManager {
         document.getElementById('environment-overlay').classList.add('hidden');
         this.fogActive = false;
         document.getElementById('forPuzzle').style.opacity = '0';
+
+        this.playBGM('assets/audio/c1.mp3');
+        this.stopWindSfx();
+        this.stopRainSfx();
+
+        // Memory Cleanup
+        this.blurredImage = null; 
+        const trCanvas = document.getElementById('transition-canvas');
+        if (trCanvas) {
+            const ctx = trCanvas.getContext('2d');
+            ctx.clearRect(0, 0, trCanvas.width, trCanvas.height);
+            trCanvas.width = 1;
+            trCanvas.height = 1;
+        }
 
         events.push({ event: 'stop' });
     }
@@ -443,22 +589,57 @@ export class GameManager {
             particles.style.transform = `translate(-50%, -50%) rotate(${deg + 180}deg)`;
             particles.style.left = '50%';
             particles.style.top = '50%';
-
-            const windIndicator = document.getElementById('wind-text');
-            if (windIndicator) {
-                // Simplified arrow logic: ⮕ is 0deg, so we map deg directly
-                const arrows = ['⮕', '⬇', '⬅', '⬆'];
-                const arrowIdx = (Math.round(deg / 90) % 4 + 4) % 4;
-                windIndicator.innerText = `风起大漠 ${arrows[arrowIdx]}`;
-            }
         }
 
+        const isFake = level.evt.includes('fake');
+
         const env = document.getElementById('environment-overlay');
-        env.classList.toggle('hidden', !isDrift && !isBlur);
-        document.getElementById('wind-indicator').classList.toggle('hidden', !isDrift);
+        env.classList.toggle('hidden', !isDrift && !isBlur && !isFake);
+        
+        // Handle Indicators
+        const windIndicator = document.getElementById('wind-indicator');
+        const windText = document.getElementById('wind-text');
+        const subText = document.getElementById('wind-subtext');
+        
+        windIndicator.classList.toggle('hidden', !isDrift && !isBlur);
+        document.getElementById('fake-indicator').classList.toggle('hidden', !isFake);
+
+        if (isDrift && isBlur) {
+            const deg = (this.windAngle * 180 / Math.PI);
+            const arrows = ['⮕', '⬇', '⬅', '⬆'];
+            const arrowIdx = (Math.round(deg / 90) % 4 + 4) % 4;
+            if (windText) windText.innerText = `狂风骤雨 ${arrows[arrowIdx]}`;
+            if (subText) subText.innerText = '风沙与落墨齐袭，前路难辨';
+        } else if (isDrift) {
+            const deg = (this.windAngle * 180 / Math.PI);
+            const arrows = ['⮕', '⬇', '⬅', '⬆'];
+            const arrowIdx = (Math.round(deg / 90) % 4 + 4) % 4;
+            if (windText) windText.innerText = `风起大漠 ${arrows[arrowIdx]}`;
+            if (subText) subText.innerText = '飞沙迷眼，洛阳铲失效';
+        } else if (isBlur) {
+            if (windText) windText.innerText = '墨染烟雨 🌧';
+            if (subText) subText.innerText = '烟雨蒙蒙，墨迹延散';
+        }
 
         particles.classList.toggle('raining', isBlur);
         particles.classList.toggle('sanding', isDrift);
+
+        // BGM Switch
+        this.playBGM('assets/audio/c1.mp3');
+
+        // Wind Sfx
+        if (isDrift && !this.itemSystem.beadActive) {
+            this.playWindSfx();
+        } else {
+            this.stopWindSfx();
+        }
+
+        // Rain Sfx
+        if (isBlur) {
+            this.playRainSfx();
+        } else {
+            this.stopRainSfx();
+        }
 
         // Show Ink Loading Overlay
         const loading = document.getElementById('ink-loading');
@@ -528,6 +709,7 @@ export class GameManager {
         this.isPlaying = true;
         this.isPaused = false;
         this.isOvertime = false;
+        this.timerSeconds = level.time;
         this.itemSystem.resetLevelState();
         this.startTimer();
         this.updateHUD();
@@ -674,39 +856,103 @@ export class GameManager {
         if (!puzzle || !puzzle.polyPieces || puzzle.polyPieces.length === 0) return;
 
         const allPieces = puzzle.polyPieces;
-        const allPositions = allPieces.map(p => ({ x: p.x, y: p.y }));
-        const allRotations = allPieces.map(p => p.rot);
+        const n = allPieces.length;
+        const scale = puzzle.scale || 1;
+        const nbRot = puzzle.nbRot || 4;
 
-        // Fisher-Yates piece identities
-        for (let i = allPieces.length - 1; i > 0; i--) {
+        const cx = puzzle.contWidth / 2;
+        const cy = puzzle.contHeight / 2;
+        
+        // Define the central hole (mandatory empty area)
+        const holeW = (puzzle.srcWidth || 800) * scale;
+        const holeH = (puzzle.srcHeight || 600) * scale;
+
+        // 1. Randomize order
+        for (let i = n - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [allPieces[i], allPieces[j]] = [allPieces[j], allPieces[i]];
         }
 
-        // Re-assign positions and randomize all rotations (for non-fixed pieces)
-        allPieces.forEach((p, i) => {
-            // Apply a subtle centering force (15%) to keep pieces from flying to edges
-            const cx = puzzle.contWidth / 2;
-            const cy = puzzle.contHeight / 2;
-            const tx = cx + (allPositions[i].x - cx) * 0.85;
-            const ty = cy + (allPositions[i].y - cy) * 0.85;
+        // Initialize with central forbidden hole
+        const placed = [{ cx: cx, cy: cy, w: holeW, h: holeH }];
+        
+        // Characteristic dimension for spiral scaling
+        const avgDim = Math.sqrt((puzzle.contWidth * puzzle.contHeight * 0.4) / (n || 1));
+        const startRadius = Math.max(holeW, holeH) * 0.5 + avgDim * 0.5;
 
-            p.moveTo(tx, ty);
-            // Only randomize rotation if the level allows it
-            if (puzzle.rotationStep > 0) {
-                if (p.rot !== 0 || Math.random() > 0.3) {
-                    p.rot = Math.floor(Math.random() * puzzle.nbRot);
+        // 2. Pure Systematic Spiral Packing
+        allPieces.forEach(p => {
+            // Randomize rotation
+            p.rot = (puzzle.rotationStep > 0) ? Math.floor(Math.random() * nbRot) : 0;
+            const angle = p.rot * (2 * Math.PI / nbRot);
+            const cosA = Math.cos(angle);
+            const sinA = Math.sin(angle);
+
+            // Calculate exact rotated footprint
+            const uw = (p.maxx - p.minx) * scale;
+            const uh = (p.maxy - p.miny) * scale;
+            const pw = Math.abs(uw * cosA) + Math.abs(uh * sinA);
+            const ph = Math.abs(uw * sinA) + Math.abs(uh * cosA);
+            const imgCX = (p.minx + p.maxx) / 2;
+            const imgCY = (p.miny + p.maxy) / 2;
+
+            let finalX = cx, finalY = cy;
+            let foundSafeSpot = false;
+            
+            // Search outwards in a precise systematic spiral
+            let step = 0;
+            const maxSteps = Math.max(3000, n * 20); // Scale search depth with piece count
+            
+            while (!foundSafeSpot && step < maxSteps) {
+                // Fermat's Spiral for uniform density: r = c * sqrt(theta)
+                // Using a fine-grained theta increment (0.15 radians)
+                const theta = step * 0.15;
+                const r = startRadius + Math.sqrt(theta) * (avgDim * 0.6);
+                const testCX = cx + Math.cos(theta) * r;
+                const testCY = cy + Math.sin(theta) * r;
+                
+                let overlap = false;
+                for (let other of placed) {
+                    const dx = Math.abs(testCX - other.cx);
+                    const dy = Math.abs(testCY - other.cy);
+                    // Use a generous 0.58 margin to handle interlocking tabs
+                    if (dx < (pw + other.w) * 0.58 && dy < (ph + other.h) * 0.58) {
+                        overlap = true;
+                        break;
+                    }
                 }
-            } else {
-                p.rot = 0;
+
+                if (!overlap) {
+                    finalX = testCX;
+                    finalY = testCY;
+                    foundSafeSpot = true;
+                }
+                step++;
             }
+
+            // Absolute fallback (should not be triggered with high maxSteps)
+            if (!foundSafeSpot) {
+                const angleFallback = Math.random() * Math.PI * 2;
+                finalX = cx + Math.cos(angleFallback) * (startRadius * 2);
+                finalY = cy + Math.sin(angleFallback) * (startRadius * 2);
+            }
+
+            // Origin compensation to align visual center with target spot
+            const offsetX = (imgCX * cosA - imgCY * sinA) * scale;
+            const offsetY = (imgCX * sinA + imgCY * cosA) * scale;
+            p.moveTo(finalX - offsetX, finalY - offsetY);
+            
+            placed.push({ cx: finalX, cy: finalY, w: pw, h: ph });
+            p.setTransforms();
         });
 
         puzzle.drawPolyPieces();
     }
 
+
+
     startTimer() {
-        this.timerSeconds = this.currentLevel.time;
+        if (!this.currentLevel) return;
         this.updateTimerDisplay();
         if (this.timerInterval) clearInterval(this.timerInterval);
         this.timerInterval = setInterval(() => {

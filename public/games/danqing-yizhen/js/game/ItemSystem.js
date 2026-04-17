@@ -383,7 +383,7 @@ export class ItemSystem {
                 if (isNeighborGroup) break;
             }
 
-            if (isNeighborGroup) {
+            if (isNeighborGroup && !other.isFake) {
                 neighbors.push(other);
             }
         }
@@ -534,14 +534,59 @@ export class ItemSystem {
         this.charges.mirror = 0;
         this.updateChargeUI('mirror', this.chargeMax.mirror[level - 1]);
 
-        // Select 1 random unmarked fake and mark it
+        // Select 1 random unmarked fake
         const target = unmarkedFakes[Math.floor(Math.random() * unmarkedFakes.length)];
-        target.markedByMirror = true;
-        target.isItemHighlight = true; // Briefly pulse red
+        
+        // 1. Calculate Pan Direction
+        const canvasRect = puzzle.playCanvas.getBoundingClientRect();
+        const screenCenterX = puzzle.contWidth / 2;
+        const screenCenterY = puzzle.contHeight / 2;
+        
+        const pieceDisplayCenter = target.fromSrcMatrix.transformPoint(target.pCentre);
+        
+        const totalDx = screenCenterX - pieceDisplayCenter.x;
+        const totalDy = screenCenterY - pieceDisplayCenter.y;
 
-        if (puzzle) puzzle.drawPolyPieces();
-        // Reduced notice frequency: only show if level is 1
-        if (level === 1) this.gm.showNotice(`明心鉴显灵，已标记 1 处伪作。`);
+        // 2. Animate Camera Sweep
+        const duration = 800; // ms
+        const startTime = performance.now();
+        let lastProgress = 0;
+
+        const panStep = (now) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(1, elapsed / duration);
+            const ease = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+            
+            const currentMoveProgress = ease - lastProgress;
+            lastProgress = ease;
+
+            const dx = totalDx * currentMoveProgress;
+            const dy = totalDy * currentMoveProgress;
+
+            puzzle.sweepBy(dx, dy);
+
+            if (progress < 1) {
+                requestAnimationFrame(panStep);
+            } else {
+                // 3. Reveal and Effect
+                target.markedByMirror = true;
+                target.isItemHighlight = true;
+                target.isMirrorPulse = true; // New special flag for intense glow
+                
+                // Show floating text at piece location
+                this.gm.showNotice(`明心鉴显灵，破除伪象！`);
+                
+                if (puzzle) puzzle.drawPolyPieces();
+
+                // Clear heavy pulse after some time
+                setTimeout(() => {
+                    target.isMirrorPulse = false;
+                    if (puzzle) puzzle.drawPolyPieces();
+                }, 2000);
+            }
+        };
+
+        requestAnimationFrame(panStep);
     }
 
     useBead() {
@@ -568,6 +613,9 @@ export class ItemSystem {
             }
             if (subText) subText.classList.add('hidden');
         }
+
+        // Pause wind sound
+        this.gm.stopWindSfx();
         
         setTimeout(() => {
             this.beadActive = false;
@@ -580,6 +628,11 @@ export class ItemSystem {
                     windText.style.color = 'rgba(255,255,255,0.4)';
                 }
                 if (subText) subText.classList.remove('hidden');
+            }
+
+            // Resume wind sound if still in a drifting level
+            if (this.gm.isPlaying && !this.gm.isPaused && this.gm.currentLevel && this.gm.currentLevel.evt.includes('drifting')) {
+                this.gm.playWindSfx();
             }
         }, duration);
     }

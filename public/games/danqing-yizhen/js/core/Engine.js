@@ -1377,6 +1377,7 @@ class PolyPiece {
               */
 
     merge(otherPoly) {
+        if (this.isFake || otherPoly.isFake) return; // Fake pieces can never be merged, bulletproof guard against forces like Censer
         // remove otherPoly from list of polypieces
         const kOther = puzzle.polyPieces.indexOf(otherPoly);
         puzzle.polyPieces.splice(kOther, 1);
@@ -1406,6 +1407,7 @@ class PolyPiece {
     // -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   -
     ifNear(otherPoly) {
         if (this.rot != otherPoly.rot) return false; // different orientations, can't collapse!
+        if (this.isFake || otherPoly.isFake) return false; // fake pieces should never merge
 
         let p1, p2;
 
@@ -1594,6 +1596,7 @@ class PolyPiece {
         }
 
         function drawEmboss(ctx, path) {
+            ctx.save();
             ctx.lineWidth = puzzle.embossThickness;
             ctx.translate(dxemboss, dyemboss);
             ctx.strokeStyle = "rgba(0, 0, 0, 0.15)";
@@ -1602,6 +1605,7 @@ class PolyPiece {
             ctx.translate(-2 * dxemboss, -2 * dyemboss);
             ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
             ctx.stroke(path);
+            ctx.restore();
         } // drawEmboss
 
         function drawInternal(ctx, pp) {
@@ -2935,7 +2939,8 @@ let events = []; // queue for events
 //-----------------------------------------------------------------------------
 
 
-prepareUI();
+
+prepareUI();
 export { puzzle, Puzzle, PolyPiece, events, autoStart, ui, fileExtension, fileSignature, playing, prepareUI, isMiniature, animate };
 puzzle = new Puzzle({ container: 'forPuzzle' });
 autoStart = isMiniature();
