@@ -13,7 +13,13 @@ async function processGames() {
 
   // 确保目标目录存在
   if (await fs.pathExists(distDir)) {
-    await fs.remove(distDir);
+    try {
+      await fs.remove(distDir);
+    } catch (e) {
+      console.warn('  ⚠️ Initial cleanup failed, retrying in 500ms...', e.message);
+      await new Promise(resolve => setTimeout(resolve, 500));
+      await fs.remove(distDir);
+    }
   }
   await fs.ensureDir(distDir);
 
@@ -29,14 +35,21 @@ async function processGames() {
 
     try {
       if (ext === '.js') {
+        const isLibrary = file.includes('lib' + path.sep) || file.includes('vendor' + path.sep) || file.endsWith('.min.js');
+        
+        if (isLibrary) {
+          console.log(`  - Skipping Obfuscation (Library/Minified): ${file}`);
+          await fs.copy(srcPath, destPath);
+          continue;
+        }
+
         const code = await fs.readFile(srcPath, 'utf8');
         console.log(`  - Processing JS (Obfuscating): ${file}`);
         
         const obfuscationResult = JavaScriptObfuscator.obfuscate(code, {
           compact: true,
-          controlFlowFlattening: true,
-          controlFlowFlatteningThreshold: 0.5,
-          deadCodeInjection: false, // 减少体积
+          controlFlowFlattening: false, // 性能杀手，关闭
+          deadCodeInjection: false,
           debugProtection: false,
           disableConsoleOutput: false,
           identifierNamesGenerator: 'hexadecimal',
@@ -74,9 +87,13 @@ async function processGames() {
         await fs.copy(srcPath, destPath);
       }
     } catch (err) {
-      console.error(`  ❌ Error processing ${file}:`, err);
+      console.error(`  ❌ Error processing ${file}:`, err.message);
       // 出错时回退到直接复制
-      await fs.copy(srcPath, destPath);
+      try {
+        await fs.copy(srcPath, destPath, { overwrite: true });
+      } catch (copyErr) {
+        console.error(`  ❌ Failed to even copy ${file}:`, copyErr.message);
+      }
     }
   }
 
