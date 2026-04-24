@@ -208,6 +208,175 @@
             background: rgba(0, 255, 242, 0.3);
         }
 
+        /* 统计项样式 */
+        #result-overlay {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .result-card {
+            width: 450px;
+            background: rgba(15, 15, 25, 0.7);
+            border: 1px solid rgba(0, 255, 242, 0.3);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 242, 0.1);
+            overflow: hidden;
+            animation: card-appear 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes card-appear {
+            from { transform: scale(0.9) translateY(30px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .result-header {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        #result-status {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            margin: 0;
+            background: linear-gradient(135deg, #00fff2, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 242, 0.5));
+        }
+
+        .result-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px 10px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: stat-slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes stat-slide-up {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 255, 242, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .result-footer {
+            opacity: 0;
+            animation: stat-slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: var(--delay);
+        }
+
+        #result-msg {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .action-btn {
+            position: relative;
+            padding: 16px;
+            border-radius: 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            overflow: hidden;
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(90deg, #00fff2, #00d4ff, #00fff2);
+            background-size: 200% auto;
+            color: #000;
+            animation: gradient-flow 3s linear infinite;
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .btn-glow {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: translateX(-100%) skewX(-25deg);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .action-btn.primary:hover .btn-glow {
+            transform: translateX(150%) skewX(-25deg);
+        }
+
+        .action-btn span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .action-btn.secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .action-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
         /* 加载页面样式 */
         #loading-overlay {
             position: fixed;
@@ -489,9 +658,9 @@
 
 <body>
     <div id="ui-container">
-        <div id="level-info">PHASE 01 - 目标同步: 100</div>
+        <div id="level-info">PHASE 01 - 目标表现分: 100</div>
         <div id="scoreboard-container" style="display: flex; align-items: baseline; gap: 15px;">
-            <div id="scoreboard">核心得分: 0</div>
+            <div id="scoreboard">表现分: 0</div>
             <div id="score-pop"></div>
         </div>
         <div id="timer">00:00</div>
@@ -511,9 +680,9 @@
             style="color: #ff00ea; font-family: 'Orbitron', sans-serif; font-size: 14px; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255, 0, 234, 0.8);">
             死角挑战剩余时间</div>
         <div
-            style="background: rgba(0,0,0,0.5); border: 1px solid #ff00ea; padding: 2px; border-radius: 4px; width: 100%; height: 12px; margin: 5px auto; overflow: hidden;">
+            style="background: rgba(0,0,0,0.5); border: 1px solid #ff00ea; border-radius: 4px; width: 100%; height: 12px; margin: 5px auto; overflow: hidden;">
             <div id="side-punish-fill"
-                style="width: 100%; height: 100%; background: linear-gradient(90deg, #ff00ea, #8800ff); box-shadow: 0 0 15px #ff00ea;">
+                style="width: 100%; height: 100%; background: linear-gradient(90deg, #ff00ea, #8800ff); box-shadow: 0 0 15px #ff00ea; transition: width 0.1s linear;">
             </div>
         </div>
         <div id="side-punish-timer"
@@ -526,11 +695,11 @@
         style="display: none; position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; z-index: 10; width: 90%; max-width: 350px;">
         <div
             style="color: #00fff2; font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 900; letter-spacing: 4px; text-shadow: 0 0 15px rgba(0, 255, 242, 1);">
-            REWARD FRENZY // 疯狂同步模式</div>
+            REWARD FRENZY // 疯狂奖励模式</div>
         <div
-            style="background: rgba(0,0,0,0.6); border: 2px solid #00fff2; padding: 2px; border-radius: 6px; width: 100%; height: 16px; margin: 8px auto; overflow: hidden; box-shadow: 0 0 20px rgba(0, 255, 242, 0.3);">
+            style="background: rgba(0,0,0,0.6); border: 2px solid #00fff2; border-radius: 6px; width: 100%; height: 16px; margin: 8px auto; overflow: hidden; box-shadow: 0 0 20px rgba(0, 255, 242, 0.3);">
             <div id="reward-phase-fill"
-                style="width: 100%; height: 100%; background: linear-gradient(90deg, #00fff2, #0066ff); box-shadow: 0 0 15px #00fff2;">
+                style="width: 100%; height: 100%; background: linear-gradient(90deg, #00fff2, #0066ff); box-shadow: 0 0 15px #00fff2; transition: width 0.1s linear;">
             </div>
         </div>
         <div id="reward-phase-timer"
@@ -542,7 +711,7 @@
     <div id="status-bar">
 
         <div class="stat-group">
-            <div id="stat-diff"><span style="color:#ff00ea; font-weight:bold;">同步系数:</span> <span id="current-diff"
+            <div id="stat-diff"><span style="color:#ff00ea; font-weight:bold;">难度系数:</span> <span id="current-diff"
                     style="color:#ffffff;">0</span></div>
             <div id="stat-dist" style="display:none;"><span id="dist-label" style="color:#00fff2;">远射等级:</span> <span
                     id="dist-coeff">...</span></div>
@@ -575,7 +744,7 @@
 
 
     <div id="loading-overlay">
-        <div id="loading-text">SYSTEM SYNCING...</div>
+        <div id="loading-text">游戏加载中...</div>
         <div style="color: #444; margin-top: 10px; font-family: monospace; font-size: 10px;">PROCESING GLB_COURT //
             RECLAMATION_BASKETBALL</div>
     </div>
@@ -608,9 +777,9 @@
     <!-- Pause Menu -->
     <div id="menu-overlay" class="hidden">
         <div id="menu-content">
-            <h2 class="menu-title">同步已暂停</h2>
+            <h2 class="menu-title">游戏已暂停</h2>
             <div class="menu-items">
-                <button onclick="toggleMenu()" class="action-btn primary">恢复同步</button>
+                <button onclick="toggleMenu()" class="action-btn primary">恢复游戏</button>
                 <div class="menu-setting">
                     <label>背景音乐</label>
                     <input type="range" id="bgm-volume" min="0" max="1" step="0.05" value="0.08"
@@ -645,21 +814,38 @@
     <!-- Result Overlay -->
     <div id="result-overlay" class="hidden">
         <div class="result-card">
-            <h2 id="result-status">连接已中断</h2>
+            <div class="result-header">
+                <h2 id="result-status">游戏结束</h2>
+            </div>
+            
             <div class="result-stats">
-                <div class="stat-item">
-                    <span class="stat-label">最终同步分值</span>
+                <div class="stat-item" style="--delay: 0.1s">
+                    <span class="stat-label">总表现分</span>
                     <span id="final-score" class="stat-value">0</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">巅峰连击序列</span>
-                    <span id="max-combo" class="stat-value">X1</span>
+                <div class="stat-item" style="--delay: 0.2s">
+                    <span class="stat-label">单球最高</span>
+                    <span id="max-single-score" class="stat-value">0</span>
+                </div>
+                <div class="stat-item" style="--delay: 0.3s">
+                    <span class="stat-label">最高连击</span>
+                    <span id="max-combo" class="stat-value">X0</span>
+                </div>
+                <div class="stat-item" style="--delay: 0.4s">
+                    <span class="stat-label">综合命中率</span>
+                    <span id="final-hit-rate" class="stat-value">0%</span>
                 </div>
             </div>
-            <p id="result-msg">检测到神经同步连接中断...</p>
-            <div class="result-actions">
-                <button onclick="restartGame()" class="action-btn primary">重新接入协议</button>
-                <button onclick="quitGame()" class="action-btn secondary">终止连接 • 退出</button>
+            
+            <div class="result-footer" style="--delay: 0.5s">
+                <p id="result-msg">正在结算表现数据...</p>
+                <div class="result-actions">
+                    <button onclick="restartGame()" class="action-btn primary">
+                        <span>再来一局</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                    <button onclick="quitGame()" class="action-btn secondary">退出游戏</button>
+                </div>
             </div>
         </div>
     </div>

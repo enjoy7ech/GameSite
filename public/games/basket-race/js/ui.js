@@ -18,7 +18,7 @@ export function toggleMenu() {
 
 export function updateScoreDisplay(lastPoints = null) {
     const scoreEl = document.getElementById('scoreboard');
-    scoreEl.innerText = "核心得分: " + state.score;
+    scoreEl.innerText = "表现分: " + state.score;
 
     // --- 新增：左上角 HUD 显示当前球的难度系数 ---
     const currentDiffEl = document.getElementById('current-diff');
@@ -72,7 +72,7 @@ export function updateRewardUI() {
 
     if (state.isRewardPhase && state.rewardTimeLeft > 0) {
         container.style.display = 'block';
-        const percent = (state.rewardTimeLeft / 15) * 100; // 15s max
+        const percent = Math.min(100, (state.rewardTimeLeft / 30) * 100); // 30s 为满条
         fillEl.style.width = percent + '%';
         timerEl.innerText = state.rewardTimeLeft.toFixed(1) + 's';
     } else {

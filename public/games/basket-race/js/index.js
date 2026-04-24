@@ -29,10 +29,10 @@ function init() {
     state.renderer = new THREE.WebGLRenderer({ antialias: true, logarithmicDepthBuffer: false });
     state.renderer.setSize(window.innerWidth, window.innerHeight);
     state.renderer.shadowMap.enabled = true;
-    state.renderer.shadowMap.type = THREE.PCFShadowMap;
+    state.renderer.shadowMap.type = THREE.PCFSoftShadowMap; // 开启软阴影
     state.renderer.outputEncoding = THREE.sRGBEncoding;
     state.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    state.renderer.toneMappingExposure = 0.35; // 降低曝光，防止画面发白
+    state.renderer.toneMappingExposure = 0.35; // 还原曝光
     document.body.appendChild(state.renderer.domElement);
 
     // 配置 OrbitControls
@@ -68,10 +68,11 @@ function init() {
         state.isUserInteracting = false;
     });
 
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x111111, 0.2); // 减弱环境光
+    // --- 环境与反射增强 ---
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x111111, 0.2); 
     state.scene.add(hemiLight);
 
-    const lightIntensity = 4.0; // 显著降低灯光强度
+    const lightIntensity = 4.0; 
     const spreadX = 25;
     const createStadiumLight = (x, z) => {
         const spot = new THREE.SpotLight(0xffffff, lightIntensity);
@@ -99,32 +100,32 @@ function init() {
     state.floorBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
     state.world.addBody(state.floorBody);
 
-    const lineGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3()]);
-    // 蓄力线材质：使用加法混合实现发光感
-    state.aimLine = new THREE.Line(lineGeo, new THREE.LineBasicMaterial({ 
-        color: 0x00fff2, 
-        transparent: true, 
-        opacity: 0.9,
-        depthTest: false, 
-        blending: THREE.AdditiveBlending
-    }));
+    // --- 重新设计瞄准系统：动力学引导弧 (Kinetic Arc) ---
+    // 解决“看不到”和“太作弊”的问题：缩短引导线长度，增大元素体积
     
-    // 蓄力终点指示器 (准星)
-    const crosshairGeo = new THREE.RingGeometry(0.15, 0.2, 32);
-    const crosshairMat = new THREE.MeshBasicMaterial({ 
-        color: 0x00fff2, 
-        transparent: true, 
-        opacity: 0.8, 
-        depthTest: false,
-        blending: THREE.AdditiveBlending 
-    });
-    state.aimMarker = new THREE.Mesh(crosshairGeo, crosshairMat);
-    state.aimMarker.visible = false;
+    // 1. 动力学点阵 (Kinetic Dots) - 只展示初始的一小段，不直接指向篮筐
+    state.aimPathSegments = [];
+    const dotGeo = new THREE.SphereGeometry(0.1, 16, 16); // 显著增大体积 (0.04 -> 0.1)
+    const dotMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 1.0 });
+    
+    for(let i=0; i<12; i++) { // 缩短点数 (25 -> 12)，防止直接看到落点导致作弊感
+        const dot = new THREE.Mesh(dotGeo, dotMat.clone());
+        dot.visible = false;
+        state.scene.add(dot);
+        state.aimPathSegments.push(dot);
+    }
+    
+    // 2. 移除落点准星 (防止直接“作弊”提示落点)
+    state.aimMarker = new THREE.Group();
     state.scene.add(state.aimMarker);
 
-    state.aimLine.renderOrder = 999;
+    // 设置层级确保显示在最上方
     state.aimMarker.renderOrder = 1000;
-    state.scene.add(state.aimLine);
+    if (state.aimPathSegments) {
+        state.aimPathSegments.forEach(seg => seg.renderOrder = 999);
+    }
+
+
 
     state.renderer.domElement.addEventListener('mousedown', onDown);
     state.renderer.domElement.addEventListener('mouseup', onUp);
@@ -249,6 +250,14 @@ function init() {
             });
         });
 
+        // 加载狂热模式背景音
+        state.defenseAudio = new THREE.Audio(listener);
+        audioLoader.load('assets/audio/defense.mp3', (buffer) => {
+            state.defenseAudio.setBuffer(buffer);
+            state.defenseAudio.setLoop(true);
+            state.defenseAudio.setVolume(0.5);
+        });
+
         const hitNet = new THREE.Audio(listener);
         audioLoader.load('assets/in_mesh.mp3', (buffer) => {
             hitNet.setBuffer(buffer);
@@ -319,9 +328,16 @@ function onUp(e) {
     if (isPrimary && isDragging) {
         isDragging = false; 
         if (state.controls) state.controls.enabled = true;
-        state.aimLine.visible = false;
+        
+        if (state.aimBeam) state.aimBeam.visible = false;
+        if (state.aimBeamGlow) state.aimBeamGlow.visible = false;
         if (state.aimMarker) state.aimMarker.visible = false;
-        if (e.clientY - dragStart.y > 0) throwBall({ x: dragStart.x - e.clientX, y: e.clientY - dragStart.y });
+        if (state.aimRipples) state.aimRipples.forEach(r => r.visible = false);
+        if (state.aimPathSegments) state.aimPathSegments.forEach(s => s.visible = false);
+        
+        if (e.clientY - dragStart.y > 0) {
+            throwBall({ x: dragStart.x - e.clientX, y: e.clientY - dragStart.y });
+        }
     }
 }
 
@@ -331,38 +347,59 @@ function onMove(e) {
         const dx = (e.clientX - dragStart.x), dy = (e.clientY - dragStart.y);
         const start = state.currentBall.mesh.position;
         
-        // --- 核心修复：根据当前相机朝向计算 3D 空间中的预测线终点 ---
-        const camDir = new THREE.Vector3(); state.camera.getWorldDirection(camDir);
-        // 计算相机的“右”方向 (在水平面上)
-        const camRight = new THREE.Vector3().crossVectors(new THREE.Vector3(camDir.x, 0, camDir.z).normalize(), new THREE.Vector3(0, 1, 0)).normalize();
-        
-        // 计算视觉目标点：
-        // 横向：dx 正 (向右拖) -> 视觉线向右偏 (-dx 在 throwBall 逻辑中是向左飞，这里我们保持预览线与拖拽方向一致)
-        // 纵向：dy 正 (向下拖) -> 视觉线向下偏 (保持“跟随手指”的直观感)
-        const visualTarget = start.clone()
-            .add(camRight.clone().multiplyScalar(dx * 0.01))
-            .add(new THREE.Vector3(0, -dy * 0.01, 0));
+        // --- 核心修复：采用投影法实现 1:1 拖拽感 ---
+        const ballNDC = start.clone().project(state.camera);
+        const mouseNDC = new THREE.Vector3(
+            (e.clientX / window.innerWidth) * 2 - 1,
+            -(e.clientY / window.innerHeight) * 2 + 1,
+            ballNDC.z 
+        );
+        const visualTarget = mouseNDC.unproject(state.camera);
 
-        const pos = state.aimLine.geometry.attributes.position.array;
-        pos[0] = start.x; pos[1] = start.y; pos[2] = start.z;
-        pos[3] = visualTarget.x; pos[4] = visualTarget.y; pos[5] = visualTarget.z;
-        state.aimLine.geometry.attributes.position.needsUpdate = true;
-        
-        // --- 核心修复：根据拉弹距离动态变换颜色 (青色 -> 玫红) ---
-        const power = Math.sqrt(dx*dx + dy*dy);
-        const lerpFactor = Math.min(1.0, power / 300); // 300px 拉满
-        state.aimLine.material.color.setHSL(0.5 - lerpFactor * 0.5, 1.0, 0.5);
-        
-        // 更新准星位置
-        if (state.aimMarker) {
-            state.aimMarker.position.set(pos[3], pos[4], pos[5]);
-            state.aimMarker.lookAt(state.camera.position); // 总之朝向相机
-            state.aimMarker.visible = (state.punishMode !== 'blind');
-            state.aimMarker.material.color.copy(state.aimLine.material.color);
+        const dist = start.distanceTo(visualTarget);
+        // --- 核心算法：实时轨迹预测 (Trajectory Prediction) ---
+        if (state.aimPathSegments && isDragging) {
+            const dragVector = { x: dragStart.x - e.clientX, y: e.clientY - dragStart.y };
+            
+            // 镜像 throwBall 的物理参数
+            const b = state.currentBall;
+            const camDir = new THREE.Vector3(); state.camera.getWorldDirection(camDir);
+            const camRight = new THREE.Vector3().crossVectors(new THREE.Vector3(camDir.x, 0, camDir.z).normalize(), new THREE.Vector3(0, 1, 0)).normalize();
+            
+            const travelTime = 2.02;
+            const sensitivity = 0.0292;
+            const baseForward = (b.spawnDist / travelTime);
+            const forwardForce = baseForward + (dragVector.y * sensitivity);
+            const upForce = 8.44 + (dragVector.y * 0.0232);
+            const sideForce = dragVector.x * 0.027 * 1.5;
+            
+            const startVel = camDir.clone().multiplyScalar(forwardForce).add(camRight.multiplyScalar(sideForce));
+            startVel.y += upForce;
+            
+            const gravity = -22.0; // 对应 constants.js
+            const isVisible = (state.punishMode !== 'blind');
+            const lerpFactor = Math.min(1.0, Math.sqrt(dragVector.x*dragVector.x + dragVector.y*dragVector.y) / 300);
+            
+            // 预测未来的位置 (只展示前 0.6s)
+            state.aimPathSegments.forEach((dot, i) => {
+                const t = i * 0.05; // 缩短步长，展示更紧密的初始路径
+                const x = start.x + startVel.x * t;
+                const y = start.y + startVel.y * t + 0.5 * gravity * t * t;
+                const z = start.z + startVel.z * t;
+                
+                // 增加一点“张力抖动”
+                const jitter = (Math.random() - 0.5) * 0.02 * lerpFactor;
+                dot.position.set(x + jitter, y + jitter, z + jitter);
+                dot.visible = isVisible;
+                
+                // 颜色更鲜艳：从高亮青色渐变到亮橘色
+                const finalColor = new THREE.Color().setHSL(0.5 - lerpFactor * 0.4, 1.0, 0.6);
+                dot.material.color.copy(finalColor);
+                dot.scale.setScalar(1.2 - (i / 15)); 
+            });
+
+            if (state.aimMarker) state.aimMarker.visible = false; // 隐藏落点标志以防作弊
         }
-
-        // --- 核心修复：如果处于“视觉剥夺”惩罚中，强制隐藏瞄准线 ---
-        state.aimLine.visible = (state.punishMode !== 'blind');
     } else {
         mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
@@ -411,9 +448,19 @@ function animate(currentTime) {
 
                 if (state.isRewardPhase && state.rewardTimeLeft > 0) {
                     state.rewardTimeLeft -= fixedStep;
+                    
+                    // --- 狂热模式背景音控制 ---
+                    if (state.defenseAudio && !state.defenseAudio.isPlaying) {
+                        state.defenseAudio.play();
+                    }
+
                     if (state.rewardTimeLeft <= 0) {
                         state.rewardTimeLeft = 0;
                         state.isRewardPhase = false;
+                        
+                        if (state.defenseAudio && state.defenseAudio.isPlaying) {
+                            state.defenseAudio.stop();
+                        }
                     }
                     updateRewardUI();
                 }
@@ -442,10 +489,84 @@ function animate(currentTime) {
     state.activeBalls.forEach(b => { 
         b.mesh.position.copy(b.body.position); 
         b.mesh.quaternion.copy(b.body.quaternion); 
+        
+        // --- 狂热模式强光特效 (恒定高亮，不闪烁) ---
+        if (state.isRewardPhase) {
+            b.mesh.traverse(child => {
+                if (child.isMesh && child.material) {
+                    child.material.emissiveIntensity = 1.2;
+                    // 设置自发光颜色为球体本身的颜色
+                    if (!child.material.emissive.getHex()) {
+                        child.material.emissive.copy(child.material.color);
+                    }
+                }
+            });
+        } else {
+            // 重置自发光
+            b.mesh.traverse(child => {
+                if (child.isMesh && child.material) {
+                    child.material.emissiveIntensity = (b.type === 'rainbow' ? 1.0 : 0.0);
+                }
+            });
+        }
+        
+        // --- 彩虹球动态变色效果 ---
+        if (b.type === 'rainbow') {
+            const time = Date.now() * 0.002;
+            const color = new THREE.Color().setHSL((time % 1.0), 1.0, 0.5);
+            b.mesh.traverse(child => {
+                if (child.isMesh && child.material) {
+                    child.material.color.copy(color);
+                    child.material.emissive.copy(color);
+                }
+            });
+        }
     });
+    
+    // --- 当前球处理 ---
+    if (state.currentBall) {
+        // 狂热模式当前球也强光
+        if (state.isRewardPhase) {
+            state.currentBall.mesh.traverse(child => {
+                if (child.isMesh && child.material) {
+                    child.material.emissiveIntensity = 1.2;
+                    if (!child.material.emissive.getHex()) {
+                        child.material.emissive.copy(child.material.color);
+                    }
+                }
+            });
+        }
+        
+        if (state.currentBall.type === 'rainbow') {
+            const time = Date.now() * 0.002;
+            const color = new THREE.Color().setHSL((time % 1.0), 1.0, 0.5);
+            state.currentBall.mesh.traverse(child => {
+                if (child.isMesh && child.material) {
+                    child.material.color.copy(color);
+                    child.material.emissive.copy(color);
+                }
+            });
+        }
+    }
 
     if (state.gameState === 'playing') checkGoals();
     updateNet();
+
+    // --- 抛物线动态动画 (Trajectory Animation) ---
+    if (isDragging && state.aimPathSegments && state.aimPathSegments.length > 0) {
+        const time = Date.now() * 0.001;
+        
+        // 轨迹点流动效果 (加速脉冲)
+        state.aimPathSegments.forEach((dot, i) => {
+            const pulse = 0.7 + Math.sin(time * 25 - i * 1.5) * 0.3;
+            dot.material.opacity = pulse;
+            // 随力量增加的轻微震颤
+            if (Math.random() > 0.8) {
+                dot.position.x += (Math.random() - 0.5) * 0.01;
+            }
+        });
+    }
+
     state.renderer.render(state.scene, state.camera);
 }
 

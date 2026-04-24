@@ -49,10 +49,14 @@ export function spawnNewBall() {
     // --- 特殊球判定抽离 ---
     if (state.gameMode === 'rush') {
         ballType = 'normal';
-    } else if (state.isRewardPhase) {
-        // --- 疯狂奖励阶段：强制只生成奖励球 ---
-        const types = ['time', 'gold', 'combo', 'buff'];
+    } else if (state.rainbowBallCount > 0) {
+        ballType = 'rainbow';
+        state.rainbowBallCount--;
+    } else if (state.isRewardPhase || state.bonusBallCount > 0) {
+        // --- 疯狂奖励阶段 或 连中奖励：强制只生成奖励球 ---
+        const types = ['time', 'gold', 'combo', 'buff', 'fire'];
         ballType = types[Math.floor(Math.random() * types.length)];
+        if (state.bonusBallCount > 0) state.bonusBallCount--;
     } else if (state.isJailMode || state.punishMode) {
         ballType = 'normal';
     } else {
@@ -85,9 +89,17 @@ export function spawnNewBall() {
                 child.castShadow = true;
                 child.material = child.material.clone();
                 child.material.color.set(ballColor);
+                
+                // --- 材质调优：增加反射强度与细节 ---
+                if (child.material.isMeshStandardMaterial) {
+                    child.material.metalness = 0.2;
+                    child.material.roughness = 0.9;
+                    child.material.envMapIntensity = 1; // 增强环境反射
+                }
+
                 if (ballType !== 'normal') {
                     child.material.emissive = new THREE.Color(ballColor);
-                    child.material.emissiveIntensity = 1.0;
+                    // child.material.emissiveIntensity = 1.0;
                 }
             }
         });
@@ -176,7 +188,7 @@ export function spawnNewBall() {
                 }
 
                 // --- 惩罚球未进逻辑判定 ---
-                if (ballRef.type === 'side') { state.punishMode = 'side'; state.sidePunishTime = 30.0; showPraise("边际生存惩罚已启动 - 30s!"); }
+                if (ballRef.type === 'side') { state.punishMode = 'side'; state.sidePunishTime = 30.0; showPraise("边际生存30s!"); }
                 else if (ballRef.type === 'jail') { state.isJailMode = true; showPraise("逆流挑战模式已开启!"); }
                 else if (ballRef.type === 'blind') { state.punishMode = 'blind'; state.punishBalls = 3; if (state.aimLine) state.aimLine.visible = false; showPraise("视觉脱钩判定生效!"); }
                 else if (ballRef.type === 'timer') { state.startTime -= 10000; showPraise("检测到时间塌缩 -10s!"); triggerScreenShake(); }
@@ -299,7 +311,17 @@ export function startRush(diff) {
     if (state.bgm && !state.bgm.isPlaying) state.bgm.play();
 }
 
-export function restartGame() { location.reload(); }
+export function restartGame() {
+    const url = new URL(window.location.href);
+    url.searchParams.set('restart', 'true');
+    if (state.gameMode === 'rush') {
+        url.searchParams.set('mode', 'rush');
+        url.searchParams.set('diff', state.rushDifficulty);
+    } else {
+        url.searchParams.set('mode', 'career');
+    }
+    window.location.href = url.toString();
+}
 export function quitGame() { window.parent.postMessage('close-game', '*'); }
 
 export function throwBall(dragVector) {
@@ -392,20 +414,16 @@ export function checkGoals() {
                     pts = Math.floor(pts * 2.5); // 空心入网：赋予极高的 2.5 倍难度乘数 (取整)
                     state.startTime += 8000;
 
-                    // --- NEW: 触发 15s 疯狂奖励时间 (支持累加) ---
+                    // --- 触发 30s 疯狂奖励时间 (支持累加，上限提升至 90s) ---
                     state.isRewardPhase = true;
-                    state.rewardTimeLeft = Math.min(60, (state.rewardTimeLeft || 0) + 15);
+                    state.rewardTimeLeft = Math.min(90, (state.rewardTimeLeft || 0) + 30);
                     updateRewardUI();
 
                     triggerScreenShake();
-                    showPraise(`SWISH!! 核心连贯奖励! 同步时长 +${(8000/1000).toFixed(0)}s`);
+                    showPraise(`SWISH!! 连进奖励! 狂热模式 +30s`);
 
-                    // --- NEW: 空进优先播放空进特效音效, 增加 fallback ---
-                    if (state.extAudios && state.extAudios.length > 0) {
-                        const rnd = state.extAudios[Math.floor(Math.random() * state.extAudios.length)];
-                        if (!rnd.isPlaying) rnd.play();
-                    } else if (state.succAudios && state.succAudios.length > 0) {
-                        // 如果没有 ext 音效，也要有 succ 音效作为保底
+                    // --- 空进播放成功特效音效作为反馈 ---
+                    if (state.succAudios && state.succAudios.length > 0) {
                         const rnd = state.succAudios[Math.floor(Math.random() * state.succAudios.length)];
                         if (!rnd.isPlaying) rnd.play();
                     }
@@ -423,18 +441,50 @@ export function checkGoals() {
                 }
 
                 // 对超高难度进球给与额外文案反馈
-                if (difficultyPts > 50) showPraise(`序列同步完美！系数:${difficultyPts.toFixed(0)}`);
+                if (difficultyPts > 50) showPraise(`投射动作完美！表现倍率:${difficultyPts.toFixed(0)}`);
+
+                const rewardMult = state.isRewardPhase ? 2 : 1;
+                if (rewardMult > 1) showPraise("狂热效能：奖励翻倍中！");
 
                 if (ball.type === 'time') {
-                    state.startTime += 15000;
+                    state.startTime += 15000 * rewardMult;
                 } else if (ball.type === 'gold') {
-                    pts = Math.floor(pts * 5);
+                    pts = Math.floor(pts * 5 * rewardMult);
                 } else if (ball.type === 'combo') {
-                    state.comboCount += 3;
+                    state.comboCount += 3 * rewardMult;
                     pts = Math.floor(pts * 1.5);
                 } else if (ball.type === 'buff') {
-                    state.distCoeff += 0.08;
-                    state.heightCoeff += 0.04;
+                    state.distCoeff += 0.08 * rewardMult;
+                    state.heightCoeff += 0.04 * rewardMult;
+                    updateBuffUI();
+                } else if (ball.type === 'fire') {
+                    state.distCoeff += 0.25 * rewardMult;
+                    state.heightCoeff += 0.15 * rewardMult;
+                    updateBuffUI();
+                } else if (ball.type === 'rainbow') {
+                    // 全维序列：集成所有奖励效果
+                    state.startTime += 15000 * rewardMult;
+                    pts *= 5 * rewardMult; 
+                    state.comboCount += 3 * rewardMult;
+                    state.distCoeff += 0.33 * rewardMult; 
+                    state.heightCoeff += 0.19 * rewardMult;
+                    updateBuffUI();
+                    showPraise(rewardMult > 1 ? "超量彩虹奖励：全属性狂飙！" : "彩虹奖励激活：属性大幅提升！");
+                }
+
+                // --- 高难度进球额外奖励 ---
+                if (difficultyPts > 60) {
+                    state.rainbowBallCount = 2;
+                    showPraise("超凡投射！奖励 2 个彩虹球");
+                    
+                    // --- 触发彩虹奖励专属音效 ---
+                    if (state.extAudios && state.extAudios.length > 0) {
+                        const rnd = state.extAudios[Math.floor(Math.random() * state.extAudios.length)];
+                        if (!rnd.isPlaying) rnd.play();
+                    }
+                } else if (difficultyPts > 45) {
+                    state.bonusBallCount = 3;
+                    showPraise("极限投射！奖励 3 个特殊球");
                 }
 
                 // --- 惩罚解除逻辑：进球即恢复正常 (视角 & 进度归0) ---
@@ -477,6 +527,7 @@ export function checkGoals() {
 
                 state.score += pts;
                 state.maxCombo = Math.max(state.maxCombo, state.comboCount);
+                state.maxSingleScore = Math.max(state.maxSingleScore || 0, pts);
                 if (state.gameMode === 'rush') {
                     state.maxDifficultyHit = Math.max(state.maxDifficultyHit, difficultyPts);
                 }
@@ -494,12 +545,21 @@ export function checkGoals() {
 }
 
 export function nextLevel() {
-    state.level++; if (state.level > LEVELS.length) { endGame(true); return; }
+    state.level++; 
+    if (state.level > LEVELS.length) { endGame(true); return; }
+    
     state.remain30Used = false;
-    state.targetScore = LEVELS[state.level - 1].target; state.startTime += 90000;
+    state.targetScore = LEVELS[state.level - 1].target; 
+    state.startTime += 90000;
+    
     const el = document.getElementById('level-info');
     if (el) el.innerText = MESSAGES.LEVEL_INFO(state.level, state.targetScore);
-    showPraise(MESSAGES.LEVEL_UP);
+    
+    if (state.targetScore === Infinity) {
+        showPraise("挑战成功！进入无尽模式");
+    } else {
+        showPraise(MESSAGES.LEVEL_UP);
+    }
     triggerScreenShake();
 }
 
@@ -510,21 +570,59 @@ export function endGame(win) {
         if (state.endAudio.isPlaying) state.endAudio.stop();
         state.endAudio.play();
     }
+
+    // 更新结果面板
     const scoreVal = document.getElementById('final-score');
-    if (scoreVal) scoreVal.innerText = state.score;
+    if (scoreVal) countUp(scoreVal, 0, state.score, 1000);
+
+    const comboVal = document.getElementById('max-combo');
+    if (comboVal) {
+        const target = state.maxCombo;
+        countUp(comboVal, 0, target, 1000, (v) => 'X' + Math.floor(v));
+    }
+
+    const maxSingleVal = document.getElementById('max-single-score');
+    if (maxSingleVal) countUp(maxSingleVal, 0, state.maxSingleScore, 1000);
+
+    const hitRateVal = document.getElementById('final-hit-rate');
+    if (hitRateVal) {
+        const rate = state.shotsTaken > 0 ? (state.shotsMade / state.shotsTaken) * 100 : 0;
+        countUp(hitRateVal, 0, rate, 1000, (v) => v.toFixed(1) + '%');
+    }
+
     const overlay = document.getElementById('result-overlay');
     if (overlay) overlay.classList.remove('hidden');
 
-    const msg = document.getElementById('result-msg');
+    const statusEl = document.getElementById('result-status');
+    const msgEl = document.getElementById('result-msg');
 
     if (state.gameMode === 'rush') {
-        const hitRate = state.shotsTaken > 0 ? ((state.shotsMade / state.shotsTaken) * 100).toFixed(1) : "0.0";
-        msg.innerHTML = `[RUSH 结束] 难度评级: ${state.rushDifficulty}<br>命中率: ${hitRate}%<br>最高命中难度分: ${state.maxDifficultyHit.toFixed(0)}`;
-        document.getElementById('result-status').innerText = "超频协议执行完毕";
+        statusEl.innerText = "挑战结束";
+        msgEl.innerText = `极限模式 [${state.rushDifficulty}] 已完成。`;
     } else {
-        msg.innerText = win ? MESSAGES.RESULT_WIN : MESSAGES.RESULT_LOSE;
-        document.getElementById('result-status').innerText = win ? "同步序列达成" : "连接已中断";
+        // --- 核心修复：如果在无尽模式结束，统一判定为挑战成功 ---
+        const isEndlessSuccess = state.level >= 7;
+        const finalWin = win || isEndlessSuccess;
+
+        statusEl.innerText = finalWin ? "挑战成功" : "挑战失败";
+        if (finalWin) {
+            msgEl.innerText = isEndlessSuccess ? "传奇诞生！您已突破人类极限。" : "同步成功：已解析球场序列。";
+        } else {
+            msgEl.innerText = "时间耗尽，请再接再厉。";
+        }
     }
+}
+
+function countUp(el, start, end, duration, formatFn = (v) => Math.floor(v)) {
+    let startTime = null;
+    function animation(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const value = start + (end - start) * progress;
+        el.innerText = formatFn(value);
+        if (progress < 1) requestAnimationFrame(animation);
+    }
+    requestAnimationFrame(animation);
 }
 
 export function startTimer() {
@@ -577,10 +675,10 @@ export function updateNet() {
 export function calculateDifficulty(ball) {
     if (!ball) return 10;
     // 1. 距离因子 D：以 4m 为基点，距离越远分数呈指数上升
-    const dScore = Math.pow(ball.spawnDist / 4, 1.8);
+    const dScore = Math.pow(ball.spawnDist / 4, 1.8) * (state.distCoeff || 1.0);
 
     // 2. 高度因子 H：相对于篮筐 (8.1m) 的高度落差带来的视觉和弧线压力
-    const hScore = Math.abs(ball.spawnHeight - HOOP_POS.y) * 4.0;
+    const hScore = Math.abs(ball.spawnHeight - HOOP_POS.y) * 4.0 * (state.heightCoeff || 1.0);
 
     // 3. 角度因子 A：侧方死角 (Corner Shot) 由于视野变窄，难度显著高于正面
     const angleFactor = Math.abs(ball.spawnX || 0) / (Math.abs(ball.spawnZ || 1) + 2.0);

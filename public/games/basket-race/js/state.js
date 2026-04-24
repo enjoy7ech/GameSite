@@ -27,6 +27,8 @@ export const state = {
     netLinesGeo: null,
     basketballTemplate: null,
     boardDisplay: null,
+    aimRipples: [],
+    aimPathSegments: [],
     currentBallDiff: 0,
 
     // Physics Debug
@@ -42,6 +44,7 @@ export const state = {
     timerInterval: null,
     comboCount: 0,
     maxCombo: 0,
+    maxSingleScore: 0,
     giveRewardNext: false,
     isPaused: false,
     pauseOffset: 0,
@@ -71,6 +74,8 @@ export const state = {
     sidePunishTime: 0,  // Time remaining for side punishment (seconds)
     isRewardPhase: false, // NEW: Swish reward mode
     rewardTimeLeft: 0,    // NEW: Remaining reward time
+    bonusBallCount: 0,    // NEW: 连续奖励球计数
+    rainbowBallCount: 0,  // NEW: 连续彩虹球计数
 
     // UI Feedback
     ballTimeout: null,
