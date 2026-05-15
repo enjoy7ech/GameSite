@@ -92,13 +92,40 @@ const syncActiveGameFromRoute = () => {
 
 watch(() => route.params.id, syncActiveGameFromRoute);
 
+const isFullscreen = ref(false);
+const monitorOverlay = ref<HTMLElement | null>(null);
+
+const toggleFullscreen = () => {
+  if (!document.fullscreenElement) {
+    monitorOverlay.value?.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+};
+
+const handleKeyDown = (event: KeyboardEvent) => {
+  if (activeGame.value) {
+    if (event.key === "Escape" && !document.fullscreenElement) {
+      closeGame();
+    }
+  }
+};
+
 onMounted(() => {
+  document.addEventListener("fullscreenchange", () => {
+    isFullscreen.value = !!document.fullscreenElement;
+  });
   window.addEventListener("message", handleMessage);
+  window.addEventListener("keydown", handleKeyDown);
   syncActiveGameFromRoute();
 });
 
 onUnmounted(() => {
   window.removeEventListener("message", handleMessage);
+  window.removeEventListener("keydown", handleKeyDown);
+  document.removeEventListener("fullscreenchange", () => {
+    isFullscreen.value = !!document.fullscreenElement;
+  });
 });
 
 const selectGame = (game: Game) => {
@@ -129,7 +156,7 @@ const closeGame = () => {
     <div class="hub-container">
       <!-- GAME MONITOR (MODAL) -->
       <Transition name="scale">
-        <div v-if="activeGame" class="monitor-overlay">
+        <div v-if="activeGame" class="monitor-overlay" ref="monitorOverlay">
           <div class="monitor-container">
             <div
               class="monitor-frame"
@@ -143,6 +170,7 @@ const closeGame = () => {
                   :src="activeGame.url"
                   frameborder="0"
                   class="game-iframe"
+                  allow="fullscreen"
                 ></iframe>
                 <div class="glass-reflection"></div>
               </div>
@@ -155,9 +183,14 @@ const closeGame = () => {
                   >SYSTEM.ACTIVE // {{ activeGame.name }}</span
                 >
               </div>
-              <button class="exit-button" @click="closeGame">
-                ESCAPE SYSTEM [X]
-              </button>
+              <div class="control-actions">
+                <button class="fullscreen-button" @click="toggleFullscreen">
+                  {{ isFullscreen ? "WINDOWED" : "FULLSCREEN" }}
+                </button>
+                <button class="exit-button" @click="closeGame">
+                  ESCAPE SYSTEM [X]
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -481,6 +514,26 @@ const closeGame = () => {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  transition: all 0.5s ease;
+}
+
+.monitor-overlay:fullscreen .monitor-container {
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  gap: 0;
+}
+
+.monitor-overlay:fullscreen .monitor-frame {
+  height: 100vh;
+  width: 100vw;
+  border-radius: 0;
+  padding: 0;
+  border: none;
+}
+
+.monitor-overlay:fullscreen .monitor-controls {
+  display: none;
 }
 
 .monitor-frame {
@@ -511,8 +564,31 @@ const closeGame = () => {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   align-items: center;
+}
+
+.control-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.fullscreen-button {
+  background: transparent;
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+  padding: 8px 16px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  font-family: "Syncopate", sans-serif;
+  transition: all 0.3s;
+  opacity: 0.7;
+}
+
+.fullscreen-button:hover {
+  background: var(--accent-cyan);
+  color: black;
+  opacity: 1;
 }
 
 .nav-status {
