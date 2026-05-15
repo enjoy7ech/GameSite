@@ -1,0 +1,6 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>3D 乒乓球高手 - Ping Pong Master</title><link rel="stylesheet" href="index.css"><script type="importmap">{
+            "imports": {
+                "three": "./lib/three/three.module.js",
+                "three/examples/jsm/": "./lib/three/examples/jsm/"
+            }
+        }</script></head><body><div id="ui-overlay"><div id="scoreboard"><div class="score-card"><img src="assets/flags/cn.png" class="flag" id="player-flag"> <span id="player-score">0</span></div><div class="score-divider">:</div><div class="score-card"><span id="ai-score">0</span> <img src="assets/flags/la.png" class="flag" id="ai-flag"></div></div><div id="controls-hint">移动鼠标控制球拍 | 点击发球</div><div id="top-actions"><button id="btn-pause" class="icon-btn">⏸</button> <button id="btn-sound" class="icon-btn">🔊</button></div></div><div id="loading-screen"><div class="loader"></div><p>正在进入赛场...</p></div><script src="./lib/cannon.min.js"></script><script type="module" src="./js/index.js"></script></body></html>

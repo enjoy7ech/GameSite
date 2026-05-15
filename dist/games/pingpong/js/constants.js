@@ -1,0 +1,1 @@
+export const TABLE_WIDTH=1.525;export const TABLE_LENGTH=2.74;export const TABLE_HEIGHT=0.76;export const NET_HEIGHT=0.1525;export const BALL_RADIUS=0.02;export const PADDLE_RADIUS=0.08;export const PADDLE_THICKNESS=0.01;export const ROOM_SIZE=0x14;
